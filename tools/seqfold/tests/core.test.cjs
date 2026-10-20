@@ -1,0 +1,17 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');const s=require('../core.js');
+test('multi FASTA and plain nucleotides',()=>{let rec=s.parseFasta('>alpha\nATG CCG\n>beta\nGGG\nCCC\n');assert.deepEqual(rec,[{name:'alpha',sequence:'ATGCCG'},{name:'beta',sequence:'GGGCCC'}]);assert.equal(s.parseFasta('acgt\ncc')[0].sequence,'ACGTCC');});
+test('reject illegal letters, mixed T/U and empty sequence',()=>{assert.throws(()=>s.validate('ATGU'),/both T and U/);assert.throws(()=>s.validate('ATZ'),/Unsupported/);assert.throws(()=>s.validate(''),/Enter/);});
+test('composition ignores ambiguity in gc denominator',()=>{let x=s.summarize('AACCGGTTNN');assert.equal(x.length,10);assert.equal(x.ambiguous,2);assert.equal(x.gc,50);assert.equal(x.counts.N,undefined);});
+test('RNA and ambiguous base reverse complements',()=>{assert.equal(s.reverseComplement('ATGC'),'GCAT');assert.equal(s.reverseComplement('AUGC'),'GCAU');assert.equal(s.reverseComplement('ARYN'),'NRYT');});
+test('standard genetic code and six frame',()=>{assert.equal(s.translate('ATGGCTTAA'),'MA*');assert.equal(s.sixFrames('ATGGCTTAA').length,6);assert.equal(s.translate('ATGNNNTGA'),'MX*');});
+test('ORFs include terminator coordinates and reverse orientation',()=>{let orfs=s.findOrfs('ATGAAACCCGGGTAA',4);assert.deepEqual(orfs.filter(x=>x.strand==='+').map(x=>[x.start,x.end,x.protein]),[[1,15,'MKPG']]);let reverse=s.findOrfs('TTATTTCAT',2);assert.ok(reverse.some(x=>x.strand==='-'&&x.start===1&&x.end===9&&x.protein==='MK'));});
+test('no ORF if no termination',()=>assert.equal(s.findOrfs('ATGAAAAAA',1).length,0));
+test('restriction cut positions and fragment sum',()=>{let d=s.restrictions('AAAGAATTCTTGGATCCGG',['EcoRI','BamHI']);assert.equal(d.sites.length,2);assert.deepEqual(d.sites.map(x=>x.cut),[4,12]);assert.equal(d.fragments.reduce((a,b)=>a+b,0),19);});
+test('motif IUPAC including overlapping sites',()=>{assert.deepEqual(s.findMotif('AAAAA','AAA'),[1,2,3]);assert.deepEqual(s.findMotif('AAGAAG','AAR'),[1,4]);});
+test('kmer counts',()=>{let x=s.kmerCounts('ATATAT',2);assert.deepEqual(x,[{kmer:'AT',count:3},{kmer:'TA',count:2}]);});
+test('Nussinov canonical short hairpin',()=>{let r=s.foldNussinov('GGGAAACCC');assert.equal(r.dotBracket,'(((...)))');assert.equal(r.pairCount,3);assert.deepEqual(r.pairs,[[1,9],[2,8],[3,7]]);assert.equal(r.energyKcal,null);});
+test('Nussinov no pair and strict ambiguity restriction',()=>{assert.equal(s.foldNussinov('AAAAAA').pairCount,0);assert.throws(()=>s.foldNussinov('GGGNCCC'),/unambiguous/);assert.throws(()=>s.foldNussinov('A'.repeat(351)),/350/);});
+test('global pairwise alignment',()=>{let r=s.alignPair('GATTACA','GATACA');assert.equal(r.matches,6);assert.equal(r.columns,7);assert.equal(r.score,10);assert.equal(r.alignedA.replace(/-/g,''),'GATTACA');assert.equal(r.alignedB.replace(/-/g,''),'GATACA');});
+test('local pairwise alignment',()=>{let r=s.alignPair('TTACGGG','ACG');assert.equal(r.mode,'global');let loc=s.alignPair('TTACGGG','ACG',{mode:'local'});assert.equal(loc.alignedA,'ACG');assert.equal(loc.alignedB,'ACG');assert.equal(loc.score,6);});
+test('limits on alignment inputs',()=>assert.throws(()=>s.alignPair('A'.repeat(701),'AAAA'),/700/));
+test('primer QC makes clear that Tm rough',()=>{const x=s.primerQc('ATGCCGGTATACCGGTACGA');assert.equal(x.length,20);assert.match(x.note,/rough/);});
