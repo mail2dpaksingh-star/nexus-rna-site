@@ -1,0 +1,1 @@
+(()=>{'use strict';const b=document.querySelector('.hamburger'),n=document.querySelector('.navlinks');b?.addEventListener('click',()=>{const v=n.classList.toggle('open');b.setAttribute('aria-expanded',String(v));});n?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b?.setAttribute('aria-expanded','false');}));})();
