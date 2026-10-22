@@ -1,0 +1,5 @@
+(function(){'use strict';const $=s=>document.querySelector(s);const status=(message,error=false)=>{const el=$('#status');el.textContent=message;el.classList.toggle('error',error);};
+const on=NexusAccounts.configured();$('#setup-warning').hidden=on;$('#config-pill').textContent=on?'Email sign-in available':'Account setup required';$('#email-form').hidden=!on;
+if(on){NexusAccounts.currentUser().then(u=>{if(u)status('You are already signed in. Open your private workspace.');}).catch(()=>{});
+$('#email-form').addEventListener('submit',async e=>{e.preventDefault();const email=$('#email').value;const signup=$('input[name="mode"]:checked').value==='register';$('#send').disabled=true;status('Requesting a secure email link…');try{await NexusAccounts.sendEmailLink(email,signup);status('Check your inbox for the NEXUS sign-in link. If you do not see it, check spam. The response may not reveal whether an account exists.');}catch(err){status('Could not send link: '+err.message,true);}finally{$('#send').disabled=false;}});}
+})();
