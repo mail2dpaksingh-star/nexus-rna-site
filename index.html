@@ -44,6 +44,32 @@ footer{background:#091825;color:#b1c6c8;padding:38px 0}.footer-grid{display:flex
 .commercial-linkbar strong{display:block;font-size:19px}.commercial-linkbar p{margin:5px 0 0;color:#476a69}
 @media(max-width:1060px){.top-links{gap:13px}.top-links>a{font-size:11px}.top-actions .button{padding:10px 12px;font-size:11px}.nav-signin{padding:9px}}
 @media(max-width:740px){.commercial-linkbar{flex-direction:column;align-items:flex-start}.nav-signin{font-size:12px}}
+
+/* NEXUS v1.8.6: accessible, browser-local site search in the sticky header. */
+.site-search-bar{border-top:1px solid #24414b;background:#0d2432}
+.site-search-inner{max-width:1260px;margin:0 auto;padding:9px 26px;position:relative;display:flex;align-items:center;gap:16px}
+.site-search-form{display:flex;align-items:center;flex:1;max-width:650px;min-width:0;gap:9px;padding:8px 12px;background:#f6fbf9;border:1px solid #b3d5cf;border-radius:11px;transition:box-shadow .15s,border-color .15s}
+.site-search-form:focus-within{border-color:#a6f4ae;box-shadow:0 0 0 3px rgba(162,247,183,.23)}
+.site-search-icon{width:20px;height:20px;display:inline-block;flex:none;color:#326866}
+.site-search-input{width:100%;min-width:0;border:0;background:transparent;color:#143b43;outline:none;font-size:14px;line-height:1.5}
+.site-search-input::placeholder{color:#617a80;opacity:1}
+.site-search-hint{font-size:11px;color:#afc6c5;font-weight:650;white-space:nowrap}
+.site-search-hint kbd{font-family:inherit;font-size:10px;border:1px solid #66818a;border-radius:5px;padding:3px 6px;margin-left:5px;color:#d0e9e1}
+.site-search-results{position:absolute;z-index:205;top:calc(100% + 4px);left:26px;width:min(650px,calc(100% - 52px));max-height:min(65vh,520px);overflow:auto;box-shadow:0 23px 50px rgba(1,20,31,.35);border:1px solid #c8ddd7;background:#fff;border-radius:14px;color:#1b3c43;padding:8px}
+.site-search-results[hidden]{display:none}
+.site-search-label{padding:9px 11px 6px;color:#627d7d;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:850}
+.site-search-result{display:block;padding:11px 13px;border-radius:9px;border:1px solid transparent;color:#153b44}
+.site-search-result:hover,.site-search-result.active,.site-search-result:focus-visible{background:#e9f8f2;border-color:#a2d7c8;outline:none}
+.site-search-result strong{display:block;font-size:13px;line-height:1.4;color:#124740}
+.site-search-result small{display:block;font-size:11px;color:#5c7977;margin-top:3px;line-height:1.45}
+.site-search-result em{display:inline;font-style:normal;text-transform:uppercase;letter-spacing:.07em;color:#0b8277;font-size:10px;font-weight:750;margin-left:7px}
+.site-search-empty{font-size:13px;color:#506b6d;padding:12px}
+.site-search-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px;padding:7px 10px;border-top:1px solid #e5eeea}
+.site-search-bottom button{color:#086e65;border:0;background:none;font-weight:800;font-size:12px;padding:5px;cursor:pointer}
+.site-search-bottom button:hover{text-decoration:underline}
+.site-search-bottom span{font-size:11px;color:#667f7e}
+@media(max-width:900px){.site-search-inner{padding:9px 20px}.site-search-results{left:20px;width:calc(100% - 40px)}.site-search-hint{display:none}}
+@media(max-width:620px){.site-search-inner{padding:9px 17px}.site-search-form{max-width:none}.site-search-results{left:17px;width:calc(100% - 34px);max-height:58vh}.site-search-input{font-size:16px}}
 </style>
 </head>
 <body>
@@ -54,6 +80,18 @@ footer{background:#091825;color:#b1c6c8;padding:38px 0}.footer-grid{display:flex
 <div class="top-links" id="primary-links"><a href="#platform">Platform</a><a href="#tools">Research tools</a><a href="#applications">Applications</a><a href="tools/construct-studio/pro.html">RNA Design Pro</a><a href="services.html">Services &amp; pricing</a></div>
 <div class="top-actions"><a class="nav-signin" href="account/sign-in.html">Sign in / Register</a><a class="button button-primary" href="account/workspace.html">My workspace ↗</a><button aria-controls="primary-links" aria-expanded="false" class="menu-toggle" type="button"><span aria-hidden="true">☰</span> Menu</button></div>
 </nav>
+<div class="site-search-bar" role="search" aria-label="Search NEXUS tools and pages">
+  <div class="site-search-inner" id="site-search">
+    <form class="site-search-form" id="global-search-form" autocomplete="off">
+      <svg class="site-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <label class="sr-only" for="global-search-input">Search NEXUS tools, programs, and pages</label>
+      <input id="global-search-input" class="site-search-input" type="search" placeholder="Search RNA design, LNP, ddPCR, AlphaFold…" role="combobox" aria-autocomplete="list" aria-controls="global-search-results" aria-expanded="false" aria-haspopup="listbox" spellcheck="false" maxlength="120"/>
+    </form>
+    <span class="site-search-hint">Quick search <kbd>Ctrl K</kbd></span>
+    <div id="global-search-results" class="site-search-results" role="listbox" aria-label="Search suggestions" hidden></div>
+    <span class="sr-only" id="global-search-status" aria-live="polite" role="status"></span>
+  </div>
+</div>
 </header>
 <main id="main">
 <section aria-labelledby="hero-title" class="hero" id="home">
@@ -157,4 +195,5 @@ const CONTACT_EMAIL='singhbddeepak@gmail.com'; // Existing contact destination r
 const form=document.querySelector('#inquiry-form');form.addEventListener('submit',ev=>{ev.preventDefault();if(!form.reportValidity())return;const field=id=>String(document.querySelector('#'+id).value||'').trim();const subject='NEXUS RNA BioSolutions inquiry — '+field('interest');const body=[`Name: ${field('name')}`,`Email: ${field('email')}`,`Organization: ${field('company')||'Not specified'}`,`Area of interest: ${field('interest')}`,'',field('message')].join('\n');const link=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;document.querySelector('#form-status').textContent='Your email application should open with a prepared message. Review and send it there; NEXUS has not stored your inquiry.';location.href=link;});
 })();
 </script>
+<script src="assets/site-search.js" defer></script>
 </body></html>
