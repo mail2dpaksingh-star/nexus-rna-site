@@ -1,0 +1,7 @@
+# Synthetic training fixture using columns documented by Thermo Fisher; NOT actual instrument data
+Well Position	Sample	Target	Task	Amp Status	Cq
+A1	D-A-1	Antigen_RNA	UNKNOWN	Amp	22.4
+A2	D-A-2	Antigen_RNA	UNKNOWN	Amp	22.1
+B1	D-B-1	Antigen_RNA	UNKNOWN	Amp	20.0
+B2	D-B-2	Antigen_RNA	UNKNOWN	Amp	20.2
+C1	D-A-1	Antigen_RNA	UNKNOWN	No Amp	Undetermined

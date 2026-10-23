@@ -1,0 +1,25 @@
+(function(){'use strict';const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let last=null,basis=null;
+function msg(s=''){const box=$('#problem');box.textContent=s;box.classList.toggle('visible',!!s);}
+function fileInto(id,input){input.addEventListener('change',async()=>{try{let f=input.files?.[0];if(!f)return;if(f.size>150000)throw Error('Maximum FASTA/text input is 150 KB.');$(id).value=await f.text();msg('');}catch(e){msg(e.message);}finally{input.value='';}});}
+function addOptions(selector,items){selector.replaceChildren();items.forEach((x,i)=>{const o=document.createElement('option');o.value=i;o.textContent=x.name;selector.appendChild(o);});}
+function show(){try{if(!basis)return;let args={coding:$('#coding').value,inputType:$('#coding-type').value,codonWeights:$('#codon-weights').value,utr5:$('#utr5').value,utr3:$('#utr3').value,codingIndex:$('#choose-coding').value,utr5Index:$('#choose-5').value,utr3Index:$('#choose-3').value};last=NexusUTR.fullDesign(args);let sel5=last.utr5.candidates[+args.utr5Index],sel3=last.utr3.candidates[+args.utr3Index],f5=sel5.features,f3=sel3.features;
+$('#metric-protein').textContent=last.coding.aaLength;$('#metric-cds').textContent=last.components.cds.length;$('#metric-transcript').textContent=last.transcriptLength;
+$('#five-metrics').textContent='Length: '+f5.length+' nt · GC: '+f5.gc+'% · upstream AUGs: '+f5.uaug+' · −3: '+(f5.koz.minus3??'n/a')+' · +4: '+(f5.koz.plus4??'n/a');
+$('#three-metrics').textContent='Length: '+f3.length+' nt · GC: '+f3.gc+'% · AUUUA motifs: '+f3.motifs.AUUUA;
+const flags=[...last.coding.warnings,...sel5.edits,...sel3.edits,...f5.flags,...f3.flags,...last.warnings];$('#warnings').innerHTML=flags.map(x=>'<li>'+esc(x)+'</li>').join('');
+$('#transcript-seq').textContent=last.transcript;$('#protein-seq').textContent=last.protein;$('#assembled').hidden=false;$('#empty').hidden=true;$('#results').hidden=false;msg('');}catch(e){last=null;msg(e.message);}}
+function generate(){try{basis=NexusUTR.fullDesign({coding:$('#coding').value,inputType:$('#coding-type').value,codonWeights:$('#codon-weights').value,utr5:$('#utr5').value,utr3:$('#utr3').value});addOptions($('#choose-coding'),basis.coding.candidates);addOptions($('#choose-5'),basis.utr5.candidates);addOptions($('#choose-3'),basis.utr3.candidates);$('#cds-candidates').innerHTML=basis.coding.candidates.map(c=>'<tr><td>'+esc(c.name)+'</td><td>'+c.gc+'%</td><td>'+(c.targetGC===null?'Reference':c.targetGC+'%')+'</td><td>'+c.changedCodons+'</td><td>'+(c.proteinPreserved?'Yes':'No')+'</td></tr>').join('');show();}catch(e){basis=null;last=null;msg(e.message);$('#results').hidden=true;$('#assembled').hidden=true;$('#empty').hidden=false;}}
+function download(filename,type,text){if(!last){msg('Generate an assembly first.');return;}const a=document.createElement('a'),href=URL.createObjectURL(new Blob([text],{type}));a.href=href;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(href),2500);}
+function csv(){if(!last)return '';return 'candidate,observed_GC_percent,target_GC_percent,changed_synonymous_codons,translation_preserved\n'+last.coding.candidates.map(c=>[JSON.stringify(c.name),c.gc,c.targetGC??'',c.changedCodons,c.proteinPreserved].join(',')).join('\n')+'\n';}
+$('#generate').addEventListener('click',generate);
+for(const id of ['#choose-coding','#choose-5','#choose-3'])$(id).addEventListener('change',show);
+$('#download-fasta').addEventListener('click',()=>last&&download('NEXUS_full_transcript_UTR_CDS_UTR.fasta','text/plain',NexusUTR.fasta('NEXUS_unmodified_transcript_without_cap_or_polyA',last.transcript)));
+$('#download-cds').addEventListener('click',()=>last&&download('NEXUS_CDS_candidate.fasta','text/plain',NexusUTR.fasta('NEXUS_CDS',last.components.cds)));
+$('#download-json').addEventListener('click',()=>last&&download('NEXUS_UTR_CDS_Research_Design_v1.6.json','application/json',JSON.stringify(last,null,2)));
+$('#download-csv').addEventListener('click',()=>last&&download('NEXUS_CDS_Candidate_Comparison.csv','text/csv',csv()));
+$('#example').addEventListener('click',()=>{$('#coding-type').value='cds';$('#coding').value='AUG'+'GCUCAGGAACCUAAGGCCUCUAAAGAG'.repeat(3)+'UAA';$('#utr5').value='GCUACCGAUGUCGACUCGAUCUCGCUUCAAGUCUCUCAGCUCC';$('#utr3').value='ACUUCAAGACUGAUUUAUGCUACUGACUCAUGUAGCUACUGACUAAUCCAGAUCUA';$('#codon-weights').value='';generate();});
+$('#clear').addEventListener('click',()=>{last=null;basis=null;$('#results').hidden=true;$('#assembled').hidden=true;$('#empty').hidden=false;msg('');});
+for(const id of ['#coding','#utr5','#utr3','#codon-weights','#coding-type'])$(id).addEventListener('input',()=>{last=null;basis=null;$('#results').hidden=true;$('#assembled').hidden=true;$('#empty').hidden=false;msg('Inputs changed; generate candidates again to update the report.');});
+fileInto('#coding',$('#coding-file'));
+if(window.NexusBridge)NexusBridge.init('utrDesign',()=>last);
+})();
