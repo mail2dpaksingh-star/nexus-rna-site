@@ -1,7 +1,7 @@
 {
-  "release": "NEXUS v1.8.23R Recovery",
-  "source": "v1.8.23 experimental demo release",
-  "type": "static website only",
-  "intent": "deployment repair and tool-directory restoration",
+  "release": "NEXUS v1.8.23R-MSA-MAP1 (candidate)",
+  "source": "v1.8.23R Recovery",
+  "type": "static website only; not live until separately deployed",
+  "intent": "Preservation release: conventional annotated plasmid maps and fixed-column IUPAC color-coded MSA",
   "note": "no claim of live deployment or activated account authentication"
 }
