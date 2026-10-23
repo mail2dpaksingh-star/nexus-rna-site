@@ -1,0 +1,22 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const R=require('../tools/seqfold/thermofold-reference-core.js');
+const T=require('../tools/seqfold/thermofold-core.js');
+const L=require('../tools/seqfold/thermofold-layout.js');
+let passes=0;
+function test(name,fn){fn();passes++;console.log('PASS',name);}
+test('real format parses',()=>{const p=R.parseRNAfold('>a\nGGGAAACCC\n(((...))) (-1.20)','RNAfold 2.7.2','RNAfold --noPS --temp=37 -d2');assert.equal(p.pairCount,3);assert.equal(p.deltaG37,-1.2);});
+test('reference draw',()=>{const p=R.parseRNAfold('GGGAAACCC\n(((...))) (-1.20)','RNAfold 2.7.2','--temp=37 -d2');assert.match(L.render(p).svg,/<svg/);});
+test('reference comparison',()=>{const p=R.parseRNAfold('GGGAAACCC\n(((...))) (-1.20)','RNAfold 2.7.2','--temp=37 -d2');const c=R.compare(p,T.fold(p.sequence));assert.ok(Number.isFinite(c.dgDifference));assert.ok(c.f1>=0&&c.f1<=1);});
+test('missing provenance rejected',()=>assert.throws(()=>R.parseRNAfold('GGGAAACCC\n(((...))) (-1.20)','','--temp=37'),/version/));
+test('missing parameter record rejected',()=>assert.throws(()=>R.parseRNAfold('GGGAAACCC\n(((...))) (-1.20)','RNAfold 2.7.2','foo'),/options/));
+test('noncanonical reference rejected',()=>assert.throws(()=>R.parseRNAfold('ACGX\n(()) (-1.00)','RNAfold 2.7.2','--temp=37'),/unambiguous/));
+test('missing energy rejected',()=>assert.throws(()=>R.parseRNAfold('GGGAAACCC\n(((...)))','RNAfold 2.7.2','--temp=37'),/unambiguous/));
+test('mismatched record rejected',()=>assert.throws(()=>R.parseRNAfold('GGGAAACCC\n(((....))) (-1.00)','RNAfold 2.7.2','--temp=37'),/length/));
+test('unbalanced bracket rejected',()=>assert.throws(()=>R.parseRNAfold('GGGAAACCC\n(((...... (-1.00)','RNAfold 2.7.2','--temp=37'),/unmatched/));
+test('noncanonical pairs rejected',()=>assert.throws(()=>R.parseRNAfold('AAAAAAAAA\n(((...))) (-1.00)','RNAfold 2.7.2','--temp=37'),/unsupported/));
+test('at most 3000 nts',()=>{assert.equal(R.normalizeSequence('A'.repeat(3000)).length,3000);assert.throws(()=>R.normalizeSequence('A'.repeat(3001)),/3000/)});
+test('long sequence imports without false local fold',()=>{let seq='A'.repeat(300);const p=R.parseRNAfold(seq+'\n'+'.'.repeat(300)+' (0.00)','RNAfold 2.7.2','--temp=37 -d2');assert.equal(p.pairCount,0);});
+console.log(`${passes} reference adapter tests passed.`);

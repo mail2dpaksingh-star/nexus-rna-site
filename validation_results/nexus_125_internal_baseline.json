@@ -1,0 +1,1138 @@
+{
+  "kind": "INTERNAL_BASELINE_NOT_EXTERNAL_BENCHMARK",
+  "engine_version": "0.9.0",
+  "cases_sha256": "7f78b61c66e234d2dc721f971d23bd4cf227b43acee28d884431dd89fabf10ef",
+  "n_cases": 125,
+  "n_success": 125,
+  "total_elapsed_ms": 2376,
+  "reference_records_count": 0,
+  "statistics_against_RNAfold": null,
+  "warning": "These are NEXUS results only; no RNAfold or experimental structure comparison was executed.",
+  "rows": [
+    {
+      "id": "GC_hairpin_9",
+      "length": 9,
+      "sequence": "GGGAAACCC",
+      "structure": "(((...)))",
+      "dg": -1.2,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "AU_hairpin_9",
+      "length": 9,
+      "sequence": "AAAGGGUUU",
+      "structure": ".........",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "GU_sensitive_12",
+      "length": 12,
+      "sequence": "GGUGAAAUACCC",
+      "structure": "((((...)))).",
+      "dg": -0.65,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "no_pair_polyA",
+      "length": 20,
+      "sequence": "AAAAAAAAAAAAAAAAAAAA",
+      "structure": "....................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "short_loop_GC",
+      "length": 12,
+      "sequence": "GCGCGAAAGCGC",
+      "structure": "((((....))))",
+      "dg": -4.5,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "alternating_GC",
+      "length": 22,
+      "sequence": "GCGCGCGCGAAAAAGCGCGCGC",
+      "structure": "((((((((......))))))))",
+      "dg": -16.3,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "bulge_candidate",
+      "length": 16,
+      "sequence": "GGGCAAACCCAAACCC",
+      "structure": "(((....)))......",
+      "dg": -1,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "polyU_short",
+      "length": 16,
+      "sequence": "UUUUUUUUUUUUUUUU",
+      "structure": "................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "multibranch_challenge",
+      "length": 33,
+      "sequence": "GGGAAACCCUUUCCCAAAGGGUUUGGGAAACCC",
+      "structure": "(((...(((...(((...)))...)))...)))",
+      "dg": -11.8,
+      "elapsed_ms": 4,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "medium_74",
+      "length": 74,
+      "sequence": "GGGAAACCCUUACGUACGUAAGGCCAAAUUGGCCGCUAGCUAGCAAACCCGGGUAACGUACGUAAGGCCAAAUU",
+      "structure": ".......((((((((((((..(((((...)))))(((....)))...........)))))))))))).......",
+      "dg": -21.95,
+      "elapsed_ms": 24,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "turner_CGAG_tetraloop",
+      "length": 6,
+      "sequence": "CCGAGG",
+      "structure": "......",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "turner_C3_penalty",
+      "length": 5,
+      "sequence": "GCCCC",
+      "structure": ".....",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "turner_C6_penalty",
+      "length": 8,
+      "sequence": "GCCCCCCC",
+      "structure": "........",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "hairpin_UU_first_mismatch",
+      "length": 7,
+      "sequence": "GUAAUUC",
+      "structure": ".......",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "hairpin_GG_first_mismatch",
+      "length": 7,
+      "sequence": "GGAAAGC",
+      "structure": ".......",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_001_12nt",
+      "length": 12,
+      "sequence": "UAAGAGAAAAUC",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_002_18nt",
+      "length": 18,
+      "sequence": "AAGAUGUUACAAUACCAA",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_003_24nt",
+      "length": 24,
+      "sequence": "UCGAUUACAAUUAUUUUUUGUACU",
+      "structure": ".....(((((.......)))))..",
+      "dg": -0.5,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_004_36nt",
+      "length": 36,
+      "sequence": "AAUAGAUCAAACUUGCUAUGUUUACUCUUAAAUUAA",
+      "structure": "...(((..((((.......))))..)))........",
+      "dg": -0.45,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_005_48nt",
+      "length": 48,
+      "sequence": "CGUCAUACGUAAUUUAGUUAAAUCAUCAUUGGUCAUAUCUAUAGUUAC",
+      "structure": "........(((((((((....((((....)))).....))).))))))",
+      "dg": -3.7,
+      "elapsed_ms": 4,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_006_72nt",
+      "length": 72,
+      "sequence": "AUAAAAAUAAAUAAUUAUAGCAGUAAUGUCCAGGUGAGAUGCUGAGCUUAUAAUCAUGUCUUAAGUACAAGA",
+      "structure": "..........................(((.....(((((((.(((........))))))))))...)))...",
+      "dg": -4.68,
+      "elapsed_ms": 9,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_007_100nt",
+      "length": 100,
+      "sequence": "UACUGACAUACACAAUUAUGUCUUAUUGAAAUACUGGCUAGUAGAGUAAAAUAAUAGUUAGUUCACAGGUAAAUCAAAACUCACGCCGAAGUGAUACUUU",
+      "structure": "....((((((......))))))(((((.....((((((((.((........)).)))))))).....)))))........((((......))))......",
+      "dg": -12.45,
+      "elapsed_ms": 16,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_008_140nt",
+      "length": 140,
+      "sequence": "AUUAAAGGGGUAGCUAACUAGAUAACGAUAAUGCUACUAAGUAUGCCGAAUUUUAUUACUAAAAUUUUUGGUCUAACCUUAAUAGUGAAUGAUGAAACAUAAUGAAAAAACUGCGAGCGCCGGAUAAUUGUCGGUGUCUA",
+      "structure": "..................((((((.(((((((....(...((.(((....(((((((((....(((...(((...))).....)))....)........)))))))).....))).))...)....))))))).))))))",
+      "dg": -15.17,
+      "elapsed_ms": 36,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_009_190nt",
+      "length": 190,
+      "sequence": "CUGAUUAUUAUUUGAUUUAUAAUCUUCCGACAAUUCAAGCUUGUCUGGCAAUUGUAGUUAAUACAAAAAUAUUGAACUUACUAAUAGUUUAAUAGUUGUCGUAGUAACACAUACAAUAGUAAUAAAAUAUUUAGUUUAAUCGUCUAUAAUAGUAAUUUUAUUAUAUACCCAAUCCAAUAAAUUUACUCAU",
+      "structure": "..(((((((((((((((.........(((((((.......))))).))..((((((((((.(((...(((((((((((.......)))))))).)))...))).))))...))))))....................))))).....)))))))))).................................",
+      "dg": -18.38,
+      "elapsed_ms": 88,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_010_240nt",
+      "length": 240,
+      "sequence": "UGGCUAUUGCUUUCAUUAUCCAGUAUAUCGCAUUGACAGUUUUGUUUGCAUUAUAUGCAUUAUAAUAAUAAUCAAAGUAAGUAUUUCGUUAGUUAUUCUCACAUAUAUAUAUAAUAUAAAUAUAAAGUUUUCCCGGCACUUAUAUUGAUUAAACUUAGUUUCUUUGAUUACUAGUAUUUAGGAUUAAAUAACUACCAAGCAAACGAACUGUAUAUAUUUAUUUUAUACUGAUGAAAACUA",
+      "structure": "..........((((((....(((((((....((..(((((((.((((((...................(((((((.((((((...(((...(.....((...((((.((((...)))).))))..))....).))).)))))).)))))))....(((((..(((((((.((((...))))))))))).)))))....)))))))))))))....))......)))))))))))))....",
+      "dg": -31.49,
+      "elapsed_ms": 117,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_011_12nt",
+      "length": 12,
+      "sequence": "UUGACCCUAUAA",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_012_18nt",
+      "length": 18,
+      "sequence": "GACGAUAUAGACCCUCGU",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_013_24nt",
+      "length": 24,
+      "sequence": "GCAGGGGGGCAUAUAUCGUGUUAA",
+      "structure": "(((.((.........)).)))...",
+      "dg": -0.7,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_014_36nt",
+      "length": 36,
+      "sequence": "ACUAUACAUAGACUAUCUACAUACGAGCUCCAAACC",
+      "structure": "....................................",
+      "dg": 0,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_015_48nt",
+      "length": 48,
+      "sequence": "CGCCUACCCGGUGCCCGACGGUACACUGCGUAUGGAGUCCCUGAGGAU",
+      "structure": "..(((((.(((((.((...))..))))).))).)).((((....))))",
+      "dg": -9.14,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_016_72nt",
+      "length": 72,
+      "sequence": "CAUUUGCGCUCGUCAGGAAUUUCUCGAUCCCCUAGUUUAUUCGUAUGUCUAUACGGUUCUACCGUCCGGAGG",
+      "structure": "...........(((.(((...))).)))...................(((..(((((...)))))..)))..",
+      "dg": -6.6,
+      "elapsed_ms": 6,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_017_100nt",
+      "length": 100,
+      "sequence": "AGCGGAGACUUAUCCGCCUGAACCUCAAGUAGCGGAAGGUUCUUUGGCUUUCCCUAAUCUCCCAGGGAUGUCGAUAGCCACACGUUGCCUGCUUAACCCU",
+      "structure": ".(((((......)))))........((.((((((...((((..(((((..(((((........))))).))))).))))...)))))).)).........",
+      "dg": -27.2,
+      "elapsed_ms": 12,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_018_140nt",
+      "length": 140,
+      "sequence": "GGGCACACAGUACGUACUUUCCCUAAGUCAGCUUGGGGAGCCCGCGAUCGCUAAAGUGGCCCGUGUAAUUCAAAUCGGGGGAGGAUGCUAAUAAUCUAGAUCGUAACCGAGCAUACUUUUAACGAGUGUCGGGUGUCAUU",
+      "structure": "((((.((((((.(((...(((((((((....)))))))))...)))...)))...)))))))(((..((((...(((..((((((((((....................))))).)))))..))).....))))..))).",
+      "dg": -31.86,
+      "elapsed_ms": 28,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_019_190nt",
+      "length": 190,
+      "sequence": "AAUCUGACCCACUAGGCCCUCACGCCCCUGACCCCUCUAAGUAAAUAGAGUCAUCGCCUGAUCCAAACUACAUUGCUCGUUGAGUCUUCCCAAUAACUCGGGUGGGCCGAUACGCGGUCGCAUAUCACUUUUAUCAACCUUUCCCCUCACGGUCGCGGAGAAAAAUAUAAUUACCGAAUGCGGCUCAACA",
+      "structure": "..............((...(((.((...((((...((((......))))))))..)).))).))..........((..((((.((((.(((........))).))))))))..))((((((((.((....((((.....(((((((....))....))))).....)))).....)))))))))).....",
+      "dg": -30.04,
+      "elapsed_ms": 43,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_020_240nt",
+      "length": 240,
+      "sequence": "GAGCAAACCUAGCUACGGUUGCCUAUCCGGCGGUCUGUGCAGUAGCGUCCACACAAUUAUGAAGACUGGUCACGAAGCCAGCUACGCGAUACACGCCCUACAAUGGAAUUGCUAAUUGGUGUUAUGAUUGAAGUAUCCUUAGCAUACGACUUUACAAGUAAAUCGGGACCUUUUAACGUUAUCACGAAUUAGGAGCCGUGUCUCCGAUGAGCCGUAAGUCUCCAUGUGCAGAUUAGACGC",
+      "structure": "........((.((.(((((((((.....))))).))))))))..(((((....((((((((.((.(((((......))))))).........(((((.((((((...)))).))...)))))))))))))...........(((((.(((((.((..((..((((((((((((((((((....)))..)))))))....))).)))))..)).)))))))....)))))......)))))",
+      "dg": -45.58,
+      "elapsed_ms": 100,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_021_12nt",
+      "length": 12,
+      "sequence": "GACGGGGCCUCG",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_022_18nt",
+      "length": 18,
+      "sequence": "GGGGCCUGGAGGAGGCGC",
+      "structure": "...((((.....))))..",
+      "dg": -3.45,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_023_24nt",
+      "length": 24,
+      "sequence": "GACCGGCGCCGUCCGUCGGCGUCA",
+      "structure": "....(((((((.....))))))).",
+      "dg": -10.7,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_024_36nt",
+      "length": 36,
+      "sequence": "GACCUCCGCGUGCCCGUGGGGGGAUCCCUCGGGCUC",
+      "structure": "...........(((((.((((...)))).)))))..",
+      "dg": -14.15,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_025_48nt",
+      "length": 48,
+      "sequence": "CGACCCGCCGCGCUCAGGAGAGGUGCGCGUAGCCGGGGUACCGGCGAC",
+      "structure": ".....((((((.(((....)))))).)))..(((((....)))))...",
+      "dg": -15.28,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_026_72nt",
+      "length": 72,
+      "sequence": "UAGGCCCAGCCAGCGGCAGGCUGAAGGGCCUUGGAUUCGCCGCCGGGCGCCGUGCCUCGCGGGAUACCGUCA",
+      "structure": ".((((((...((((.....))))..))))))(((..((.((((.(((((...))))).))))))..)))...",
+      "dg": -31.64,
+      "elapsed_ms": 13,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_027_100nt",
+      "length": 100,
+      "sequence": "GGGCCGACUCAGGCGACGCUCCCGCCCCGAUCGCCCCUGCGCCGGCGAGCGGAGCCGGUUCAAGAUCCGCGAAUGGGAGCGAGUGAUGUGGGGUGCGGGG",
+      "structure": "...(((((((..(((.(((((..((((((.((((..(((.((((((.......)))))).).))....)))).)))).))))))).))).)))).)))..",
+      "dg": -38.37,
+      "elapsed_ms": 13,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_028_140nt",
+      "length": 140,
+      "sequence": "UACGCGCUCGGUGCCGGUCCCCCCCGAUACGGACACCUUGGGGGGGGACAGCCGACAGCGCGCGUCCGUACGAUUAAAGGUAGACCCGCAGCCGCCGGGGGCCCUUCCCGGCCCGGCACCCUCGCGCCCGCUUCACGGAG",
+      "structure": "...((((..((((((((((((((((((...((...))))))))))))..........(((((.(((..(((........)))))).))).)).(((((((.....)))))))))))))))...))))(((.....)))..",
+      "dg": -58.79,
+      "elapsed_ms": 26,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_029_190nt",
+      "length": 190,
+      "sequence": "GCUCGGUCGGUGGUCCAUGAGGUGGUGCGCCAGGGAGGGCUGCCAUGGCCGCUACCGAGGCCGAGCGGAGAUACCGCCCAUGACCUACCCACCACGAGCGCGGUUCACUCGCCAGCGCACGCCGGCUCUCGGGGACGGGUCUGGUGACGCGGACGCCGGCGACGUCAUAGCCGUGCGACAGGCGGGGCCC",
+      "structure": "(((((((.(((((((.(((.(((((((((((..((((((((.....)))).)).))..)))...))......))))))))))))).))).)))..))))..(((...((((((.((((((...((((..((....((((((((......))))).)))....))....))))))))).).))))))))).",
+      "dg": -78.97,
+      "elapsed_ms": 55,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_030_240nt",
+      "length": 240,
+      "sequence": "CGUCCCGGGGGGGCCACCCGUGUGGACGGGGACCAGCGCGCGGUCUCGACCGCGUCCUAAACUGCAGGGUACGGGCCCCCCAGAACGCGGGUGGUGGGGGACCGGGUUGUUGGGCGGUGUCGUCGCCCGUCCCGGACGCGAGGGGGGGGAAUAGCCUACAGCGGUGGCCCCCGCGGGAGGUCCGGGGCGGGCUUUACCUGGCCGGUUCGAUGGGUAAACCGCCUGCUCGCACUCUAGCUU",
+      "structure": ".......((((((((((((.(((((...(((((......(((((....))))))))))...)))))))))...))))))))(((..(((((((((((...(((..((((...(((((((.....(((((((((((((.....(.(((((....(((......)))..))))).).....)))))))))))))..))))..)))....)))).)))...))))).))))))..))).....",
+      "dg": -119.65,
+      "elapsed_ms": 100,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_031_12nt",
+      "length": 12,
+      "sequence": "UAACUAGCCUUG",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_032_18nt",
+      "length": 18,
+      "sequence": "AAAAAAAUAAUUUUCAUU",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_033_24nt",
+      "length": 24,
+      "sequence": "UAUAUUGUUUUAUACUGCGUCUCU",
+      "structure": "........................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_034_36nt",
+      "length": 36,
+      "sequence": "UUUGACCUCAACGAAUUUAAAAAAUAUUAGUUUACA",
+      "structure": "....................................",
+      "dg": 0,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_035_48nt",
+      "length": 48,
+      "sequence": "CAAAUAGUUGCGUUAAGCUUUGAGUUGUUAUUAUUCAUUCAACAAAAC",
+      "structure": "..((((((.(((....(((...)))))).)))))).............",
+      "dg": -1.1,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_036_72nt",
+      "length": 72,
+      "sequence": "CCAAGUGCUAAUAUAUUUUUAUCUUUCUCGAAGUUUUUUUCCUAUAGAAAUGAAUCAAAACUACUAAAAAUC",
+      "structure": "...(((....((.(((((((((((((...))))..........))))))))).))....)))..........",
+      "dg": -1.59,
+      "elapsed_ms": 5,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_037_100nt",
+      "length": 100,
+      "sequence": "ACAAAUUCCUCUUUUUAAUUGUUACAGGCUAAUGAAUACGAUAUUAUUAGAAUUAUGAAUAUUCAGUUUUUGUAAUAAAUAAAAUCGUAGAUUUACCGAU",
+      "structure": "..(((((.....(((((.((((((((((....((((((..(((..........)))...))))))...)))))))))).))))).....)))))......",
+      "dg": -11.27,
+      "elapsed_ms": 15,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_038_140nt",
+      "length": 140,
+      "sequence": "AUAGUUGAAUAUAACGUAAUAAUUAAUUAUUUUUAACCCUACAAUUAACUUUAGGAUUUUUUUAUAUAAAGUAGUACACUUAAUAGUAUCAUUGCAACAAGGAUUAUAAUAGUCUACUGUUACUAAAGUCUAUUUAAAUA",
+      "structure": "((((((((.(((......))).))))))))......................................((((((...((((..(((((.....(((....((((((...))))))..)))))))))))))))))).....",
+      "dg": -9.35,
+      "elapsed_ms": 29,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_039_190nt",
+      "length": 190,
+      "sequence": "UUAUUAUAUUAUUAACCUGUAGUAACAUUGUAGAUAAUGAUUAAGAUUGAUAAAAAUAAAUCCAUGUUACGAGUAAUCCCAAAGACAUUGGAGAAAAUAACUGUUUUUCGAACAAUUAAUCUAAGUAAACAUGGAAAAAUCAAUAUCGAAACCACUUAGGUCCAAUCCUCAUAAGUCAUUGGAACUGUAA",
+      "structure": "(((((...(((((((.((.((((..(((((....))))))))))).))))))).))))).......((((.(((....((((.(((((((((.....(((.((..((((((...(((..((((........))))..))).....)))))).)).)))..))))))........))).)))).)))))))",
+      "dg": -19.39,
+      "elapsed_ms": 51,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_040_240nt",
+      "length": 240,
+      "sequence": "GUUGACAGUGGCGAGUAUUAAAAAAGACUCUAUUUAAGAAUAAGAGCCUAGUUGUGAUAUGUGCAUAAUAAUUGUUUGUUAAAUCAUAAUUAAUAUUAUUGCCCUAGAUAAAUUUUCUACAUCAAUUAGGAUUAAUUACUUAUAUAAUGGGUACAAACUAAUCAACUUGUAACACUGCAAUAAGUGGAGAUACUUUUGCUAGGACAAGUGAAUUGAAAUUUCUGCUCGUUAUGCUGAUAA",
+      "structure": ".((((((((((((.((((((....((.(((((((....))).)))).)).....)))))).))).))........)))))))....((((((((...((((...((((.......))))...))))....))))))))....(((((((((((.(((.((((..((((((......((((.(((((....)))))))))....))))))..))))...))).))))))))))).......",
+      "dg": -35.9,
+      "elapsed_ms": 103,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_041_12nt",
+      "length": 12,
+      "sequence": "GAGCAUAAAGCG",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_042_18nt",
+      "length": 18,
+      "sequence": "UGGUAUUCCCCAUUCUGC",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_043_24nt",
+      "length": 24,
+      "sequence": "UAGAACGGUUGUUCCGCUCUUGUC",
+      "structure": ".(((.(((.....))).)))....",
+      "dg": -3.75,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_044_36nt",
+      "length": 36,
+      "sequence": "CGGUCUACGGGUAGUAACGCCCAAGGGGGCGUACAC",
+      "structure": "..........((.(((.(((((....))))))))))",
+      "dg": -9.18,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_045_48nt",
+      "length": 48,
+      "sequence": "UUCUCCCGAGCCCCUAGAGUAUGAUCUAGCAGUUCUGUAGCGAGAGGA",
+      "structure": "((((((.((((..(((((......)))))..)))).)....)))))..",
+      "dg": -10.3,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_046_72nt",
+      "length": 72,
+      "sequence": "AGAGGUGCAAUGUGAAAAGUUAUUAGGCUUUUACAGAUCUAGCAAAGCUUUAAUAUCACGUGUCUCCGAGUU",
+      "structure": "...((....((((((((((((.(((((((.....)).)))))...))))))....))))))....)).....",
+      "dg": -10.43,
+      "elapsed_ms": 6,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_047_100nt",
+      "length": 100,
+      "sequence": "AAUCGACAGGGAGCUCGCGAAAGACCCCGGAUGCUAGGUCUGCGGAGUAUGAGCCCGUCGCUCGAAAGUAAGUCGAGGAGACAGACAACGCCCUCCUCCU",
+      "structure": "...((((.(((.((((.((..(((((..(....)..))))).)))))).....)))))))..............((((((...(....)...))))))..",
+      "dg": -22.88,
+      "elapsed_ms": 11,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_048_140nt",
+      "length": 140,
+      "sequence": "UAGACUAUCUCGCCCAAUUUCUCUGUAGCUGUUCGUCAGCGUGUAUCUUACUUCCCAAAGUACUAGCCAUGUUUGUGCGCGCACCCGAUGUGGUUUCUUCAAUACCCGGUCACAUCGGUCCGACUCGGACAGAGGCAUAU",
+      "structure": "...................(((((((..(((...(((.(((((((((((((((....)))))..))........))))))))..(((((((((................)))))))))...))).)))))))))).....",
+      "dg": -26.42,
+      "elapsed_ms": 25,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_049_190nt",
+      "length": 190,
+      "sequence": "CAGCAUAGUAGCAUUCAGGUGUGAUACGCAAACGAAUGGACCCCUCCAUGCGCGAGGCCCGUUCGCCAGUUUCCAAAUAAUGCCCGGGCAAAUCGGGCAAACGACAUUCCAUGAUUCCAUUGAGACAAUUCACAGGAUGAGACAAAGGAAUGGAUUUCUCGAAUCACCCUCUUAUAAUCGCUGCUCCCCG",
+      "structure": "......(((((((((.(((.(((((.((....(((((((...((((.......)))).)))))))...............(((((((.....))))))).....((((((.((..(((..((((....))))..))).....))..)))))).......)).)))))))).....))).)))))).....",
+      "dg": -42.41,
+      "elapsed_ms": 46,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_050_240nt",
+      "length": 240,
+      "sequence": "AGCAUAUUUCCAUUUAAUUGUGACCCGAGAGUGUGACCCAAGUCAAACUGUAGAUGGCCUCACUUUGCUAAGGAAAAGUCUUCGAAUACAACGUUUACUGGAAUCCUGCUUACAGGACGCAUCGUCGCAGUAAAAACAUGGUAGAAUGGCUCAUUGUGGUACUAGUAUACGAAGUCUUUGAUGCCAUAUCAUGUCCUAAAGACAGCUACCACCUGACUGUUUUCCAGAGUUUUUGACUAA",
+      "structure": "..................((((.((.(.(((((.((.(((.((.((((((((((.(((.((.(((....)))))...))).))...))))..)))))))))..)).))))).).)).)))).......(((((((((.(((.(((((((.(((..((((((((..........(((((((..((........))..))))))))).)))))).)))))))))))))..)))))).)))..",
+      "dg": -42.88,
+      "elapsed_ms": 100,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_051_12nt",
+      "length": 12,
+      "sequence": "GGGGAUCCAUCU",
+      "structure": "(((......)))",
+      "dg": -0.4,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_052_18nt",
+      "length": 18,
+      "sequence": "GGGCCAAUGCCUGCCCGG",
+      "structure": "((((........))))..",
+      "dg": -4.5,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_053_24nt",
+      "length": 24,
+      "sequence": "CCCACCGGCCCGCCGCAGAGGCCA",
+      "structure": "......(((((......).)))).",
+      "dg": -4.99,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_054_36nt",
+      "length": 36,
+      "sequence": "CACGUGCCACGAUAGGGUGGCCGCCCCGGGCUGGCA",
+      "structure": "....((((((....((((....))))...).)))))",
+      "dg": -10.32,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_055_48nt",
+      "length": 48,
+      "sequence": "GGUCCCCCGAAGGCGUGACUCUGCCGGCGCUGCCCUUGGUUCCGCAAG",
+      "structure": "((....((((.((((((.((.....))))).))).))))..)).....",
+      "dg": -10.33,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_056_72nt",
+      "length": 72,
+      "sequence": "UGCGUAGACCCGCCGGACUGGCGCCCCGCGAACGGGGCGGGACUGGUCGGAGUCCCCCGCCAGCCCGCGGCU",
+      "structure": ".........((((.((.(((((((((((....))))))((((((......))))))..))))))).))))..",
+      "dg": -34.94,
+      "elapsed_ms": 6,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_057_100nt",
+      "length": 100,
+      "sequence": "GCCCCUUGGCGCGGGGGGCUAGGCCCUCGCACGGCGACGCAGCAGAGGUGCGGCGCCGAGGCGUCGGCCUGGCCCGCCAGGUGCGCGGCACCCGGACCCC",
+      "structure": "(((.....(((((((((((((((((..(((.(((((.((((.......)))).)))))..)))..)))))))))).))...))))))))...........",
+      "dg": -53.39,
+      "elapsed_ms": 13,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_058_140nt",
+      "length": 140,
+      "sequence": "GGAGGCCCGAUGUGCCCUCCCGCUGAGGGUUUAGCGCCGCGACGGCUGCCGAGCUGCCCGAGCCGGCUGCCGCCAACAGGGUUACCAGCGGACCCCGGGGCCCGCUGGGUGGUCGUGCUCCGCGCACAACGCAUGUGGGG",
+      "structure": "((.(((.(...).)))))(((((.....(((..((((.((.(((((((((.(((.((((....(((...((((.....((....)).))))...)))))))..))).)))))))))))...))))..)))....))))).",
+      "dg": -53.69,
+      "elapsed_ms": 36,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_059_190nt",
+      "length": 190,
+      "sequence": "CCGCCAAGGAUGUGACAUGCUGCGAGAUCCCGCGCGCCGGGGCGGCACGGCUUCCCUGUUAUUUAGCGCUGCUGCGCGCCGCCCGCUACCCGGGCCAGGCGUGGGUUCCCUGGAAUUACCCCCCUGGACCUGAACCGCGCGCCGCACAAGGGGUCGGACGCGACGAGGGGAACGCUCCACCGCCCGGCGC",
+      "structure": "..((...((((....((...))....)))).))((((((((.(((...((((((((((((.....((((((((..(.((.((.(((....(((((((((.(.((((...........)))))))))).))))....))).)).)).)....)).))).))))))..)))))).)))...)))))))))))",
+      "dg": -73.39,
+      "elapsed_ms": 56,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_060_240nt",
+      "length": 240,
+      "sequence": "UAUGAGAAGCUCCGCAUGCUUGGGCCGCCCGGCGCCCCAGCGGCGUCGCCACGUAACCGGCGGGUAACUGCCGCAACAGACUGCGCCGGCAGACAGGCGGCCCAGCACGGGCAGUCCGCACCGCGCUUCUGAUCCGUCAGAGCGGGAACUUGCAUCCCGCCCUCCCGCUGUGGCGUUGAACCCCGCCUGCCGGGGGCCACCCAGUGCACUCGCUAGGUAACAGGGGGAUGAGGCGUGCCC",
+      "structure": "........((.(((..((((.((((((((((((((.(..(((((((.(((.(((.....)))))).)).)))))....)...)))))).......))))))))))))))))).........((((((((..((((((((.(((((((....((.....))..))))))).))))).....(((((((((.((((.((.((...)))).)))).)))))....)))))))))))))))...",
+      "dg": -97.78,
+      "elapsed_ms": 94,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_061_12nt",
+      "length": 12,
+      "sequence": "GAUGAUUUUUAA",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_062_18nt",
+      "length": 18,
+      "sequence": "ACACAAAUUAGAAUUUUU",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_063_24nt",
+      "length": 24,
+      "sequence": "GUACGAAUCCUAUAUGUUUGCUCA",
+      "structure": "........................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_064_36nt",
+      "length": 36,
+      "sequence": "ACGCAAACCAAAAUACUAACAAGUAUGAAUUGUCGA",
+      "structure": "..((((......(((((....)))))...))))...",
+      "dg": -1.06,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_065_48nt",
+      "length": 48,
+      "sequence": "AAUAAUAUUCAGUUAAUAGUUUUGGAGGGAUCUGGAUCCUAUAGAAGU",
+      "structure": "...................(((((.((((.......)))).)))))..",
+      "dg": -4.1,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_066_72nt",
+      "length": 72,
+      "sequence": "AUAUAUAAAACAUUUAGCUAUUUUCCAUUUUAAAUUAUUUAGAAAGAUGAAUUUAUCAUCUAUAAUGACUUA",
+      "structure": "............................................((((((.....))))))...........",
+      "dg": -3.5,
+      "elapsed_ms": 8,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_067_100nt",
+      "length": 100,
+      "sequence": "UAUUUCGGUUAUGUUACAUGAAUCGUCGAGUUUUUAUAGAGACGAAUUUAAGUAUACCUAUCUUUUGUUUAUUUUGUCGCAGUAUUUCUAUAAUCUGAAA",
+      "structure": "...((((((((((...)))))....)))))...((((((((((((....(((((.((.........)).)))))..))).....))))))))).......",
+      "dg": -7.95,
+      "elapsed_ms": 18,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_068_140nt",
+      "length": 140,
+      "sequence": "AUAAAAAUUUCUUUUAGCUAGCUAAUCUGCUUAAACUAUAAGAAAACAUAAUAGAAAAUAAGAAUAGAAUAUCAUCGAUAUAAUUUCGACCUAUCUAAUAAUAACAUUUAUCUUCAAUGCUUUAAUACUGGAUCAAAUUU",
+      "structure": ".......((((((.(((..(((......)))....))).))))))...................((((......((((.......))))....))))...........................................",
+      "dg": -7.9,
+      "elapsed_ms": 29,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_069_190nt",
+      "length": 190,
+      "sequence": "UUCAGUAUUAUUUAUUUACAAUUUAUACGUAUAAUAAAACAGGUGUAAGUAGACAGUAUCGAAAGAAGAAUUAAUUGUAUGCAUAUUCAAAUUCUUAUAAUGACCAUAUUAAUUAACCAUAUAAAUCCUGUUAUACAUUAUUCUUACUUCCAAGCAAGAUACUUAUCUAAAAUUGCUUUACUUAAUAAUU",
+      "structure": ".((.(((((.((((((((((.......................)))))))))).))))).))(((((((((....((((((((.............................................)).))))))..)))))).)))..(((((((((....)))).....)))))............",
+      "dg": -15.33,
+      "elapsed_ms": 63,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_070_240nt",
+      "length": 240,
+      "sequence": "AAUUAGUAAAACAUUUGAUUUAGAUUACUGAUUACUGUAUGCCCAAACAACUAUUAAGGACAUGCAAAUGAUUAGUUUUUAUAAUUAACGAUGUACUUGCUUAAGCAGAUACAUGCGACUGAAAUUUCAUGGCCUAGGUUAUAAUAAUAAUUGUCUGUUCGAUAUAGCUACUAUGAAGCUGUAGAAAAUCAUACUCCAAUUAUUUUACAAUCAUUCGACCUGAUAUGUGACAAAUGAACC",
+      "structure": "..............((((((((((..((((((((.((((((((..((......))..)).))))))..)))))))).)))).))))))(((((((.((((....)))).))))).)).........(((((...((((((..(((((((((((...((..(((((((((.......))))))).....))..))..))))))))........))).))))))...)))))..........",
+      "dg": -33.36,
+      "elapsed_ms": 100,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_071_12nt",
+      "length": 12,
+      "sequence": "CUCCGCAGGGUC",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_072_18nt",
+      "length": 18,
+      "sequence": "ACAUCCGAAUAAGGUGGA",
+      "structure": "...((((.......))))",
+      "dg": -0.2,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_073_24nt",
+      "length": 24,
+      "sequence": "GCUGUCGGGUCGCCCUAGAUAACA",
+      "structure": "..(((((((...)))..))))...",
+      "dg": -2.65,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_074_36nt",
+      "length": 36,
+      "sequence": "UAUAGUACAUGGAGGAUACCUGGAAGUCUAAACUAG",
+      "structure": "..(((.((....(((...)))....)))))......",
+      "dg": -1.93,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_075_48nt",
+      "length": 48,
+      "sequence": "AUGUUGAUUUCGACCGAUCGUGCAUCUUGGACAGAUAUGGCAGUUUAA",
+      "structure": "(((((((((......))))).)))).......................",
+      "dg": -2.29,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_076_72nt",
+      "length": 72,
+      "sequence": "GUGUCGCCUAAGCGAGGUCACCCACAUCUAGAGACACGUAGUACUCAACUAGUGUAGCGGACGGAUGUGGCU",
+      "structure": "(((((((....))))...)))((((((((...(((((.((((.....))))))))..)....))))))))..",
+      "dg": -16.97,
+      "elapsed_ms": 7,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_077_100nt",
+      "length": 100,
+      "sequence": "CGGGAUGUCCAAGGAGACCCCCCCCCGCAAGGAACGUUCGUGGGGAGCAUUAGGCACAUGUGACUAACUCCCAAGUCGUCGCUGGGUCCGCGUAUCCUCG",
+      "structure": "(((((((.(....(.(((((..((((((((......)).))))))..............(((((..(((....))).))))).))))))..)))))).))",
+      "dg": -23.06,
+      "elapsed_ms": 12,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_078_140nt",
+      "length": 140,
+      "sequence": "CCGAGAGUUGGUAACUUAGGUUUCGUUUGUUCCCCCCUGUGUUUCACUAAACUUUGCUUGGACCUCCAGACAUAGUCUCGUGCCACUCAUAGUUUUCAAUUAGCGAGUAGAAUAGUCAGUGACGGCUCUAGCCUGGUCAU",
+      "structure": "((((((((((...(((....(((((((.(((.....(((((...(((...(((.((.((((....)))).)).)))...))).....))))).....))).)))))).)....)))......)))))))....)))....",
+      "dg": -21.98,
+      "elapsed_ms": 31,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_079_190nt",
+      "length": 190,
+      "sequence": "GUACACCCUACAUUUCGUCGGCAGAGAGUGAUCCUUAUUAAUCGGAUAAGCAUCGGCUAUUGCUAUGUAGCGAUGAGAGUUUAGACAGUGAGAACUCUUUCUAUCCGACCUAUCUUAAGUGGAGCAAUCUCUAAGUCAGUAGUUUAGACGAAUUAACACGAGAUGAAAACUGUACACGAUGUAACAGCUC",
+      "structure": "(((((.....((((((((.((((((((.((.(((...(((((((((((..(((((.((((......)))))))))(((((((.........)))))))...)))))))......))))..))).)).)))))..)))..((((((....))))))..)))))))).....)))))...............",
+      "dg": -36.44,
+      "elapsed_ms": 57,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_080_240nt",
+      "length": 240,
+      "sequence": "UUAAGUGCGGACGUUUUGGGUGCGGGCUUCCAGUGAGGCAGGUACCAUAGCGACCUGCCGGCCCAGUGUGACUGGAGCGAAAUUUAUUAGUGUGUCCAUUCUCAUGAUUGACAUAUCCUAUUUUCCCUCACUAUUCUGUGCUUAAGGGAACUAUAGUUGAGUAACGAUGAGUUCGAGAAUCGGAGCUUCCGUUUCGAGAGGACAAAAUCGGUUGCGCGGUGCAAAUAAAUGAGGUUUAUC",
+      "structure": "......((((.((((...(((((..(((((....)))))..)))))..)))).)).))..((((.(((((((((.......((((.......(((((..((((..(((.((....(((.((((((.((((....((..(((((((...........)))))))..))))))...)))))).)))...)).)))..)))))))))))))))))))))))).))..................",
+      "dg": -54.7,
+      "elapsed_ms": 106,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_081_12nt",
+      "length": 12,
+      "sequence": "CGGCGGUGGACC",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_082_18nt",
+      "length": 18,
+      "sequence": "CGGGAUGGGGACAAAUGG",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_083_24nt",
+      "length": 24,
+      "sequence": "CGGCGCGGGGCGCACCGCUGCCCA",
+      "structure": ".(((((((......)))).)))..",
+      "dg": -9.89,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_084_36nt",
+      "length": 36,
+      "sequence": "CCCUGGGCGAUCCGAGGCCGCUGGGUGGCGCGCGGC",
+      "structure": "...........(((.((((((...))))).).))).",
+      "dg": -9.89,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_085_48nt",
+      "length": 48,
+      "sequence": "CGAGUGCCGAGCGGGGACCCUAUCUCCCGGGCGGCGCCGCCCGUACUG",
+      "structure": "((.((((((..(((((........)))))..)))))))).........",
+      "dg": -20.54,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_086_72nt",
+      "length": 72,
+      "sequence": "GACGUAGGUACACGCGGCUGUUCGGGAUACGGGCAGGACUCCGCGGGCCUGCCGGGCCCGGCCUCGUUUCCA",
+      "structure": "......((...(((.(((....((((.....((((((.(((...)))))))))...))))))).)))..)).",
+      "dg": -27.08,
+      "elapsed_ms": 7,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_087_100nt",
+      "length": 100,
+      "sequence": "AGGCUUCGCGGCCUGCUCAGAGUUCGGCCGCGCUUCCGCGCUCGGCCUGCGAAAGGAUGGGCGCAAGUUCUCGGACCGUGUUGGGCCCGGACCAGGCGCG",
+      "structure": "......((((.((((......((((((((((((.((((((((((.(((.....))).)))))))........)))..))))..)).))))))))))))))",
+      "dg": -38.77,
+      "elapsed_ms": 15,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_088_140nt",
+      "length": 140,
+      "sequence": "GGCGCGAACCCGCGCACGUCGCCGCUACCCGUCGUGCCCGUGCCUAACAGGCCACCGGCCCAGCCCGGCGACCCUGGACGGGCACAGGAUAGGGUCGGUGCAUACUGCCCGUAAGCAGGCUGCCGGCCGCGCAGUCCUCU",
+      "structure": ".(((((...(((.(((....(((((((((((((((((((((.((.....((.(.((((......)))).).))..))))))))))..))).))))(((.(((...))))))..))).))))))))).)))))........",
+      "dg": -55.58,
+      "elapsed_ms": 26,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_089_190nt",
+      "length": 190,
+      "sequence": "CGCUAGUGCGCCCACUAGCCGGGCUCCGCCCACCGGAGGAAGCGCCGCGGGGGUCGGCUACCGGUACGACGAGUGGAACUAGCCCCCGGACGUCGGACUGGGCCGCCGGGCUCGGGUACCCCGCCCGUUGGGCCAUCCCGCCUUAGCCCGGGCUAUGGCGCCCCCACGCACCUAGGGCGGCUCCCCGGCA",
+      "structure": "...(((((....)))))((((((..((((((.....(((..(((....((((((((((..(((((.(((((..(((.........)))..))))).)))))))))(((((((((((......((((...))))...))))....)))))))........)))))).))).))).))))))...)))))).",
+      "dg": -83.71,
+      "elapsed_ms": 60,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_090_240nt",
+      "length": 240,
+      "sequence": "GGGUGCAUGCCUCGAGGGCCUGGACCCCUGGUCCCCUGGCCCAGACGCGUCGUUCCCCGGCCACCCCUUCCAAGCAAGGUGCACUCGGGCCUGUUCUGGGACCUGCUCCGCCGCGCCCGGGCCGGGAGGGGGCGAGGCCGACGCUGCGGGGGGUCCGGCUGGACCCUACCGGGCGCUCCCCCUGGGUCUGGCCGGGCACCCGAACAGGCGCGUGAGAUGCUGGCCGGGGCCCGUAGCGUU",
+      "structure": "((((....))))...(((((.(((((...)))))...))))).(((((..((..(((((((((..((((......)))).((((((((((((((((.(((...(((((.((((.(((((((..(((((..(((...)))..((((.((((((((((....))))))).))))))))))))))))))).)))).)))))))))))))))).).)))).))))))))))))..))..)))))",
+      "dg": -125.74,
+      "elapsed_ms": 107,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_091_12nt",
+      "length": 12,
+      "sequence": "AAAAUUUGAGAU",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_092_18nt",
+      "length": 18,
+      "sequence": "AUAUUAUUAAUCUAUAUU",
+      "structure": "..................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_093_24nt",
+      "length": 24,
+      "sequence": "UUCACUUAAUCUGAGCCUUUUAGA",
+      "structure": ".........((((((...))))))",
+      "dg": -1.1,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_094_36nt",
+      "length": 36,
+      "sequence": "UCGUUGUAGUAGAAUAAAUAUGGAUGAUUCUAAAAC",
+      "structure": ".....((..((((((...........))))))..))",
+      "dg": -0.43,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_095_48nt",
+      "length": 48,
+      "sequence": "UUCUUAAUUAUGUAACGAUUAACUAAAGUUAACGGAUAAAUUUACUGU",
+      "structure": "...............((.(((((....)))))))..............",
+      "dg": -0.49,
+      "elapsed_ms": 3,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_096_72nt",
+      "length": 72,
+      "sequence": "ACAUUUGUCGCUACAUAUAUUAAUUUCAAGUAUGAAAAAUAAUGCUCAUAUAGUUGCACGCAUCAAAUAUGU",
+      "structure": ".....(((.((((.((.(((((.(((((....)))))..)))))...)).)))).)))..............",
+      "dg": -4.6,
+      "elapsed_ms": 6,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_097_100nt",
+      "length": 100,
+      "sequence": "AUAUUGAGAAUUCAUUAUUGUUCCUUCAAAGAAGAAUAAAUGAUUCGUGAGUCACAUAAAAUAAGACUGAUUAUUUACUGCAAGAAUGCCUACUAAGGAA",
+      "structure": "....................((((((..........(((((((((....((((..((...))..)))))))))))))..(((....))).....))))))",
+      "dg": -6.45,
+      "elapsed_ms": 14,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_098_140nt",
+      "length": 140,
+      "sequence": "CAGUAUAUUGAUAUCUACAUAGGAAAUUAAUAAUUAUAAGGAGUGAUGAAUAACAAGAUCUACAAAAAACGCUAAUGAUGUCAGUAUUUAGUUGUUAUAAGAUAUGAAUAUUACUUGAACCACCCAUGGUAACGUACUCG",
+      "structure": ".....(((((((.(((.....))).)))))))........((((((((.....((..((((......((((((((..((....))..)))).))))...)))).))..))))))))..((((....))))..........",
+      "dg": -8.39,
+      "elapsed_ms": 32,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_099_190nt",
+      "length": 190,
+      "sequence": "ACUAUCUUAUGAUAAAGCUCAAGGAUUAUAACCUGCUUAUAAAAUGAUAUAGAUAUUAUGAUUACAAAAAAGCAUAUAUUAUAACCAAAUAAAAGUGAGAAAUAGAAAAAUUUAUACCUCAUAAUUUCUCUGGCAUGGAUAUAUAGAUAAAACUUAUGUUUAGUAACUGUUGACGAUAACUAUUCCAGAA",
+      "structure": "......((((((((..(((...(((((((((.(((.((((...))))..)))...)))))))).).....)))...))))))))..........(((((..(((((....)))))..)))))......(((((.((((.(((...((((..(((.......)))...))))....))).)))).))))).",
+      "dg": -19.01,
+      "elapsed_ms": 62,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_100_240nt",
+      "length": 240,
+      "sequence": "CUUUCGGUCCAACUUUUUCAAAAUAGUCAAAAUCAUCUAUGAUCAUUAACCUCAUGUAUGAUUAAUUUAUGUCUAAAAUAAUUUAUCAAAGUAACAUUUGCACAAUCCUUAUAUAAUAGCUAAAUUUUAAUCUAUAUUAAAUCCUUUAAUUUAACACAAUCAAAUAAAUUCCGUUUAUUUUAUUUUUAUAUAAAAUUUACUUAAUUAAAUAUUAAAGUGAUAAUCUAAAAAAAAAAAUCG",
+      "structure": "..............................((((((.(((((.........))))).))))))......((((...((((.((((...((((((.((((..........(((((((....................((((((......))))))...(((.((((((((...)))))))).))).)))))))))))))))))...)))))))).....))))..................",
+      "dg": -9.12,
+      "elapsed_ms": 95,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_101_12nt",
+      "length": 12,
+      "sequence": "UGCGGAGCUGUC",
+      "structure": "............",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_102_18nt",
+      "length": 18,
+      "sequence": "UUCAGUGCGGGAUACCCC",
+      "structure": "........(((...))).",
+      "dg": -1.2,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_103_24nt",
+      "length": 24,
+      "sequence": "CGCUAAUAACAUAGGGGGUUUAAA",
+      "structure": "........................",
+      "dg": 0,
+      "elapsed_ms": 0,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_104_36nt",
+      "length": 36,
+      "sequence": "CCCCGUGGCGAGAAUAUAAUAAUGGUCUCCGCUCGG",
+      "structure": "..(((.(((((((.(((....))).))).)))))))",
+      "dg": -8.53,
+      "elapsed_ms": 1,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_105_48nt",
+      "length": 48,
+      "sequence": "GUAAAGUGAGAGGCCGGUCCUGUUAGUCUCUACUUUUUAAAGACCAGU",
+      "structure": "..(((((.((((((...........)))))))))))............",
+      "dg": -7.12,
+      "elapsed_ms": 2,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_106_72nt",
+      "length": 72,
+      "sequence": "GGCUCACAGCAGACAUAUCGUGCUGGAACACUCAAAACAGUUAUAGGUCGACUCGCUGGUCCUGUAAGGCUG",
+      "structure": "...((.(((((((....)).)))))))..........(((((((((((((......))).))))))..))))",
+      "dg": -13.52,
+      "elapsed_ms": 6,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_107_100nt",
+      "length": 100,
+      "sequence": "GGAUGCGAAUGGCGUUUGAGGCGUGGAUCCCCCAGGCAUGAAGAUCGACCUGCCCGAAUCACCGUUGAGAAAUUUUUUACUCAACUUCGAGCAUGUGUCC",
+      "structure": "(((((((...(((((((...((.(((.....))).))....))).)).))(((.((((.....((((((.((....)).)))))))))).))))))))))",
+      "dg": -20.31,
+      "elapsed_ms": 12,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_108_140nt",
+      "length": 140,
+      "sequence": "AGCCACACUUAACUCGCUGUCUGGCUCUUAUCUGGUGCUAGUGCUCGCGAUCAGAGGCAAGCGACGAAUAGAGCGUGUAUUAACGCACCAGGCACAGGCGAGCGAUAUACCUGCUCGGCACAGUGUCUGCAGGAAGUACG",
+      "structure": ".............((((((((((((......(((((((((((((.(((........................))).))))))..))))))))).))))).)))))....(((((..((((...)))).))))).......",
+      "dg": -41.17,
+      "elapsed_ms": 26,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_109_190nt",
+      "length": 190,
+      "sequence": "GUGAUGGCGACAAUUCAUUACCAGCGGCAUAUAUUAAUGACACACAUACGGAUAACAAGGUGAUUCACAUCCUCAAGCUCACAUACAGAUUAUAUCCCGCUAGAGUAGUUGUAGACUCGCUGUCUGGCAAAACGGUAGCCCACAUAUCAGCUACCAACGUAAGACGCUAUCCUCCUUGGGCUACAACAGC",
+      "structure": "(((((((.......))))))).(((((.(((((...(((.....(....((((......(((...)))))))....)....)))......))))).)))))...((.(((((((.(((((.((((.((.....((((((..........))))))...)).))))))..........)))))))))).))",
+      "dg": -32.77,
+      "elapsed_ms": 44,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    },
+    {
+      "id": "synthetic_110_240nt",
+      "length": 240,
+      "sequence": "GUGGCUCAAGCUCCGACCGGUAUUAGAAAGUUCUAAUUCUCUUAAGAUCUCCAGCCUGGAACCGUAUGCAUCCGAUACAGACUGAGAACAGCCUGACGGAGUUACACUAGGGCAUAGACAGGAUAGCUAACAGCUUAACGUCCCCGAGCCAUCAUGGUUGGUAAUACGCCGUAUACCACUGCCUCUAGUUGGCUCAUUGGCCUUGUCACGCAACGCUGCGAGCAUAGUCAUCCCACAAAG",
+      "structure": "((((....(((((((.(.(((((((((....))))))..........((((.((.(((....((........))...))).))))))...))).).)))))))......(((....(((.(...((((...))))...)))))))((((((....((((((((.(((...))))))))..)))......))))))..((((..(((..((((....)))).)))..))))..))))....",
+      "dg": -50.25,
+      "elapsed_ms": 88,
+      "status": "NEXUS_RESTRICTED_MODEL"
+    }
+  ]
+}

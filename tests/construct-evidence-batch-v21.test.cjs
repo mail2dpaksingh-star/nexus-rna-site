@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),E=require('../tools/construct-studio/evidence-core.js');let count=0;const t=(name,fn)=>{fn();count++;console.log('PASS',name)};
+let d=E.registerConstruct(E.create(),{key:'A-V01',name:'A',sequence:'AUGUGA'}).data;
+d=E.registerSample(d,{sampleId:'S01',constructKey:'A-V01',cellModel:'A549',biologicalReplicate:'B01',experimentId:'E01',batchId:'LNP-01',condition:'dose',timeHours:12}).data;
+d=E.registerSample(d,{sampleId:'S02',constructKey:'A-V01',cellModel:'A549',biologicalReplicate:'B02',experimentId:'E01',batchId:'LNP-02',condition:'dose',timeHours:12}).data;
+const fields=['sampleId','assay','analyte','value','unit','runId','technicalReplicate','source','normalization','flags'];const rows=[{sampleId:'S01',assay:'protein_expression',analyte:'Ag',value:1,unit:'RFU',runId:'RUN01',technicalReplicate:'W01',source:'reader.csv',normalization:'Raw',flags:''},{sampleId:'S02',assay:'protein_expression',analyte:'Ag',value:2,unit:'RFU',runId:'RUN01',technicalReplicate:'W01',source:'reader.csv',normalization:'Raw',flags:''}];
+t('parse quoted CSV with commas',()=>{const r=E.parseCsv(E.csv([{...rows[0],source:'Lab export, run 1'}],fields));assert.equal(r[0].source,'Lab export, run 1')});
+t('import two rows with exact sample references',()=>{d=E.importCsv(d,E.csv(rows,fields)).data;assert.equal(d.measurements.length,2)});
+t('different batches remain separated',()=>{const groups=E.summaries(d);assert.equal(groups.length,2);assert.deepEqual(groups.map(x=>x.batchId),['LNP-01','LNP-02'])});
+t('CSV import atomic on row error',()=>{const before=d.measurements.length;assert.throws(()=>E.importCsv(d,E.csv([{...rows[0],runId:'NEW-RUN'},{...rows[1],sampleId:'WRONG'}],fields)),/CSV row 3/);assert.equal(d.measurements.length,before)});
+t('reject CSV duplicate header',()=>assert.throws(()=>E.parseCsv('sampleId,sampleId\na,b'),/Duplicate/));
+t('reject DBTL version identity conflict',()=>assert.throws(()=>E.importDbtl(d,{schema:'nexus-dbtl-v1',constructs:[{key:'A-V01',name:'X',sequence:'UUUUUU'}]}),/conflicts/));
+console.log('BATCH TESTS PASSED',count);

@@ -1,0 +1,23 @@
+{
+  "release": "NEXUS ThermoFold v1.8.19 Turner2004 benchmark gate",
+  "date_utc": "2026-10-22T21:49:36.609215+00:00",
+  "release_status": "PARTIAL_COMPLETION_UNVERIFIED_SOURCE_BLOCKS_EXTERNAL_COMPARISON",
+  "original_NNDB_2004_numeric_library_complete": false,
+  "vienna_turner2004_formatted_parameter_file_downloaded": false,
+  "published_specialized_tables_loaded_and_verified": false,
+  "nexus_internal_predictions": 125,
+  "challenge_sequences": 125,
+  "external_rnafold_predictions": 0,
+  "rnastructure_predictions": 0,
+  "experimental_CT_comparisons": 0,
+  "existing_node_suite_tests_passed": 84,
+  "new_benchmark_guard_tests_passed": 5,
+  "cases_sha256": "7f78b61c66e234d2dc721f971d23bd4cf227b43acee28d884431dd89fabf10ef",
+  "nexus_engine_version": "0.9.0",
+  "original_download_URL": "https://rna.urmc.rochester.edu/NNDB/turner_2004.zip",
+  "original_download_result": "HTTP 404 observed via web retrieval",
+  "vienna_distribution_url": "https://github.com/ViennaRNA/ViennaRNA/blob/master/misc/rna_turner2004.par",
+  "vienna_source_download_result": "Network unavailable in execution environment",
+  "required_next_gate": "Obtain authentic Turner files and running RNAfold; execute controlled external reference runner with matching 37C/-d2/explicit parameter-file; verify and compare",
+  "no_fabricated_results": true
+}

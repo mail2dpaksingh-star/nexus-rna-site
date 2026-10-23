@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-10-22T21:45:38.515707+00:00",
+  "source_research": "University of Rochester NNDB Turner 2004 and official ViennaRNA parameter distribution",
+  "nndb_download_page": "https://rna.urmc.rochester.edu/NNDB/download.html",
+  "nndb_archive_url": "https://rna.urmc.rochester.edu/NNDB/turner_2004.zip",
+  "nndb_archive_observation": "HTTP 404 on 2026-10-22; original archive NOT acquired or hashed",
+  "official_vienna_parameter_url": "https://github.com/ViennaRNA/ViennaRNA/blob/master/misc/rna_turner2004.par",
+  "official_parameter_file_acquired": false,
+  "official_parameter_file_sha256": null,
+  "turner_2004_numerical_library_verified": false,
+  "verified_specialized_tables_loaded": false,
+  "RNAfold_executable_detected": false,
+  "RNAstructure_Fold_detected": false,
+  "challenge_count": 125,
+  "challenge_sha256": "7f78b61c66e234d2dc721f971d23bd4cf227b43acee28d884431dd89fabf10ef",
+  "nexus_baseline_completed": true,
+  "reference_runs_completed": 0,
+  "scientific_benchmark_status": "BLOCKED_MISSING_AUTHENTIC_SOURCE_AND_EXECUTABLE",
+  "note": "No source content or reference output was invented; use controlled runner after acquiring official published parameter file and separately installed RNAfold."
+}

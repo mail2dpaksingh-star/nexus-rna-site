@@ -26,6 +26,7 @@ for(const card of document.querySelectorAll('#tool-grid .tool-card')){
  ['Scientific services and pricing','RNA development consulting and proposed software plans','services.html','Services','quote pricing consulting contact'],
  ['Sign in / Register','Email-link sign-in for NEXUS research users','account/sign-in.html','Account','login free signup registration'],
  ['My Research Workspace','Private cloud-project interface after account setup','account/workspace.html','Account','cloud save projects dashboard'],
+ ['DNA ↔ RNA ↔ Protein Converter','One canonical sequence transcription and reverse-translation tool','tools/seqfold/convert.html','Research tool','dna to rna rna to dna rna to protein protein to dna'],
  ['RNA → Protein & AlphaFold DB','Translate RNA coding sequences and review known protein structures','tools/construct-studio/rna-protein.html','Research tool','alphafold structure translation pdb protein'],
  ['Advanced RNA Design Pro','Full construct architect, promoter engineering, capping and UTR design','tools/construct-studio/pro.html','Research tool','promoter polyA Kozak codon capping circular RNA'],
  ['Circular RNA Platform','Coding circular RNA architecture and junction review','tools/construct-studio/circular.html','Research tool','circRNA'],
