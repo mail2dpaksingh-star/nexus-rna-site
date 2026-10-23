@@ -1,0 +1,32 @@
+NEXUS ThermoFold -- Genuine RNAfold benchmark on Windows
+==========================================================
+
+1. Download the NEXUS_Turner2004_125case_Validation_Toolkit.zip archive.
+2. Right click > Extract All into a folder, e.g. C:\NEXUS-ThermoFold-Validation.
+3. Place NEXUS_Run_125_Benchmark_Windows.bat inside that SAME extracted folder,
+   alongside benchmark_tools, validation_results, and tools.
+4. Install an official ViennaRNA Windows build from:
+   https://viennarna.readthedocs.io/en/latest/install.html
+   Ensure RNAfold.exe is on the PATH. Open a new PowerShell window and verify:
+      RNAfold --version
+   Python must also be on the PATH:
+      python --version
+5. Double-click NEXUS_Run_125_Benchmark_Windows.bat or run it from PowerShell.
+   It downloads the official version-pinned ViennaRNA Turner 2004 parameter file,
+   checks its format and SHA-256, invokes actual RNAfold on 125 cases,
+   verifies references and computes NEXUS-vs-RNAfold agreement.
+6. After SUCCESS, upload these outputs here for scientific interpretation:
+     validation_results\controlled_125_comparison.json
+     validation_results\rnafold_turner2004_125.manifest.json
+     validation_results\verified_reference.json
+   If the run fails, send the exact terminal error message or screenshot.
+
+SCIENTIFIC SCOPE:
+This is a computational reference comparison, NOT evidence that NEXUS matches
+experimental RNA structures. The downloaded ViennaRNA-format parameter file
+is not an independent verification of every value against the original NNDB
+Turner 2004 tables, and must not be redistributed in a paid product without
+appropriate licensing review.
+
+No client or confidential research sequences should be used in this public
+125-sequence demonstration set.
