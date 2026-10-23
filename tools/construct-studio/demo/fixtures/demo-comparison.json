@@ -1,0 +1,734 @@
+{
+  "source": "SYNTHETIC DEMONSTRATION",
+  "comparison": [
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 147,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 137,
+        "BIO-02": 148,
+        "BIO-03": 156
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 110,
+      "delta": 37,
+      "ratio": 1.3363636363636364,
+      "nBaseline": 3,
+      "warnings": []
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 0,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 105,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 105
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 100,
+      "delta": 5,
+      "ratio": 1.05,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 6,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 66.14585,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 66.14585
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 50,
+      "delta": 16.145849999999996,
+      "ratio": 1.322917,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 12,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 41.66925,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 41.66925
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 25,
+      "delta": 16.669249999999998,
+      "ratio": 1.6667699999999999,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "HEK293",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 166,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 156,
+        "BIO-02": 167,
+        "BIO-03": 175
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 145,
+      "delta": 21,
+      "ratio": 1.1448275862068966,
+      "nBaseline": 3,
+      "warnings": []
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 128,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 118,
+        "BIO-02": 129,
+        "BIO-03": 137
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 110,
+      "delta": 18,
+      "ratio": 1.1636363636363636,
+      "nBaseline": 3,
+      "warnings": []
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 0,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 99,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 99
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 100,
+      "delta": -1,
+      "ratio": 0.99,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 6,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 55.56185,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 55.56185
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 50,
+      "delta": 5.56185,
+      "ratio": 1.111237,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 12,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 31.183,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 31.183
+      },
+      "note": "One biological replicate: descriptive only.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 25,
+      "delta": 6.183,
+      "ratio": 1.24732,
+      "nBaseline": 1,
+      "warnings": [
+        "Insufficient biological replication for precision"
+      ]
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "HEK293",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 153,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 143,
+        "BIO-02": 154,
+        "BIO-03": 162
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference.",
+      "baseline": "DEMO-RNA-A-V01",
+      "status": "Matched experimental strata",
+      "baselineMean": 145,
+      "delta": 8,
+      "ratio": 1.0551724137931036,
+      "nBaseline": 3,
+      "warnings": []
+    }
+  ],
+  "summaries": [
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 110,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 100,
+        "BIO-02": 111,
+        "BIO-03": 119
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 147,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 137,
+        "BIO-02": 148,
+        "BIO-03": 156
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 128,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 118,
+        "BIO-02": 129,
+        "BIO-03": 137
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    },
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 0,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 100,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 100
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 6,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 50,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 50
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 12,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 25,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 25
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 0,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 105,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 105
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 6,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 66.14585,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 66.14585
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 12,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 41.66925,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 41.66925
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 0,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 99,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 99
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 6,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 55.56185,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 55.56185
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 12,
+      "assay": "rna_abundance",
+      "analyte": "Synthetic reporter RNA",
+      "unit": "relative RNA units",
+      "normalization": "Illustrative normalized signal",
+      "nBiological": 1,
+      "nTechnical": 2,
+      "mean": 31.183,
+      "sd": null,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 31.183
+      },
+      "note": "One biological replicate: descriptive only."
+    },
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "HEK293",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 145,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 135,
+        "BIO-02": 146,
+        "BIO-03": 154
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "HEK293",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 166,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 156,
+        "BIO-02": 167,
+        "BIO-03": 175
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "HEK293",
+      "condition": "Synthetic transfection",
+      "experimentId": "DEMO-EXP-01",
+      "batchId": "DEMO-BATCH-01",
+      "timeHours": 24,
+      "assay": "protein_expression",
+      "analyte": "Synthetic reporter signal",
+      "unit": "RFU / 10000 cells",
+      "normalization": "Illustrative cell-count normalization",
+      "nBiological": 3,
+      "nTechnical": 6,
+      "mean": 153,
+      "sd": 9.539392014169456,
+      "flags": [
+        "SYNTHETIC TRAINING DATA"
+      ],
+      "replicateMeans": {
+        "BIO-01": 143,
+        "BIO-02": 154,
+        "BIO-03": 162
+      },
+      "note": "Technical repeats averaged within each biological replicate; SD across biological means. No statistical inference."
+    }
+  ],
+  "halfLives": [
+    {
+      "constructKey": "DEMO-RNA-A-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "biologicalReplicate": "BIO-01",
+      "unit": "relative RNA units",
+      "analyte": "Synthetic reporter RNA",
+      "normalization": "Illustrative normalized signal",
+      "nTimePoints": 3,
+      "slopePerHour": -0.11552453009332428,
+      "apparentHalfLifeHours": 5.9999999999999964,
+      "r2": 1,
+      "note": "Descriptive log-linear apparent signal half-life only. Not RNA degradation kinetics without documented chase/pulse protocol, normalization, and fit diagnostics."
+    },
+    {
+      "constructKey": "DEMO-RNA-B-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "biologicalReplicate": "BIO-01",
+      "unit": "relative RNA units",
+      "analyte": "Synthetic reporter RNA",
+      "normalization": "Illustrative normalized signal",
+      "nTimePoints": 3,
+      "slopePerHour": -0.07701640862043768,
+      "apparentHalfLifeHours": 8.999993546518168,
+      "r2": 0.9999999999998993,
+      "note": "Descriptive log-linear apparent signal half-life only. Not RNA degradation kinetics without documented chase/pulse protocol, normalization, and fit diagnostics."
+    },
+    {
+      "constructKey": "DEMO-RNA-C-V01",
+      "cellModel": "A549",
+      "condition": "Synthetic abundance decay",
+      "experimentId": "DEMO-DECAY-01",
+      "batchId": "DEMO-BATCH-01",
+      "biologicalReplicate": "BIO-01",
+      "unit": "relative RNA units",
+      "analyte": "Synthetic reporter RNA",
+      "normalization": "Illustrative normalized signal",
+      "nTimePoints": 3,
+      "slopePerHour": -0.09627056463421708,
+      "apparentHalfLifeHours": 7.199990809169749,
+      "r2": 0.999999999999876,
+      "note": "Descriptive log-linear apparent signal half-life only. Not RNA degradation kinetics without documented chase/pulse protocol, normalization, and fit diagnostics."
+    }
+  ]
+}

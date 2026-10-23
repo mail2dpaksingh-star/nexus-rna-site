@@ -1,0 +1,41 @@
+{
+  "dataset": "NEXUS_DEMO_1823",
+  "type": "synthetic_training_data",
+  "authentic_vendor_export": false,
+  "release": "v1.8.23",
+  "generatedBy": "tools/construct-studio/demo/generate-demo.js",
+  "createdOn": "2026-10-22",
+  "constructs": 3,
+  "samples": 27,
+  "measurements": 54,
+  "biologicalReplicates": 3,
+  "technicalRepeatsPerObservation": 2,
+  "generatedFiles": [
+    {
+      "name": "Gen5_style_SYNTHETIC.csv",
+      "sha256": "73e29daa28e4de6287d9ee6867a409c8973a3c36de4e7d3f467531a84d32e282",
+      "rows": 36
+    },
+    {
+      "name": "QuantStudio_style_SYNTHETIC.csv",
+      "sha256": "7b2bd256021cbbc86491fd1b912685532f875e6a6f0826e184ed85e3bf0cc747",
+      "rows": 36
+    },
+    {
+      "name": "BioRad_ddPCR_style_SYNTHETIC.csv",
+      "sha256": "3aacd51394140ef3bfe89c63f60e245b67e2b7dc6010d46be394a8a88250c66e",
+      "rows": 18
+    },
+    {
+      "name": "FlowJo_style_SYNTHETIC.csv",
+      "sha256": "df69aefec51d1141bdc10836920d9b004721d1224ceb3c1676b217aa881c660b",
+      "rows": 18
+    },
+    {
+      "name": "Bioanalyzer_style_SYNTHETIC.csv",
+      "sha256": "50f99f8d15ece70a61874a0ffd734dc363473cd3b88fa1039c05cea3cd642b74",
+      "rows": 18
+    }
+  ],
+  "notes": "Hashes verify file integrity after distribution only; do not establish authenticity or vendor qualification."
+}

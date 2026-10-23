@@ -1,0 +1,715 @@
+{
+  "release": "NEXUS v1.8.23R Recovery",
+  "files": [
+    {
+      "path": "DOE_OPEN_SOURCE_GUIDE_v1.2.md",
+      "size": 6751,
+      "sha256": "3ad637336e98ebf922fa4e9ade264c84743f92abdcbe67777cb9119bb3d0fe33"
+    },
+    {
+      "path": "INSTRUMENT_IMPORT_VALIDATION_PLAN_v1.4.md",
+      "size": 6853,
+      "sha256": "eae0bc8bfc53d370dd96e38363200a7a63b8732ab972cf7e58fa986f4f321a43"
+    },
+    {
+      "path": "QC_ANALYTICAL_PROTOCOLS_v1.1.md",
+      "size": 8703,
+      "sha256": "243d76e7fde8ddabd2dc2ec96fe739fd3e94068090e48ba86830d6f89a822e73"
+    },
+    {
+      "path": "SETUP_ACCOUNTS_v1.8.5.md",
+      "size": 6123,
+      "sha256": "ba9bcdb047152ff3c9914566ebbcc93e23ad058dac766516cd82f4ad98c2d44a"
+    },
+    {
+      "path": "THERMOFOLD_BENCHMARK_PROTOCOL_v0.2.md",
+      "size": 6840,
+      "sha256": "34e49e301cbdbe1d79df08d456a6503e32bcc5a0bdfa6dda753a34b1c70e148a"
+    },
+    {
+      "path": "THERMOFOLD_v0.5_METHODS_AND_BENCHMARK_STATUS.md",
+      "size": 5956,
+      "sha256": "9ff4d0e3c08a5fc6e05c99f6faa85db7f1c6560cfe95bba18c6421a6b0874f76"
+    },
+    {
+      "path": "THERMOFOLD_v0.8_INDEPENDENT_VALIDATION.md",
+      "size": 5392,
+      "sha256": "676af5dd7caffe329def180559a550426830121c3aa71fcdf9ad11a2a5be8bf8"
+    },
+    {
+      "path": "THERMOFOLD_v0.9_PARAMETER_IMPORT_AND_VALIDATION.md",
+      "size": 8064,
+      "sha256": "f66efc7721763d83d89f2e5a7e6864d1c43ca0df12b6c4a893c6ccd9db6b6e93"
+    },
+    {
+      "path": "TURNER2004_125_VALIDATION_README.md",
+      "size": 6111,
+      "sha256": "ebc851d61924b5502b6102bdfc9d61554322d1fecb8982432b502f06048217a3"
+    },
+    {
+      "path": "_nexus_release.json",
+      "size": 266,
+      "sha256": "ea449ac6685669557b83d4647a9f8e7dffabd6a4e1b5039bb0de5cf7174a498e"
+    },
+    {
+      "path": "account/account.css",
+      "size": 4152,
+      "sha256": "fa2c1e0fb8639a188c0be6d41dec827251b8f2bdaa72812c65db266044300166"
+    },
+    {
+      "path": "account/auth-client.js",
+      "size": 4528,
+      "sha256": "90dae4a98736765ac0e8bfc04b0d751c7469641a617524b8233430fa2166c5d5"
+    },
+    {
+      "path": "account/config.js",
+      "size": 406,
+      "sha256": "33c5f900791491436e475299f74f542554668d53b37f7a4aa29adc01ce107dc8"
+    },
+    {
+      "path": "account/sign-in.html",
+      "size": 4110,
+      "sha256": "6cddb29ce9654636db845b8a46a2e217864a6230aab52650f339c43de910daea"
+    },
+    {
+      "path": "account/sign-in.js",
+      "size": 1033,
+      "sha256": "9954dddeac64804f6c5179c7f9840eeddcee1386c4aef3d1e279d0741696e145"
+    },
+    {
+      "path": "account/workspace.html",
+      "size": 4547,
+      "sha256": "cb551e476bfd3713818332f88a56a835396b16122460ea50ac6f12b7c36fddd8"
+    },
+    {
+      "path": "account/workspace.js",
+      "size": 4476,
+      "sha256": "d497373da4b99065269f30afb4e17545f444a4590fcd03cf4240296044f81cf3"
+    },
+    {
+      "path": "applications/applications.css",
+      "size": 7791,
+      "sha256": "e81fd46101a8111bd06fbbf97bd33d98287aa2f55b5c5c103ebfc4bc39896e47"
+    },
+    {
+      "path": "applications/applications.js",
+      "size": 361,
+      "sha256": "cdfdf8d874b6c81eebaa1c1ac8cf016f08f17fab184ec37aab360c2806f8a942"
+    },
+    {
+      "path": "applications/hematology.html",
+      "size": 12385,
+      "sha256": "dabb80fef0f8a38b7277dbfda4552e18ee6bbf25f4dba4b104581b222b48bdce"
+    },
+    {
+      "path": "applications/oncology.html",
+      "size": 12076,
+      "sha256": "956da057b770bfc8b1c9a237dfe133da609be71bc100c0119f81d68f9c432480"
+    },
+    {
+      "path": "assets/site-search.js",
+      "size": 7748,
+      "sha256": "8696615ac9f26cd3ee868ce86016b42ea75c79da9c019712880923c236bcaef3"
+    },
+    {
+      "path": "commercial.css",
+      "size": 4363,
+      "sha256": "e6f29a8581b31e9e62fa92933b278d1cd44a82f35611eb49fd48be8c5150d9ff"
+    },
+    {
+      "path": "index.html",
+      "size": 56063,
+      "sha256": "c0fc878cade1b2960bb625efc5630a6dc0099408d71de1085afb0789a1e19b52"
+    },
+    {
+      "path": "privacy.html",
+      "size": 3493,
+      "sha256": "94e7641d2dd90947b8c0a0529f307cf69a1cae499dacc39c60edc1265b6ebf7c"
+    },
+    {
+      "path": "services.html",
+      "size": 10723,
+      "sha256": "503bf3ff4bba140e9d3db8d629b3e351b4e5d8b7f7af0f4fea371c5531f18264"
+    },
+    {
+      "path": "tools/construct-studio/architecture-core.js",
+      "size": 11440,
+      "sha256": "a333b7cdc5b6d869ff9b7213eca1a7f11d4ac13fef8e0cac4b70f4eb9388456c"
+    },
+    {
+      "path": "tools/construct-studio/architecture-ui.js",
+      "size": 4806,
+      "sha256": "78a9ff5dc393f8084a154a54ef442e7c28f209631ae4979f65c96d2cde9606a8"
+    },
+    {
+      "path": "tools/construct-studio/circular-ui.js",
+      "size": 2981,
+      "sha256": "23d52b6e6e6be3b7b5e21e577dbee118073ff2cdab579bd50fcb004a535d6836"
+    },
+    {
+      "path": "tools/construct-studio/circular.html",
+      "size": 7727,
+      "sha256": "b9b2f6e144d267bca5a363fb129b2801cdd595cb6cfbf1bf8ebcc31a6be4598e"
+    },
+    {
+      "path": "tools/construct-studio/core.js",
+      "size": 7796,
+      "sha256": "01c8d46bbc55cd643c1f056dcaa029590a194a79bee1f8c34dc09853e7270f18"
+    },
+    {
+      "path": "tools/construct-studio/dbtl-core.js",
+      "size": 9314,
+      "sha256": "7c6363ad4ba3fcafba62c2a89d0b2a747ca03300576a73ffeb635276386cd523"
+    },
+    {
+      "path": "tools/construct-studio/dbtl-ui.js",
+      "size": 7181,
+      "sha256": "76b01972984c866da9a19601bc50501be7bb06722aea6ffb44afa9cae82a91f2"
+    },
+    {
+      "path": "tools/construct-studio/dbtl.html",
+      "size": 13548,
+      "sha256": "7a3eb67c4ac400b305251bf74c8d0816cb3b70738a0e6ed19e9677a89d0890ad"
+    },
+    {
+      "path": "tools/construct-studio/demo/demo-data.js",
+      "size": 46038,
+      "sha256": "875fc5820800f1e0165f0b702f68271c153533d53c870fd335f1acf333020857"
+    },
+    {
+      "path": "tools/construct-studio/demo/demo-ui.js",
+      "size": 4849,
+      "sha256": "def6ec71668616d8ba05606fa792943ad8f896decad7b3e0d49af2b0907fa8f7"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/BioRad_ddPCR_style_SYNTHETIC.csv",
+      "size": 1075,
+      "sha256": "3aacd51394140ef3bfe89c63f60e245b67e2b7dc6010d46be394a8a88250c66e"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/Bioanalyzer_style_SYNTHETIC.csv",
+      "size": 1008,
+      "sha256": "50f99f8d15ece70a61874a0ffd734dc363473cd3b88fa1039c05cea3cd642b74"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/FlowJo_style_SYNTHETIC.csv",
+      "size": 1285,
+      "sha256": "df69aefec51d1141bdc10836920d9b004721d1224ceb3c1676b217aa881c660b"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/Gen5_style_SYNTHETIC.csv",
+      "size": 1994,
+      "sha256": "73e29daa28e4de6287d9ee6867a409c8973a3c36de4e7d3f467531a84d32e282"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/QuantStudio_style_SYNTHETIC.csv",
+      "size": 2249,
+      "sha256": "7b2bd256021cbbc86491fd1b912685532f875e6a6f0826e184ed85e3bf0cc747"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/demo-comparison.csv",
+      "size": 1805,
+      "sha256": "dfde71e73b6aca1bd2d214f589e8e169f48a7ea5500fc6d0389998d83b0cfc87"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/demo-comparison.json",
+      "size": 22434,
+      "sha256": "5395570d52e4f0473496564621bb9067f8bb8a0f2913eabc8aef3fcb274325ed"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/demo-study.json",
+      "size": 45940,
+      "sha256": "a519630c9fee945eb09d67d6ecd796b629c2a89b34d17057112cfacd78388065"
+    },
+    {
+      "path": "tools/construct-studio/demo/fixtures/manifest.json",
+      "size": 1305,
+      "sha256": "83296fa9b7f0b6f19c6f2862acdfbcded44eee5178f62a497725e787db85d84f"
+    },
+    {
+      "path": "tools/construct-studio/demo/generate-demo.js",
+      "size": 7456,
+      "sha256": "e43db2364cea924f034fd1682ea284eaead18f687bbbf9b4a42f10077c40b876"
+    },
+    {
+      "path": "tools/construct-studio/demo/index.html",
+      "size": 10981,
+      "sha256": "ae436eb60a04ec641dcf1605fa6a0c512cb69fc118799d60bb45c86f3fade4a2"
+    },
+    {
+      "path": "tools/construct-studio/evidence-core.js",
+      "size": 14948,
+      "sha256": "66ba9940db8aa6aaf4af370bcd293b3de60711836dbd7573a13e5c51d1a62a80"
+    },
+    {
+      "path": "tools/construct-studio/evidence-instrument-core.js",
+      "size": 9810,
+      "sha256": "d8c45005c733b67ffe9389a13598906123eb578dcbdc2d8cf58c73a560c74aa8"
+    },
+    {
+      "path": "tools/construct-studio/evidence-instrument-ui.js",
+      "size": 8203,
+      "sha256": "f23259943db281deeab31dc00dba92851a3cf67b95c4c8f3fdc514edc274dc82"
+    },
+    {
+      "path": "tools/construct-studio/evidence-ui.js",
+      "size": 8753,
+      "sha256": "ff1848afc99967d07263cac909e6a66e29b708cdb5b78cac387a2fb3ecd999a4"
+    },
+    {
+      "path": "tools/construct-studio/evidence.html",
+      "size": 21463,
+      "sha256": "738ea0d4b0243f211e25f2c387f0b09f38f06b6bd7c094e71d16e2732fbed4d3"
+    },
+    {
+      "path": "tools/construct-studio/examples/bioanalyzer_documented_peak_SYNTHETIC.csv",
+      "size": 157,
+      "sha256": "c95d6002845190a4dff56f3b7147d9975a51bb68ff09ba0ee4819bf6f9bfaddc"
+    },
+    {
+      "path": "tools/construct-studio/examples/biorad_documented_columns_SYNTHETIC.csv",
+      "size": 228,
+      "sha256": "3ff9fbb28915813f26c984e8cacae81d8be793edb58557fcdee5d16e8e6246f7"
+    },
+    {
+      "path": "tools/construct-studio/examples/flowjo_documented_statistics_SYNTHETIC.csv",
+      "size": 153,
+      "sha256": "ae83ba07286c997da3c56ef7109e16a2095379176a5d64e63fb3d503e29fb195"
+    },
+    {
+      "path": "tools/construct-studio/examples/gen5_documented_layout_SYNTHETIC.csv",
+      "size": 145,
+      "sha256": "84ab9a72e95ad08102e14d8fbb52e44cb3a9de6d89d5751ef5321391fee88496"
+    },
+    {
+      "path": "tools/construct-studio/examples/quantstudio_documented_columns_SYNTHETIC.tsv",
+      "size": 347,
+      "sha256": "aafb349c23060f209f05c2e2ab47c570444a9837f8946f60554b8d9f2a3ca306"
+    },
+    {
+      "path": "tools/construct-studio/index.html",
+      "size": 8431,
+      "sha256": "27f96e341f815bcf14c10d7232533a01e3b3d35c625ea7a7d09c03da9a841dfb"
+    },
+    {
+      "path": "tools/construct-studio/pro-core.js",
+      "size": 9366,
+      "sha256": "4c7ea220f2d92374d7fbc925da143624953a22932f1943f60366b9812b97e7cf"
+    },
+    {
+      "path": "tools/construct-studio/pro-ui.js",
+      "size": 8880,
+      "sha256": "62808a0ef97d36619a925ce4045d16d808c55a305d95759578dd76edbd27b4cc"
+    },
+    {
+      "path": "tools/construct-studio/pro.html",
+      "size": 25221,
+      "sha256": "ceda5231bc03a2f977547c55b30f40070892c476c4308c8152ee53a674aefa49"
+    },
+    {
+      "path": "tools/construct-studio/review-core.js",
+      "size": 13027,
+      "sha256": "9cb9a78a1686f5fe3d3de9d75ecd6bf1f949102c7676358438222af2335be3a6"
+    },
+    {
+      "path": "tools/construct-studio/review-ui.js",
+      "size": 5134,
+      "sha256": "8b2b4108cb5f6dbaba76420ccf5d64b1dacd361cebf832b2ba6f2483a11fd944"
+    },
+    {
+      "path": "tools/construct-studio/review.html",
+      "size": 10127,
+      "sha256": "013d37c94830a161dd6da5cdab2cb7cc21bae87d43188d18f1be9b6150978fd3"
+    },
+    {
+      "path": "tools/construct-studio/rna-protein.html",
+      "size": 7864,
+      "sha256": "0d45836403ed64ebb3bb671bc6ede5ff119c6bc7c70c06622cbc2624a46da2e1"
+    },
+    {
+      "path": "tools/construct-studio/rna-protein.js",
+      "size": 5683,
+      "sha256": "eb19b7a837ba1e34f9904ece7afa27b4bb8f2cb301daebce9c3ecf154cf0f9cf"
+    },
+    {
+      "path": "tools/construct-studio/ui.js",
+      "size": 1883,
+      "sha256": "c30352cf2bb866a72c25ef5cc623f04124a6a226487d503c39ca2134665e3150"
+    },
+    {
+      "path": "tools/construct-studio/utr-core.js",
+      "size": 12798,
+      "sha256": "699877653eec284ae003ef0197a2109fc51a023204d3ba23c2f79154920f9a33"
+    },
+    {
+      "path": "tools/construct-studio/utr-ui.js",
+      "size": 5031,
+      "sha256": "9d86f3c638098d9d05c4505f78b89f6b7904a4dcc460770dc37c4b5d96811180"
+    },
+    {
+      "path": "tools/construct-studio/utr.html",
+      "size": 11361,
+      "sha256": "da76e71f84a43070086ec41b42e2aba7a48f6631dfff73caf9bfc08d9c95de72"
+    },
+    {
+      "path": "tools/doe-studio/core.js",
+      "size": 10304,
+      "sha256": "76985c3db6ba0e3daaa62a11f4f7b68eaf15480dc920d28bbfbec71019d348d8"
+    },
+    {
+      "path": "tools/doe-studio/index.html",
+      "size": 11559,
+      "sha256": "69da58d4b0349c480f35e9a20ddafd0dbeb9b9d21e32f245092ae9e546b5c62c"
+    },
+    {
+      "path": "tools/doe-studio/mixture-core.js",
+      "size": 15795,
+      "sha256": "82988a6bed84da2dea53e15d24b9759127c8ac086ad62dacdbac761eace3b2a4"
+    },
+    {
+      "path": "tools/doe-studio/mixture-ui.js",
+      "size": 10625,
+      "sha256": "fdc9cbbfa24f2d7de147de4a66c267d6c453baa4737372f9070c528ed6cac2d4"
+    },
+    {
+      "path": "tools/doe-studio/mixture.html",
+      "size": 10540,
+      "sha256": "22ab4436ea689b032f157e27bbbb23bd9b9940f6e096f8ff0267f7ba350e6465"
+    },
+    {
+      "path": "tools/doe-studio/ui.js",
+      "size": 9646,
+      "sha256": "fa2bbb1608b702a41a483328abd53a98ce397ab4cbe491944cfabc41cc624087"
+    },
+    {
+      "path": "tools/immune-assays/core.js",
+      "size": 4846,
+      "sha256": "5fecf66a59542063cb88bdeb1556fbeb418d578da68216fa82b71535d505c7ba"
+    },
+    {
+      "path": "tools/immune-assays/index.html",
+      "size": 6439,
+      "sha256": "61d972f34dec122862023736e5db252975c8b92bb61d729d5a3865858bf9a833"
+    },
+    {
+      "path": "tools/immune-assays/ui.js",
+      "size": 2803,
+      "sha256": "0238ff5699e7606a140bdb869724bc05cfa78b85d914b6b5b669fd75f433cb1c"
+    },
+    {
+      "path": "tools/index.html",
+      "size": 8363,
+      "sha256": "ed1e498721149d2ab5b0e9cf8eadeb84d1b6315e5362cbcd2b090ad86c341994"
+    },
+    {
+      "path": "tools/instrument-import/core.js",
+      "size": 14047,
+      "sha256": "021f7b4e4fa61f3942af72a47036f3a3b9b0d6d22bcf3d35ab35fe05504881a4"
+    },
+    {
+      "path": "tools/instrument-import/examples/bioanalyzer_example.csv",
+      "size": 128,
+      "sha256": "bc792001d9171b1603d83777380909f75ee624f41b02445003552ff9df274339"
+    },
+    {
+      "path": "tools/instrument-import/examples/ddpcr_example.csv",
+      "size": 182,
+      "sha256": "5943a91db3e7c5445f55dccfa7e6eca795aedfa76bd8ee00d8bd5de346caeb5f"
+    },
+    {
+      "path": "tools/instrument-import/examples/lcms_example.csv",
+      "size": 153,
+      "sha256": "e63c7238811a80f2649303f55257d50380aaeff0f89109adc2afccc7a8c1cf91"
+    },
+    {
+      "path": "tools/instrument-import/examples/plate_reader_example.csv",
+      "size": 194,
+      "sha256": "c18f93d1216e3b5e4301da0c46676274f622cfb7bb227a69fe50a50f85f373ff"
+    },
+    {
+      "path": "tools/instrument-import/examples/quantstudio_example.csv",
+      "size": 177,
+      "sha256": "b3732fad61332cc4d9c9671f262953ae66bd9f4eaff9399a226c1ccbd2c2038b"
+    },
+    {
+      "path": "tools/instrument-import/index.html",
+      "size": 12965,
+      "sha256": "2981f6da6e8ae89f776480c27b509af579438dbe065f723062ef29741fb47555"
+    },
+    {
+      "path": "tools/instrument-import/ui.js",
+      "size": 8191,
+      "sha256": "6da161324e7a306b9a2baf9d66393fcef828d343131524a158fa126b971ddb7b"
+    },
+    {
+      "path": "tools/lab-common.css",
+      "size": 6780,
+      "sha256": "963e7309008abb56ecb96c14b0d62e80b3ad2ca869546e65bb7df43c62b11a91"
+    },
+    {
+      "path": "tools/lnp-studio/core.js",
+      "size": 5222,
+      "sha256": "14aefec159d8ec700d264e1e58a8d41ef2042e1f8be2873979393e8bd20d0489"
+    },
+    {
+      "path": "tools/lnp-studio/index.html",
+      "size": 9918,
+      "sha256": "5300d8f8455ea06255d96151a890390d2b2707ebeba284d9e978d01c657cf8c3"
+    },
+    {
+      "path": "tools/lnp-studio/ui.js",
+      "size": 1886,
+      "sha256": "ac58d42702d62383cf789c60422b7517006192777a7ca4ce1bb0c2984777c3f3"
+    },
+    {
+      "path": "tools/project-hub/index.html",
+      "size": 7878,
+      "sha256": "e14040b244d45b673005f32b0cf27dd7e18c432f9466d95793a4772655155019"
+    },
+    {
+      "path": "tools/project-hub/ui.js",
+      "size": 5420,
+      "sha256": "9d281aec48457e7d9717dc2800a1b378e5c915075abc34315bddefe0615c9464"
+    },
+    {
+      "path": "tools/project-link.js",
+      "size": 4793,
+      "sha256": "5620357688ea1c32d9ae456abfc602af1c0fa32609c4a7d76f414ad9d20864a5"
+    },
+    {
+      "path": "tools/qc-analytics/core.js",
+      "size": 18272,
+      "sha256": "b8a180fa66e35ea226445c7bac838bc61c453cb9460b173e69ff42d63f42aefe"
+    },
+    {
+      "path": "tools/qc-analytics/index.html",
+      "size": 7343,
+      "sha256": "92d6f408de3fb3795685afd0734f49a4decbbd6041f3aa05ae21db8b88135a39"
+    },
+    {
+      "path": "tools/qc-analytics/ui.js",
+      "size": 2858,
+      "sha256": "c7f27f3c4990964314c819a30aa9b963b0c59ab95d9ddcf3aead101d32fdb79b"
+    },
+    {
+      "path": "tools/seqfold/advanced-core.js",
+      "size": 15355,
+      "sha256": "7c9f5e8c0cd3e6d10778d6fb19ed413b08f224b3e8e76853629a36883608baf3"
+    },
+    {
+      "path": "tools/seqfold/advanced-ui.js",
+      "size": 13451,
+      "sha256": "f8dc513614c341ccdfda5639b75d8733d0ceb77c9bef37ea70865d887860c2fb"
+    },
+    {
+      "path": "tools/seqfold/advanced.html",
+      "size": 21473,
+      "sha256": "c6c45de558c0217b1c65a71eecc3dc1596f023cc427251e991d9978fc17a8355"
+    },
+    {
+      "path": "tools/seqfold/assembly-core.js",
+      "size": 12199,
+      "sha256": "94ed23677edcff1350b2f1403ac41e4eb90eead3fb85f614716df813e717f0e0"
+    },
+    {
+      "path": "tools/seqfold/assembly-ui.js",
+      "size": 9768,
+      "sha256": "9e1522fbddb53b6856086de2d621741ab05d6b86f8243ddcbaca1a618ac31397"
+    },
+    {
+      "path": "tools/seqfold/benchmarks/challenge_cases.json",
+      "size": 29350,
+      "sha256": "7f78b61c66e234d2dc721f971d23bd4cf227b43acee28d884431dd89fabf10ef"
+    },
+    {
+      "path": "tools/seqfold/benchmarks/documented_RNAfold_example.json",
+      "size": 642,
+      "sha256": "e188e020e3d23fbde97f67eecbfc4124ca1249fb0a1a644d7e86383138f9fc70"
+    },
+    {
+      "path": "tools/seqfold/benchmarks/reference_template.csv",
+      "size": 195,
+      "sha256": "adde3b3a7e24e0e2f41ed9d789d3814e14ce3314f9434f30e30239d4c3241c87"
+    },
+    {
+      "path": "tools/seqfold/convert.html",
+      "size": 4442,
+      "sha256": "1af48619668e5f3a6601884a8cb570da41d82280b466d03c47c33005aca0ef1d"
+    },
+    {
+      "path": "tools/seqfold/convert.js",
+      "size": 2639,
+      "sha256": "19f069f71864396b47028288062b9b01a9de3e9c71334e847fd5b40a7258a81c"
+    },
+    {
+      "path": "tools/seqfold/core.js",
+      "size": 10601,
+      "sha256": "5dfbdcf6cc8af9a310a071d6406e73fdf7e16a11ad6885221f10404e2ab4f757"
+    },
+    {
+      "path": "tools/seqfold/index.html",
+      "size": 58284,
+      "sha256": "e14139008f27901171ed5bed58978b47904aa35dc219c62e523d945a28070456"
+    },
+    {
+      "path": "tools/seqfold/plasmids.js",
+      "size": 6074,
+      "sha256": "316dba861fdac6b439a91016bd937669c923a0c5a80203042979ac4bd5c3ab83"
+    },
+    {
+      "path": "tools/seqfold/precision-core.js",
+      "size": 10402,
+      "sha256": "1b086f47630b7f2ef760f16af21f16e3643f47586ba760f32c28c8f1f8c2e59d"
+    },
+    {
+      "path": "tools/seqfold/precision-ui.js",
+      "size": 15826,
+      "sha256": "c255f346aeeadb911b853dff5110a0f715bfed60628c49e28b6608dc943d45f2"
+    },
+    {
+      "path": "tools/seqfold/precision.html",
+      "size": 22829,
+      "sha256": "0a4c0f9a450e9f26f63c4614bcf0b988b0408dc1fb7dffe7afbd7ba92d1d3c8c"
+    },
+    {
+      "path": "tools/seqfold/protein-core.js",
+      "size": 3569,
+      "sha256": "c34d58b93cc49cee073fae22b5d4502259647ed8fbff4b9f15f334cb5087b485"
+    },
+    {
+      "path": "tools/seqfold/puc19.fasta",
+      "size": 2772,
+      "sha256": "c0c677f38d94467fdc6eee6d7e1fe6ea93121110f444db5a8dad6a1bfecbbdc6"
+    },
+    {
+      "path": "tools/seqfold/qpcr-core.js",
+      "size": 11998,
+      "sha256": "d479055ac41f17b8401b9775ed88e10ca93b7491685fdc44b29dadeff0473d78"
+    },
+    {
+      "path": "tools/seqfold/qpcr-ui.js",
+      "size": 8821,
+      "sha256": "e5f6c55b7d6adebafdba1a27132b059456cba0aba4a4fb49a0ea2bb1f73e1ce2"
+    },
+    {
+      "path": "tools/seqfold/qpcr.html",
+      "size": 12049,
+      "sha256": "1655d066c94aaefc5ad089d1514eae4b4abf65e9e77fbc140f104e60839ad1c0"
+    },
+    {
+      "path": "tools/seqfold/sanger-core.js",
+      "size": 10948,
+      "sha256": "91662bfaf71a2e90f158c117c928d3a352dd7c82f9e1b785226a2a479b598ee2"
+    },
+    {
+      "path": "tools/seqfold/sanger-ui.js",
+      "size": 7753,
+      "sha256": "395f431ae379736112555dbf1a733cbe1f88e14487c12596fa98e6dfd217ea5c"
+    },
+    {
+      "path": "tools/seqfold/thermofold-benchmark-core.js",
+      "size": 6500,
+      "sha256": "4183904a173c53a37cde201d65cdc81f6e5b307c8ec55d9000f4955e7c155f22"
+    },
+    {
+      "path": "tools/seqfold/thermofold-benchmark-ui.js",
+      "size": 3921,
+      "sha256": "fe8964d44707eda1d02ca9fdbc621753979ebfa2c508f17277c4d6060384121f"
+    },
+    {
+      "path": "tools/seqfold/thermofold-benchmark-worker.js",
+      "size": 915,
+      "sha256": "6c5539cb3c63fe5164466133c1a25c58fa1f46a9d809b662e795f472213d63bc"
+    },
+    {
+      "path": "tools/seqfold/thermofold-benchmark.html",
+      "size": 8896,
+      "sha256": "f63f3bbc14f662a505f0ed2cabdbd52c4b4196706b15e1fdba3ec5ed3b4a6c29"
+    },
+    {
+      "path": "tools/seqfold/thermofold-core-v01.js",
+      "size": 6299,
+      "sha256": "a30408a4bf73d26e076d5d011fbd376962a62365226a7928216631c8d95cd288"
+    },
+    {
+      "path": "tools/seqfold/thermofold-core.js",
+      "size": 24852,
+      "sha256": "f1cff99db8d23efcd434894eb47f206b081f0d5d2883a6f45ad0b2392f0be76a"
+    },
+    {
+      "path": "tools/seqfold/thermofold-ensemble-core.js",
+      "size": 9103,
+      "sha256": "4838cfd280614d06da89933996d4662cd27f8b4a38582ef5c9c79d124f15fc29"
+    },
+    {
+      "path": "tools/seqfold/thermofold-ensemble-ui.js",
+      "size": 5359,
+      "sha256": "02342245f1e1dcf80a9fee58b4dcb51929254563611da69097794ff8b3c37b24"
+    },
+    {
+      "path": "tools/seqfold/thermofold-ensemble.html",
+      "size": 9603,
+      "sha256": "1437b6fc2f4c4700858074aaf0f50776f18baba7fea83f600063b6b2c6f48861"
+    },
+    {
+      "path": "tools/seqfold/thermofold-layout.js",
+      "size": 10227,
+      "sha256": "1cf56c417869590b50a60b656cf8a5c32a4283ba306fd0018c2c9fa0dbc896c9"
+    },
+    {
+      "path": "tools/seqfold/thermofold-reference-core.js",
+      "size": 3672,
+      "sha256": "c83e71be1580072dfffe64b18c85e517d7cbbfe0ff45db0abec9e4ae6ce47f5d"
+    },
+    {
+      "path": "tools/seqfold/thermofold-reference.html",
+      "size": 8764,
+      "sha256": "b4c54b2f329f38c595e8e9ee545d733336ed1582fd949ec75e59e9c01f41a243"
+    },
+    {
+      "path": "tools/seqfold/thermofold-ui.js",
+      "size": 6990,
+      "sha256": "24ac84d303eacd67e2ca9780fe204676439f7a7e12288706ed9590f0288fa63a"
+    },
+    {
+      "path": "tools/seqfold/thermofold-worker.js",
+      "size": 333,
+      "sha256": "07e16e04061fbc9b9936e907dfe8caa351bed92f1e9d9310524c4c9cd2935e73"
+    },
+    {
+      "path": "tools/seqfold/thermofold.html",
+      "size": 12440,
+      "sha256": "bce00b37cb8f9df5df6d450ee50ee96bc8317a84f4ef81ee4f87af7585c4ad92"
+    },
+    {
+      "path": "tools/seqfold/validation-core.js",
+      "size": 11272,
+      "sha256": "4c34cb4dd1f1e1577c7ac2a631531ba2623906e1a01422e0fa4b8a79782e56e9"
+    },
+    {
+      "path": "tools/seqfold/validation-ui.js",
+      "size": 6901,
+      "sha256": "b81119bda4356a40de38ea3bc8ffe15bf293bbf7d54de55340d1870c5e256659"
+    },
+    {
+      "path": "tools/seqfold/validation.html",
+      "size": 17586,
+      "sha256": "763d0cd1d4a687438d583cef35295dc61ebd4195f1befdc07334df6b89f32152"
+    },
+    {
+      "path": "tools/seqfold/workbench-core.js",
+      "size": 17416,
+      "sha256": "b1678c26c80d1737051a4f69400c0e390ee6fb629f72d2e8a5fa1eea2d7381b8"
+    },
+    {
+      "path": "tools/seqfold/workbench-ui.js",
+      "size": 16885,
+      "sha256": "2d51b7ca02614d5662cef0a5a331bc33b47b3747b83fe5762d236a2e91fa6e89"
+    },
+    {
+      "path": "tools/seqfold/workbench.html",
+      "size": 35477,
+      "sha256": "820f4984acbadf3c35204d7f01af5c4ae9b423e2b23286ada97509b1dab2a5e9"
+    }
+  ]
+}

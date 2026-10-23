@@ -1,0 +1,7 @@
+{
+  "release": "NEXUS v1.8.23R Recovery",
+  "source": "v1.8.23 experimental demo release",
+  "type": "static website only",
+  "intent": "deployment repair and tool-directory restoration",
+  "note": "no claim of live deployment or activated account authentication"
+}

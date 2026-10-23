@@ -2,7 +2,7 @@
 (function(root,factory){const api=factory(root.NexusSeq||(typeof require==='function'?require('./core.js'):null),root.NexusAdvanced||(typeof require==='function'?require('./advanced-core.js'):null),root.NexusAssembly||(typeof require==='function'?require('./assembly-core.js'):null));if(typeof module==='object'&&module.exports)module.exports=api;root.NexusPrecision=api;})(typeof globalThis!=='undefined'?globalThis:this,function(seq,adv,asm){
 'use strict';if(!seq||!adv||!asm)throw Error('NEXUS core modules missing');
 function dna(s,max=1200){s=String(s||'').replace(/^>[^\n]*\n/g,'').toUpperCase().replace(/\s/g,'');if(!s||s.length>max||!/^[ACGTN]+$/.test(s))throw Error('DNA must contain 1–'+max+' A/C/G/T/N bases');return s;}
-function rna(s){s=String(s||'').toUpperCase().replace(/^>[^\n]*\n/g,'').replace(/\s/g,'').replace(/T/g,'U');if(!s||s.length>220||!/^[ACGU]+$/.test(s))throw Error('Supply 1–220 unambiguous RNA bases (A/C/G/U).');return s;}
+function rna(s){s=String(s||'').toUpperCase().replace(/^>[^\n]*\n/g,'').replace(/\s/g,'').replace(/T/g,'U');if(!s||s.length>3000||!/^[ACGU]+$/.test(s))throw Error('Supply 1–3,000 unambiguous RNA bases (A/C/G/U).');return s;}
 const PAIR={'AU':1,'UA':1,'GC':1,'CG':1,'GU':1,'UG':1};
 function validPair(a,b){return !!PAIR[a+b];}
 function stackEnergy(a,b,c,d){ // adjacent antiparallel stacked pair estimate (not calibrated Turner parameters)
@@ -11,6 +11,19 @@ function stackEnergy(a,b,c,d){ // adjacent antiparallel stacked pair estimate (n
 }
 function foldEnergy(raw,{minLoop=3}={}){
  let s=rna(raw),n=s.length,loop=Number(minLoop);if(!Number.isInteger(loop)||loop<3||loop>10)throw Error('Hairpin minimum must be 3–10 nt');
+ if(n>220){
+  const windowSize=200,dots=[],pairs=[],windows=[];let relativeEnergy=0;
+  for(let offset=0;offset<n;offset+=windowSize){
+   const f=foldEnergy(s.slice(offset,offset+windowSize),{minLoop:loop});
+   dots.push(f.dotBracket);relativeEnergy+=f.relativeEnergy;
+   for(const [a,b] of f.pairs)pairs.push([a+offset,b+offset]);
+   windows.push({start:offset+1,end:offset+f.sequence.length,pairCount:f.pairCount});
+  }
+  return {sequence:s,dotBracket:dots.join(''),pairCount:pairs.length,pairs,
+    relativeEnergy:Number(relativeEnergy.toFixed(2)),maxLength:3000,windowSize,windows,mode:'independent-windows',
+    algorithm:'WINDOWED relative-energy heuristic: independent 200-nt segments; no base pairing across segment boundaries. Sum of uncalibrated segment scores (NOT a full-length ΔG or comparable thermodynamic stability). The model omits multiloops, ensemble probabilities and experimentally calibrated folding parameters.'};
+ }
+
  let W=Array.from({length:n},()=>new Float64Array(n)),V=Array.from({length:n},()=>new Float64Array(n)),tw=Array.from({length:n},()=>Array(n).fill(null)),tv=Array.from({length:n},()=>Array(n).fill(null));
  for(let i=0;i<n;i++)V[i].fill(Infinity);
  const w=(i,j)=>i>=j?0:W[i][j],v=(i,j)=>i>=j?Infinity:V[i][j];
@@ -31,7 +44,7 @@ function foldEnergy(raw,{minLoop=3}={}){
  let dot=Array(n).fill('.'),pairs=[];
  function visitV(i,j){if(!Number.isFinite(v(i,j)))return;dot[i]='(';dot[j]=')';pairs.push([i+1,j+1]);let tr=tv[i][j];if(tr&&tr[0]!=='hairpin')visitV(tr[1],tr[2]);}
  function visitW(i,j){if(i>=j)return;let tr=tw[i][j];if(!tr)return;if(tr[0]==='left')visitW(i+1,j);else if(tr[0]==='right')visitW(i,j-1);else if(tr[0]==='paired')visitV(i,j);else{visitW(i,tr[1]);visitW(tr[1]+1,j);}}
- if(n)visitW(0,n-1);pairs.sort((a,b)=>a[0]-b[0]);return {sequence:s,dotBracket:dot.join(''),pairCount:pairs.length,pairs,relativeEnergy:Number(w(0,n-1).toFixed(2)),algorithm:'Simplified nearest-neighbor-inspired nested hairpin/stacking dynamic program; omits multiloops, dangles, salt and temperature parameters, sequence-specific loop tables and partition functions. Energy is an UNCALIBRATED relative score, NOT kcal/mol or ViennaRNA MFE.',maxLength:220};
+ if(n)visitW(0,n-1);pairs.sort((a,b)=>a[0]-b[0]);return {sequence:s,dotBracket:dot.join(''),pairCount:pairs.length,pairs,relativeEnergy:Number(w(0,n-1).toFixed(2)),algorithm:'Simplified nearest-neighbor-inspired nested hairpin/stacking dynamic program; omits multiloops, dangles, salt and temperature parameters, sequence-specific loop tables and partition functions. Energy is an UNCALIBRATED relative score, NOT kcal/mol or ViennaRNA MFE.',maxLength:3000,mode:'single-window'};
 }
 function longest3PrimeDimer(a,b){ // longest uninterrupted complementary seed involving 3'-end of either oligo
  a=adv.cleanDNA(a,{max:100});b=adv.cleanDNA(b,{max:100});let rc=seq.reverseComplement(b),max=0;
