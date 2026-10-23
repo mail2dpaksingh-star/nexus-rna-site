@@ -1,0 +1,5 @@
+Well,Sample Name,Target,Conc. (copies/µL),Status
+A01,STD01,TargetA,120.1,Accepted
+A02,STD01,TargetA,125.8,Accepted
+B01,TEST01,TargetA,45.3,Accepted
+B02,TEST01,TargetA,46.1,Accepted

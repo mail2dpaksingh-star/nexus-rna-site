@@ -1,0 +1,2 @@
+id,sequence,reference_structure,reference_dg,source,source_version,options,provenance_type,notes
+hairpin_demo,GGGAAACCC,,,,,,,Synthetic NEXUS internal regression; no external prediction attached

@@ -1,0 +1,529 @@
+TAP version 13
+# PASS: 15 account and project-storage integration assertions; fake database is NOT an RLS test.
+# Subtest: tests/auth-workspace.test.cjs
+ok 1 - tests/auth-workspace.test.cjs
+  ---
+  duration_ms: 74.156506
+  type: 'test'
+  ...
+# PASS: all 3,000-nt windowed fold checks and boundary validation (972 ms)
+# Subtest: tests/folding-3000.test.cjs
+ok 2 - tests/folding-3000.test.cjs
+  ---
+  duration_ms: 1015.995162
+  type: 'test'
+  ...
+# Subtest: independent published example is aligned and correctly formed
+ok 3 - independent published example is aligned and correctly formed
+  ---
+  duration_ms: 1.720847
+  type: 'test'
+  ...
+# Subtest: strict structure metrics report exact matches
+ok 4 - strict structure metrics report exact matches
+  ---
+  duration_ms: 1.176165
+  type: 'test'
+  ...
+# Subtest: strict pairing sensitivity / precision / false positives
+ok 5 - strict pairing sensitivity / precision / false positives
+  ---
+  duration_ms: 0.284589
+  type: 'test'
+  ...
+# Subtest: unpaired edge case empty/empty works
+ok 6 - unpaired edge case empty/empty works
+  ---
+  duration_ms: 0.159891
+  type: 'test'
+  ...
+# Subtest: rejects malformed dot-bracket
+ok 7 - rejects malformed dot-bracket
+  ---
+  duration_ms: 0.274254
+  type: 'test'
+  ...
+# Subtest: rejects false reference provenance
+ok 8 - rejects false reference provenance
+  ---
+  duration_ms: 0.376208
+  type: 'test'
+  ...
+# Subtest: valid energy 0 is preserved
+ok 9 - valid energy 0 is preserved
+  ---
+  duration_ms: 0.17875
+  type: 'test'
+  ...
+# Subtest: compares NEXUS restricted-model prediction against reference
+ok 10 - compares NEXUS restricted-model prediction against reference
+  ---
+  duration_ms: 5.90981
+  type: 'test'
+  ...
+# Subtest: statistical summary MAE RMSE bias with synthetic metrics
+ok 11 - statistical summary MAE RMSE bias with synthetic metrics
+  ---
+  duration_ms: 0.564983
+  type: 'test'
+  ...
+# Subtest: CSV quote parsing and injection-safe export
+ok 12 - CSV quote parsing and injection-safe export
+  ---
+  duration_ms: 0.7418
+  type: 'test'
+  ...
+# Subtest: challenge set is clearly synthetic and within supported length
+ok 13 - challenge set is clearly synthetic and within supported length
+  ---
+  duration_ms: 4728.758105
+  type: 'test'
+  ...
+# Subtest: centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAAACCC
+ok 14 - centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAAACCC
+  ---
+  duration_ms: 6.850841
+  type: 'test'
+  ...
+# Subtest: centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAUUCCC
+ok 15 - centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAUUCCC
+  ---
+  duration_ms: 1.495257
+  type: 'test'
+  ...
+# Subtest: centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAAAUUUCCC
+ok 16 - centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GGGAAAUUUCCC
+  ---
+  duration_ms: 13.004589
+  type: 'test'
+  ...
+# Subtest: centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: AUGCGCAUUAGU
+ok 17 - centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: AUGCGCAUUAGU
+  ---
+  duration_ms: 1.473423
+  type: 'test'
+  ...
+# Subtest: centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GCGCAAAAGCGC
+ok 18 - centroid/ensemble expected pair distance agrees with exhaustive independent enumeration: GCGCAAAAGCGC
+  ---
+  duration_ms: 3.132447
+  type: 'test'
+  ...
+# Subtest: threshold filtering does not affect centroid or structural distances
+ok 19 - threshold filtering does not affect centroid or structural distances
+  ---
+  duration_ms: 0.987291
+  type: 'test'
+  ...
+# Subtest: per-structure parameter audit distinguishes incomplete parameter use from model accuracy
+ok 20 - per-structure parameter audit distinguishes incomplete parameter use from model accuracy
+  ---
+  duration_ms: 0.272962
+  type: 'test'
+  ...
+# Subtest: 40 seeded randomized reference enumerations match partition Z and pair marginals
+ok 21 - 40 seeded randomized reference enumerations match partition Z and pair marginals
+  ---
+  duration_ms: 35.289486
+  type: 'test'
+  ...
+# Subtest: 110 nucleotide limit produces finite distribution
+ok 22 - 110 nucleotide limit produces finite distribution
+  ---
+  duration_ms: 163.04229
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: AAAAA
+ok 23 - partition and base pairs match independently enumerated structures: AAAAA
+  ---
+  duration_ms: 8.246197
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGAAACCC
+ok 24 - partition and base pairs match independently enumerated structures: GGGAAACCC
+  ---
+  duration_ms: 2.388465
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGAUUCCC
+ok 25 - partition and base pairs match independently enumerated structures: GGGAUUCCC
+  ---
+  duration_ms: 3.10405
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGUUACCC
+ok 26 - partition and base pairs match independently enumerated structures: GGGUUACCC
+  ---
+  duration_ms: 0.508688
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: AUGCGCAUUAGU
+ok 27 - partition and base pairs match independently enumerated structures: AUGCGCAUUAGU
+  ---
+  duration_ms: 3.110956
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GAGAAACUCAA
+ok 28 - partition and base pairs match independently enumerated structures: GAGAAACUCAA
+  ---
+  duration_ms: 0.422888
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGAAAUUUCCC
+ok 29 - partition and base pairs match independently enumerated structures: GGGAAAUUUCCC
+  ---
+  duration_ms: 2.978886
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGGAUUUCCCC
+ok 30 - partition and base pairs match independently enumerated structures: GGGGAUUUCCCC
+  ---
+  duration_ms: 4.381268
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GCGCAAAAGCGC
+ok 31 - partition and base pairs match independently enumerated structures: GCGCAAAAGCGC
+  ---
+  duration_ms: 1.164187
+  type: 'test'
+  ...
+# Subtest: partition and base pairs match independently enumerated structures: GGGAAAGGGAAACCC
+ok 32 - partition and base pairs match independently enumerated structures: GGGAAAGGGAAACCC
+  ---
+  duration_ms: 3.017404
+  type: 'test'
+  ...
+# Subtest: strictly errors on invalid sequence and invalid cutoff
+ok 33 - strictly errors on invalid sequence and invalid cutoff
+  ---
+  duration_ms: 0.420675
+  type: 'test'
+  ...
+# Subtest: hairpin figure shows every base and paired bonds
+ok 34 - hairpin figure shows every base and paired bonds
+  ---
+  duration_ms: 6.291947
+  type: 'test'
+  ...
+# Subtest: base pair coordinates agree with dot-bracket structure
+ok 35 - base pair coordinates agree with dot-bracket structure
+  ---
+  duration_ms: 1.355176
+  type: 'test'
+  ...
+# Subtest: unpaired full RNA stays visible
+ok 36 - unpaired full RNA stays visible
+  ---
+  duration_ms: 6.706553
+  type: 'test'
+  ...
+# Subtest: exterior segments are accounted for and never assigned fake pairs
+ok 37 - exterior segments are accounted for and never assigned fake pairs
+  ---
+  duration_ms: 1.602689
+  type: 'test'
+  ...
+# Subtest: multiple exterior stem-loops render independently
+ok 38 - multiple exterior stem-loops render independently
+  ---
+  duration_ms: 0.380805
+  type: 'test'
+  ...
+# Subtest: invalid bracket structures rejected
+ok 39 - invalid bracket structures rejected
+  ---
+  duration_ms: 0.654097
+  type: 'test'
+  ...
+# Subtest: branched folds render as truthful arc diagrams instead of malformed hairpins
+ok 40 - branched folds render as truthful arc diagrams instead of malformed hairpins
+  ---
+  duration_ms: 13.989089
+  type: 'test'
+  ...
+# PASS real format parses
+# PASS reference draw
+# PASS reference comparison
+# PASS missing provenance rejected
+# PASS missing parameter record rejected
+# PASS noncanonical reference rejected
+# PASS missing energy rejected
+# PASS mismatched record rejected
+# PASS unbalanced bracket rejected
+# PASS noncanonical pairs rejected
+# PASS at most 3000 nts
+# PASS long sequence imports without false local fold
+# 12 reference adapter tests passed.
+# Subtest: tests/thermofold-reference-v06.test.cjs
+ok 8 - tests/thermofold-reference-v06.test.cjs
+  ---
+  duration_ms: 44.50807
+  type: 'test'
+  ...
+# Subtest: published GC/GC canonical stacking values
+ok 42 - published GC/GC canonical stacking values
+  ---
+  duration_ms: 0.884024
+  type: 'test'
+  ...
+# Subtest: 9nt hairpin hand calculation ∆G=5.4-2×3.26
+ok 43 - 9nt hairpin hand calculation ∆G=5.4-2×3.26
+  ---
+  duration_ms: 0.728079
+  type: 'test'
+  ...
+# Subtest: all A unpaired and no spurious negative fold
+ok 44 - all A unpaired and no spurious negative fold
+  ---
+  duration_ms: 0.307063
+  type: 'test'
+  ...
+# Subtest: FASTA normalization and DNA to RNA
+ok 45 - FASTA normalization and DNA to RNA
+  ---
+  duration_ms: 0.113512
+  type: 'test'
+  ...
+# Subtest: invalid bases and overlength rejected
+ok 46 - invalid bases and overlength rejected
+  ---
+  duration_ms: 0.399223
+  type: 'test'
+  ...
+# Subtest: deterministic, balanced dot-bracket and pair count
+ok 47 - deterministic, balanced dot-bracket and pair count
+  ---
+  duration_ms: 2.35826
+  type: 'test'
+  ...
+# Subtest: mixed motifs and medium-length synthetic input
+ok 48 - mixed motifs and medium-length synthetic input
+  ---
+  duration_ms: 18.048268
+  type: 'test'
+  ...
+# Subtest: model metadata cannot be mistaken for ViennaRNA
+ok 49 - model metadata cannot be mistaken for ViennaRNA
+  ---
+  duration_ms: 0.508447
+  type: 'test'
+  ...
+# Subtest: v0.4 supports GU/UG and published rounded NNDB stack entries
+ok 50 - v0.4 supports GU/UG and published rounded NNDB stack entries
+  ---
+  duration_ms: 0.752686
+  type: 'test'
+  ...
+# Subtest: GC hairpin produces traceable model-based energy and valid dot bracket
+ok 51 - GC hairpin produces traceable model-based energy and valid dot bracket
+  ---
+  duration_ms: 3.099138
+  type: 'test'
+  ...
+# Subtest: multibranch loops can form and agree with independent structural recalc
+ok 52 - multibranch loops can form and agree with independent structural recalc
+  ---
+  duration_ms: 5.231567
+  type: 'test'
+  ...
+# Subtest: GU-inclusive output differs from canonical-only in at least one diagnostic
+ok 53 - GU-inclusive output differs from canonical-only in at least one diagnostic
+  ---
+  duration_ms: 0.302787
+  type: 'test'
+  ...
+# Subtest: non-pairing controls stay unpaired
+ok 54 - non-pairing controls stay unpaired
+  ---
+  duration_ms: 0.319733
+  type: 'test'
+  ...
+# Subtest: energy reconciles across synthetic length/loop examples
+ok 55 - energy reconciles across synthetic length/loop examples
+  ---
+  duration_ms: 10.438486
+  type: 'test'
+  ...
+# Subtest: model metadata does not assert ViennaRNA parity
+ok 56 - model metadata does not assert ViennaRNA parity
+  ---
+  duration_ms: 0.528217
+  type: 'test'
+  ...
+# Subtest: input FASTA validation and 280nt cap
+ok 57 - input FASTA validation and 280nt cap
+  ---
+  duration_ms: 0.465193
+  type: 'test'
+  ...
+# Subtest: 280nt global calculation finite and consistent
+ok 58 - 280nt global calculation finite and consistent
+  ---
+  duration_ms: 116.362917
+  type: 'test'
+  ...
+# Subtest: Turner 2004 special CGAG tetraloop uses its documented 3.5 kcal/mol loop energy
+ok 59 - Turner 2004 special CGAG tetraloop uses its documented 3.5 kcal/mol loop energy
+  ---
+  duration_ms: 2.470499
+  type: 'test'
+  ...
+# Subtest: three-C loop: Turner C3 penalty is +1.5 kcal/mol
+ok 60 - three-C loop: Turner C3 penalty is +1.5 kcal/mol
+  ---
+  duration_ms: 0.349859
+  type: 'test'
+  ...
+# Subtest: all-C six-nt loop: documented initiation plus (0.3 n +1.6) penalty
+ok 61 - all-C six-nt loop: documented initiation plus (0.3 n +1.6) penalty
+  ---
+  duration_ms: 0.174052
+  type: 'test'
+  ...
+# Subtest: documented terminal first mismatch bonuses are sequence sensitive
+ok 62 - documented terminal first mismatch bonuses are sequence sensitive
+  ---
+  duration_ms: 0.185249
+  type: 'test'
+  ...
+# Subtest: hairpin calculations preserve MFE and independent reconstruction agreement
+ok 63 - hairpin calculations preserve MFE and independent reconstruction agreement
+  ---
+  duration_ms: 10.927384
+  type: 'test'
+  ...
+# Subtest: v0.3 supports GU/UG and published rounded NNDB stack entries
+ok 64 - v0.3 supports GU/UG and published rounded NNDB stack entries
+  ---
+  duration_ms: 0.824965
+  type: 'test'
+  ...
+# Subtest: GC hairpin produces traceable model-based energy and valid dot bracket
+ok 65 - GC hairpin produces traceable model-based energy and valid dot bracket
+  ---
+  duration_ms: 3.028502
+  type: 'test'
+  ...
+# Subtest: multibranch loops can form and agree with independent structural recalc
+ok 66 - multibranch loops can form and agree with independent structural recalc
+  ---
+  duration_ms: 5.792213
+  type: 'test'
+  ...
+# Subtest: GU-inclusive output differs from canonical-only in at least one diagnostic
+ok 67 - GU-inclusive output differs from canonical-only in at least one diagnostic
+  ---
+  duration_ms: 0.31752
+  type: 'test'
+  ...
+# Subtest: non-pairing controls stay unpaired
+ok 68 - non-pairing controls stay unpaired
+  ---
+  duration_ms: 0.286633
+  type: 'test'
+  ...
+# Subtest: energy reconciles across synthetic length/loop examples
+ok 69 - energy reconciles across synthetic length/loop examples
+  ---
+  duration_ms: 10.244813
+  type: 'test'
+  ...
+# Subtest: model metadata does not assert ViennaRNA parity
+ok 70 - model metadata does not assert ViennaRNA parity
+  ---
+  duration_ms: 0.441176
+  type: 'test'
+  ...
+# Subtest: input FASTA validation and 280nt cap
+ok 71 - input FASTA validation and 280nt cap
+  ---
+  duration_ms: 0.497081
+  type: 'test'
+  ...
+# Subtest: 280nt global calculation finite and consistent
+ok 72 - 280nt global calculation finite and consistent
+  ---
+  duration_ms: 112.180539
+  type: 'test'
+  ...
+# Subtest: version 0.5 and explicit incomplete-model metadata
+ok 73 - version 0.5 and explicit incomplete-model metadata
+  ---
+  duration_ms: 1.332962
+  type: 'test'
+  ...
+# Subtest: Turner generic 1x5 initiation, 0.6 asymmetry, and AU 0.7 closure
+ok 74 - Turner generic 1x5 initiation, 0.6 asymmetry, and AU 0.7 closure
+  ---
+  duration_ms: 0.487907
+  type: 'test'
+  ...
+# Subtest: two AU/GU closing pairs add a separately auditable 0.7 kcal/mol apiece
+ok 75 - two AU/GU closing pairs add a separately auditable 0.7 kcal/mol apiece
+  ---
+  duration_ms: 0.194524
+  type: 'test'
+  ...
+# Subtest: three-by-three generic mismatch rules apply on both loop boundaries
+ok 76 - three-by-three generic mismatch rules apply on both loop boundaries
+  ---
+  duration_ms: 0.189596
+  type: 'test'
+  ...
+# Subtest: two-by-three GG/UU selected bonuses are explicitly partial
+ok 77 - two-by-three GG/UU selected bonuses are explicitly partial
+  ---
+  duration_ms: 1.14561
+  type: 'test'
+  ...
+# Subtest: internal loop structure evaluator matches reported decomposed terms
+ok 78 - internal loop structure evaluator matches reported decomposed terms
+  ---
+  duration_ms: 2.01429
+  type: 'test'
+  ...
+# Subtest: MFE dynamic programming still reconciles with independent structure-scoring recursion
+ok 79 - MFE dynamic programming still reconciles with independent structure-scoring recursion
+  ---
+  duration_ms: 15.021102
+  type: 'test'
+  ...
+# Subtest: Partial parameter packs are never labeled complete
+ok 80 - Partial parameter packs are never labeled complete
+  ---
+  duration_ms: 2.493734
+  type: 'test'
+  ...
+# Subtest: Invalid values and malformed lookup keys are rejected
+ok 81 - Invalid values and malformed lookup keys are rejected
+  ---
+  duration_ms: 0.833187
+  type: 'test'
+  ...
+# Subtest: Imported specialized internal loop overrides fallback, and can be cleared
+ok 82 - Imported specialized internal loop overrides fallback, and can be cleared
+  ---
+  duration_ms: 4.502767
+  type: 'test'
+  ...
+# Subtest: Exterior two-sided mismatch takes precedence over two individual dangles when loaded
+ok 83 - Exterior two-sided mismatch takes precedence over two individual dangles when loaded
+  ---
+  duration_ms: 0.933489
+  type: 'test'
+  ...
+# Subtest: Real external tools are not inferred from local tests
+ok 84 - Real external tools are not inferred from local tests
+  ---
+  duration_ms: 0.209246
+  type: 'test'
+  ...
+1..84
+# tests 84
+# suites 0
+# pass 84
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4810.271211

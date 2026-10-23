@@ -1,0 +1,6 @@
+{
+  "status": "BLOCKED",
+  "reason": "Missing authentic RNAfold version and source metadata.",
+  "minimumCases": 125,
+  "scientificUse": "NOT QUALIFIED"
+}

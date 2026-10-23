@@ -1,0 +1,2 @@
+id,sequenceLength,gcPercent,nexus_dg,reference_dg,dg_error,pair_f1,pair_precision,pair_sensitivity,exact_structure,reference_source,reference_version
+ViennaRNA_manual_historical_example,27,55.6,0,'-1.9,1.9,0,0,0,false,ViennaRNA RNAfold documentation,"manual illustration, version/options not fully reproducible"

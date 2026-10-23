@@ -1,0 +1,10 @@
+{
+  "release": "NEXUS v1.8.15 / ThermoFold reference-mode v0.6",
+  "scientific_claim": "reference interoperability; independent engine NOT ViennaRNA-equivalent",
+  "local_references_checked": 632,
+  "broken_references": 0,
+  "official_ViennaRNA_binary_bundled": false,
+  "independent_real_RNAfold_comparison": "NOT RUN: executable unavailable",
+  "adapter_tests_passed": 12,
+  "batch_runner_mock_tests_passed": 4
+}

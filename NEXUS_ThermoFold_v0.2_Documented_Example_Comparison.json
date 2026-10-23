@@ -1,0 +1,56 @@
+{
+  "reportVersion": "0.2.0",
+  "engineVersion": "0.1.0",
+  "createdAtUTC": "2026-10-22T19:11:43.002Z",
+  "records": [
+    {
+      "id": "ViennaRNA_manual_historical_example",
+      "sequenceLength": 27,
+      "gcPercent": 55.55555555555556,
+      "prediction": {
+        "dg": 0,
+        "structure": "...........................",
+        "model": "NEXUS partial nearest-neighbor MFE (canonical AU/GC; no multibranch loops)",
+        "modelVersion": "0.1.0"
+      },
+      "reference": {
+        "dg": -1.9,
+        "structure": "(((.((((.......)).)))))....",
+        "source": "ViennaRNA RNAfold documentation",
+        "sourceVersion": "manual illustration, version/options not fully reproducible",
+        "options": "Illustrative manual output from RNAfold --MEA -d2 -p; parameter snapshot not specified",
+        "provenanceType": "historical_documentation_not_matched"
+      },
+      "deltaGError": 1.9,
+      "absoluteEnergyError": 1.9,
+      "pairAccuracy": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 7,
+        "predictedPairs": 0,
+        "referencePairs": 7,
+        "precision": 0,
+        "sensitivity": 0,
+        "f1": 0,
+        "exact": false
+      },
+      "warnings": [
+        "NEXUS partial energy model and external reference may use different pairing/loop/dangle assumptions; numerical parity is not implied."
+      ]
+    }
+  ],
+  "summary": {
+    "cases": 1,
+    "withEnergy": 1,
+    "withStructure": 1,
+    "maeKcalMol": 1.9,
+    "rmseKcalMol": 1.9,
+    "meanBiasKcalMol": 1.9,
+    "meanPairF1": 0,
+    "exactStructureFraction": 0,
+    "aggregatePrecision": 0,
+    "aggregateSensitivity": 0,
+    "caveat": "These are differences between different thermodynamic models, NOT experimental structural accuracy. Accuracy vs observed RNA structures requires curated experimental reference data."
+  },
+  "disclaimer": "Reference predictor agreement is NOT experimental structure accuracy; NEXUS and ViennaRNA use unequal energy models."
+}

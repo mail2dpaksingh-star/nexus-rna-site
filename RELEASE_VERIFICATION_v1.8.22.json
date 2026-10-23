@@ -1,0 +1,29 @@
+{
+  "version": "1.8.22",
+  "old_files": 211,
+  "current_files": 221,
+  "changed_files": [
+    "index.html",
+    "tools/construct-studio/evidence.html",
+    "tools/project-hub/index.html"
+  ],
+  "added_files": [
+    "README_NEXUS_v1.8.22_INSTRUMENT_EVIDENCE.md",
+    "tests/evidence-instrument-v22.test.cjs",
+    "tools/construct-studio/evidence-instrument-core.js",
+    "tools/construct-studio/evidence-instrument-ui.js",
+    "tools/construct-studio/examples/README.md",
+    "tools/construct-studio/examples/bioanalyzer_documented_peak_SYNTHETIC.csv",
+    "tools/construct-studio/examples/flowjo_documented_statistics_SYNTHETIC.csv",
+    "tools/construct-studio/examples/gen5_documented_layout_SYNTHETIC.csv",
+    "tools/construct-studio/examples/biorad_documented_columns_SYNTHETIC.csv",
+    "tools/construct-studio/examples/quantstudio_documented_columns_SYNTHETIC.tsv"
+  ],
+  "removed_files": [],
+  "thermofold_files_verified_unchanged": 59,
+  "external_genuine_vendor_export_acceptance_tests": 0,
+  "synthetic_vendor_style_profiles_tested": 5,
+  "automated_new_tests": 23,
+  "browser_test": "isolated Chromium PASS",
+  "scientific_qualification": "Research prototype; not qualified on actual instrument exports"
+}

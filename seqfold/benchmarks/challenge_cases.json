@@ -1,0 +1,627 @@
+[
+  {
+    "id": "GC_hairpin_9",
+    "sequence": "GGGAAACCC",
+    "notes": "short synthetic GC hairpin; not an experimentally verified structure"
+  },
+  {
+    "id": "AU_hairpin_9",
+    "sequence": "AAAGGGUUU",
+    "notes": "short synthetic AU-rich sequence"
+  },
+  {
+    "id": "GU_sensitive_12",
+    "sequence": "GGUGAAAUACCC",
+    "notes": "GU-rich input to expose omitted wobble energetics"
+  },
+  {
+    "id": "no_pair_polyA",
+    "sequence": "AAAAAAAAAAAAAAAAAAAA",
+    "notes": "negative/zero-pair control"
+  },
+  {
+    "id": "short_loop_GC",
+    "sequence": "GCGCGAAAGCGC",
+    "notes": "short canonical motifs"
+  },
+  {
+    "id": "alternating_GC",
+    "sequence": "GCGCGCGCGAAAAAGCGCGCGC",
+    "notes": "alternative duplex placements"
+  },
+  {
+    "id": "bulge_candidate",
+    "sequence": "GGGCAAACCCAAACCC",
+    "notes": "bulge/internal loop search"
+  },
+  {
+    "id": "polyU_short",
+    "sequence": "UUUUUUUUUUUUUUUU",
+    "notes": "polyU negative-like control"
+  },
+  {
+    "id": "multibranch_challenge",
+    "sequence": "GGGAAACCCUUUCCCAAAGGGUUUGGGAAACCC",
+    "notes": "two or more stems, candidate branching complexity"
+  },
+  {
+    "id": "medium_74",
+    "sequence": "GGGAAACCCUUACGUACGUAAGGCCAAAUUGGCCGCUAGCUAGCAAACCCGGGUAACGUACGUAAGGCCAAAUU",
+    "notes": "medium synthetic case"
+  },
+  {
+    "id": "turner_CGAG_tetraloop",
+    "sequence": "CCGAGG",
+    "notes": "isolated Turner 2004 special hairpin motif"
+  },
+  {
+    "id": "turner_C3_penalty",
+    "sequence": "GCCCC",
+    "notes": "isolated C3 loop penalty"
+  },
+  {
+    "id": "turner_C6_penalty",
+    "sequence": "GCCCCCCC",
+    "notes": "isolated six-C loop penalty"
+  },
+  {
+    "id": "hairpin_UU_first_mismatch",
+    "sequence": "GUAAUUC",
+    "notes": "UU first mismatch; other tables still omitted"
+  },
+  {
+    "id": "hairpin_GG_first_mismatch",
+    "sequence": "GGAAAGC",
+    "notes": "GG first mismatch; other tables still omitted"
+  },
+  {
+    "id": "synthetic_001_12nt",
+    "sequence": "UAAGAGAAAAUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_002_18nt",
+    "sequence": "AAGAUGUUACAAUACCAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_003_24nt",
+    "sequence": "UCGAUUACAAUUAUUUUUUGUACU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_004_36nt",
+    "sequence": "AAUAGAUCAAACUUGCUAUGUUUACUCUUAAAUUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_005_48nt",
+    "sequence": "CGUCAUACGUAAUUUAGUUAAAUCAUCAUUGGUCAUAUCUAUAGUUAC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_006_72nt",
+    "sequence": "AUAAAAAUAAAUAAUUAUAGCAGUAAUGUCCAGGUGAGAUGCUGAGCUUAUAAUCAUGUCUUAAGUACAAGA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_007_100nt",
+    "sequence": "UACUGACAUACACAAUUAUGUCUUAUUGAAAUACUGGCUAGUAGAGUAAAAUAAUAGUUAGUUCACAGGUAAAUCAAAACUCACGCCGAAGUGAUACUUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_008_140nt",
+    "sequence": "AUUAAAGGGGUAGCUAACUAGAUAACGAUAAUGCUACUAAGUAUGCCGAAUUUUAUUACUAAAAUUUUUGGUCUAACCUUAAUAGUGAAUGAUGAAACAUAAUGAAAAAACUGCGAGCGCCGGAUAAUUGUCGGUGUCUA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_009_190nt",
+    "sequence": "CUGAUUAUUAUUUGAUUUAUAAUCUUCCGACAAUUCAAGCUUGUCUGGCAAUUGUAGUUAAUACAAAAAUAUUGAACUUACUAAUAGUUUAAUAGUUGUCGUAGUAACACAUACAAUAGUAAUAAAAUAUUUAGUUUAAUCGUCUAUAAUAGUAAUUUUAUUAUAUACCCAAUCCAAUAAAUUUACUCAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_010_240nt",
+    "sequence": "UGGCUAUUGCUUUCAUUAUCCAGUAUAUCGCAUUGACAGUUUUGUUUGCAUUAUAUGCAUUAUAAUAAUAAUCAAAGUAAGUAUUUCGUUAGUUAUUCUCACAUAUAUAUAUAAUAUAAAUAUAAAGUUUUCCCGGCACUUAUAUUGAUUAAACUUAGUUUCUUUGAUUACUAGUAUUUAGGAUUAAAUAACUACCAAGCAAACGAACUGUAUAUAUUUAUUUUAUACUGAUGAAAACUA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_011_12nt",
+    "sequence": "UUGACCCUAUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_012_18nt",
+    "sequence": "GACGAUAUAGACCCUCGU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_013_24nt",
+    "sequence": "GCAGGGGGGCAUAUAUCGUGUUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_014_36nt",
+    "sequence": "ACUAUACAUAGACUAUCUACAUACGAGCUCCAAACC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_015_48nt",
+    "sequence": "CGCCUACCCGGUGCCCGACGGUACACUGCGUAUGGAGUCCCUGAGGAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_016_72nt",
+    "sequence": "CAUUUGCGCUCGUCAGGAAUUUCUCGAUCCCCUAGUUUAUUCGUAUGUCUAUACGGUUCUACCGUCCGGAGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_017_100nt",
+    "sequence": "AGCGGAGACUUAUCCGCCUGAACCUCAAGUAGCGGAAGGUUCUUUGGCUUUCCCUAAUCUCCCAGGGAUGUCGAUAGCCACACGUUGCCUGCUUAACCCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_018_140nt",
+    "sequence": "GGGCACACAGUACGUACUUUCCCUAAGUCAGCUUGGGGAGCCCGCGAUCGCUAAAGUGGCCCGUGUAAUUCAAAUCGGGGGAGGAUGCUAAUAAUCUAGAUCGUAACCGAGCAUACUUUUAACGAGUGUCGGGUGUCAUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_019_190nt",
+    "sequence": "AAUCUGACCCACUAGGCCCUCACGCCCCUGACCCCUCUAAGUAAAUAGAGUCAUCGCCUGAUCCAAACUACAUUGCUCGUUGAGUCUUCCCAAUAACUCGGGUGGGCCGAUACGCGGUCGCAUAUCACUUUUAUCAACCUUUCCCCUCACGGUCGCGGAGAAAAAUAUAAUUACCGAAUGCGGCUCAACA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_020_240nt",
+    "sequence": "GAGCAAACCUAGCUACGGUUGCCUAUCCGGCGGUCUGUGCAGUAGCGUCCACACAAUUAUGAAGACUGGUCACGAAGCCAGCUACGCGAUACACGCCCUACAAUGGAAUUGCUAAUUGGUGUUAUGAUUGAAGUAUCCUUAGCAUACGACUUUACAAGUAAAUCGGGACCUUUUAACGUUAUCACGAAUUAGGAGCCGUGUCUCCGAUGAGCCGUAAGUCUCCAUGUGCAGAUUAGACGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_021_12nt",
+    "sequence": "GACGGGGCCUCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_022_18nt",
+    "sequence": "GGGGCCUGGAGGAGGCGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_023_24nt",
+    "sequence": "GACCGGCGCCGUCCGUCGGCGUCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_024_36nt",
+    "sequence": "GACCUCCGCGUGCCCGUGGGGGGAUCCCUCGGGCUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_025_48nt",
+    "sequence": "CGACCCGCCGCGCUCAGGAGAGGUGCGCGUAGCCGGGGUACCGGCGAC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_026_72nt",
+    "sequence": "UAGGCCCAGCCAGCGGCAGGCUGAAGGGCCUUGGAUUCGCCGCCGGGCGCCGUGCCUCGCGGGAUACCGUCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_027_100nt",
+    "sequence": "GGGCCGACUCAGGCGACGCUCCCGCCCCGAUCGCCCCUGCGCCGGCGAGCGGAGCCGGUUCAAGAUCCGCGAAUGGGAGCGAGUGAUGUGGGGUGCGGGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_028_140nt",
+    "sequence": "UACGCGCUCGGUGCCGGUCCCCCCCGAUACGGACACCUUGGGGGGGGACAGCCGACAGCGCGCGUCCGUACGAUUAAAGGUAGACCCGCAGCCGCCGGGGGCCCUUCCCGGCCCGGCACCCUCGCGCCCGCUUCACGGAG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_029_190nt",
+    "sequence": "GCUCGGUCGGUGGUCCAUGAGGUGGUGCGCCAGGGAGGGCUGCCAUGGCCGCUACCGAGGCCGAGCGGAGAUACCGCCCAUGACCUACCCACCACGAGCGCGGUUCACUCGCCAGCGCACGCCGGCUCUCGGGGACGGGUCUGGUGACGCGGACGCCGGCGACGUCAUAGCCGUGCGACAGGCGGGGCCC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_030_240nt",
+    "sequence": "CGUCCCGGGGGGGCCACCCGUGUGGACGGGGACCAGCGCGCGGUCUCGACCGCGUCCUAAACUGCAGGGUACGGGCCCCCCAGAACGCGGGUGGUGGGGGACCGGGUUGUUGGGCGGUGUCGUCGCCCGUCCCGGACGCGAGGGGGGGGAAUAGCCUACAGCGGUGGCCCCCGCGGGAGGUCCGGGGCGGGCUUUACCUGGCCGGUUCGAUGGGUAAACCGCCUGCUCGCACUCUAGCUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_031_12nt",
+    "sequence": "UAACUAGCCUUG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_032_18nt",
+    "sequence": "AAAAAAAUAAUUUUCAUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_033_24nt",
+    "sequence": "UAUAUUGUUUUAUACUGCGUCUCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_034_36nt",
+    "sequence": "UUUGACCUCAACGAAUUUAAAAAAUAUUAGUUUACA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_035_48nt",
+    "sequence": "CAAAUAGUUGCGUUAAGCUUUGAGUUGUUAUUAUUCAUUCAACAAAAC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_036_72nt",
+    "sequence": "CCAAGUGCUAAUAUAUUUUUAUCUUUCUCGAAGUUUUUUUCCUAUAGAAAUGAAUCAAAACUACUAAAAAUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_037_100nt",
+    "sequence": "ACAAAUUCCUCUUUUUAAUUGUUACAGGCUAAUGAAUACGAUAUUAUUAGAAUUAUGAAUAUUCAGUUUUUGUAAUAAAUAAAAUCGUAGAUUUACCGAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_038_140nt",
+    "sequence": "AUAGUUGAAUAUAACGUAAUAAUUAAUUAUUUUUAACCCUACAAUUAACUUUAGGAUUUUUUUAUAUAAAGUAGUACACUUAAUAGUAUCAUUGCAACAAGGAUUAUAAUAGUCUACUGUUACUAAAGUCUAUUUAAAUA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_039_190nt",
+    "sequence": "UUAUUAUAUUAUUAACCUGUAGUAACAUUGUAGAUAAUGAUUAAGAUUGAUAAAAAUAAAUCCAUGUUACGAGUAAUCCCAAAGACAUUGGAGAAAAUAACUGUUUUUCGAACAAUUAAUCUAAGUAAACAUGGAAAAAUCAAUAUCGAAACCACUUAGGUCCAAUCCUCAUAAGUCAUUGGAACUGUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_040_240nt",
+    "sequence": "GUUGACAGUGGCGAGUAUUAAAAAAGACUCUAUUUAAGAAUAAGAGCCUAGUUGUGAUAUGUGCAUAAUAAUUGUUUGUUAAAUCAUAAUUAAUAUUAUUGCCCUAGAUAAAUUUUCUACAUCAAUUAGGAUUAAUUACUUAUAUAAUGGGUACAAACUAAUCAACUUGUAACACUGCAAUAAGUGGAGAUACUUUUGCUAGGACAAGUGAAUUGAAAUUUCUGCUCGUUAUGCUGAUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_041_12nt",
+    "sequence": "GAGCAUAAAGCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_042_18nt",
+    "sequence": "UGGUAUUCCCCAUUCUGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_043_24nt",
+    "sequence": "UAGAACGGUUGUUCCGCUCUUGUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_044_36nt",
+    "sequence": "CGGUCUACGGGUAGUAACGCCCAAGGGGGCGUACAC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_045_48nt",
+    "sequence": "UUCUCCCGAGCCCCUAGAGUAUGAUCUAGCAGUUCUGUAGCGAGAGGA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_046_72nt",
+    "sequence": "AGAGGUGCAAUGUGAAAAGUUAUUAGGCUUUUACAGAUCUAGCAAAGCUUUAAUAUCACGUGUCUCCGAGUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_047_100nt",
+    "sequence": "AAUCGACAGGGAGCUCGCGAAAGACCCCGGAUGCUAGGUCUGCGGAGUAUGAGCCCGUCGCUCGAAAGUAAGUCGAGGAGACAGACAACGCCCUCCUCCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_048_140nt",
+    "sequence": "UAGACUAUCUCGCCCAAUUUCUCUGUAGCUGUUCGUCAGCGUGUAUCUUACUUCCCAAAGUACUAGCCAUGUUUGUGCGCGCACCCGAUGUGGUUUCUUCAAUACCCGGUCACAUCGGUCCGACUCGGACAGAGGCAUAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_049_190nt",
+    "sequence": "CAGCAUAGUAGCAUUCAGGUGUGAUACGCAAACGAAUGGACCCCUCCAUGCGCGAGGCCCGUUCGCCAGUUUCCAAAUAAUGCCCGGGCAAAUCGGGCAAACGACAUUCCAUGAUUCCAUUGAGACAAUUCACAGGAUGAGACAAAGGAAUGGAUUUCUCGAAUCACCCUCUUAUAAUCGCUGCUCCCCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_050_240nt",
+    "sequence": "AGCAUAUUUCCAUUUAAUUGUGACCCGAGAGUGUGACCCAAGUCAAACUGUAGAUGGCCUCACUUUGCUAAGGAAAAGUCUUCGAAUACAACGUUUACUGGAAUCCUGCUUACAGGACGCAUCGUCGCAGUAAAAACAUGGUAGAAUGGCUCAUUGUGGUACUAGUAUACGAAGUCUUUGAUGCCAUAUCAUGUCCUAAAGACAGCUACCACCUGACUGUUUUCCAGAGUUUUUGACUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_051_12nt",
+    "sequence": "GGGGAUCCAUCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_052_18nt",
+    "sequence": "GGGCCAAUGCCUGCCCGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_053_24nt",
+    "sequence": "CCCACCGGCCCGCCGCAGAGGCCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_054_36nt",
+    "sequence": "CACGUGCCACGAUAGGGUGGCCGCCCCGGGCUGGCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_055_48nt",
+    "sequence": "GGUCCCCCGAAGGCGUGACUCUGCCGGCGCUGCCCUUGGUUCCGCAAG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_056_72nt",
+    "sequence": "UGCGUAGACCCGCCGGACUGGCGCCCCGCGAACGGGGCGGGACUGGUCGGAGUCCCCCGCCAGCCCGCGGCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_057_100nt",
+    "sequence": "GCCCCUUGGCGCGGGGGGCUAGGCCCUCGCACGGCGACGCAGCAGAGGUGCGGCGCCGAGGCGUCGGCCUGGCCCGCCAGGUGCGCGGCACCCGGACCCC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_058_140nt",
+    "sequence": "GGAGGCCCGAUGUGCCCUCCCGCUGAGGGUUUAGCGCCGCGACGGCUGCCGAGCUGCCCGAGCCGGCUGCCGCCAACAGGGUUACCAGCGGACCCCGGGGCCCGCUGGGUGGUCGUGCUCCGCGCACAACGCAUGUGGGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_059_190nt",
+    "sequence": "CCGCCAAGGAUGUGACAUGCUGCGAGAUCCCGCGCGCCGGGGCGGCACGGCUUCCCUGUUAUUUAGCGCUGCUGCGCGCCGCCCGCUACCCGGGCCAGGCGUGGGUUCCCUGGAAUUACCCCCCUGGACCUGAACCGCGCGCCGCACAAGGGGUCGGACGCGACGAGGGGAACGCUCCACCGCCCGGCGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_060_240nt",
+    "sequence": "UAUGAGAAGCUCCGCAUGCUUGGGCCGCCCGGCGCCCCAGCGGCGUCGCCACGUAACCGGCGGGUAACUGCCGCAACAGACUGCGCCGGCAGACAGGCGGCCCAGCACGGGCAGUCCGCACCGCGCUUCUGAUCCGUCAGAGCGGGAACUUGCAUCCCGCCCUCCCGCUGUGGCGUUGAACCCCGCCUGCCGGGGGCCACCCAGUGCACUCGCUAGGUAACAGGGGGAUGAGGCGUGCCC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_061_12nt",
+    "sequence": "GAUGAUUUUUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_062_18nt",
+    "sequence": "ACACAAAUUAGAAUUUUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_063_24nt",
+    "sequence": "GUACGAAUCCUAUAUGUUUGCUCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_064_36nt",
+    "sequence": "ACGCAAACCAAAAUACUAACAAGUAUGAAUUGUCGA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_065_48nt",
+    "sequence": "AAUAAUAUUCAGUUAAUAGUUUUGGAGGGAUCUGGAUCCUAUAGAAGU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_066_72nt",
+    "sequence": "AUAUAUAAAACAUUUAGCUAUUUUCCAUUUUAAAUUAUUUAGAAAGAUGAAUUUAUCAUCUAUAAUGACUUA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_067_100nt",
+    "sequence": "UAUUUCGGUUAUGUUACAUGAAUCGUCGAGUUUUUAUAGAGACGAAUUUAAGUAUACCUAUCUUUUGUUUAUUUUGUCGCAGUAUUUCUAUAAUCUGAAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_068_140nt",
+    "sequence": "AUAAAAAUUUCUUUUAGCUAGCUAAUCUGCUUAAACUAUAAGAAAACAUAAUAGAAAAUAAGAAUAGAAUAUCAUCGAUAUAAUUUCGACCUAUCUAAUAAUAACAUUUAUCUUCAAUGCUUUAAUACUGGAUCAAAUUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_069_190nt",
+    "sequence": "UUCAGUAUUAUUUAUUUACAAUUUAUACGUAUAAUAAAACAGGUGUAAGUAGACAGUAUCGAAAGAAGAAUUAAUUGUAUGCAUAUUCAAAUUCUUAUAAUGACCAUAUUAAUUAACCAUAUAAAUCCUGUUAUACAUUAUUCUUACUUCCAAGCAAGAUACUUAUCUAAAAUUGCUUUACUUAAUAAUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_070_240nt",
+    "sequence": "AAUUAGUAAAACAUUUGAUUUAGAUUACUGAUUACUGUAUGCCCAAACAACUAUUAAGGACAUGCAAAUGAUUAGUUUUUAUAAUUAACGAUGUACUUGCUUAAGCAGAUACAUGCGACUGAAAUUUCAUGGCCUAGGUUAUAAUAAUAAUUGUCUGUUCGAUAUAGCUACUAUGAAGCUGUAGAAAAUCAUACUCCAAUUAUUUUACAAUCAUUCGACCUGAUAUGUGACAAAUGAACC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_071_12nt",
+    "sequence": "CUCCGCAGGGUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_072_18nt",
+    "sequence": "ACAUCCGAAUAAGGUGGA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_073_24nt",
+    "sequence": "GCUGUCGGGUCGCCCUAGAUAACA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_074_36nt",
+    "sequence": "UAUAGUACAUGGAGGAUACCUGGAAGUCUAAACUAG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_075_48nt",
+    "sequence": "AUGUUGAUUUCGACCGAUCGUGCAUCUUGGACAGAUAUGGCAGUUUAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_076_72nt",
+    "sequence": "GUGUCGCCUAAGCGAGGUCACCCACAUCUAGAGACACGUAGUACUCAACUAGUGUAGCGGACGGAUGUGGCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_077_100nt",
+    "sequence": "CGGGAUGUCCAAGGAGACCCCCCCCCGCAAGGAACGUUCGUGGGGAGCAUUAGGCACAUGUGACUAACUCCCAAGUCGUCGCUGGGUCCGCGUAUCCUCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_078_140nt",
+    "sequence": "CCGAGAGUUGGUAACUUAGGUUUCGUUUGUUCCCCCCUGUGUUUCACUAAACUUUGCUUGGACCUCCAGACAUAGUCUCGUGCCACUCAUAGUUUUCAAUUAGCGAGUAGAAUAGUCAGUGACGGCUCUAGCCUGGUCAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_079_190nt",
+    "sequence": "GUACACCCUACAUUUCGUCGGCAGAGAGUGAUCCUUAUUAAUCGGAUAAGCAUCGGCUAUUGCUAUGUAGCGAUGAGAGUUUAGACAGUGAGAACUCUUUCUAUCCGACCUAUCUUAAGUGGAGCAAUCUCUAAGUCAGUAGUUUAGACGAAUUAACACGAGAUGAAAACUGUACACGAUGUAACAGCUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_080_240nt",
+    "sequence": "UUAAGUGCGGACGUUUUGGGUGCGGGCUUCCAGUGAGGCAGGUACCAUAGCGACCUGCCGGCCCAGUGUGACUGGAGCGAAAUUUAUUAGUGUGUCCAUUCUCAUGAUUGACAUAUCCUAUUUUCCCUCACUAUUCUGUGCUUAAGGGAACUAUAGUUGAGUAACGAUGAGUUCGAGAAUCGGAGCUUCCGUUUCGAGAGGACAAAAUCGGUUGCGCGGUGCAAAUAAAUGAGGUUUAUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_081_12nt",
+    "sequence": "CGGCGGUGGACC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_082_18nt",
+    "sequence": "CGGGAUGGGGACAAAUGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_083_24nt",
+    "sequence": "CGGCGCGGGGCGCACCGCUGCCCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_084_36nt",
+    "sequence": "CCCUGGGCGAUCCGAGGCCGCUGGGUGGCGCGCGGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_085_48nt",
+    "sequence": "CGAGUGCCGAGCGGGGACCCUAUCUCCCGGGCGGCGCCGCCCGUACUG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_086_72nt",
+    "sequence": "GACGUAGGUACACGCGGCUGUUCGGGAUACGGGCAGGACUCCGCGGGCCUGCCGGGCCCGGCCUCGUUUCCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_087_100nt",
+    "sequence": "AGGCUUCGCGGCCUGCUCAGAGUUCGGCCGCGCUUCCGCGCUCGGCCUGCGAAAGGAUGGGCGCAAGUUCUCGGACCGUGUUGGGCCCGGACCAGGCGCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_088_140nt",
+    "sequence": "GGCGCGAACCCGCGCACGUCGCCGCUACCCGUCGUGCCCGUGCCUAACAGGCCACCGGCCCAGCCCGGCGACCCUGGACGGGCACAGGAUAGGGUCGGUGCAUACUGCCCGUAAGCAGGCUGCCGGCCGCGCAGUCCUCU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_089_190nt",
+    "sequence": "CGCUAGUGCGCCCACUAGCCGGGCUCCGCCCACCGGAGGAAGCGCCGCGGGGGUCGGCUACCGGUACGACGAGUGGAACUAGCCCCCGGACGUCGGACUGGGCCGCCGGGCUCGGGUACCCCGCCCGUUGGGCCAUCCCGCCUUAGCCCGGGCUAUGGCGCCCCCACGCACCUAGGGCGGCUCCCCGGCA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_090_240nt",
+    "sequence": "GGGUGCAUGCCUCGAGGGCCUGGACCCCUGGUCCCCUGGCCCAGACGCGUCGUUCCCCGGCCACCCCUUCCAAGCAAGGUGCACUCGGGCCUGUUCUGGGACCUGCUCCGCCGCGCCCGGGCCGGGAGGGGGCGAGGCCGACGCUGCGGGGGGUCCGGCUGGACCCUACCGGGCGCUCCCCCUGGGUCUGGCCGGGCACCCGAACAGGCGCGUGAGAUGCUGGCCGGGGCCCGUAGCGUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 75%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_091_12nt",
+    "sequence": "AAAAUUUGAGAU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_092_18nt",
+    "sequence": "AUAUUAUUAAUCUAUAUU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_093_24nt",
+    "sequence": "UUCACUUAAUCUGAGCCUUUUAGA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_094_36nt",
+    "sequence": "UCGUUGUAGUAGAAUAAAUAUGGAUGAUUCUAAAAC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_095_48nt",
+    "sequence": "UUCUUAAUUAUGUAACGAUUAACUAAAGUUAACGGAUAAAUUUACUGU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_096_72nt",
+    "sequence": "ACAUUUGUCGCUACAUAUAUUAAUUUCAAGUAUGAAAAAUAAUGCUCAUAUAGUUGCACGCAUCAAAUAUGU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_097_100nt",
+    "sequence": "AUAUUGAGAAUUCAUUAUUGUUCCUUCAAAGAAGAAUAAAUGAUUCGUGAGUCACAUAAAAUAAGACUGAUUAUUUACUGCAAGAAUGCCUACUAAGGAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_098_140nt",
+    "sequence": "CAGUAUAUUGAUAUCUACAUAGGAAAUUAAUAAUUAUAAGGAGUGAUGAAUAACAAGAUCUACAAAAAACGCUAAUGAUGUCAGUAUUUAGUUGUUAUAAGAUAUGAAUAUUACUUGAACCACCCAUGGUAACGUACUCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_099_190nt",
+    "sequence": "ACUAUCUUAUGAUAAAGCUCAAGGAUUAUAACCUGCUUAUAAAAUGAUAUAGAUAUUAUGAUUACAAAAAAGCAUAUAUUAUAACCAAAUAAAAGUGAGAAAUAGAAAAAUUUAUACCUCAUAAUUUCUCUGGCAUGGAUAUAUAGAUAAAACUUAUGUUUAGUAACUGUUGACGAUAACUAUUCCAGAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_100_240nt",
+    "sequence": "CUUUCGGUCCAACUUUUUCAAAAUAGUCAAAAUCAUCUAUGAUCAUUAACCUCAUGUAUGAUUAAUUUAUGUCUAAAAUAAUUUAUCAAAGUAACAUUUGCACAAUCCUUAUAUAAUAGCUAAAUUUUAAUCUAUAUUAAAUCCUUUAAUUUAACACAAUCAAAUAAAUUCCGUUUAUUUUAUUUUUAUAUAAAAUUUACUUAAUUAAAUAUUAAAGUGAUAAUCUAAAAAAAAAAAUCG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 25%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_101_12nt",
+    "sequence": "UGCGGAGCUGUC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_102_18nt",
+    "sequence": "UUCAGUGCGGGAUACCCC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_103_24nt",
+    "sequence": "CGCUAAUAACAUAGGGGGUUUAAA",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_104_36nt",
+    "sequence": "CCCCGUGGCGAGAAUAUAAUAAUGGUCUCCGCUCGG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_105_48nt",
+    "sequence": "GUAAAGUGAGAGGCCGGUCCUGUUAGUCUCUACUUUUUAAAGACCAGU",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_106_72nt",
+    "sequence": "GGCUCACAGCAGACAUAUCGUGCUGGAACACUCAAAACAGUUAUAGGUCGACUCGCUGGUCCUGUAAGGCUG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_107_100nt",
+    "sequence": "GGAUGCGAAUGGCGUUUGAGGCGUGGAUCCCCCAGGCAUGAAGAUCGACCUGCCCGAAUCACCGUUGAGAAAUUUUUUACUCAACUUCGAGCAUGUGUCC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_108_140nt",
+    "sequence": "AGCCACACUUAACUCGCUGUCUGGCUCUUAUCUGGUGCUAGUGCUCGCGAUCAGAGGCAAGCGACGAAUAGAGCGUGUAUUAACGCACCAGGCACAGGCGAGCGAUAUACCUGCUCGGCACAGUGUCUGCAGGAAGUACG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_109_190nt",
+    "sequence": "GUGAUGGCGACAAUUCAUUACCAGCGGCAUAUAUUAAUGACACACAUACGGAUAACAAGGUGAUUCACAUCCUCAAGCUCACAUACAGAUUAUAUCCCGCUAGAGUAGUUGUAGACUCGCUGUCUGGCAAAACGGUAGCCCACAUAUCAGCUACCAACGUAAGACGCUAUCCUCCUUGGGCUACAACAGC",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  },
+  {
+    "id": "synthetic_110_240nt",
+    "sequence": "GUGGCUCAAGCUCCGACCGGUAUUAGAAAGUUCUAAUUCUCUUAAGAUCUCCAGCCUGGAACCGUAUGCAUCCGAUACAGACUGAGAACAGCCUGACGGAGUUACACUAGGGCAUAGACAGGAUAGCUAACAGCUUAACGUCCCCGAGCCAUCAUGGUUGGUAAUACGCCGUAUACCACUGCCUCUAGUUGGCUCAUUGGCCUUGUCACGCAACGCUGCGAGCAUAGUCAUCCCACAAAG",
+    "notes": "Fixed-seed synthetic challenge only; GC target 50%; not a known biological structure"
+  }
+]

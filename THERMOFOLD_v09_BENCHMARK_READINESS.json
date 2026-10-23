@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED: independent reference results unavailable unless executable/reference files are supplied",
+  "challenge_cases_prepared": 125,
+  "RNAfold_executable_found": false,
+  "RNAstructure_Fold_executable_found": false,
+  "experimental_CT_manifest_rows": 0,
+  "rnafold_benchmark_completed": false,
+  "rnastructure_benchmark_completed": false,
+  "experimental_comparison_completed": false,
+  "rule": "A source-matched comparison may be marked COMPLETE only after 125 genuine records with explicit software versions, calculation options, sample identifiers and verified base-pair structures."
+}

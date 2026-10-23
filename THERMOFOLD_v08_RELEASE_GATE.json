@@ -1,0 +1,19 @@
+{
+  "release": "NEXUS v1.8.17 / Independent ThermoFold v0.8",
+  "internal_tests": "79/79 automated tests passed",
+  "real_viennarna_batch": "BLOCKED",
+  "reason": "RNAfold binary unavailable; real reference results not generated",
+  "reference_cases_prepared": 125,
+  "independently_implemented_code": true,
+  "viennarna_code_bundled": false,
+  "mfe_max_nt": 280,
+  "restricted_ensemble_max_nt": 110,
+  "segmented_preview_max_nt": 3000,
+  "limitations": [
+    "missing tables and dangling ends",
+    "no independent experimental validation",
+    "no external prediction parity established"
+  ],
+  "independent_bruteforce_centroid_cases": 5,
+  "browser": "Isolated Chromium desktop and mobile: PASS; live deployment not tested"
+}

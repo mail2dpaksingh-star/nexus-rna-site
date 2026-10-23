@@ -1,0 +1,21 @@
+{
+  "product": "NEXUS RNA BioSolutions",
+  "site_version": "1.8.18",
+  "engine_version": "ThermoFold 0.9.0",
+  "classification": "research prototype, not validated for clinical/GMP decision-making",
+  "improvements": {
+    "internal11_12_22_import_in_dp": "implemented, external-authenticated entries required",
+    "exterior_dangle_import_in_dp": "implemented where supported; source data required",
+    "exterior_terminal_mismatch_import_in_dp": "implemented as mutually exclusive alternate state; source data required",
+    "multibranch_dangles": "not implemented",
+    "complete_turner2004_numerical_tables_included": false,
+    "full_viennarna_parity": false
+  },
+  "validation": {
+    "automated_js_tests_passed": 84,
+    "local_website_references_missing": 0,
+    "rnafold_125": "BLOCKED — official executable unavailable; zero comparisons reported",
+    "rnastructure_125": "BLOCKED — official executable unavailable; zero comparisons reported",
+    "experimental_CT": "BLOCKED — zero authenticated experimental structure records provided"
+  }
+}

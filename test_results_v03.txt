@@ -1,0 +1,234 @@
+TAP version 13
+# PASS: 15 account and project-storage integration assertions; fake database is NOT an RLS test.
+# Subtest: tests/auth-workspace.test.cjs
+ok 1 - tests/auth-workspace.test.cjs
+  ---
+  duration_ms: 61.287638
+  type: 'test'
+  ...
+# PASS: all 3,000-nt windowed fold checks and boundary validation (991 ms)
+# Subtest: tests/folding-3000.test.cjs
+ok 2 - tests/folding-3000.test.cjs
+  ---
+  duration_ms: 1026.73246
+  type: 'test'
+  ...
+# Subtest: independent published example is aligned and correctly formed
+ok 3 - independent published example is aligned and correctly formed
+  ---
+  duration_ms: 1.601978
+  type: 'test'
+  ...
+# Subtest: strict structure metrics report exact matches
+ok 4 - strict structure metrics report exact matches
+  ---
+  duration_ms: 0.242666
+  type: 'test'
+  ...
+# Subtest: strict pairing sensitivity / precision / false positives
+ok 5 - strict pairing sensitivity / precision / false positives
+  ---
+  duration_ms: 1.224798
+  type: 'test'
+  ...
+# Subtest: unpaired edge case empty/empty works
+ok 6 - unpaired edge case empty/empty works
+  ---
+  duration_ms: 0.11271
+  type: 'test'
+  ...
+# Subtest: rejects malformed dot-bracket
+ok 7 - rejects malformed dot-bracket
+  ---
+  duration_ms: 0.348997
+  type: 'test'
+  ...
+# Subtest: rejects false reference provenance
+ok 8 - rejects false reference provenance
+  ---
+  duration_ms: 0.603841
+  type: 'test'
+  ...
+# Subtest: valid energy 0 is preserved
+ok 9 - valid energy 0 is preserved
+  ---
+  duration_ms: 0.127742
+  type: 'test'
+  ...
+# Subtest: compares NEXUS restricted-model prediction against reference
+ok 10 - compares NEXUS restricted-model prediction against reference
+  ---
+  duration_ms: 5.207979
+  type: 'test'
+  ...
+# Subtest: statistical summary MAE RMSE bias with synthetic metrics
+ok 11 - statistical summary MAE RMSE bias with synthetic metrics
+  ---
+  duration_ms: 0.610532
+  type: 'test'
+  ...
+# Subtest: CSV quote parsing and injection-safe export
+ok 12 - CSV quote parsing and injection-safe export
+  ---
+  duration_ms: 0.789171
+  type: 'test'
+  ...
+# Subtest: challenge set is clearly synthetic and within supported length
+ok 13 - challenge set is clearly synthetic and within supported length
+  ---
+  duration_ms: 35.29961
+  type: 'test'
+  ...
+# Subtest: hairpin figure shows every base and paired bonds
+ok 14 - hairpin figure shows every base and paired bonds
+  ---
+  duration_ms: 3.886154
+  type: 'test'
+  ...
+# Subtest: base pair coordinates agree with dot-bracket structure
+ok 15 - base pair coordinates agree with dot-bracket structure
+  ---
+  duration_ms: 2.769589
+  type: 'test'
+  ...
+# Subtest: unpaired full RNA stays visible
+ok 16 - unpaired full RNA stays visible
+  ---
+  duration_ms: 6.132705
+  type: 'test'
+  ...
+# Subtest: exterior segments are accounted for and never assigned fake pairs
+ok 17 - exterior segments are accounted for and never assigned fake pairs
+  ---
+  duration_ms: 0.686566
+  type: 'test'
+  ...
+# Subtest: multiple exterior stem-loops render independently
+ok 18 - multiple exterior stem-loops render independently
+  ---
+  duration_ms: 5.096
+  type: 'test'
+  ...
+# Subtest: invalid bracket structures rejected
+ok 19 - invalid bracket structures rejected
+  ---
+  duration_ms: 0.57623
+  type: 'test'
+  ...
+# Subtest: branched folds render as truthful arc diagrams instead of malformed hairpins
+ok 20 - branched folds render as truthful arc diagrams instead of malformed hairpins
+  ---
+  duration_ms: 8.138351
+  type: 'test'
+  ...
+# Subtest: published GC/GC canonical stacking values
+ok 21 - published GC/GC canonical stacking values
+  ---
+  duration_ms: 1.006429
+  type: 'test'
+  ...
+# Subtest: 9nt hairpin hand calculation ∆G=5.4-2×3.26
+ok 22 - 9nt hairpin hand calculation ∆G=5.4-2×3.26
+  ---
+  duration_ms: 0.898246
+  type: 'test'
+  ...
+# Subtest: all A unpaired and no spurious negative fold
+ok 23 - all A unpaired and no spurious negative fold
+  ---
+  duration_ms: 0.274825
+  type: 'test'
+  ...
+# Subtest: FASTA normalization and DNA to RNA
+ok 24 - FASTA normalization and DNA to RNA
+  ---
+  duration_ms: 0.158058
+  type: 'test'
+  ...
+# Subtest: invalid bases and overlength rejected
+ok 25 - invalid bases and overlength rejected
+  ---
+  duration_ms: 0.518162
+  type: 'test'
+  ...
+# Subtest: deterministic, balanced dot-bracket and pair count
+ok 26 - deterministic, balanced dot-bracket and pair count
+  ---
+  duration_ms: 8.328007
+  type: 'test'
+  ...
+# Subtest: mixed motifs and medium-length synthetic input
+ok 27 - mixed motifs and medium-length synthetic input
+  ---
+  duration_ms: 21.504112
+  type: 'test'
+  ...
+# Subtest: model metadata cannot be mistaken for ViennaRNA
+ok 28 - model metadata cannot be mistaken for ViennaRNA
+  ---
+  duration_ms: 0.426795
+  type: 'test'
+  ...
+# Subtest: v0.3 supports GU/UG and published rounded NNDB stack entries
+ok 29 - v0.3 supports GU/UG and published rounded NNDB stack entries
+  ---
+  duration_ms: 1.072518
+  type: 'test'
+  ...
+# Subtest: GC hairpin produces traceable model-based energy and valid dot bracket
+ok 30 - GC hairpin produces traceable model-based energy and valid dot bracket
+  ---
+  duration_ms: 1.558121
+  type: 'test'
+  ...
+# Subtest: multibranch loops can form and agree with independent structural recalc
+ok 31 - multibranch loops can form and agree with independent structural recalc
+  ---
+  duration_ms: 12.598462
+  type: 'test'
+  ...
+# Subtest: GU-inclusive output differs from canonical-only in at least one diagnostic
+ok 32 - GU-inclusive output differs from canonical-only in at least one diagnostic
+  ---
+  duration_ms: 0.469819
+  type: 'test'
+  ...
+# Subtest: non-pairing controls stay unpaired
+ok 33 - non-pairing controls stay unpaired
+  ---
+  duration_ms: 0.473575
+  type: 'test'
+  ...
+# Subtest: energy reconciles across synthetic length/loop examples
+ok 34 - energy reconciles across synthetic length/loop examples
+  ---
+  duration_ms: 27.520109
+  type: 'test'
+  ...
+# Subtest: model metadata does not assert ViennaRNA parity
+ok 35 - model metadata does not assert ViennaRNA parity
+  ---
+  duration_ms: 0.976163
+  type: 'test'
+  ...
+# Subtest: input FASTA validation and 280nt cap
+ok 36 - input FASTA validation and 280nt cap
+  ---
+  duration_ms: 0.433765
+  type: 'test'
+  ...
+# Subtest: 280nt global calculation finite and consistent
+ok 37 - 280nt global calculation finite and consistent
+  ---
+  duration_ms: 111.528386
+  type: 'test'
+  ...
+1..37
+# tests 37
+# suites 0
+# pass 37
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1040.226514
