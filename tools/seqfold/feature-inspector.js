@@ -25,7 +25,12 @@
  .nexus-feature-inspector .nexus-f-trackline .nexus-f-tracklabel{display:inline-block;width:23ch;flex:none;overflow:hidden;text-overflow:ellipsis;white-space:pre}
  .nexus-feature-inspector .nexus-f-trackseq{color:#143a45;font-weight:700}
  .nexus-feature-inspector .nexus-f-marker{font-weight:750}
- .nexus-feature-inspector [hidden]{display:none!important}`;
+ .nexus-feature-inspector [hidden]{display:none!important}
+ .nexus-feature-range-start{filter:drop-shadow(0 0 4px #168fac)}
+ .nexus-feature-range-end{filter:drop-shadow(0 0 4px #d24a62)}
+ .nexus-feature-inspector .nexus-f-rangehint{background:#e3f0e9;border-left:3px solid #13887b;padding:8px 10px;border-radius:5px}
+ .nexus-feature-inspector .nexus-f-rangegrid{margin:10px 0}
+ .nexus-feature-inspector .nexus-f-rangebutton[aria-pressed=true]{background:#cceadc;border-color:#268878}`;
  document.head.appendChild(style);
  const mk=(tag,cls,text)=>{let e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;};
  const wrap=seq=>(seq.match(/.{1,70}/g)||[]).join('\n');
@@ -41,13 +46,21 @@
  const maps=[{id:'plasmid-svg',record:()=>window.NEXUS_GET_CURRENT_RECORD?.()}, {id:'plib-map',record:()=>window.NEXUS_GET_ADVANCED_MAP_RECORD?.('plib-map')}, {id:'clone-map',record:()=>window.NEXUS_GET_ADVANCED_MAP_RECORD?.('clone-map')}];
  for(const config of maps){const map=document.getElementById(config.id);if(!map)continue;
   const panel=mk('section','nexus-feature-inspector');panel.setAttribute('aria-label','Select, annotate and download plasmid region');
-  const title=mk('h3','','Selected plasmid region · 5′ → 3′');const instruction=mk('p','','Click a colored feature arrow, or enter reference positions to select any DNA region. Add your own verified or proposed feature labels beneath the sequence.');
+  const title=mk('h3','','Selected plasmid region · 5′ → 3′');const instruction=mk('p','','Click one arrow for that feature, or select a start and end feature to export the complete intervening DNA with its existing annotations. Manual annotation is optional.');
+  const spanTitle=mk('h4','','Select complete region by plasmid features');
+  const spanHint=mk('p','nexus-f-small','For example, choose Promoter → Terminator. This includes intervening nucleotides and automatically projects every overlapping existing feature as a track beneath the sequence. Only annotations supplied with the plasmid are identified automatically.');
+  const spanGrid=mk('div','nexus-f-grid nexus-f-rangegrid');
+  const startFeatureBox=mk('label'),startFeature=mk('select');startFeature.setAttribute('aria-label','Start feature (5 prime)');startFeatureBox.append(mk('span','','Start feature (5′)'),startFeature);
+  const endFeatureBox=mk('label'),endFeature=mk('select');endFeature.setAttribute('aria-label','End feature (3 prime)');endFeatureBox.append(mk('span','','End feature (3′)'),endFeature);spanGrid.append(startFeatureBox,endFeatureBox);
+  const featureButtons=mk('div');const selectSpan=action('Show DNA from first → last feature',featureButtons),mapMode=action('Select two arrows on map',featureButtons);
+  mapMode.classList.add('nexus-f-rangebutton');mapMode.setAttribute('aria-pressed','false');
+  const spanStatus=mk('p','nexus-f-rangehint','Choose feature labels above, or click “Select two arrows on map” and then click the start feature followed by the end feature.');spanStatus.setAttribute('role','status');
   const rangeGrid=mk('div','nexus-f-grid');
   const [startBox,start]=input('Reference start (1-based)','number','1'),[endBox,end]=input('Reference end (inclusive)','number','100'),[strandBox,strand]=choice('View selected DNA as', [['1','Forward strand (+), 5′→3′'],['-1','Reverse complement (−), 5′→3′']]);
   rangeGrid.append(startBox,endBox,strandBox);
   const choose=action('Select coordinates',panel);
   const info=mk('p'),warning=mk('p','nexus-f-warning'),hint=mk('p','nexus-f-small','Reference and annotation positions use 1-based inclusive coordinates. If the plasmid is circular, start > end selects a region crossing the origin.');
-  panel.append(title,instruction,rangeGrid,info,warning,hint);
+  panel.append(title,instruction,spanTitle,spanHint,spanGrid,featureButtons,spanStatus,rangeGrid,choose,info,warning,hint);
   const seqTitle=mk('h4','','Nucleotide sequence');const textarea=mk('textarea');textarea.readOnly=true;textarea.setAttribute('aria-label','Selected DNA 5 prime to 3 prime sequence');
   const copy=action('Copy sequence',panel),fasta=action('Download FASTA',panel);
   const editorTitle=mk('h4','','Add an annotation under the selected sequence');
@@ -62,9 +75,33 @@
   const exportTitle=mk('h4','','Download selected region');
   const exports=mk('div');const annotated=action('Annotated TXT',exports),json=action('Annotated JSON',exports),gb=action('GenBank (.gb)',exports),importBtn=action('Import annotated JSON',exports),importFile=mk('input');importFile.type='file';importFile.accept='.json,application/json';importFile.hidden=true;
   const exportHint=mk('p','nexus-f-small','FASTA contains nucleotides only; download annotated TXT, JSON or GenBank to retain feature labels. Exported GenBank uses a linear selected region with simple clipped annotations. Export does not modify the original plasmid or your saved library.');
-  panel.append(seqTitle,textarea,copy,fasta,editorTitle,editHint,editGrid,add,annotationList,tracksTitle,tracks,exportTitle,exports,importFile,exportHint);
+  panel.append(seqTitle,textarea,tracksTitle,tracks,copy,fasta,editorTitle,editHint,editGrid,add,annotationList,exportTitle,exports,importFile,exportHint);
   map.insertAdjacentElement('afterend',panel);
-  let region=null,annotations=[],record=null;
+  let region=null,annotations=[],record=null,awaitingArrow=0,startArrowIndex=null;
+  function stopMapMode(){awaitingArrow=0;startArrowIndex=null;mapMode.setAttribute('aria-pressed','false');mapMode.textContent='Select two arrows on map';}
+  function markArrow(index,which){const el=map.querySelector(`[data-nexus-feature-index="${index}"]`);if(el)el.classList.add(which);}
+  function paintArrowSelection(){map.querySelectorAll('.nexus-feature-range-start,.nexus-feature-range-end').forEach(e=>e.classList.remove('nexus-feature-range-start','nexus-feature-range-end'));
+    if(startArrowIndex!==null)markArrow(startArrowIndex,'nexus-feature-range-start');
+  }
+  function updateFeatureChoices(){const rec=config.record(),fs=Array.isArray(rec?.features)?rec.features.slice(0,35):[];
+    for(const el of [startFeature,endFeature])el.replaceChildren();
+    fs.forEach((f,i)=>{const desc=String(f.label||f.type||'Feature')+' · '+f.start+'–'+f.end+' ('+(Number(f.strand)===-1?'−':'+')+')';for(const el of [startFeature,endFeature]){const o=mk('option','',desc);o.value=String(i);el.append(o);}});
+    startFeature.disabled=endFeature.disabled=selectSpan.disabled=fs.length===0;
+    if(fs.length){let prom=fs.findIndex(f=>/promoter/i.test(String(f.label||'')+' '+String(f.type||''))),term=fs.findIndex(f=>/terminator/i.test(String(f.label||'')+' '+String(f.type||'')));
+      startFeature.value=String(prom>=0?prom:0);endFeature.value=String(term>=0?term:fs.length-1);
+      spanStatus.textContent='Ready: choose the 5′ starting feature and 3′ ending feature, then click Show DNA.';
+    }else spanStatus.textContent='No annotated features are available. Import an annotated GenBank record or select coordinates manually.';
+    stopMapMode();paintArrowSelection();
+  }
+  function showFeatureSpan(from,to){try{
+    const rec=config.record();const selected=R.chooseFeatureSpan(rec,from,to);
+    startFeature.value=String(from);endFeature.value=String(to);
+    setRegion(rec,selected.start,selected.end,selected.orientation,`${selected.startLabel} → ${selected.endLabel}`);
+    // setRegion automatically projects ALL annotations overlapping this interval.
+    spanStatus.textContent=`Selected ${selected.startLabel} → ${selected.endLabel}: ${selected.length.toLocaleString()} nt, ${selected.orientation===-1?'reverse':'forward'} strand; ${annotations.length} existing annotation track(s).`;
+    stopMapMode();paintArrowSelection();
+    panel.scrollIntoView?.({behavior:'auto',block:'start'});
+  }catch(err){spanStatus.textContent='Cannot select feature-to-feature interval: '+(err.message||String(err));warning.textContent=spanStatus.textContent;}}
   const available=()=>{for(let e of [copy,fasta,add,annotated,json,gb,importBtn,textarea])e.disabled=!region;};
   function renderTracks(){tracks.replaceChildren();if(!region){tracks.textContent='Select a plasmid feature or reference region to display the sequence with annotation tracks.';return;}
     for(const b of R.rowsOf(region.sequence,annotations)){
@@ -78,7 +115,7 @@
     if(!annotations.length)annotationList.append(mk('span','nexus-f-small','No annotation tracks yet. Use the editor above to add one.'));
     annotations.forEach((a,i)=>{const chip=mk('span','nexus-f-chip');const name=mk('span','',`${a.label} · ${a.start}–${a.end} · ${a.strand===-1?'−':'+'}${a.origin==='reference'?' · from existing map':''}${a.partial?' · clipped':''}`);const remove=action('Remove',chip);remove.setAttribute('aria-label','Remove annotation '+a.label+' from region export');remove.addEventListener('click',()=>{annotations.splice(i,1);renderList();renderTracks();});chip.prepend(name);annotationList.append(chip);});
   }
-  function reset(){region=null;record=null;annotations=[];textarea.value='';info.textContent='';warning.textContent='';copy.textContent='Copy sequence';renderList();renderTracks();available();}
+  function reset(){region=null;record=null;annotations=[];textarea.value='';info.textContent='';warning.textContent='';copy.textContent='Copy sequence';stopMapMode();paintArrowSelection();renderList();renderTracks();available();}
   function setRegion(rec,a,b,dir,clickedLabel){
     try{
       const next=R.chooseRegion(rec,a,b,dir);const projected=R.projectFeatures(rec,next);
@@ -98,8 +135,17 @@
     setRegion(rec,f.start,f.end,f.strand,f.label);
   }catch(err){warning.textContent='Unable to select feature: '+(err.message||String(err));}}
   function target(event){return event.target instanceof Element?event.target.closest('[data-nexus-feature-index]'):null;}
-  map.addEventListener('click',e=>{const el=target(e);if(el&&map.contains(el))selectFeature(Number(el.dataset.nexusFeatureIndex));});
-  map.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=target(e);if(!el||!map.contains(el))return;e.preventDefault();selectFeature(Number(el.dataset.nexusFeatureIndex));});
+  function mapArrowPicked(index){
+    if(awaitingArrow===1){startArrowIndex=index;startFeature.value=String(index);awaitingArrow=2;paintArrowSelection();spanStatus.textContent='Start feature selected. Now click the LAST feature arrow (for example, Terminator).';return;}
+    if(awaitingArrow===2){if(index===startArrowIndex){spanStatus.textContent='Click a different end feature, or click “Select two arrows on map” to cancel.';return;}
+      const from=startArrowIndex;endFeature.value=String(index);showFeatureSpan(from,index);return;}
+    selectFeature(index);
+  }
+  mapMode.addEventListener('click',()=>{if(awaitingArrow){stopMapMode();paintArrowSelection();spanStatus.textContent='Two-arrow selection canceled.';return;}
+    awaitingArrow=1;mapMode.textContent='Cancel two-arrow selection';mapMode.setAttribute('aria-pressed','true');spanStatus.textContent='Click the FIRST feature arrow (for example, Promoter).';});
+  selectSpan.addEventListener('click',()=>showFeatureSpan(Number(startFeature.value),Number(endFeature.value)));
+  map.addEventListener('click',e=>{const el=target(e);if(el&&map.contains(el))mapArrowPicked(Number(el.dataset.nexusFeatureIndex));});
+  map.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const el=target(e);if(!el||!map.contains(el))return;e.preventDefault();mapArrowPicked(Number(el.dataset.nexusFeatureIndex));});
   choose.addEventListener('click',()=>{const rec=config.record();if(!rec){warning.textContent='No plasmid record is selected.';return;}setRegion(rec,start.value,end.value,strand.value,'Selected region');});
   type.addEventListener('change',()=>{label.value=type.value.split('|')[1]||'Custom feature';});
   add.addEventListener('click',()=>{if(!region)return;try{
@@ -123,7 +169,7 @@
     }catch(err){warning.textContent='Import failed: '+String(err.message||err);}
   });
   // When the active plasmid or topology is changed and map SVG is replaced, discard stale selections.
-  new MutationObserver(()=>{title.textContent='Selected plasmid region · 5′ → 3′';reset();const rec=config.record();if(rec?.sequence){start.value='1';end.value=String(Math.min(rec.sequence.length,100));}}).observe(map,{childList:true});
-  reset();const initial=config.record();if(initial?.sequence)end.value=String(Math.min(initial.sequence.length,100));
+  new MutationObserver(()=>{title.textContent='Selected plasmid region · 5′ → 3′';reset();const rec=config.record();if(rec?.sequence){start.value='1';end.value=String(Math.min(rec.sequence.length,100));}updateFeatureChoices();}).observe(map,{childList:true});
+  reset();const initial=config.record();if(initial?.sequence)end.value=String(Math.min(initial.sequence.length,100));updateFeatureChoices();
  }
 })();

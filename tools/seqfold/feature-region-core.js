@@ -27,6 +27,25 @@
     const selectedSequence = orientation === -1 ? reverseComplement(forward) : forward;
     return {name:String(record.name || 'Untitled plasmid').slice(0,100),source:String(record.source || ''),recordId:String(record.id||''),start,end,orientation,wrapped:start>end,positions,sequence:selectedSequence,length:len,recordLength:n,circular:Boolean(record.circular)};
   }
+  // Select a complete transcribed interval by two annotated features, inclusive.
+  // The caller chooses feature order explicitly: 5′ start feature to 3′ end feature.
+  // For minus-strand features, coordinates are reversed before reverse-complementing.
+  function chooseFeatureSpan(record, startFeatureIndex, endFeatureIndex) {
+    if (!record || !Array.isArray(record.features)) throw Error('Choose an annotated plasmid first.');
+    const firstIndex=Number(startFeatureIndex),lastIndex=Number(endFeatureIndex);
+    if(!Number.isInteger(firstIndex)||!Number.isInteger(lastIndex)||firstIndex<0||lastIndex<0||firstIndex>=record.features.length||lastIndex>=record.features.length) throw Error('Select valid start and end features.');
+    const first=record.features[firstIndex],last=record.features[lastIndex],n=record.sequence?.length||0;
+    function check(f){
+      const a=Number(f.start),b=Number(f.end);
+      if(!Number.isInteger(a)||!Number.isInteger(b)||a<1||b<a||b>n)throw Error('A selected feature has invalid reference coordinates.');
+      return {start:a,end:b,strand:Number(f.strand)===-1?-1:1,label:String(f.label||f.type||'Feature')};
+    }
+    const a=check(first),b=check(last);
+    if(a.strand!==b.strand)throw Error('The two feature arrows are on opposite strands. Select features in the same 5′→3′ orientation, or use manual coordinates.');
+    const forward=a.strand===1;
+    const region=chooseRegion(record,forward?a.start:b.start,forward?b.end:a.end,a.strand);
+    return {...region,startLabel:a.label,endLabel:b.label,startFeatureIndex:firstIndex,endFeatureIndex:lastIndex};
+  }
   function cleanAnnotation(annotation, len) {
     const start=Number(annotation.start),end=Number(annotation.end);
     if(!Number.isInteger(start)||!Number.isInteger(end)||start<1||end<start||end>len)throw Error(`Annotation coordinates must be 1–${len}, 1-based and inclusive.`);
@@ -75,5 +94,5 @@
     return head.join('\n')+'\n';
   }
   function genbankFeatures(annotations,len){return annotations.map(a=>{let f=cleanAnnotation(a,len);const whitelist=new Set(['promoter','regulatory','CDS','gene','rep_origin','misc_feature','terminator','protein_bind','RBS','5UTR','3UTR']);return {start:f.start,end:f.end,strand:f.strand,type:whitelist.has(f.type)&&!['RBS','5UTR','3UTR'].includes(f.type)?f.type:'misc_feature',label:f.label};});}
-  return Object.freeze({maxLength,reverseComplement,chooseRegion,cleanAnnotation,projectFeatures,rowsOf,annotatedText,genbankFeatures});
+  return Object.freeze({maxLength,reverseComplement,chooseRegion,chooseFeatureSpan,cleanAnnotation,projectFeatures,rowsOf,annotatedText,genbankFeatures});
 });
