@@ -160,7 +160,7 @@
   function payload(){return {format:'nexus-selected-region-v1',application:'NEXUS RNA BioSolutions',provenance:'User annotations are not sequence-validated; inspect original GenBank source for complex features.',record:{name:region.name,source:region.source,synthetic:isDemo(record),length:region.recordLength},selection:{start:region.start,end:region.end,orientation:region.orientation,wrapped:region.wrapped,length:region.length},sequence:region.sequence,annotations:annotations.map(a=>({...a}))};}
   json.addEventListener('click',()=>{if(region)download(baseName()+'_annotated.json',JSON.stringify(payload(),null,2)+'\n','application/json');});
   gb.addEventListener('click',()=>{if(!region)return;try{
-     let features=R.genbankFeatures(annotations,region.length);download(baseName()+'_annotated.gb',W.writeGenBank({name:baseName(),sequence:region.sequence,features,circular:false,source:region.source}));
+     download(baseName()+'_annotated.gb',R.selectedRegionGenBank(region,annotations,{synthetic:isDemo(record),locus:'NEXUS_REGION'}));
     }catch(e){warning.textContent='GenBank export failed: '+String(e.message||e);}});
   importBtn.addEventListener('click',()=>{if(region)importFile.click();});
   importFile.addEventListener('change',async()=>{const file=importFile.files[0];importFile.value='';if(!file||!region)return;

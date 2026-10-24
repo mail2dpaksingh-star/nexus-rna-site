@@ -96,6 +96,77 @@
     annotations.forEach(a=>head.push(`${a.start}..${a.end}\t${a.strand===-1?'-':'+'}\t${a.type}\t${a.label}\t${a.origin||'user'}${a.partial?'\tpartial':''}`));
     return head.join('\n')+'\n';
   }
+  // GenBank flat-file writer for exported selected DNA regions only. Other plasmid
+  // exporters remain unchanged. This is a LOCAL research file, not an INSDC submission.
+  function selectedRegionGenBank(region, annotations, options = {}) {
+    if (!region || typeof region.sequence !== 'string') throw Error('Select a DNA region first.');
+    const seq = region.sequence.toUpperCase().replace(/\s+/g, '').replace(/U/g, 'T');
+    if (!seq || !/^[ACGTRYSWKMBDHVN]+$/.test(seq) || seq.length !== region.length)
+      throw Error('Selected region has invalid sequence characters or length.');
+    if (!Array.isArray(annotations) || annotations.length > 100) throw Error('Unsupported number of annotations.');
+    const ann = annotations.map(a => cleanAnnotation(a, seq.length));
+    const synthetic = Boolean(options.synthetic);
+    const date = String(options.date || (() => {
+      const d = new Date();
+      return `${String(d.getUTCDate()).padStart(2,'0')}-${['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][d.getUTCMonth()]}-${d.getUTCFullYear()}`;
+    })());
+    if (!/^\d{2}-[A-Z]{3}-\d{4}$/.test(date)) throw Error('Invalid GenBank date.');
+    const locus = String(options.locus || ('NEXUS_' + region.start + '_' + region.end))
+      .replace(/[^A-Za-z0-9_]/g,'_').slice(0,16) || 'NEXUS_REGION';
+    const rawName=String(region.name || 'Selected region');
+    const clean = v => String(v ?? '').replace(/[\r\n\t]+/g, ' ').replace(/\s+/g,' ').trim();
+    function wrapTag(tag, value) {
+      const text = clean(value);const lead = tag.padEnd(12,' ');const continuation=' '.repeat(12);
+      if (!text) return [lead];
+      const out=[];let line=lead, atStart=true;
+      for(const word of text.split(' ')) {
+        if (line.length + word.length + (atStart?0:1) > 79 && !atStart) {out.push(line);line=continuation;atStart=true;}
+        if(!atStart)line+=' ';
+        line+=word;atStart=false;
+      }
+      out.push(line);return out;
+    }
+    function qualifier(name,value) {
+      // Escape quotes, and prevent untrusted user names from injecting new flat-file lines.
+      const text=clean(value).replace(/"/g,"'").slice(0,600);
+      const prefix=' '.repeat(21);
+      const words=('/'+name+'="'+text+'"').split(' ');
+      const out=[];let line=prefix;
+      for(const word of words){if(line.length+word.length+(line===prefix?0:1)>79 && line!==prefix){out.push(line);line=prefix;}
+        if(line!==prefix)line+=' ';line+=word;}
+      out.push(line);return out;
+    }
+    const organism=synthetic ? 'synthetic construct' : clean(options.organism || 'unidentified');
+    const divisions=synthetic?'SYN':'UNA';
+    const def=`${rawName} selected region ${region.start}..${region.end}${region.wrapped?' crossing circular origin':''}, exported locally by NEXUS SeqFold (research use).`;
+    const header=`LOCUS       ${locus.padEnd(16)} ${String(seq.length).padStart(11)} bp    DNA     linear   ${divisions} ${date}`;
+    const lines=[header,...wrapTag('DEFINITION',def),'ACCESSION   .','VERSION     .','KEYWORDS    .',...wrapTag('SOURCE',organism),...wrapTag('  ORGANISM',organism),synthetic?'            other sequences; artificial sequences.':'            .',
+      ...wrapTag('COMMENT',`Local selected-region export; no public accession assigned. Reference coordinates: ${region.start}..${region.end}; selected strand: ${region.orientation===-1?'- reverse complement':'+'}; original reference: ${rawName}.`),
+      ...wrapTag('COMMENT',`Annotation labels are supplied by user/imported source and are not inferred or scientifically validated by NEXUS. ${synthetic?'Synthetic teaching demonstration; NOT a verified biological plasmid.': 'Original source provenance must be verified separately.'}`),
+      'FEATURES             Location/Qualifiers',`     source          1..${seq.length}`,...qualifier('organism',organism),...qualifier('mol_type','other DNA')];
+    if (synthetic) lines.push(...qualifier('note','Illustrative synthetic sequence, not a verified biological vector'));
+    for (const a of ann) {
+      const originalType=a.type;
+      const allowed=new Set(['promoter','regulatory','gene','rep_origin','misc_feature','terminator','protein_bind','CDS']);
+      // We have no verified translation/product evidence in these simplified annotations.
+      // A synthetic or unverified CDS must not be exported as an established coding region.
+      const unverifiedCDS=originalType==='CDS';
+      let type=allowed.has(originalType)&&!unverifiedCDS ? originalType : 'misc_feature';
+      const location=`${a.partial?'<':''}${a.start}..${a.partial?'>':''}${a.end}`;
+      lines.push(`     ${type.padEnd(15)} ${a.strand===-1?'complement('+location+')':location}`,...qualifier('label',a.label));
+      const meta=[];
+      if(unverifiedCDS)meta.push('Originally labeled CDS; protein-coding identity, reading frame and product have not been validated. Exported as misc_feature.');
+      if(!allowed.has(originalType))meta.push('Original annotation type: '+originalType+'.');
+      if(a.partial)meta.push('Feature clipped by selected-region boundary or origin-crossing split.');
+      if(a.origin==='user')meta.push('Manually entered annotation; not sequence-validated.');
+      if(meta.length)lines.push(...qualifier('note',meta.join(' ')));
+    }
+    lines.push('ORIGIN');
+    for(let i=0;i<seq.length;i+=60){const chunk=seq.slice(i,i+60).toLowerCase();
+      lines.push(String(i+1).padStart(9,' ')+' '+(chunk.match(/.{1,10}/g)||[]).join(' '));}
+    lines.push('//');
+    return lines.join('\n')+'\n';
+  }
   function genbankFeatures(annotations,len){return annotations.map(a=>{let f=cleanAnnotation(a,len);const whitelist=new Set(['promoter','regulatory','CDS','gene','rep_origin','misc_feature','terminator','protein_bind','RBS','5UTR','3UTR']);return {start:f.start,end:f.end,strand:f.strand,type:whitelist.has(f.type)&&!['RBS','5UTR','3UTR'].includes(f.type)?f.type:'misc_feature',label:f.label};});}
-  return Object.freeze({maxLength,reverseComplement,chooseRegion,chooseFeatureSpan,cleanAnnotation,projectFeatures,rowsOf,annotatedText,genbankFeatures});
+  return Object.freeze({maxLength,reverseComplement,chooseRegion,chooseFeatureSpan,cleanAnnotation,projectFeatures,rowsOf,annotatedText,genbankFeatures,selectedRegionGenBank});
 });
