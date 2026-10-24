@@ -14,12 +14,23 @@ function digest(seq,{enzymes=[],circular=true}={}){let s=dna(seq),n=s.length;let
 function mapSVG(record,{width=760}={}){
  const sequence=dna(record.sequence),n=sequence.length,features=annotate(record.features||[],n).slice(0,35),escape=adv.escapeXML;
  const pal=['#0c9482','#d58d2b','#547cc0','#b96db0','#c26e57','#6a9b66'];
+ function componentColor(feature,index){
+  const type=String(feature.type||'').toLowerCase(),label=String(feature.label||'').toLowerCase();
+  if(/insert|gene of interest|goi/.test(label))return '#db5671';
+  if(/origin/.test(type)||/origin|ori/.test(label))return '#078a78';
+  if(/promoter/.test(type)||/promoter/.test(label))return '#8364bd';
+  if(/terminator/.test(type)||/terminator/.test(label))return '#478eac';
+  if(/resistance|antibiotic|marker/.test(label))return '#cf8526';
+  if(/mcs|multiple cloning/.test(label))return '#b87b31';
+  if(type==='cds'||type==='gene')return '#567cc0';
+  return pal[index%pal.length];
+ }
  // Only actual recognition sites found in the supplied DNA sequence are annotated.
  let sites=[];for(const [name,motif] of core.ENZYMES){let cursor=0;while((cursor=sequence.indexOf(motif,cursor))!==-1){sites.push({name,site:cursor+1});cursor++;if(sites.length>400)break;}if(sites.length>400)break;}
  const svg=[`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${record.circular!==false?width:390}" role="img" aria-label="${record.circular!==false?'Circular':'Linear'} DNA feature and restriction map">`,`<rect width="${width}" height="${record.circular!==false?width:390}" fill="#f6fbf9" rx="20"/>`,`<text x="24" y="38" font-size="21" font-weight="760" fill="#18454b">${escape(safeName(record.name).slice(0,45))}</text>`,`<text x="24" y="61" font-size="13" fill="#657e77">${record.circular!==false?'Circular':'Linear'} DNA · ${n.toLocaleString()} bp · ${features.length} annotated components · ${sites.length} mapped restriction sites</text>`];
  function arrowFeaturesLinear(){let x0=55,x1=width-55,len=x1-x0,y=184;
  svg.push(`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#234851" stroke-width="11" stroke-linecap="round"/>`);
- for(let i=0;i<features.length;i++){let f=features[i],left=x0+(f.start-1)/n*len,right=x0+f.end/n*len,color=pal[i%pal.length],h=i%2?40:-40,yy=y+h,w=right-left;
+ for(let i=0;i<features.length;i++){let f=features[i],left=x0+(f.start-1)/n*len,right=x0+f.end/n*len,color=componentColor(f,i),h=i%2?40:-40,yy=y+h,w=right-left;
  let point=Math.min(13,Math.max(4,w*.28)),polygon=f.strand===-1?`${right},${yy-9} ${left+point},${yy-9} ${left},${yy} ${left+point},${yy+9} ${right},${yy+9}`:`${left},${yy-9} ${right-point},${yy-9} ${right},${yy} ${right-point},${yy+9} ${left},${yy+9}`;
  svg.push(`<polygon points="${polygon}" fill="${color}" stroke="white" stroke-width=".7"><title>${escape(f.label)} ${f.start}–${f.end}, strand ${f.strand}</title></polygon>`);
  if(i<18)svg.push(`<text x="${((left+right)/2).toFixed(1)}" y="${yy+(h<0?-15:25)}" text-anchor="middle" font-size="11" font-weight="680" fill="#1b4951">${escape(f.label.slice(0,14))}</text>`);
@@ -32,7 +43,7 @@ function mapSVG(record,{width=760}={}){
  for(let i=0;i<features.length;i++){let f=features[i],r=R+15+(i%2)*13,st=(f.start-1)/n*360-90,en=f.end/n*360-90,dir=f.strand,extent=Math.max(.4,en-st),tip= Math.max(.6,Math.min(4.4,extent*.27));
  // SVG arcs are drawn in map coordinates; a filled triangular head marks strand direction.
  let a=st*Math.PI/180,b=en*Math.PI/180,large=extent>180?1:0;
- let x1=cx+r*Math.cos(a),y1=cy+r*Math.sin(a),x2=cx+r*Math.cos(b),y2=cy+r*Math.sin(b),col=pal[i%pal.length];
+ let x1=cx+r*Math.cos(a),y1=cy+r*Math.sin(a),x2=cx+r*Math.cos(b),y2=cy+r*Math.sin(b),col=componentColor(f,i);
  if(extent>359){svg.push(`<circle cx="${cx}" cy="${cy}" r="${r}" stroke="${col}" stroke-width="9" fill="none"/>`);}else svg.push(`<path d="M${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 ${large} 1 ${x2.toFixed(2)},${y2.toFixed(2)}" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round"/>`);
  let headAngle=(dir===-1?a:b),tangent=dir===-1?-1:1,px=cx+r*Math.cos(headAngle),py=cy+r*Math.sin(headAngle),tx=-Math.sin(headAngle)*tangent,ty=Math.cos(headAngle)*tangent,nnx=Math.cos(headAngle),nny=Math.sin(headAngle);let tri=`${(px+tx*12).toFixed(2)},${(py+ty*12).toFixed(2)} ${(px-tx*6+nnx*7).toFixed(2)},${(py-ty*6+nny*7).toFixed(2)} ${(px-tx*6-nnx*7).toFixed(2)},${(py-ty*6-nny*7).toFixed(2)}`;
  svg.push(`<polygon points="${tri}" fill="${col}"/><title>${escape(f.label)} · ${f.start}–${f.end} · strand ${dir}</title>`);
@@ -47,9 +58,14 @@ function mapSVG(record,{width=760}={}){
  svg.push('</svg>');return svg.join('');
 }
 function gelSVG(fragmentSizes,{width=660,height=370}={}){let sizes=fragmentSizes.map(f=>Number(typeof f==='number'?f:f.length)).filter(x=>Number.isFinite(x)&&x>0),standards=[3000,2000,1500,1000,700,500,300,200,100,50];let all=[...sizes,...standards],max=Math.max(3000,...all),min=50;let logMax=Math.log10(max),logMin=Math.log10(min);let y=b=>44+(logMax-Math.log10(Math.max(50,b)))/(logMax-logMin)*(height-95),out=[`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Illustrative virtual electrophoresis fragment gel">`,`<rect width="${width}" height="${height}" rx="16" fill="#091c26"/>`,`<rect x="56" y="37" width="${width-85}" height="${height-80}" rx="6" fill="#172f3a"/>`];for(let s of standards){let yy=y(s);out.push(`<rect x="100" y="${yy.toFixed(1)}" width="100" height="4" rx="2" fill="#b1e1d2" opacity=".8"/>`,`<text x="88" y="${(yy+4).toFixed(1)}" font-size="11" text-anchor="end" fill="#a5d3c7">${s}</text>`);}for(let [i,s] of sizes.slice(0,80).entries()){let yy=y(s),x=300+(i%3)*4;out.push(`<rect x="${x}" y="${(yy-2).toFixed(1)}" width="120" height="6" rx="3" fill="#95f5c9" opacity=".85"/>`);}out.push(`<text x="145" y="24" text-anchor="middle" fill="#c9e4da" font-size="13">Size ladder (bp)</text>`,`<text x="360" y="24" text-anchor="middle" fill="#c9e4da" font-size="13">Virtual digest</text>`,`<text x="${width/2}" y="${height-12}" text-anchor="middle" fill="#9ab9b4" font-size="11">Qualitative mobility only; not a calibrated gel</text>`,'</svg>');return out.join('');}
-function parseAlignmentInput(raw){let records=core.parseFasta(raw);if(records.length<2||records.length>8)throw Error('Please supply 2–8 FASTA sequences.');return records.map((r,i)=>{let seq=dna(r.sequence,700);if(seq.length<5)throw Error('Each alignment sequence needs at least 5 bases.');return {name:safeName(r.name||'Sequence '+(i+1)),sequence:seq};});}
+function alignmentDNA(input){
+ let seq=String(input||'').toUpperCase().replace(/[\s0-9]/g,'').replace(/U/g,'T');
+ core.validate(seq,{maxLength:700});
+ return seq;
+}
+function parseAlignmentInput(raw){let records=core.parseFasta(raw);if(records.length<2||records.length>8)throw Error('Please supply 2–8 FASTA sequences.');return records.map((r,i)=>{let seq=alignmentDNA(r.sequence);if(seq.length<5)throw Error('Each alignment sequence needs at least 5 bases.');return {name:safeName(r.name||'Sequence '+(i+1)),sequence:seq};});}
 function slots(reference,alnRef,alnQuery){if(alnRef.length!==alnQuery.length)throw Error('Alignment columns do not match');let gaps=Array.from({length:reference.length+1},()=>''),base=Array(reference.length).fill('-'),p=0;for(let i=0;i<alnRef.length;i++){if(alnRef[i]==='-')gaps[p]+=alnQuery[i];else{if(p>=reference.length||alnRef[i]!==reference[p])throw Error('Malformed alignment reference');base[p]=alnQuery[i];p++;}}if(p!==reference.length)throw Error('Reference alignment incomplete');return {gaps,base};}
-function starMSA(records){if(!Array.isArray(records)||records.length<2||records.length>8)throw Error('Require 2–8 sequences');let seqs=records.map(r=>({...r,sequence:dna(r.sequence,700)})),ref=seqs[0].sequence,n=ref.length;if(n>700)throw Error('Alignment reference too long');let profiles=seqs.map((r,i)=>{if(i===0)return {gaps:Array.from({length:n+1},()=>''),base:ref.split('')};let a=core.alignPair(ref,r.sequence,{mode:'global',maxLength:700});return slots(ref,a.alignedA,a.alignedB);});let maxGaps=Array.from({length:n+1},(_,i)=>Math.max(...profiles.map(p=>p.gaps[i].length)));let aligned=profiles.map((p,i)=>{let s='';for(let j=0;j<=n;j++){s+=p.gaps[j]+'-'.repeat(maxGaps[j]-p.gaps[j].length);if(j<n)s+=p.base[j];}return {name:seqs[i].name,aligned:s};});let size=aligned[0].aligned.length;if(aligned.some(a=>a.aligned.length!==size))throw Error('Profile alignment length mismatch');let conservation=[],consensus=[];
+function starMSA(records){if(!Array.isArray(records)||records.length<2||records.length>8)throw Error('Require 2–8 sequences');let seqs=records.map(r=>({...r,sequence:alignmentDNA(r.sequence)})),ref=seqs[0].sequence,n=ref.length;if(n>700)throw Error('Alignment reference too long');let profiles=seqs.map((r,i)=>{if(i===0)return {gaps:Array.from({length:n+1},()=>''),base:ref.split('')};let a=core.alignPair(ref,r.sequence,{mode:'global',maxLength:700});return slots(ref,a.alignedA,a.alignedB);});let maxGaps=Array.from({length:n+1},(_,i)=>Math.max(...profiles.map(p=>p.gaps[i].length)));let aligned=profiles.map((p,i)=>{let s='';for(let j=0;j<=n;j++){s+=p.gaps[j]+'-'.repeat(maxGaps[j]-p.gaps[j].length);if(j<n)s+=p.base[j];}return {name:seqs[i].name,aligned:s};});let size=aligned[0].aligned.length;if(aligned.some(a=>a.aligned.length!==size))throw Error('Profile alignment length mismatch');let conservation=[],consensus=[];
 const iupac={'AG':'R','CT':'Y','CG':'S','AT':'W','GT':'K','AC':'M','ACG':'V','ACT':'H','AGT':'D','CGT':'B','ACGT':'N'};
 const expand={A:'A',C:'C',G:'G',T:'T',R:'AG',Y:'CT',S:'CG',W:'AT',K:'GT',M:'AC',B:'CGT',D:'AGT',H:'ACT',V:'ACG',N:'ACGT'};
 for(let j=0;j<size;j++){
@@ -66,7 +82,7 @@ for(let j=0;j<size;j++){
 }
 let pairwise=[];for(let i=0;i<aligned.length;i++)for(let j=i+1;j<aligned.length;j++){let matches=0,comparable=0;for(let k=0;k<size;k++){let a=aligned[i].aligned[k],b=aligned[j].aligned[k];if(a==='-'||b==='-')continue;comparable++;if(a===b)matches++;}pairwise.push({sequenceA:aligned[i].name,sequenceB:aligned[j].name,matches,comparable,identity:comparable?100*matches/comparable:0});}return {aligned,consensus:consensus.join(''),conservation,pairwise,length:size,method:'Reference-centered progressive pairwise alignment (first sequence as anchor), fixed linear gap penalty; not MAFFT/MUSCLE/Clustal Omega; positions and scores depend on input order.'};}
 function alignmentFasta(result){return result.aligned.map(r=>'>'+r.name.replace(/[\r\n]/g,' ')+'\n'+(r.aligned.match(/.{1,70}/g)||[]).join('\n')).join('\n')+'\n';}
-function alignmentClustal(result){let str='CLUSTAL NEXUS (reference-centered alignment; NOT Clustal algorithm)\n\n',maxName=Math.min(24,Math.max(10,...result.aligned.map(r=>r.name.length)));for(let i=0;i<result.length;i+=60){for(let r of result.aligned)str+=r.name.slice(0,maxName).padEnd(maxName+3)+' '+r.aligned.slice(i,i+60)+'\n';str+='Consensus'.padEnd(maxName+4)+' '+result.consensus.slice(i,i+60)+'\n\n';}return str;}
+function alignmentClustal(result){let str='CLUSTAL NEXUS (reference-centered alignment; NOT Clustal algorithm)\n\n',maxName=Math.min(24,Math.max(10,...result.aligned.map(r=>r.name.length)));for(let i=0;i<result.length;i+=60){for(let r of result.aligned)str+=r.name.slice(0,maxName).padEnd(maxName+3)+' '+r.aligned.slice(i,i+60)+'\n';str+='Consensus'.padEnd(maxName+3)+' '+result.consensus.slice(i,i+60)+'\n\n';}return str;}
 function progressLog(name,{cutoff=60}={}){return String(name||'').replace(/[<>"']/g,'').slice(0,cutoff)}
 return Object.freeze({safeName,sanitizeFeature,annotate,extract,writeGenBank,readGenBank,digest,mapSVG,gelSVG,parseAlignmentInput,starMSA,alignmentFasta,alignmentClustal,progressLog});
 });
