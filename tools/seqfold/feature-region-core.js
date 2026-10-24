@@ -84,9 +84,12 @@
   };
   function annotatedText(region,annotations) {
     let head=[`NEXUS annotated DNA region · 5' → 3'`,`Reference: ${region.name}`,`Reference coordinates: ${region.start}..${region.end}${region.wrapped?' (crosses origin)':''}; selected strand: ${region.orientation===-1?'- (reverse-complemented)':'+'}`,`Length: ${region.length} nt`,`Annotations are user-entered or imported reference features; no promoter/RBS/UTR identity is automatically inferred.`,`Region-relative annotation coordinates are 1-based inclusive.`, `Source: ${region.source||'Not specified'}`, ''];
+    // Align every feature track to the exact first base of the Sequence row.
+    // A common prefix width is essential for monospaced TXT viewers (Notepad).
+    const labelWidth = Math.max('Sequence'.length, ...annotations.map(a => String(a.label || '').length));
     for(const b of rowsOf(region.sequence,annotations)){
-      head.push(`Position ${String(b.start).padStart(6)}..${String(b.end).padEnd(6)}`,`Sequence    ${b.sequence}`);
-      for(const row of b.rows)head.push(`${row.label.slice(0,22).padEnd(22)} ${row.track} (${row.strand===-1?'-':'+'}; ${row.origin})`);
+      head.push(`Position ${String(b.start).padStart(6)}..${String(b.end).padEnd(6)}`,`${'Sequence'.padEnd(labelWidth)} ${b.sequence}`);
+      for(const row of b.rows)head.push(`${row.label.padEnd(labelWidth)} ${row.track} (${row.strand===-1?'-':'+'}; ${row.origin})`);
       head.push('');
     }
     head.push('ANNOTATIONS');
