@@ -32,9 +32,11 @@ function mapSVG(record,{width=760}={}){
  svg.push(`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#234851" stroke-width="11" stroke-linecap="round"/>`);
  for(let i=0;i<features.length;i++){let f=features[i],left=x0+(f.start-1)/n*len,right=x0+f.end/n*len,color=componentColor(f,i),h=i%2?40:-40,yy=y+h,w=right-left;
  let point=Math.min(13,Math.max(4,w*.28)),polygon=f.strand===-1?`${right},${yy-9} ${left+point},${yy-9} ${left},${yy} ${left+point},${yy+9} ${right},${yy+9}`:`${left},${yy-9} ${right-point},${yy-9} ${right},${yy} ${right-point},${yy+9} ${left},${yy+9}`;
- svg.push(`<polygon points="${polygon}" fill="${color}" stroke="white" stroke-width=".7"><title>${escape(f.label)} ${f.start}–${f.end}, strand ${f.strand}</title></polygon>`);
- if(i<18)svg.push(`<text x="${((left+right)/2).toFixed(1)}" y="${yy+(h<0?-15:25)}" text-anchor="middle" font-size="11" font-weight="680" fill="#1b4951">${escape(f.label.slice(0,14))}</text>`);
- }
+ svg.push(`<g data-nexus-feature-index="${i}" tabindex="0" role="button" style="cursor:pointer" aria-label="Inspect 5 prime to 3 prime DNA sequence for ${escape(f.label)}"><title>View ${escape(f.label)} · ${f.start}–${f.end} · strand ${f.strand}</title>`);
+  svg.push(`<polygon points="${polygon}" fill="${color}" stroke="white" stroke-width=".7"/>`);
+  if(i<18)svg.push(`<text x="${((left+right)/2).toFixed(1)}" y="${yy+(h<0?-15:25)}" text-anchor="middle" font-size="11" font-weight="680" fill="#1b4951">${escape(f.label.slice(0,14))}</text>`);
+  svg.push('</g>');
+  }
  let freq={};for(let i=0;i<sites.length;i++){let r=sites[i],x=x0+(r.site-1)/n*len;freq[r.name]=(freq[r.name]||0)+1;if(i>35)break;svg.push(`<line x1="${x}" y1="176" x2="${x}" y2="159" stroke="#ac4058" stroke-width="1.5"/><title>${escape(r.name)} ${r.site}</title>`);if(i<18)svg.push(`<text x="${x}" y="147" text-anchor="middle" transform="rotate(-52 ${x} 147)" font-size="9" fill="#8b3550">${escape(r.name)} ${r.site}</text>`);}
  svg.push(`<text x="${x0}" y="290" font-size="12" fill="#40636c">1 bp</text>`,`<text x="${x1}" y="290" text-anchor="end" font-size="12" fill="#40636c">${n.toLocaleString()} bp</text>`);
  }
@@ -44,11 +46,13 @@ function mapSVG(record,{width=760}={}){
  // SVG arcs are drawn in map coordinates; a filled triangular head marks strand direction.
  let a=st*Math.PI/180,b=en*Math.PI/180,large=extent>180?1:0;
  let x1=cx+r*Math.cos(a),y1=cy+r*Math.sin(a),x2=cx+r*Math.cos(b),y2=cy+r*Math.sin(b),col=componentColor(f,i);
- if(extent>359){svg.push(`<circle cx="${cx}" cy="${cy}" r="${r}" stroke="${col}" stroke-width="9" fill="none"/>`);}else svg.push(`<path d="M${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 ${large} 1 ${x2.toFixed(2)},${y2.toFixed(2)}" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round"/>`);
- let headAngle=(dir===-1?a:b),tangent=dir===-1?-1:1,px=cx+r*Math.cos(headAngle),py=cy+r*Math.sin(headAngle),tx=-Math.sin(headAngle)*tangent,ty=Math.cos(headAngle)*tangent,nnx=Math.cos(headAngle),nny=Math.sin(headAngle);let tri=`${(px+tx*12).toFixed(2)},${(py+ty*12).toFixed(2)} ${(px-tx*6+nnx*7).toFixed(2)},${(py-ty*6+nny*7).toFixed(2)} ${(px-tx*6-nnx*7).toFixed(2)},${(py-ty*6-nny*7).toFixed(2)}`;
- svg.push(`<polygon points="${tri}" fill="${col}"/><title>${escape(f.label)} · ${f.start}–${f.end} · strand ${dir}</title>`);
- if(i<14){let mid=(a+b)/2,lr=r+32+((i%3)*4);let lx=cx+lr*Math.cos(mid),ly=cy+lr*Math.sin(mid);svg.push(`<text x="${lx.toFixed(2)}" y="${ly.toFixed(2)}" font-size="10" font-weight="700" text-anchor="middle" fill="#225763">${escape(f.label.slice(0,14))}</text>`);}
- }
+ svg.push(`<g data-nexus-feature-index="${i}" tabindex="0" role="button" style="cursor:pointer" aria-label="Inspect 5 prime to 3 prime DNA sequence for ${escape(f.label)}"><title>View ${escape(f.label)} · ${f.start}–${f.end} · strand ${dir}</title>`);
+  if(extent>359){svg.push(`<circle cx="${cx}" cy="${cy}" r="${r}" stroke="${col}" stroke-width="9" fill="none"/>`);}else svg.push(`<path d="M${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 ${large} 1 ${x2.toFixed(2)},${y2.toFixed(2)}" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round"/>`);
+  let headAngle=(dir===-1?a:b),tangent=dir===-1?-1:1,px=cx+r*Math.cos(headAngle),py=cy+r*Math.sin(headAngle),tx=-Math.sin(headAngle)*tangent,ty=Math.cos(headAngle)*tangent,nnx=Math.cos(headAngle),nny=Math.sin(headAngle);let tri=`${(px+tx*12).toFixed(2)},${(py+ty*12).toFixed(2)} ${(px-tx*6+nnx*7).toFixed(2)},${(py-ty*6+nny*7).toFixed(2)} ${(px-tx*6-nnx*7).toFixed(2)},${(py-ty*6-nny*7).toFixed(2)}`;
+  svg.push(`<polygon points="${tri}" fill="${col}"/>`);
+  if(i<14){let mid=(a+b)/2,lr=r+32+((i%3)*4);let lx=cx+lr*Math.cos(mid),ly=cy+lr*Math.sin(mid);svg.push(`<text x="${lx.toFixed(2)}" y="${ly.toFixed(2)}" font-size="10" font-weight="700" text-anchor="middle" fill="#225763">${escape(f.label.slice(0,14))}</text>`);}
+  svg.push('</g>');
+  }
  // Restriction sites: fine red tick marks around the backbone and labels outside it.
  sites.slice(0,50).forEach((site,i)=>{let theta=(site.site-1)/n*2*Math.PI-Math.PI/2,ra=R-11,rb=R+10,x1=cx+ra*Math.cos(theta),y1=cy+ra*Math.sin(theta),x2=cx+rb*Math.cos(theta),y2=cy+rb*Math.sin(theta);svg.push(`<line x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}" stroke="#b83f62" stroke-width="2"><title>${escape(site.name)} at ${site.site}</title></line>`);if(i<14){let lx=cx+(R-38)*Math.cos(theta),ly=cy+(R-38)*Math.sin(theta);svg.push(`<text x="${lx.toFixed(2)}" y="${ly.toFixed(2)}" text-anchor="middle" font-size="9" fill="#a13a56">${escape(site.name)} ${site.site}</text>`);}});
  }

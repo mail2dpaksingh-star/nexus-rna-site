@@ -57,4 +57,9 @@ $('clone-run').addEventListener('click',fail(runClone,'clone-status'));$('clone-
 $('primer-use-library').addEventListener('click',fail(useTemplate,'primer-status'));$('primer-run').addEventListener('click',fail(runPrimer,'primer-status'));$('primer-export').addEventListener('click',fail(()=>{let rows=[['Rank','Forward_5to3','Reverse_5to3','Tm_F_C','Tm_R_C','GC_F_pct','GC_R_pct','Product_bp','Warnings'].join(',')];resultRequired(lastPrimer).pairs.forEach((p,i)=>rows.push([i+1,p.forward.sequence,p.reverse.sequence,num(p.forward.tm),num(p.reverse.tm),num(p.forward.gc),num(p.reverse.gc),p.productSize,'"'+p.warnings.join('; ').replace(/"/g,'""')+'"'].join(',')));download('nexus_primers.csv',rows.join('\n'),'text/csv;charset=utf-8');},'primer-status'));$('primer-report').addEventListener('click',fail(()=>download('nexus_primers_report.json',JSON.stringify(resultRequired(lastPrimer),null,2),'application/json'),'primer-status'));
 $('primer-from-library').value='ref-puc19';try{useTemplate();}catch(_){}
 }
+window.NEXUS_GET_ADVANCED_MAP_RECORD=(mapId)=>{
+ if(mapId==='plib-map')return current();
+ if(mapId==='clone-map'&&lastClone)return {name:'Virtual '+lastClone.vectorName,sequence:lastClone.sequence,features:lastClone.features||[],source:'Virtual in-silico DNA construct; not sequence-verified',circular:cloneProjection==='circular'};
+ return null;
+};
 init();})();
