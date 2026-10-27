@@ -1,0 +1,10 @@
+/* Shared research-graph display. Scoped; does not affect scientific core. */
+.nexus-graph-frame{border:1px solid #dbe9e2;background:#fff;border-radius:12px;padding:9px;overflow-x:auto;margin-top:12px}
+.nexus-graph-frame svg{display:block;width:100%;min-width:440px;height:auto;max-width:100%}
+.nexus-graph-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end;margin-top:12px}
+.nexus-graph-controls label{margin:0;min-width:205px;flex:1}
+.nexus-graph-controls select{margin-top:5px}
+.nexus-graph-controls .button{min-height:41px}
+.nexus-graph-note{font-size:12px;color:#5c7770;margin:9px 0}
+.nexus-graph-notice{color:#815d31;font-size:12px;padding:9px 12px;background:#fff9ed;border-radius:9px;border:1px solid #efe2c6}
+@media(max-width:510px){.nexus-graph-frame{padding:4px}.nexus-graph-frame svg{min-width:430px}}
