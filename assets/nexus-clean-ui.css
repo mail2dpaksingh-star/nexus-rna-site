@@ -1,0 +1,29 @@
+/* Neutral, accessible presentation of static research-method notices.
+ * Runtime validation alerts remain untouched. */
+.nexus-clean-disclosure{
+  box-sizing:border-box;max-width:100%;margin:10px 0 14px;
+  border:1px solid color-mix(in srgb,currentColor 22%,transparent);border-radius:10px;background:transparent;
+  color:inherit;box-shadow:none;font-family:inherit;
+}
+.nexus-clean-disclosure > summary{
+  display:list-item;cursor:pointer;padding:9px 13px;
+  font-size:12px;line-height:1.4;font-weight:600;
+  color:inherit;opacity:.8;list-style-position:inside;
+  user-select:none;
+}
+.nexus-clean-disclosure > summary:hover{background:rgba(65,110,115,.06)}
+.nexus-clean-disclosure > summary:focus-visible{outline:2px solid #247d84;outline-offset:2px}
+.nexus-clean-disclosure[open] > summary{border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.nexus-clean-disclosure-body{padding:11px 13px;color:inherit;font-size:13px;line-height:1.65}
+.nexus-clean-disclosure-body > .nexus-clean-original{
+  display:block!important;margin:0!important;padding:0!important;
+  border:0!important;box-shadow:none!important;
+  background:transparent!important;color:inherit!important;
+  max-height:none!important;opacity:1!important;
+}
+.nexus-clean-disclosure-body a{color:inherit;text-decoration:underline}
+@media print{
+  .nexus-clean-disclosure{border:0}
+  .nexus-clean-disclosure > summary{padding:0 0 5px}
+  .nexus-clean-disclosure-body{display:block!important}
+}
