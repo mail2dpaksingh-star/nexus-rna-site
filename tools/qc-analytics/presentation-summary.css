@@ -1,0 +1,35 @@
+/* NEXUS QC results presentation. Scoped and independent of QC calculator and graph engine. */
+.nexus-qc-pres{border:1px solid #d5e6df;border-radius:16px;background:linear-gradient(155deg,#f6faf8,#fff);padding:21px;margin:14px 0 22px;color:#24413d}
+.nexus-qc-pres *{box-sizing:border-box}
+.nexus-qc-pres-header{display:flex;flex-wrap:wrap;align-items:start;justify-content:space-between;gap:12px}
+.nexus-qc-pres h3{margin:0;font-size:23px;line-height:1.25;color:#1c403b}
+.nexus-qc-pres p{margin:7px 0 0;color:#5b7470}
+.nexus-qc-pres-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.nexus-qc-pres-actions button{border:1px solid #bfd8ce;border-radius:9px;background:#fff;color:#234d45;min-height:42px;padding:9px 13px;font:600 13px/1.2 inherit;cursor:pointer}
+.nexus-qc-pres-actions button.active{background:#215149;color:#fff;border-color:#215149}
+.nexus-qc-pres-actions button:focus-visible{outline:3px solid #56a997;outline-offset:2px}
+.nexus-qc-pres-actions button:disabled{opacity:.5;cursor:not-allowed}
+.nexus-qc-pres-meta{margin-top:14px!important;font-size:13px}
+.nexus-qc-pres-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.nexus-qc-pres-card{padding:15px;border:1px solid #dae9e3;border-radius:11px;background:#fff;min-width:0}
+.nexus-qc-pres-card span{font-size:12px;color:#5d7670;display:block}
+.nexus-qc-pres-card strong{display:block;margin-top:7px;font-size:23px;line-height:1.2;overflow-wrap:anywhere;color:#1a3e38}
+.nexus-qc-pres-card small{display:block;margin-top:6px;color:#617a74;overflow-wrap:anywhere}
+.nexus-qc-pres-card.status-outside{border-color:#dfaa77;background:#fff7ee}
+.nexus-qc-pres-card.status-outside strong{color:#865020}
+.nexus-qc-pres-card.status-unassessed{background:#fafbf8}
+.nexus-qc-pres h4{font-size:16px;color:#20423d;margin:22px 0 10px}
+.nexus-qc-pres-table-wrap{overflow-x:auto;border:1px solid #d9e9e1;border-radius:10px;background:#fff}
+.nexus-qc-pres-table{width:100%;border-collapse:collapse;font-size:12px;min-width:580px}
+.nexus-qc-pres-table th,.nexus-qc-pres-table td{padding:10px 11px;text-align:left;border-bottom:1px solid #e5eee9;vertical-align:top;overflow-wrap:anywhere}
+.nexus-qc-pres-table th{background:#eaf4ef;font-size:11px;color:#31574e}
+.nexus-qc-pres-table tr:last-child td{border-bottom:0}
+.nexus-qc-pres-observation{border-left:3px solid #56a18d;background:#eef6f2;padding:13px 15px;border-radius:0 10px 10px 0;line-height:1.5;color:#23433c}
+.nexus-qc-pres-alert{border-left:3px solid #b57d45;background:#fff7ed;padding:11px 14px;border-radius:0 9px 9px 0;margin-top:12px;font-size:12px;color:#654b2e}
+.nexus-qc-pres-note{font-size:12px;color:#617872;margin-top:14px!important}
+.nexus-qc-pres details{margin-top:14px;border:1px solid #dbe7e1;border-radius:9px;padding:10px 13px;background:#fff}
+.nexus-qc-pres summary{cursor:pointer;font-size:13px;font-weight:650}
+.nexus-qc-pres details ul{font-size:12px;padding-left:20px;line-height:1.5;overflow-wrap:anywhere}
+.nexus-qc-pres-technical[hidden],.nexus-qc-pres-summary[hidden]{display:none!important}
+@media(max-width:640px){.nexus-qc-pres{padding:15px}.nexus-qc-pres-cards{grid-template-columns:1fr}.nexus-qc-pres-card strong{font-size:21px}}
+@media print{.nexus-qc-pres-actions{display:none}.nexus-qc-pres{break-inside:avoid;background:#fff}.nexus-qc-pres-card{break-inside:avoid}}
