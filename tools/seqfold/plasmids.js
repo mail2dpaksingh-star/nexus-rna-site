@@ -4,7 +4,11 @@ window.NEXUS_STARTER_PLASMIDS = [{"id":"ref-puc19","name":"pUC19 (GenBank M77789
 /* A clearly synthetic, annotated demonstration map; no claims of genomic provenance. */
 (function(){'use strict';
  const dna=('ACGTGATCTCGGTTAGACCGTTCGATCA').repeat(150).slice(0,4200).split('');
- for(const [i,m] of [[400,'GAATTC'],[1100,'GGATCC'],[2700,'AAGCTT'],[3500,'CTCGAG']])
+ // Sequence-backed MCS examples for site-selection tests only.
+ // 0-based positions, each motif fully inside annotated 3420..3650 region.
+ for(const [i,m] of [[3440,'GAATTC'],[3470,'GGATCC'],[3500,'CTCGAG'],[3530,'AAGCTT'],[3560,'GCGGCCGC'],[3590,'GCTAGC'],[3620,'CTGCAG']])
+   for(let j=0;j<m.length;j++)dna[i+j]=m[j];
+ for(const [i,m] of [[400,'GAATTC'],[1100,'GGATCC'],[2700,'AAGCTT']])
    for(let j=0;j<m.length;j++)dna[i+j]=m[j];
  window.NEXUS_DEMO_PLASMID={
   id:'nexus-annotated-teaching-demo',name:'Annotated teaching vector (SYNTHETIC DEMO)',

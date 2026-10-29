@@ -84,13 +84,25 @@
     const features=[]; let removed=[];
     for (const f of base.features) {
       if(mode==='insert') {
-        if(f.start<=cut && f.end>cut) throw Error('Insertion splits backbone annotation "'+f.label+'". Choose a different boundary or redefine the annotation.');
+        if(f.start<=cut && f.end>cut) {
+          if(/\bMCS\b|polylinker|multiple.cloning/i.test(f.label) && f.type==='misc_feature') {
+            if(f.start<=cut)features.push({...f,end:cut,label:f.label+' (upstream segment)'});
+            if(cut+1<=f.end)features.push({...f,start:cut+inserted.length+1,end:f.end+inserted.length,label:f.label+' (downstream segment)'});
+            warnings.push('The MCS annotation was divided by the inserted DNA. Any remaining recognition sites must be re-scanned from the assembled sequence.');
+            continue;
+          }
+          throw Error('Insertion splits backbone annotation "'+f.label+'". Choose a different boundary or redefine the annotation.');
+        }
         features.push(f.start>cut?{...f,start:f.start+inserted.length,end:f.end+inserted.length}:{...f});
       } else {
         if(f.end<deletedStart) features.push({...f});
         else if(f.start>deletedEnd) features.push({...f,start:f.start-deletion+inserted.length,end:f.end-deletion+inserted.length});
         else if(f.start>=deletedStart && f.end<=deletedEnd) removed.push(f.label);
-        else throw Error('Replacement partially overlaps annotation "'+f.label+'". Select a boundary that does not truncate a feature.');
+        else if(/\bMCS\b|polylinker|multiple.cloning/i.test(f.label) && f.type==='misc_feature') {
+          if(f.start<deletedStart)features.push({...f,end:deletedStart-1,label:f.label+' (upstream segment)'});
+          if(f.end>deletedEnd)features.push({...f,start:deletedEnd+1-deletion+inserted.length,end:f.end-deletion+inserted.length,label:f.label+' (downstream segment)'});
+          warnings.push('Only the MCS interval was adjusted during replacement. Re-scan the final DNA for surviving restriction motifs.');
+        } else throw Error('Replacement partially overlaps annotation "'+f.label+'". Select a boundary that does not truncate a feature.');
       }
     }
     for(const f of ins.features) {
