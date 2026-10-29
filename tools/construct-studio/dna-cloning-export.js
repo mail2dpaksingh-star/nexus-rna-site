@@ -169,6 +169,7 @@
     source.insertAdjacentElement('afterend', panel);
     const $=id=>doc.getElementById(id);
     let current=null;
+    root.NEXUS_GET_CURRENT_DNA_INSERT=()=>current?JSON.parse(JSON.stringify(current)):null;
     function getDesign() {
       if ($('assembled').hidden) throw Error('Generate and select a complete RNA candidate first.');
       const pick = id => $(id).value;

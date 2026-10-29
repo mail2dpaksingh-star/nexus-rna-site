@@ -1,0 +1,17 @@
+/* NEXUS virtual assembly add-on: scoped presentation only */
+#nexus-plasmid-assembly{border:1px solid #d0e5d9;border-radius:15px;background:#f7fbf8;padding:18px 20px;margin:18px 0 22px;text-align:left}
+#nexus-plasmid-assembly h2{margin:0 0 8px;font-size:19px;color:#1c4545}
+#nexus-plasmid-assembly h3{font-size:13px;margin:15px 0 8px}
+#nexus-plasmid-assembly p{font-size:12px;color:#4a6663;line-height:1.65}
+.nexus-bridge-controls{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.nexus-bridge-controls>div{flex:1 1 200px;min-width:0}
+.nexus-bridge-controls .field{margin:0}
+.nexus-bridge-controls input,.nexus-bridge-controls select{max-width:100%;width:100%;padding:9px 11px;border:1px solid #cbded4;border-radius:9px;background:white}
+.nexus-bridge-message{margin:8px 0 12px;min-height:18px}
+.nexus-bridge-error{color:#a23939!important;font-weight:700}
+.nexus-bridge-code{font:12px/1.7 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #cdded4;border-radius:10px;padding:12px;background:white}
+.nexus-bridge-metrics{font-weight:750;color:#224a45;font-size:13px;margin:14px 0}
+.nexus-bridge-primary{background:#174b48!important;color:white!important;border-color:#174b48!important}
+#nexus-plasmid-assembly .map{margin-top:12px}
+#nexus-plasmid-assembly details{font-size:12px;color:#4a655d;padding:8px 0}
+#nexus-plasmid-assembly summary{cursor:pointer;font-weight:700}
