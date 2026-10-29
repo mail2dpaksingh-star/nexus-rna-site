@@ -1,0 +1,31 @@
+/* Compact presentation layer only: original Workbench engines unchanged. */
+#pane-annotation .nexus-choice-search{display:flex;flex-direction:column;gap:5px;margin-bottom:9px}
+#pane-annotation .nexus-choice-search label{font-size:12px;font-weight:650;color:#2d5557}
+#pane-annotation .nexus-choice-search input{width:100%;max-width:100%;border:1px solid #c1d5cd;border-radius:8px;padding:11px;color:#183a3d;background:#fff;font:inherit}
+#pane-annotation .nexus-choice-hint{font-size:12px;line-height:1.55;color:#59746c;margin:7px 0 0}
+#pane-annotation .nexus-choice-summary{border:1px solid #d6e5de;background:#f8fcfa;border-radius:12px;padding:15px;margin:12px 0}
+#pane-annotation .nexus-choice-summary h3{font-size:17px;line-height:1.3;margin:0 0 8px;color:#1b3d40}
+#pane-annotation .nexus-choice-state{display:inline-block;border-radius:9px;font-size:12px;font-weight:700;padding:7px 10px;margin:0 0 12px}
+#pane-annotation .nexus-choice-ready{background:#e1f2e7;color:#206045}
+#pane-annotation .nexus-choice-metadata{background:#fff1d8;color:#805118}
+#pane-annotation .nexus-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0}
+#pane-annotation .nexus-choice-grid>div{background:#fff;border:1px solid #e1ebe6;border-radius:8px;padding:9px;min-width:0}
+#pane-annotation .nexus-choice-grid dt{font-size:11px;font-weight:650;color:#5a746b}
+#pane-annotation .nexus-choice-grid dd{font-size:13px;color:#243e40;line-height:1.4;margin:4px 0 0;overflow-wrap:anywhere}
+#pane-annotation .nexus-choice-note{font-size:12px;color:#4f6965;line-height:1.6;margin:12px 0 7px}
+#pane-annotation .nexus-choice-summary a{color:#176b60;text-decoration:underline;font-size:13px}
+#pane-annotation.nexus-choice-catalog-only #plasmid-svg{opacity:.3;filter:grayscale(.7)}
+#pane-annotation.nexus-choice-catalog-only .nexus-choice-blocked{opacity:.45;cursor:not-allowed}
+@media(max-width:620px){#pane-annotation .nexus-choice-grid{grid-template-columns:1fr}}
+/* Do not display a previously loaded backbone as though it were the selected
+   catalog-only vector. The record is preserved internally and reappears when
+   a sequence-backed option or working copy is selected. */
+#pane-annotation.nexus-choice-catalog-only .columns>.panel:nth-child(2),
+#pane-annotation.nexus-choice-catalog-only .field:has(#record-name),
+#pane-annotation.nexus-choice-catalog-only .field:has(#record-topology),
+#pane-annotation.nexus-choice-catalog-only #record-summary,
+#pane-annotation.nexus-choice-catalog-only #plasmid-svg,
+#pane-annotation.nexus-choice-catalog-only .actions:has(#annotation-save),
+#pane-annotation.nexus-choice-catalog-only .pad>.panel:has(#revision-save),
+#pane-annotation.nexus-choice-catalog-only #nexus-plasmid-assembly,
+#pane-annotation.nexus-choice-catalog-only #nexus-vector-catalog-mcs {display:none}
