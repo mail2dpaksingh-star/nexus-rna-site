@@ -8,22 +8,25 @@
  const categories=['General cloning','E. coli expression','Mammalian expression','IVT / mRNA templates','Lentiviral vectors','CAR expression'];
  const LOCAL_KEY='nexus-local-vector-catalog-v1';
  const nativeItems=[...native.options].map((el,i)=>{
+  const actual=i===0?root.NEXUS_DEMO_PLASMID:(root.NEXUS_STARTER_PLASMIDS||[])[i-1];
   const name=el.textContent.replace(/\s*\([0-9,]+\s*bp\)\s*$/,'').trim();
   const isDemo=/SYNTHETIC DEMO/i.test(name), isVirtual=/virtual demo/i.test(name);
-  return {key:String(i),name,category:'General cloning',availability:'ready',
-   promoter:isDemo?'Illustrative promoter':'Not independently annotated',
-   reference:isDemo?'Illustrative synthetic reference':isVirtual?'Educational modified sequence':'GenBank M77789.2',
-   url:!isDemo&&!isVirtual?'https://www.ncbi.nlm.nih.gov/nuccore/M77789.2':'',
-   sourceNote:isDemo?'Synthetic teaching-only DNA, not a verified plasmid':isVirtual?'Virtual educational sequence; not an authenticated plasmid':'Bundled exact pUC19 reference sequence',
-   size:((root.NEXUS_DEMO_PLASMID&&i===0)?root.NEXUS_DEMO_PLASMID.sequence.length:
-      (root.NEXUS_STARTER_PLASMIDS||[])[i-1]?.sequence?.length)||null,
-   topology:'Circular',backboneId:i};
+  const accession=String(actual?.accession||'');
+  const src=String(actual?.source||'');
+  return {key:String(i),name,category:String(actual?.category||'General cloning'),availability:'ready',
+   promoter:isDemo?'Illustrative promoter':String(actual?.promoter||'Read annotated sequence'),
+   reference:accession?'GenBank '+accession:(isDemo?'Illustrative synthetic reference':src||'User/virtual record'),
+   url:accession?'https://www.ncbi.nlm.nih.gov/nuccore/'+encodeURIComponent(accession):'',
+   sourceNote:isDemo?'Synthetic teaching-only DNA, not a verified plasmid':isVirtual?'Virtual educational sequence; not an authenticated plasmid':src||'Sequence-backed reference; review provenance and completeness',
+   size:actual?.sequence?.length||null,topology:actual?.circular?'Circular':'Linear',backboneId:i};
  });
  function safeText(value,max=160){return String(value==null?'':value).replace(/[<>\x00-\x1f]/g,' ').trim().slice(0,max);}
  function safeUrl(value){try{const u=new URL(String(value));return u.protocol==='https:'?u.href:'';}catch(_){return '';}}
  function importedEntries(){try{return (JSON.parse(root.localStorage?.getItem(LOCAL_KEY)||'[]')||[]).filter(x=>x&&categories.includes(x.category)&&x.name).slice(0,2000).map((x,i)=>({key:'import:'+i,name:safeText(x.name),category:x.category,availability:'catalog',promoter:safeText(x.promoter)||'Unspecified',reference:safeText(x.reference)||'User catalog record',url:safeUrl(x.url),sourceNote:'User-imported catalog metadata — verify all fields'}));}catch(_){return [];}}
  function getChoices(){
-  const refs=(catalogAPI.STARTERS||[]).filter(r=>!(/^pUC19$/i.test(r.name)&&nativeItems.some(x=>/pUC19 \(GenBank M77789\.2\)/i.test(x.name))))
+  const loadedNames=new Set(nativeItems.map(x=>x.name.toLowerCase().replace(/\s*\([^)]*\)\s*$/,'').trim()));
+  const refs=(catalogAPI.STARTERS||[]).filter(r=>!loadedNames.has(String(r.name).toLowerCase().trim()) &&
+   !nativeItems.some(x=>x.name.toLowerCase().startsWith(String(r.name).toLowerCase()+' (')))
    .map(r=>({key:'ref:'+r.id,name:safeText(r.name),category:r.category,availability:'catalog',promoter:safeText(r.promoter)||'Unspecified',reference:safeText(r.reference),url:safeUrl(r.url),sourceNote:'Reference metadata; complete sequence is not bundled'}));
   return [...nativeItems,...refs,...importedEntries()];
  }
