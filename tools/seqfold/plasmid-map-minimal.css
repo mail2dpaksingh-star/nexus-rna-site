@@ -1,0 +1,12 @@
+/* NEXUS — keep the plasmid map clean without affecting its calculations.
+ * Removes only the three UI elements requested on 2026-10-29:
+ * demo-load button, adjacent demo disclaimer, and restriction display toolbar.
+ * The demo vector remains a selectable catalog entry and the restriction
+ * recognition table remains available after the map.
+ * The professional map retains its default Unique cutters + MCS mode.
+ */
+#pane-annotation #annotation-demo,
+#pane-annotation #annotation-demo + p.muted,
+#nexus-map-label-toolbar {
+  display: none !important;
+}
