@@ -1,0 +1,20 @@
+/* NEXUS Plasmid Map: SVG-only presentation, no sequence or editor changes */
+#nexus-map-label-toolbar.nexus-map-label-toolbar {
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  margin:14px 0 10px; padding:10px 12px;
+  background:#f4f9f6; border:1px solid #d9e6df; border-radius:12px;
+  color:#31565a; font:600 13px/1.4 system-ui,sans-serif;
+}
+#nexus-map-label-toolbar label { flex:0 0 auto; }
+#nexus-map-label-mode {
+  max-width:100%; min-width:220px; padding:8px 10px;
+  border:1px solid #b4d1c6; border-radius:8px; background:white;
+  color:#213e45; font:500 13px system-ui,sans-serif;
+}
+.nexus-map-label-status {font-size:11px;font-weight:400;color:#536e72;flex:1 1 180px;}
+#plasmid-svg {overflow-x:auto;}
+#plasmid-svg svg {width:min(100%,760px)!important;min-width:580px;max-width:760px;height:auto;display:block;margin:0 auto;}
+@media(max-width:600px) {
+ #nexus-map-label-toolbar {align-items:stretch;flex-direction:column;}
+ #nexus-map-label-mode {width:100%;}
+}
