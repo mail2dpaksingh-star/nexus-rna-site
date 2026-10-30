@@ -1,0 +1,38 @@
+/* NEXUS: one plasmid workflow, housed in Molecular Design Studio.
+ * Legacy internal library/clone panes remain in the DOM for old JS compatibility,
+ * but they are no longer separate user-facing workflows. */
+body.nexus-molecular-consolidated [aria-label="Quick open molecular biology tools"],
+body.nexus-molecular-consolidated .tabs button[data-pane="library"],
+body.nexus-molecular-consolidated .tabs button[data-pane="clone"],
+body.nexus-molecular-consolidated #pane-library,
+body.nexus-molecular-consolidated #pane-clone { display: none !important; }
+.nexus-plasmids-primary { background: #173f48 !important; color: #fff !important; }
+#pane-plasmids .nexus-unified-intro { padding: 18px 22px 8px; color: #526e70; line-height: 1.65; }
+#pane-plasmids .nexus-unified-badge { font-size: 11px; border-radius: 99px; background: #e5f3eb; color: #246555; padding: 5px 10px; display: inline-block; }
+#pane-plasmids .nexus-unified-layout { padding: 0 12px 20px; }
+#pane-plasmids .nexus-frame { display:block; width:100%; min-height:1250px; border:0; border-radius:15px; background: #f4f9f6; }
+#pane-plasmids .nexus-unified-links { display:flex; gap:12px; flex-wrap:wrap; align-items:center; padding: 0 22px 14px; }
+#pane-plasmids .nexus-unified-links a { color:#245a56; font-size:12px; text-decoration:underline; }
+#pane-plasmids .nexus-frame-fallback { margin: 0 22px 16px; font-size: 12px; color:#58706d; }
+@media(max-width:760px) { #pane-plasmids .nexus-unified-layout {padding:0 4px 12px} #pane-plasmids .nexus-unified-intro {padding: 14px} }
+/* Workbench opened by the Molecular Design Studio as a same-origin embedded tool. */
+body.nexus-plasmid-embedded { background: #f4f9f6 !important; }
+body.nexus-plasmid-embedded > header,
+body.nexus-plasmid-embedded > section.hero,
+body.nexus-plasmid-embedded > footer,
+body.nexus-plasmid-embedded > .nexus-legal-footer,
+body.nexus-plasmid-embedded .tabs button:not([data-pane="annotation"]):not([data-pane="digest"]),
+body.nexus-plasmid-embedded section.pane:not(#pane-annotation):not(#pane-digest),
+body.nexus-plasmid-embedded #nexus-design-moved {display:none !important;}
+body.nexus-plasmid-embedded .work {max-width:none !important; margin:0 !important; padding:8px 4px 24px !important;}
+body.nexus-plasmid-embedded .tabs {margin: 8px 12px 12px !important;}
+body.nexus-plasmid-embedded .columns {grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+@media(max-width:830px){body.nexus-plasmid-embedded .columns{grid-template-columns:1fr;}}
+/* Standalone Sequence Workbench retains MSA, Sanger, read assembly,
+ * pairwise comparison and GenBank+; plasmid/digest are hosted above. */
+body.nexus-sequence-only .tabs button[data-pane="annotation"],
+body.nexus-sequence-only .tabs button[data-pane="digest"],
+body.nexus-sequence-only #pane-annotation,
+body.nexus-sequence-only #pane-digest {display:none !important;}
+#nexus-design-moved {padding: 14px 18px; margin: 0 0 14px; border: 1px solid #c9e6d8; background:#e9f5ee; border-radius:14px; color:#23524e;}
+#nexus-design-moved a{font-weight:800; text-decoration:underline;}
