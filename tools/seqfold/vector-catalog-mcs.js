@@ -64,11 +64,21 @@ function motifs(sequence){
  return out.sort((a,b)=>a.start-b.start||a.enzyme.localeCompare(b.enzyme));
 }
 function mcsRegions(backbone){return (backbone.features||[]).filter(f=>/\bMCS\b|polylinker|multiple.cloning/i.test(String(f.label||''))&&Number.isInteger(+f.start)&&Number.isInteger(+f.end)&&f.end>=f.start&&f.end<=backbone.sequence.length).map(f=>({start:+f.start,end:+f.end,label:String(f.label)}));}
-function locationInfo(backbone){const all=motifs(backbone.sequence),mcs=mcsRegions(backbone);
+function locationInfo(backbone, analyzer){
+ const mcs=mcsRegions(backbone);
+ // Match the map's expanded recognition library when it is available. Both
+ // selectors and assembly use the SAME captured positions and cut boundaries.
+ let all;
+ if(typeof analyzer==='function') {
+  const result=analyzer(backbone);
+  all=result.hits.map(h=>({enzyme:h.enzyme,motif:h.recognition,start:h.start,
+    cut:h.cutBoundary,count:h.count,inMCS:h.inMCS}));
+ } else all=motifs(backbone.sequence);
  const counts={};all.forEach(x=>counts[x.enzyme]=(counts[x.enzyme]||0)+1);
- return {all:all.map(x=>({...x,count:counts[x.enzyme],inMCS:mcs.some(f=>x.start>=f.start&&x.start<=f.end)})),mcs};}
-function target(backbone,kind,id1,id2){
- const info=locationInfo(backbone),at=k=>{const v=info.all.find(x=>x.enzyme+'@'+x.start===k);if(!v)throw Error('Selected restriction site is not present in the loaded backbone sequence.');return v;};
+ return {all:all.map(x=>({...x,count:counts[x.enzyme],inMCS:mcs.some(f=>x.start>=f.start&&x.start<=f.end)})),mcs};
+}
+function target(backbone,kind,id1,id2,mapped){
+ const info=mapped||locationInfo(backbone),at=k=>{const v=info.all.find(x=>x.enzyme+'@'+x.start===k);if(!v)throw Error('Selected restriction site is not present in the loaded backbone sequence.');return v;};
  if(kind==='mcs'){
   const feature=info.mcs[Number(id1)];if(!feature)throw Error('This backbone has no annotated MCS. Import an annotated GenBank file or select a restriction site.');
   return {settings:{mode:'replace',start:feature.start,end:feature.end},label:'Replace '+feature.label+' ('+feature.start+'–'+feature.end+')',warning:'This is sequence replacement of an annotated MCS, not a restriction-digestion or ligation simulation.'};
@@ -79,11 +89,14 @@ function target(backbone,kind,id1,id2){
  }
  if(kind==='pair'){
   const a=at(id1),b=at(id2);
-  if(a.start===b.start)throw Error('Choose two distinct recognition sites.');
-  const lo=Math.min(a.cut,b.cut),hi=Math.max(a.cut,b.cut);
-  if(hi===lo)throw Error('The selected enzymes resolve to the same insertion boundary.');
-  if(hi-lo>backbone.sequence.length*.5)throw Error('This simple linear-interval replacement would remove over half the vector. Review the desired circular arc or choose another pair.');
-  return {settings:{mode:'replace',start:lo+1,end:hi},label:a.enzyme+' / '+b.enzyme+' · replace between cut boundaries '+lo+' and '+hi,warning:'Dual-site replacement is coordinate-level only. Overhang identity, digestion, insert-end design, ligation, methylation and biological expression are NOT simulated.'};
+  if(a.start===b.start)throw Error('Choose two different recognition-site occurrences, even when using the same enzyme.');
+  if(a.cut===b.cut)throw Error('These recognition sites have the same cut boundary; select two different boundaries.');
+  // The existing plasmid bridge replaces only a reference-coordinate interval;
+  // it cannot yet replace a circular interval that crosses the origin.
+  if(a.cut>b.cut)throw Error('The Left site must cut earlier in reference coordinates than the Right site. Swap the selections or choose a different interval. Origin-spanning replacement is not supported yet.');
+  return {settings:{mode:'replace',start:a.cut+1,end:b.cut},
+   label:a.enzyme+' at '+a.start+' → '+b.enzyme+' at '+b.start+' · replace '+(b.cut-a.cut)+' bp (bases '+(a.cut+1)+'–'+b.cut+')',
+   warning:'Virtual replacement of the reference-coordinate interval only. The same enzyme at two different locations is allowed; overhang compatibility, actual digest products, ligation, methylation and expression are NOT verified.'};
  }
  throw Error('Unknown target mode.');
 }
@@ -115,10 +128,11 @@ function install(doc,root){
  <p class="nexus-mcs-muted">Catalog references open their original provider pages. Import your authorized complete GenBank/FASTA sequence into the existing Plasmid Workbench, then press <strong>Use current plasmid</strong>. FASTA without feature annotations may have no selectable MCS.</p>
  <div class="nexus-mcs-actions"><label class="btn" for="mcs-import-csv">Import reference catalog CSV (metadata)</label><input id="mcs-import-csv" type="file" accept=".csv,text/csv" hidden><button class="btn" type="button" id="mcs-download-template">Download catalog CSV template</button><button class="btn" type="button" id="mcs-clear-catalog">Clear imported catalog</button></div>
  <div class="nexus-mcs-divider"></div><h3>Select MCS or restriction-site target</h3><p id="mcs-backbone-meta" role="status">Load a circular DNA backbone using the existing Workbench, then click Use current plasmid.</p>
- <div class="nexus-mcs-grid"><label>Target type<select id="mcs-target-kind"><option value="mcs">Annotated MCS (replace entire region)</option><option value="site">One mapped restriction site</option><option value="pair">Two mapped restriction sites</option></select></label>
- <label>First target<select id="mcs-site-first"></select></label><label id="mcs-second-wrap" hidden>Second restriction site<select id="mcs-site-second"></select></label></div>
- <p id="mcs-target-description" class="nexus-mcs-muted"></p>
- <button class="btn primary" type="button" id="mcs-build">Assemble at selected site</button><p id="mcs-status" role="status"></p>
+ <p class="nexus-mcs-muted">Select <strong>two restriction-site occurrences</strong> on the current plasmid (the same enzyme at two different positions, or two different enzymes). The selected interval is replaced by your DNA insert.</p>
+ <select id="mcs-target-kind" hidden aria-hidden="true"><option value="pair" selected>Replace between two mapped sites</option></select>
+ <div class="nexus-mcs-grid"><label>Left restriction site (upstream reference position)<select id="mcs-site-first" aria-label="Left restriction site"></select></label><label id="mcs-second-wrap">Right restriction site (downstream reference position)<select id="mcs-site-second" aria-label="Right restriction site"></select></label></div>
+ <p id="mcs-target-description" class="nexus-mcs-muted" aria-live="polite"></p>
+ <button class="btn primary" type="button" id="mcs-build">Replace between selected sites</button><p id="mcs-status" role="status"></p>
  <details><summary>Advanced: manual coordinate-based assembly</summary><p>The previous numeric-coordinate controls remain available here for expert users.</p><div id="mcs-advanced"></div></details>
  <details><summary>Methods &amp; limitations</summary><p>Restriction motif positions are computed from the selected DNA backbone, including origin-spanning matches. The displayed enzyme position denotes a recognition motif; the boundary is based on the canonical top-strand cut offset for supported palindromic Type II enzymes.</p><p>Assembly is <strong>sequence-level concatenation or replacement only</strong>. Sticky/blunt end compatibility, overhang repair, ligation, enzyme methylation sensitivity, star activity, frame preservation and functional expression are not established. The tool will not infer nonexistent enzyme sites or create a vector from catalog metadata.</p><p>Lentiviral and CAR entries are discovery-only until complete authorized sequence records are imported and reviewed. Follow institutional biosafety and material-use requirements for viral and engineered-cell research.</p></details>`;
  anchor.insertAdjacentElement('beforebegin',panel);
@@ -153,22 +167,41 @@ function install(doc,root){
  function status(msg,bad=false){$('mcs-status').textContent=msg;$('mcs-status').classList.toggle('nexus-mcs-error',bad);}
  function safeBackbone(){const b=root.NEXUS_GET_CURRENT_RECORD?.();if(!b||!b.circular)throw Error('Please select a circular plasmid in Workbench first.');return b;}
  function setOptions(sel,list){sel.replaceChildren();for(const opt of list)sel.add(new Option(opt.label,opt.key));}
- function populate(){base=safeBackbone();info=locationInfo(base);
-  const kind=$('mcs-target-kind').value,ms=kind==='mcs';$('mcs-second-wrap').hidden=kind!=='pair';
-  const options=ms?info.mcs.map((f,i)=>({key:String(i),label:f.label+' ('+f.start+'–'+f.end+')'})):
-    info.all.filter(s=>kind!=='pair'||s.inMCS).map(s=>({key:s.enzyme+'@'+s.start,label:s.enzyme+' · recognition '+s.start+' · '+(s.count===1?'unique':'total '+s.count)+(s.inMCS?' · MCS':'')}));
-  setOptions(selectA,options);setOptions(selectB,options);
-  $('mcs-backbone-meta').textContent=base.name+' · '+base.sequence.length+' bp · '+info.mcs.length+' MCS annotation(s) · '+info.all.length+' recognized restriction motif occurrence(s).';
-  $('mcs-target-description').textContent=options.length?'Choose a mapped target from the selected backbone; no manual base number is required.':ms?'No MCS annotation found. Import an annotated vector or select a restriction site.':'No supported recognition sites in this scope; choose Any restriction site, or import a different vector.';
-  $('mcs-build').disabled=!options.length;
+ function findSite(key){return info&&info.all.find(s=>s.enzyme+'@'+s.start===key);}
+ function previewPair(){
+  if(!base||!info){$('mcs-build').disabled=true;return;}
+  const a=findSite(selectA.value),b=findSite(selectB.value);
+  if(!a||!b){$('mcs-build').disabled=true;$('mcs-target-description').textContent='This plasmid needs at least two mapped cut sites in order to replace an interval.';return;}
+  try{
+   const t=target(base,'pair',selectA.value,selectB.value,info);
+   $('mcs-target-description').textContent=t.label+'. Virtual sequence replacement only; no enzymatic end compatibility is assumed.';
+   $('mcs-build').disabled=false;status('');
+  }catch(e){$('mcs-target-description').textContent=e.message;$('mcs-build').disabled=true;}
  }
- $('mcs-target-kind').addEventListener('change',()=>{try{populate();}catch(e){status(e.message,true);}});
+ function populate(){
+  base=safeBackbone();
+  info=locationInfo(base,root.NEXUS_RE_UNIQUE&&root.NEXUS_RE_UNIQUE.analyze);
+  // Include every enzyme occurrence across the WHOLE circular plasmid, not
+  // merely sites inside the MCS. Two sites of the same enzyme are allowed.
+  const sorted=info.all.slice().sort((a,b)=>a.cut-b.cut||a.enzyme.localeCompare(b.enzyme));
+  const options=sorted.map(s=>({key:s.enzyme+'@'+s.start,
+   label:s.enzyme+' · motif '+s.start+' · cut after '+s.cut+' · '+(s.count===1?'unique':'occurrence of '+s.count)+(s.inMCS?' · MCS':'')}));
+  setOptions(selectA,options);setOptions(selectB,options);
+  // Select two distinct ordered boundaries by default.
+  const left=sorted.find(a=>sorted.some(b=>b.cut>a.cut));
+  const right=left&&sorted.find(b=>b.cut>left.cut);
+  if(left&&right){selectA.value=left.enzyme+'@'+left.start;selectB.value=right.enzyme+'@'+right.start;}
+  $('mcs-backbone-meta').textContent=base.name+' · '+base.sequence.length+' bp · '+info.mcs.length+' MCS region(s) · '+info.all.length+' mapped restriction site occurrence(s).';
+  previewPair();
+ }
+ selectA.addEventListener('change',previewPair);
+ selectB.addEventListener('change',previewPair);
  $('nexus-bridge-use-backbone').addEventListener('click',()=>{try{populate();status('Recognition sites mapped from the selected vector sequence.');}catch(e){status(e.message,true);}});
  $('mcs-build').addEventListener('click',()=>{try{
   if(!base)throw Error('Click Use current plasmid to load its sequence and map restriction sites.');
   // Prevent silently applying saved targets to another record.
   const current=safeBackbone();if(current.sequence!==base.sequence||current.name!==base.name)throw Error('Active plasmid changed. Click Use current plasmid again before assembly.');
-  const t=target(base,$('mcs-target-kind').value,selectA.value,selectB.value);
+  const t=target(base,'pair',selectA.value,selectB.value,info);
   const mode=$('nexus-bridge-mode');mode.value=t.settings.mode;mode.dispatchEvent(new Event('change'));
   if(t.settings.mode==='insert')$('nexus-bridge-after').value=String(t.settings.after);
   else{$('nexus-bridge-start').value=String(t.settings.start);$('nexus-bridge-end').value=String(t.settings.end);}
