@@ -1,0 +1,24 @@
+/* Remove visible duplicate catalog, retain a compact, functional MCS editor. */
+#nexus-catalog-legacy-controls[hidden]{display:none!important}
+#pane-annotation #nexus-vector-catalog-mcs.nexus-mcs-unified{
+  padding:14px 16px;margin:12px 0 16px;background:#f8fbf9;
+  border:1px solid #d5e6de;border-radius:12px;
+}
+#nexus-vector-catalog-mcs.nexus-mcs-unified h3:first-child{
+  font-size:16px;color:#234a47;margin:0 0 5px;
+}
+#nexus-vector-catalog-mcs.nexus-mcs-unified .nexus-mcs-intro{
+  font-size:12px;color:#58716b;margin:0 0 11px;line-height:1.5;
+}
+#nexus-vector-catalog-mcs.nexus-mcs-unified .nexus-mcs-grid{margin:8px 0;gap:8px}
+#nexus-vector-catalog-mcs.nexus-mcs-unified #mcs-backbone-meta,
+#nexus-vector-catalog-mcs.nexus-mcs-unified #mcs-target-description{
+  margin:5px 0;color:#5c706b;font-size:11px;
+}
+#nexus-choice-catalog-admin{margin:7px 0 12px;padding:8px 12px;border:1px solid #d8e7e0;border-radius:9px;background:#fbfdfb}
+#nexus-choice-catalog-admin summary{cursor:pointer;color:#35655c;font-size:12px;font-weight:650}
+#nexus-choice-catalog-admin p{font-size:11px;line-height:1.5;color:#647c73}
+#nexus-choice-catalog-admin .nexus-mcs-actions{display:flex;flex-wrap:wrap;gap:6px}
+#nexus-choice-catalog-admin .nexus-mcs-actions .btn{font-size:11px;padding:8px}
+#pane-annotation .nexus-choice-note-compact{font-size:11px;line-height:1.45}
+#nexus-vector-catalog-mcs #mcs-second-wrap[hidden]{display:none!important}
