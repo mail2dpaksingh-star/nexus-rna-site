@@ -1,0 +1,11 @@
+/* NEXUS homepage cleanup — only active after unified header picker is confirmed. */
+.nexus-homepage-clean-ready #platform .step-rail .step{min-height:0}
+.nexus-homepage-clean-ready #platform .step-rail .step p{margin-bottom:0}
+.nexus-homepage-clean-ready #platform .step-rail{gap:16px}
+.nexus-homepage-clean-ready #applications .application-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nexus-homepage-clean-ready #applications .section-head{margin-bottom:26px}
+.nexus-homepage-clean-ready #platform.section{padding-block:72px}
+.nexus-homepage-clean-ready #applications.section{padding-block:72px}
+@media(max-width:720px){
+ .nexus-homepage-clean-ready #applications .application-list{grid-template-columns:1fr}
+}
