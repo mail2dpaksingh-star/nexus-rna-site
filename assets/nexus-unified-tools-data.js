@@ -54,10 +54,6 @@ window.NEXUS_TOOL_CATALOG = {
           "href": "/tools/seqfold/convert.html"
         },
         {
-          "label": "SeqFold Studio",
-          "href": "/tools/seqfold/index.html"
-        },
-        {
           "label": "Precision & Sanger Workflows",
           "href": "/tools/seqfold/precision.html"
         },
