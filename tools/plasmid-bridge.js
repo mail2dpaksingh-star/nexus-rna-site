@@ -171,7 +171,7 @@
     const anchor=doc.getElementById('plasmid-svg');if(!anchor||doc.getElementById('nexus-plasmid-assembly'))return;
     const box=doc.createElement('section');box.id='nexus-plasmid-assembly';box.className='nexus-bridge-box';
     box.innerHTML=`<h2>DNA insert → Virtual plasmid assembly</h2><p>Use the <strong>current circular plasmid</strong> as the backbone. Import a DNA insert JSON/FASTA/GenBank or transfer it from Coding + UTR Studio. Set insertion coordinates and orientation, then generate an annotated circular assembly.</p>
-     <div class="nexus-bridge-controls"><div><strong>DNA insert</strong><p id="nexus-bridge-insert" class="nexus-bridge-message">No DNA insert received.</p><label class="btn" for="nexus-bridge-file">Import DNA insert file</label><input type="file" id="nexus-bridge-file" accept=".json,.fasta,.fa,.fna,.gb,.gbk,.txt" class="sr-only"></div>
+     <div class="nexus-bridge-controls"><div><strong>DNA insert</strong><p id="nexus-bridge-insert" class="nexus-bridge-message">No DNA insert received.</p><label class="btn" for="nexus-bridge-file">Import DNA insert file</label><input type="file" id="nexus-bridge-file" accept=".json,.fasta,.fa,.fna,.gb,.gbk,.txt,.csv,.tsv" class="sr-only"></div>
      <div><strong>Backbone</strong><p id="nexus-bridge-backbone" class="nexus-bridge-message">Select or import a circular plasmid above.</p><button class="btn" id="nexus-bridge-use-backbone" type="button">Use current plasmid</button></div></div>
      <div class="nexus-bridge-controls"><div class="field"><label for="nexus-bridge-mode">Assembly operation</label><select id="nexus-bridge-mode"><option value="insert">Insert after selected base</option><option value="replace">Replace selected interval</option></select></div><div class="field"><label for="nexus-bridge-orientation">Insert orientation</label><select id="nexus-bridge-orientation"><option value="forward">Forward (+)</option><option value="reverse">Reverse complement (−)</option></select></div></div>
      <div class="nexus-bridge-controls"><div class="field" id="nexus-bridge-insert-coord"><label for="nexus-bridge-after">Insert after backbone base (0 = before base 1)</label><input type="number" min="0" step="1" id="nexus-bridge-after" value="0"></div><div id="nexus-bridge-replace-coord" class="nexus-bridge-controls" hidden><div class="field"><label for="nexus-bridge-start">Replace from (1-based)</label><input type="number" min="1" id="nexus-bridge-start" value="1"></div><div class="field"><label for="nexus-bridge-end">Through (inclusive)</label><input type="number" min="1" id="nexus-bridge-end" value="1"></div></div></div>
@@ -187,11 +187,22 @@
     function status(text,bad){$('nexus-bridge-status').textContent=text;$('nexus-bridge-status').classList.toggle('nexus-bridge-error',!!bad);}
     function received(x){insert=insertFromRecord(x);$('nexus-bridge-insert').textContent=insert.length+' bp · '+insert.features.length+' annotated components · '+insert.source;built=null;$('nexus-bridge-output').hidden=true;$('nexus-bridge-open').disabled=true;status('Insert loaded. Choose a backbone and simulation parameters.');}
     function useBackbone(){backbone=backboneFromRecord(root.NEXUS_GET_CURRENT_RECORD());$('nexus-bridge-backbone').textContent=backbone.name+' · '+backbone.sequence.length+' bp · '+backbone.features.length+' features';$('nexus-bridge-after').max=String(backbone.sequence.length);$('nexus-bridge-end').max=String(backbone.sequence.length);built=null;$('nexus-bridge-output').hidden=true;$('nexus-bridge-open').disabled=true;status('Backbone snapshot selected. Changes to Workbench map do not silently alter this selection.');}
-    async function readFile(file){if(file.size>2000000)throw Error('File exceeds the 2 MB import limit.');const raw=await file.text();const ext=file.name.toLowerCase();let data;
-      if(ext.endsWith('.json')){data=JSON.parse(raw);if(data.format !== 'nexus-dna-cloning-insert-v1' && !data.sequence)throw Error('JSON does not contain a DNA insert sequence.');}
-      else if(/^LOCUS\s/m.test(raw)){data=root.NexusWorkbench.readGenBank(raw);data.format='Imported GenBank DNA insert';}
-      else if(/^>/m.test(raw)){const lines=raw.trim().split(/\r?\n/),header=lines.shift();if(lines.some(x=>x.startsWith('>')))throw Error('Select one FASTA insert sequence per file.');data={sequence:lines.join(''),features:[],format:'Imported FASTA '+header.slice(1,40)};}
-      else throw Error('Unsupported insert file. Use DNA JSON, FASTA or GenBank.');received(data);
+    async function readFile(file){
+      const x=await root.NexusConstructFileImport.parse(file,{maxBytes:2000000});let data;
+      if(x.format==='genbank'){
+        data=root.NexusWorkbench.readGenBank(await file.text());data.format='Imported GenBank DNA insert';
+      }else if(x.format==='json' && x.record?.sequence){data=x.record;
+      }else{
+        const parts=x.components||{};
+        const sequence=root.NexusConstructFileImport.nucleic(x.sequence,'dna');
+        const features=[];let cursor=1;
+        for(const [key,label,type] of [['utr5','5 prime UTR','5UTR'],['cds','CDS','CDS'],['utr3','3 prime UTR','3UTR']]){
+          if(!parts[key])continue;const length=parts[key].length;
+          features.push({start:cursor,end:cursor+length-1,label,type,strand:'+'});cursor+=length;
+        }
+        data={format:'nexus-dna-cloning-insert-v1',sequence,length:sequence.length,features,source:'Imported '+x.format+' '+file.name};
+      }
+      received(data);
     }
     $('nexus-bridge-file').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;try{await readFile(f);}catch(err){status(err.message,true);}});
     $('nexus-bridge-use-backbone').addEventListener('click',()=>{try{useBackbone();}catch(e){status(e.message,true);}});

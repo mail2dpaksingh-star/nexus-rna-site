@@ -1,6 +1,11 @@
 (function(){'use strict';const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let last=null,basis=null;
 function msg(s=''){const box=$('#problem');box.textContent=s;box.classList.toggle('visible',!!s);}
-function fileInto(id,input){input.addEventListener('change',async()=>{try{let f=input.files?.[0];if(!f)return;if(f.size>150000)throw Error('Maximum FASTA/text input is 150 KB.');$(id).value=await f.text();msg('');}catch(e){msg(e.message);}finally{input.value='';}});}
+function fileInto(id,input){input.addEventListener('change',async()=>{try{const f=input.files?.[0];if(!f)return;const mode=$('#coding-type').value;if(mode==='protein'){ $(id).value=await NexusConstructFileImport.parseProtein(f);msg('Loaded protein '+f.name);return;}
+ const x=await NexusConstructFileImport.parse(f,{maxBytes:150000});
+ const parts=x.components||{};if(parts.utr5)$('#utr5').value=NexusConstructFileImport.nucleic(parts.utr5,'rna');if(parts.utr3)$('#utr3').value=NexusConstructFileImport.nucleic(parts.utr3,'rna');
+ $(id).value=NexusConstructFileImport.nucleic(parts.cds||x.sequence,'rna');
+ msg('Loaded '+f.name+'. Verify CDS vs full-length transcript and check UTR boundaries before generating.');
+ }catch(e){msg(e.message);}finally{input.value='';}});}
 function addOptions(selector,items){selector.replaceChildren();items.forEach((x,i)=>{const o=document.createElement('option');o.value=i;o.textContent=x.name;selector.appendChild(o);});}
 function show(){try{if(!basis)return;let args={coding:$('#coding').value,inputType:$('#coding-type').value,codonWeights:$('#codon-weights').value,utr5:$('#utr5').value,utr3:$('#utr3').value,codingIndex:$('#choose-coding').value,utr5Index:$('#choose-5').value,utr3Index:$('#choose-3').value};last=NexusUTR.fullDesign(args);let sel5=last.utr5.candidates[+args.utr5Index],sel3=last.utr3.candidates[+args.utr3Index],f5=sel5.features,f3=sel3.features;
 $('#metric-protein').textContent=last.coding.aaLength;$('#metric-cds').textContent=last.components.cds.length;$('#metric-transcript').textContent=last.transcriptLength;

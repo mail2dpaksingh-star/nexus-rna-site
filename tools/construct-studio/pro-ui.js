@@ -13,7 +13,13 @@ function updateSelection(){msg('selection-status',selected.size+' candidates sel
 $('rna-sort').addEventListener('change',renderRNA);$('generate-rna').addEventListener('click',runRNA);
 $('example-rna').addEventListener('click',()=>{$('rna-input-type').value='cds';$('rna-input').value='AUG'+'GCUCAGGAACCUAAGGCCUCUAAAGAG'.repeat(4)+'UAA';$('rna-utr5').value='GCUACCGAUGUCGACUCGAUCUCGCUUCAAGUCUCUCAGCUCC';$('rna-utr3').value='ACUUCAAGACUGAUUUAUGCUACUGACUCAUGUAGCUACUGACUAAUCCAGAUCUA';$('rna-codon-weights').value='';runRNA();});
 $('clear-rna').addEventListener('click',()=>{campaign=null;selected.clear();$('rna-results').hidden=true;msg('rna-status','RNA comparisons cleared.');});
-$('rna-file').addEventListener('change',async e=>{try{const f=e.target.files[0];if(f){if(f.size>150000)throw Error('Maximum input file size is 150 KB');$('rna-input').value=await f.text();msg('rna-status','Loaded '+f.name);}}catch(error){msg('rna-status',error.message,true);}finally{e.target.value='';}});
+$('rna-file').addEventListener('change',async e=>{try{const f=e.target.files?.[0];if(!f)return;if($('rna-input-type').value==='protein'){$('rna-input').value=await NexusConstructFileImport.parseProtein(f);msg('rna-status','Loaded protein '+f.name);return;}
+ const x=await NexusConstructFileImport.parse(f,{maxBytes:150000});
+ const parts=x.components||{};if(parts.utr5)$('rna-utr5').value=NexusConstructFileImport.nucleic(parts.utr5,'rna');if(parts.utr3)$('rna-utr3').value=NexusConstructFileImport.nucleic(parts.utr3,'rna');
+ $('rna-input').value=NexusConstructFileImport.nucleic(parts.cds||x.sequence,'rna');
+ campaign=null;$('rna-results').hidden=true;
+ msg('rna-status','Imported '+f.name+'. Confirm this is a CDS and review both UTRs before generating.');
+ }catch(error){msg('rna-status',error.message,true);}finally{e.target.value='';}});
 $('download-rna-json').addEventListener('click',()=>{if(campaign)download('NEXUS_Pro_RNA_Campaign.json',JSON.stringify(campaign,null,2));});
 $('download-rna-csv').addEventListener('click',()=>{if(campaign){const values=campaign.candidates.map(r=>({...r,reviewFlags:r.qualityFlags.join(' | ')}));download('NEXUS_Pro_RNA_Candidates.csv',NexusPro.csv(values,['id','codingName','fiveName','threeName','nt','gc','maxRun','uAUG','areMotif','changedCodons','flagCount','reviewFlags']),'text/csv');}});
 $('download-rna-fasta').addEventListener('click',()=>{if(!campaign)return;const rows=campaign.candidates.filter(r=>selected.has(r.id));if(!rows.length){msg('selection-status','Select at least one candidate to export.',true);return;}download('NEXUS_Pro_Selected_RNA.fasta',rows.map(r=>NexusUTR.fasta(r.id,r.sequence)).join(''),'text/plain');});
