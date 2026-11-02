@@ -1,0 +1,13 @@
+/* Guided DNA-template annotation: secondary to original NEXUS research QA. */
+.qa-guide{margin:14px 0 20px;padding:16px;border:1px solid #b6d5c9;background:#f1f8f4;border-radius:12px}
+.qa-guide[hidden],.qa-guide #nexus-full-results[hidden]{display:none!important}
+.qa-guide h3{margin:0 0 10px;color:#1c4b42}
+.qa-guide-sub{color:#4e6961;font-size:13px;line-height:1.55}
+.qa-guide-evidence{padding:12px;border-left:3px solid #3e8d79;background:white;border-radius:7px;font-size:13px;color:#284d45}
+.qa-guide-evidence p{margin:5px 0}
+.qa-guide-map{display:grid;gap:5px;margin:12px 0}
+.qa-guide-map div{padding:8px 12px;background:#e1f0e8;color:#234f46;border-radius:6px;font-size:12px}
+.qa-guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qa-guide-grid label{font-size:12px;font-weight:700;color:#25584c}
+.qa-guide-grid input{display:block;box-sizing:border-box;margin-top:5px;width:100%;padding:10px;border:1px solid #b6c9c0;border-radius:8px}
+@media(max-width:640px){.qa-guide-grid{grid-template-columns:1fr}}
