@@ -1,0 +1,83 @@
+/* NEXUS approved homepage add-on: service-card tool dropdowns.
+   This stylesheet affects only the four service cards and the new portfolio page. */
+.rna-service-highlights .rna-service-card .nexus-service-image-link{display:block;line-height:0;text-decoration:none}
+.rna-service-highlights .rna-service-card .nexus-service-image-link:focus-visible{outline:3px solid #1966df;outline-offset:-3px}
+.rna-service-highlights .rna-service-card .nexus-service-title-link{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;color:inherit;text-decoration:none;width:100%}
+.rna-service-highlights .rna-service-card .nexus-service-title-link:hover{text-decoration:underline;text-decoration-color:#185de4;text-underline-offset:3px}
+.rna-service-highlights .rna-service-card .nexus-service-title-link:focus-visible{outline:3px solid #1758d9;outline-offset:4px;border-radius:3px}
+.rna-service-highlights .rna-service-card .nexus-service-tool-picker{margin-top:auto;padding-top:14px;font-size:12px;width:100%;color:#183b75}
+.rna-service-highlights .nexus-service-tool-picker summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:7px;border:1px solid #cbdcf6;background:#f4f8ff;border-radius:8px;padding:9px 10px;font-size:12px;font-weight:750;color:#1147aa;list-style:none;line-height:1.3}
+.rna-service-highlights .nexus-service-tool-picker summary::-webkit-details-marker{display:none}
+.rna-service-highlights .nexus-service-tool-picker summary:after{content:'▾';font-size:17px;margin-left:auto}
+.rna-service-highlights .nexus-service-tool-picker[open] summary:after{content:'▴'}
+.rna-service-highlights .nexus-service-tool-picker summary:hover,.rna-service-highlights .nexus-service-tool-picker[open] summary{background:#eaf2ff;border-color:#a9c7f1}
+.rna-service-highlights .nexus-service-tool-picker summary:focus-visible{outline:3px solid #1761d6;outline-offset:2px}
+.rna-service-highlights .nexus-tool-count{font-weight:600;color:#42628c}
+.rna-service-highlights .nexus-service-tool-picker ul{list-style:none;margin:8px 0 0;padding:7px 10px 9px;border:1px solid #e0eafa;border-radius:9px;max-height:270px;overflow-y:auto;background:#fff}
+.rna-service-highlights .nexus-service-tool-picker li+li{border-top:1px solid #edf2fa}
+.rna-service-highlights .nexus-service-tool-picker a{display:block;padding:8px 0;color:#1554b3;text-decoration:none;font-size:12px;line-height:1.35}
+.rna-service-highlights .nexus-service-tool-picker a:hover{text-decoration:underline;color:#063d94}
+/* Portfolio page: separate scoped styles do not restyle the main homepage. */
+.nexus-portfolio-page{margin:0;background:#f7faff;color:#082456;font:16px/1.55 system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.nexus-portfolio-page *{box-sizing:border-box}
+.nexus-portfolio-page a{color:inherit}
+.nexus-portfolio-page .skip-link{position:absolute;left:-999px;top:auto}
+.nexus-portfolio-page .skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 14px;z-index:99}
+.nexus-portfolio-page .portfolio-shell{width:min(1390px,calc(100% - 42px));margin:auto}
+.nexus-portfolio-page .portfolio-header{background:white;border-bottom:1px solid #dfe9f9}
+.nexus-portfolio-page .header-inner{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.nexus-portfolio-page .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0b265f}
+.nexus-portfolio-page .brand .logo{display:grid;place-items:center;width:37px;height:37px;border-radius:10px;background:#e8f3ff;color:#0e67c8;font-size:25px}
+.nexus-portfolio-page .brand strong,.nexus-portfolio-page .brand small{display:block}
+.nexus-portfolio-page .brand strong{font-size:19px;letter-spacing:-.04em;line-height:1.18}
+.nexus-portfolio-page .brand small{font-size:10px;color:#46688e}
+.nexus-portfolio-page .portfolio-header nav{display:flex;flex-wrap:wrap;gap:20px}
+.nexus-portfolio-page .portfolio-header nav a{text-decoration:none;font-size:13px;font-weight:700}
+.nexus-portfolio-page .portfolio-header nav a:hover,.nexus-portfolio-page a[aria-current=page]{color:#1459e9}
+.nexus-portfolio-page .portfolio-intro{background:linear-gradient(110deg,#fff,#eaf3ff);padding:56px 0 42px;border-bottom:1px solid #d9e6fc}
+.nexus-portfolio-page .eyebrow{color:#1359c9;font-size:11px;font-weight:850;letter-spacing:.12em}
+.nexus-portfolio-page h1{font-size:clamp(30px,4.1vw,54px);letter-spacing:-.05em;line-height:1.1;margin:10px 0}
+.nexus-portfolio-page .portfolio-intro p:not(.eyebrow){max-width:900px;margin:8px 0;color:#395472}
+.nexus-portfolio-page .portfolio-scope{font-size:13px!important}
+.nexus-portfolio-page .portfolio-category-nav{display:flex;flex-wrap:wrap;gap:8px;padding-top:24px;padding-bottom:24px}
+.nexus-portfolio-page .portfolio-category-nav a{border:1px solid #c9dcf9;border-radius:999px;padding:9px 14px;background:#fff;text-decoration:none;color:#0e4da9;font-size:12px;font-weight:750}
+.nexus-portfolio-page .portfolio-category-nav a:hover{background:#e7f1ff}
+.nexus-portfolio-page .portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-bottom:28px}
+.nexus-portfolio-page .portfolio-card{background:white;border:1px solid #dce6f5;border-radius:17px;overflow:hidden;box-shadow:0 9px 30px rgba(26,69,140,.07);scroll-margin-top:25px}
+.nexus-portfolio-page .category-head{display:grid;grid-template-columns:36% 1fr;gap:18px;align-items:center;padding:16px;background:#f2f7ff;border-bottom:1px solid #e0e9f8}
+.nexus-portfolio-page .category-head img{width:100%;height:156px;object-fit:cover;border-radius:12px}
+.nexus-portfolio-page .category-head h2{font-size:24px;line-height:1.15;letter-spacing:-.03em;margin:6px 0 10px}
+.nexus-portfolio-page .category-head p{font-size:13px;color:#466082;margin:0}
+.nexus-portfolio-page .category-content{padding:20px 24px 24px}
+.nexus-portfolio-page .category-content h3{font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.055em;color:#426088}
+.nexus-portfolio-page .service-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.nexus-portfolio-page .service-list li{border-bottom:1px solid #edf1f8;padding:0 0 10px}
+.nexus-portfolio-page .service-list strong,.nexus-portfolio-page .service-list span{display:block}
+.nexus-portfolio-page .service-list strong{font-size:14px;color:#0b2a60}
+.nexus-portfolio-page .service-list span{font-size:12.5px;color:#54708e;margin-top:3px}
+.nexus-portfolio-page .deliverable,.nexus-portfolio-page .scope{font-size:12px;color:#47627c;margin:14px 0 0}
+.nexus-portfolio-page .scope{color:#657488}
+.nexus-portfolio-page .portfolio-tools{margin-top:17px;border:1px solid #ccdcf6;border-radius:10px;background:#f8fbff}
+.nexus-portfolio-page .portfolio-tools summary{list-style:none;cursor:pointer;font-weight:760;font-size:13px;color:#114ca4;padding:13px 15px}
+.nexus-portfolio-page .portfolio-tools summary::-webkit-details-marker{display:none}
+.nexus-portfolio-page .portfolio-tools summary:after{content:'▾';float:right}
+.nexus-portfolio-page .portfolio-tools[open] summary:after{content:'▴'}
+.nexus-portfolio-page .portfolio-tools summary:focus-visible{outline:3px solid #175be1;border-radius:9px}
+.nexus-portfolio-page .portfolio-tools ul{list-style:none;padding:0 15px 12px;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
+.nexus-portfolio-page .portfolio-tools li a{display:block;font-size:12px;text-decoration:none;color:#0f53b4;padding:5px 0}
+.nexus-portfolio-page .portfolio-tools li a:hover{text-decoration:underline}
+.nexus-portfolio-page .category-actions{margin-top:22px}
+.nexus-portfolio-page .request{display:inline-flex;align-items:center;gap:8px;background:#1559df;border-radius:8px;color:#fff;padding:10px 15px;font-size:12px;font-weight:800;text-decoration:none}
+.nexus-portfolio-page .request:hover{background:#124bb5}
+.nexus-portfolio-page .next-steps{background:white;border:1px solid #dce6f5;border-radius:16px;padding:25px;margin-top:10px;margin-bottom:45px}
+.nexus-portfolio-page .next-steps h2{margin:0 0 16px;font-size:26px}
+.nexus-portfolio-page .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.nexus-portfolio-page .steps div{border-left:3px solid #83b2ed;padding-left:12px}
+.nexus-portfolio-page .steps strong{font-size:14px}
+.nexus-portfolio-page .steps p{margin:4px 0;font-size:12px;color:#54708e}
+.nexus-portfolio-page .next-steps>p{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.nexus-portfolio-page .next-steps .secondary{font-size:13px;color:#1453ae}
+.nexus-portfolio-page footer{background:#0d2553;color:#cddbf0;font-size:11px;padding:21px 0}
+@media(max-width:900px){.nexus-portfolio-page .portfolio-grid{grid-template-columns:1fr}.nexus-portfolio-page .header-inner{flex-wrap:wrap;padding:14px 0}.nexus-portfolio-page .category-head{grid-template-columns:30% 1fr}}
+@media(max-width:560px){.nexus-portfolio-page .portfolio-shell{width:min(100% - 26px,1390px)}.nexus-portfolio-page .portfolio-intro{padding:38px 0 30px}.nexus-portfolio-page .category-head{grid-template-columns:1fr}.nexus-portfolio-page .category-head img{height:170px}.nexus-portfolio-page .portfolio-tools ul,.nexus-portfolio-page .steps{grid-template-columns:1fr}.nexus-portfolio-page .portfolio-header nav{gap:10px}.nexus-portfolio-page .portfolio-header nav a{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.nexus-portfolio-page *{scroll-behavior:auto}}
