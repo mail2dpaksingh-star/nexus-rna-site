@@ -1,12 +1,12 @@
 /* Single SeqFold entry point under Molecular Design Studio */
 .nexus-seqfold-tab{white-space:nowrap}
-.nexus-seqfold-pane .nexus-seqfold-tag{font-size:11px;font-weight:700;color:#296456;background:#e1f3eb;padding:7px 12px;border-radius:99px}
-.nexus-seqfold-pane .nexus-seqfold-intro{margin:0;padding:18px 22px;color:#506d6b;line-height:1.65;font-size:13px}
+.nexus-seqfold-pane .nexus-seqfold-tag{font-size:11px;font-weight:700;color:#183575;background:#e1e7f3;padding:7px 12px;border-radius:99px}
+.nexus-seqfold-pane .nexus-seqfold-intro{margin:0;padding:18px 22px;color:#344f89;line-height:1.65;font-size:13px}
 .nexus-seqfold-frame-wrap{padding:0 12px 18px}
-.nexus-seqfold-frame{width:100%;min-height:980px;display:block;border:0;border-radius:15px;background:#f3f8f6}
-.nexus-seqfold-fallback{padding:0 22px 20px;font-size:12px;color:#5f7774}.nexus-seqfold-fallback a{font-weight:750;text-decoration:underline}
+.nexus-seqfold-frame{width:100%;min-height:980px;display:block;border:0;border-radius:15px;background:#f2f4f9}
+.nexus-seqfold-fallback{padding:0 22px 20px;font-size:12px;color:#4b618b}.nexus-seqfold-fallback a{font-weight:750;text-decoration:underline}
 /* Inside the embedded SeqFold, keep the unique folding/ORF tools and one sequence input */
-body.nexus-seqfold-embedded{background:#f1f7f4!important}
+body.nexus-seqfold-embedded{background:#f0f3f8!important}
 body.nexus-seqfold-embedded>.topbar,
 body.nexus-seqfold-embedded>.hero,
 body.nexus-seqfold-embedded>.strip,

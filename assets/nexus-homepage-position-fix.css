@@ -10,7 +10,7 @@ button,input{font:inherit}
 header.site-header{position:relative;z-index:10;background:#fff}
 header.site-header nav.top{width:min(1480px,100%);min-height:84px;margin:auto;padding:12px clamp(18px,3vw,45px);display:flex;align-items:center;justify-content:space-between;gap:24px}
 header.site-header .brand{display:flex;align-items:center;gap:13px;min-width:250px;text-decoration:none}
-header.site-header .brand-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#e8f2ff,#d8f7fd);flex-shrink:0}
+header.site-header .brand-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#e8f2ff,#dde6f8);flex-shrink:0}
 header.site-header .brand-mark svg{width:33px;height:33px}
 header.site-header .brand strong,header.site-header .brand small{display:block}
 header.site-header .brand strong{font-size:23px;letter-spacing:-.05em;line-height:1.14}

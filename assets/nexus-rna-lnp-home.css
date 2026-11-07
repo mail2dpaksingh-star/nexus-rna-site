@@ -1,0 +1,23 @@
+/* NEXUS | RNA-LNP homepage mechanism feature. Namespace-limited UI styling. */
+.nexus-lnp-home{box-sizing:border-box;position:relative;overflow:hidden;padding:68px 24px 72px;background:linear-gradient(110deg,#f5f9ff 0%,#fff 56%,#f2f7ff 100%);border-top:1px solid #e2eafb;border-bottom:1px solid #d9e5fa;color:#102758}
+.nexus-lnp-home *, .nexus-lnp-home *::before, .nexus-lnp-home *::after{box-sizing:inherit}
+.nexus-lnp-home__inner{max-width:1210px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,420px);gap:clamp(28px,5vw,74px);align-items:center}
+.nexus-lnp-home__eyebrow{font-size:12px!important;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#255add!important;margin:0 0 13px!important}
+.nexus-lnp-home__title{font-size:clamp(30px,3.1vw,46px)!important;line-height:1.13!important;letter-spacing:-.037em!important;margin:0 0 22px!important;color:#102758!important;font-weight:800!important}
+.nexus-lnp-home__title span{color:#285ce1}
+.nexus-lnp-home__description{font-size:16px!important;line-height:1.75!important;color:#445d82!important;margin:0 0 26px!important;max-width:625px}
+.nexus-lnp-home__steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:0 0 26px;padding:0;list-style:none}
+.nexus-lnp-home__steps li{min-width:0;border:1px solid #dce7fa;background:#fff;border-radius:14px;padding:14px 15px;box-shadow:0 3px 14px rgba(14,54,129,.035)}
+.nexus-lnp-home__stepnum{font-size:12px;font-weight:800;color:#2a61e9;letter-spacing:.06em;display:block;margin-bottom:7px}
+.nexus-lnp-home__steptitle{display:block;font-size:14px;line-height:1.35;font-weight:800;color:#112d6c}
+.nexus-lnp-home__steptext{display:block;margin-top:4px;color:#597093;font-size:12px;line-height:1.5}
+.nexus-lnp-home__link{display:inline-flex;align-items:center;gap:9px;text-decoration:none!important;border-radius:10px;background:#255de7;color:#fff!important;padding:12px 18px;font-size:13px;font-weight:750;transition:background .2s ease,transform .2s ease}
+.nexus-lnp-home__link:hover,.nexus-lnp-home__link:focus-visible{background:#143ca5;color:#fff!important;transform:translateY(-1px)}
+.nexus-lnp-home__visual{margin:0;position:relative;border:1px solid #d7e5fd;border-radius:24px;padding:19px 20px 16px;background:#fff;box-shadow:0 18px 50px rgba(24,64,142,.12);text-align:center;min-width:0}
+.nexus-lnp-home__image{display:block;max-width:100%;width:358px;height:auto;aspect-ratio:358/537;object-fit:contain;border-radius:14px;margin:0 auto}
+.nexus-lnp-home__still{display:none}
+.nexus-lnp-home__caption{font-size:12px;line-height:1.55;color:#567096;margin:12px auto 0;max-width:350px}
+.nexus-lnp-home__visual::after{content:'ANIMATED PROCESS';position:absolute;top:24px;right:25px;background:rgba(255,255,255,.93);color:#163f8f;font-size:10px;font-weight:800;padding:6px 9px;border-radius:20px;letter-spacing:.08em;box-shadow:0 2px 8px rgba(0,34,90,.1)}
+@media(max-width:860px){.nexus-lnp-home{padding:48px 18px}.nexus-lnp-home__inner{grid-template-columns:1fr;gap:30px}.nexus-lnp-home__visual{max-width:450px;width:100%;margin:0 auto}}
+@media(max-width:480px){.nexus-lnp-home__steps{grid-template-columns:1fr 1fr;gap:9px}.nexus-lnp-home__steps li{padding:12px 10px}.nexus-lnp-home__title{font-size:30px!important}.nexus-lnp-home__visual{padding:12px 12px 17px}.nexus-lnp-home__visual::after{top:16px;right:17px}}
+@media(prefers-reduced-motion:reduce){.nexus-lnp-home__animated{display:none}.nexus-lnp-home__still{display:block}.nexus-lnp-home__link{transition:none}}

@@ -4,10 +4,10 @@ header.site-header{background:#fff!important;border-bottom:1px solid #dbe6f4!imp
 header.site-header nav.top{max-width:1510px;min-height:76px;gap:22px}
 header.site-header .brand{color:#0b235f!important;gap:10px}
 header.site-header .brand strong{font-size:clamp(17px,1.7vw,26px);font-weight:850;letter-spacing:-.04em;line-height:1.1}
-header.site-header .brand small{font-size:9px;letter-spacing:.03em;color:#1e6bbb;font-weight:600;margin-top:4px}
+header.site-header .brand small{font-size:9px;letter-spacing:.03em;color:#1c54bd;font-weight:600;margin-top:4px}
 header.site-header .brand-icon{width:42px;height:42px}
-header.site-header .brand-icon circle{stroke:#1476dd}
-header.site-header .brand-icon path{stroke:#1a8ad1}
+header.site-header .brand-icon circle{stroke:#1b5cd6}
+header.site-header .brand-icon path{stroke:#1a5ad1}
 header.site-header .top-links{gap:19px}
 header.site-header .top-links>a{color:#0c265c;font-size:13px;font-weight:700}
 header.site-header .top-links>a:hover{color:#145ce2}
@@ -19,7 +19,7 @@ header.site-header .nexus-unified-picker-nav .nexus-unified-select{background:#f
 header.site-header .site-search-bar{background:#f7faff;color:#122b59;border-bottom:1px solid #e4edf7}
 header.site-header .site-search-input{color:#0d2d58}
 /* Hero uses genuine HTML controls, not a flattened screenshot. */
-#home.rna-hero{position:relative;isolation:isolate;min-height:396px;background:#f5faff;color:#071c56!important;overflow:hidden}
+#home.rna-hero{position:relative;isolation:isolate;min-height:396px;background:#f7f9fd;color:#071c56!important;overflow:hidden}
 #home.rna-hero::before{content:"";position:absolute;z-index:-1;inset:0;opacity:1;mask-image:none;background:linear-gradient(90deg,#fff 0%,#fff 30%,rgba(255,255,255,.96) 38%,rgba(255,255,255,.78) 48%,rgba(255,255,255,.03) 70%),url("rna-biosolutions/hero-rna-delivery.webp") right center / 72% 100% no-repeat}
 #home.rna-hero::after{display:none}
 #home .rna-hero-inner{max-width:1440px;margin:0 auto;padding:58px clamp(24px,4.2vw,70px) 58px;position:relative}
