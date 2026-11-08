@@ -1,0 +1,16 @@
+/* NEXUS_SIX_ANIMATIONS_START */
+/* Isolated to the six-card RNA-therapeutics gallery. No scientific tool styles affected. */
+.nexus-therapy-gallery{display:block;box-sizing:border-box;width:100%;padding:24px 18px 36px;margin:0;background:#f5f8fe;color:#162b60}
+.nexus-therapy-gallery *{box-sizing:border-box}
+.nexus-therapy-gallery__top{max-width:1440px;margin:0 auto 8px;display:flex;justify-content:flex-end;min-height:28px}
+.nexus-therapy-gallery__controls{display:flex;gap:8px}
+.nexus-therapy-gallery__arrow{display:grid;place-items:center;width:32px;height:32px;border:1px solid #bfd1f2;border-radius:50%;color:#2454c4;background:#fff;font:700 18px/1 Arial,sans-serif;cursor:pointer}
+.nexus-therapy-gallery__arrow:hover,.nexus-therapy-gallery__arrow:focus-visible{background:#dbe8ff;outline:2px solid transparent}
+.nexus-therapy-gallery__track{max-width:1440px;width:100%;margin:0 auto;display:flex;align-items:stretch;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 10px;overscroll-behavior-x:contain;padding:4px 2px 18px;scrollbar-color:#adbee0 transparent}
+.nexus-therapy-gallery__card{flex:1 0 0;min-width:170px;max-width:290px;display:flex;flex-direction:column;align-items:stretch;margin:0;padding:9px;background:#fff;border:1px solid #d8e4f7;border-radius:16px;box-shadow:0 7px 18px rgba(21,55,113,.09);scroll-snap-align:start;overflow:hidden}
+.nexus-therapy-gallery__card picture{display:grid;place-items:center;width:100%;height:300px;background:linear-gradient(#e6f1ff,#d7e6fc);border-radius:11px;overflow:hidden}
+.nexus-therapy-gallery__card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;border:0;max-width:100%}
+.nexus-therapy-gallery__card figcaption{padding:12px 4px 7px;font:700 14px/1.3 Arial,Helvetica,sans-serif;text-align:center;color:#122d6a}
+@media(max-width:1180px){.nexus-therapy-gallery__card{flex:0 0 188px}}
+@media(max-width:680px){.nexus-therapy-gallery{padding:14px 12px 26px}.nexus-therapy-gallery__card{flex:0 0 195px}.nexus-therapy-gallery__card picture{height:300px}}
+/* NEXUS_SIX_ANIMATIONS_END */
