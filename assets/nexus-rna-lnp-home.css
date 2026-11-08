@@ -28,6 +28,7 @@
 .nexus-lnp-home--animation-only .nexus-lnp-home__inner{display:block;max-width:440px;margin:0 auto}
 .nexus-lnp-home--animation-only .nexus-lnp-home__visual{width:100%;margin:0 auto;padding:14px;max-width:none}
 .nexus-lnp-home--animation-only .nexus-lnp-home__image{width:100%;max-width:358px;height:auto;display:block;margin:0 auto}
+.nexus-lnp-home--animation-only .nexus-lnp-home__still{display:none}
 .nexus-lnp-home--animation-only .nexus-lnp-home__visual::after{display:none}
 @media (prefers-reduced-motion:reduce){
   .nexus-lnp-home--animation-only .nexus-lnp-home__animated{display:none}
