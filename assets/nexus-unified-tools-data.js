@@ -46,44 +46,20 @@ window.NEXUS_TOOL_CATALOG = {
       "label": "Sequence, Plasmids & Molecular Design",
       "items": [
         {
-          "label": "Molecular Design Studio (Plasmids & Cloning)",
+          "label": "Sequence Analysis & Conversion",
+          "href": "/tools/seqfold/index.html"
+        },
+        {
+          "label": "Molecular Design & Plasmids",
           "href": "/tools/seqfold/advanced.html"
         },
         {
-          "label": "DNA ↔ RNA ↔ Protein Converter",
-          "href": "/tools/seqfold/convert.html"
+          "label": "RNA Structure Workbench",
+          "href": "/tools/seqfold/workflows.html"
         },
         {
-          "label": "Precision & Sanger Workflows",
-          "href": "/tools/seqfold/precision.html"
-        },
-        {
-          "label": "qPCR & ddPCR Primer / Probe Designer",
+          "label": "qPCR / ddPCR Assay Design",
           "href": "/tools/seqfold/qpcr.html"
-        },
-        {
-          "label": "ThermoFold Benchmark Lab",
-          "href": "/tools/seqfold/thermofold-benchmark.html"
-        },
-        {
-          "label": "ThermoFold Ensemble Analysis",
-          "href": "/tools/seqfold/thermofold-ensemble.html"
-        },
-        {
-          "label": "RNAfold Reference Viewer",
-          "href": "/tools/seqfold/thermofold-reference.html"
-        },
-        {
-          "label": "ThermoFold RNA ΔG",
-          "href": "/tools/seqfold/thermofold.html"
-        },
-        {
-          "label": "SeqFold Validation Workflows",
-          "href": "/tools/seqfold/validation.html"
-        },
-        {
-          "label": "Sequence Workbench",
-          "href": "/tools/seqfold/workbench.html"
         }
       ]
     },
