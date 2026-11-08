@@ -21,3 +21,16 @@
 @media(max-width:860px){.nexus-lnp-home{padding:48px 18px}.nexus-lnp-home__inner{grid-template-columns:1fr;gap:30px}.nexus-lnp-home__visual{max-width:450px;width:100%;margin:0 auto}}
 @media(max-width:480px){.nexus-lnp-home__steps{grid-template-columns:1fr 1fr;gap:9px}.nexus-lnp-home__steps li{padding:12px 10px}.nexus-lnp-home__title{font-size:30px!important}.nexus-lnp-home__visual{padding:12px 12px 17px}.nexus-lnp-home__visual::after{top:16px;right:17px}}
 @media(prefers-reduced-motion:reduce){.nexus-lnp-home__animated{display:none}.nexus-lnp-home__still{display:block}.nexus-lnp-home__link{transition:none}}
+
+/* NEXUS_ANIMATION_ONLY_STYLE_START */
+/* The only homepage addition is the animated figure; retain a responsive, centered layout. */
+.nexus-lnp-home--animation-only{padding:32px 18px 44px}
+.nexus-lnp-home--animation-only .nexus-lnp-home__inner{display:block;max-width:440px;margin:0 auto}
+.nexus-lnp-home--animation-only .nexus-lnp-home__visual{width:100%;margin:0 auto;padding:14px;max-width:none}
+.nexus-lnp-home--animation-only .nexus-lnp-home__image{width:100%;max-width:358px;height:auto;display:block;margin:0 auto}
+.nexus-lnp-home--animation-only .nexus-lnp-home__visual::after{display:none}
+@media (prefers-reduced-motion:reduce){
+  .nexus-lnp-home--animation-only .nexus-lnp-home__animated{display:none}
+  .nexus-lnp-home--animation-only .nexus-lnp-home__still{display:block}
+}
+/* NEXUS_ANIMATION_ONLY_STYLE_END */
