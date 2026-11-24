@@ -67,7 +67,7 @@
       const total=Number((document.getElementById('codon-length')?.textContent||'').replace(/,/g,''));
       const status=document.getElementById('codon-status');
       if(!out || /[^ACGT]/.test(out) || (Number.isFinite(total)&&total!==out.length)){
-        if(status)status.textContent='Generate a complete coding sequence first. For constructs above 3,000 nt, download FASTA and import the file into Plasmid maps & cloning.';
+        if(status)status.textContent='Generate a complete coding sequence first. For cloning inserts above 10,000 bp, export the sequence for analysis in a larger-capacity cloning tool.';
         return;
       }
       try{
