@@ -32,9 +32,30 @@
  function updateInputCount(){
   const raw=$('rna-input').value;
   const lines=raw.split(/\r?\n/).filter(line=>!/^\s*>/.test(line));
-  const count=lines.join('').replace(/[\s\d]/g,'').length;
-  $('rna-count').textContent=count.toLocaleString()+' / 10,000 nt'+(count>10000?' — exceeds limit':'');
-  $('rna-count').className='small '+(count>10000?'bad':'');
+  const bases=lines.join('').replace(/[\s\d]/g,'').toUpperCase();
+  const count=bases.length,limit=NexusThermoFold.LONG_MAX||10000;
+  const countLabel=$('rna-count'),mode=$('rna-mode');
+  countLabel.className='';
+  if(count===0){
+    countLabel.textContent='No sequence entered';
+    mode.textContent='Paste RNA or import one FASTA record. Maximum input: 10,000 nt.';
+  }else if(count>limit){
+    countLabel.textContent=count.toLocaleString()+' nt entered — exceeds 10,000 nt limit';
+    countLabel.className='bad';
+    mode.textContent='Reduce the sequence to 10,000 nt or fewer before running.';
+  }else if(/[^ACGUT]/.test(bases)){
+    countLabel.textContent=count.toLocaleString()+' nt entered';
+    countLabel.className='bad';
+    mode.textContent='Invalid base detected. Use A, C, G, U (or DNA T) only.';
+  }else if(count<=NexusThermoFold.MAX){
+    countLabel.textContent=count.toLocaleString()+' nt entered (10,000 nt maximum)';
+    mode.textContent='Mode: full-sequence, restricted-model MFE and ΔG at 37°C.';
+  }else{
+    const windowSize=NexusThermoFold.LONG_WINDOW||200;
+    countLabel.textContent=count.toLocaleString()+' nt entered (10,000 nt maximum)';
+    mode.textContent='Mode: '+Math.ceil(count/windowSize)+' independent '+windowSize+
+      '-nt windows; NO whole-RNA MFE or ΔG.';
+  }
  }
  function clearResults(){
   last=null;lastSVG='';
@@ -161,7 +182,11 @@
  $('run').addEventListener('click',run);
  $('cancel').addEventListener('click',()=>{if(worker)worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;clearResults();status('Analysis cancelled. No partial-window predictions were published.');});
  $('long-window-select').addEventListener('change',e=>renderLongWindow(Number(e.target.value)));
- $('rna-input').addEventListener('input',updateInputCount);
+ $('rna-input').addEventListener('input',()=>{
+   if(worker){worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;}
+   if(last)clearResults();
+   updateInputCount();
+ });
  $('example').addEventListener('click',()=>{$('rna-input').value='>synthetic_hairpin\nGGGAAACCC';updateInputCount();status('Synthetic example loaded; click Analyze RNA structure.');});
  $('reset').addEventListener('click',()=>{if(worker)worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;$('rna-input').value='';clearResults();updateInputCount();status('Cleared.');});
  $('rna-upload').addEventListener('change',async event=>{
