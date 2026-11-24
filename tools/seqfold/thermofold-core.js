@@ -9,7 +9,7 @@
  */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;root.NexusThermoFold=api;})(typeof self!=='undefined'?self:globalThis,function(){
 'use strict';
-const VERSION='0.9.0', MAX=280, LOOP_MIN=3, MAX_INTERNAL=10, INF=Infinity;
+const VERSION='0.9.1', MAX=1000, LOOP_MIN=3, MAX_INTERNAL=10, INF=Infinity;
 const allowed=['AU','UA','CG','GC','GU','UG'];
 const pairs=new Set(allowed);
 const innerByOrder=['AU','CG','GC','GU','UA','UG'];
@@ -38,7 +38,7 @@ function normalize(raw){
  const text=String(raw||'').trim(), lines=text.split(/\r?\n/),seq=lines.filter(x=>!/^\s*>/.test(x)).join('').replace(/[\s\d]/g,'').toUpperCase().replace(/T/g,'U');
  if(!seq)throw Error('Enter an RNA sequence or FASTA record.');
  if(/[^ACGU]/.test(seq))throw Error('Only unmodified A, C, G, U are supported.');
- if(seq.length>MAX)throw Error(`ThermoFold v0.5 supports up to ${MAX} nt for this global restricted-model calculation. Use the separately labeled segmented preview for longer sequences.`);
+ if(seq.length>MAX)throw Error(`Full-sequence NEXUS restricted-model MFE supports up to ${MAX.toLocaleString()} nt. Use independent window analysis above this length.`);
  return seq;
 }
 /* Long-RNA mode is explicitly windowed: it does NOT compute global MFE, a
@@ -275,7 +275,7 @@ function modelInfo(){return {
   'Exterior dangle/terminal mismatch contributions require uploaded authentic data; multibranch dangles and coaxial terms remain unimplemented. Most special hairpins, pseudoknots, modified bases, or temperature adjustment. Partition-function estimates are available separately under this same restricted model.',
   'Do not use results for validated RNA design or release decisions without independent comparison.'
  ]};}
-function fold(raw){
+function fold(raw,{onProgress}={}){
  const s=normalize(raw),n=s.length,size=n*n,idx=(i,j)=>i*n+j;
  const V=new Float64Array(size),M1=new Float64Array(size),M2=new Float64Array(size);V.fill(INF);M1.fill(INF);M2.fill(INF);
  const VC=new Int32Array(size);VC.fill(-4); // -1 hairpin, -3 multi, >=0 inner pair index
@@ -283,7 +283,8 @@ function fold(raw){
  const C2=new Int32Array(size);C2.fill(-4); // -1 leftskip -2 rightskip 1 split two M1, 2 split M1+M2
  const SP=new Int32Array(size);SP.fill(-1);
  let candidatePairs=0;
- for(let span=0;span<n;span++)for(let i=0;i+span<n;i++){
+ for(let span=0;span<n;span++){
+  for(let i=0;i+span<n;i++){
    const j=i+span,a=idx(i,j),outer=s[i]+s[j];
    if(span>=LOOP_MIN+1&&pairs.has(outer)){
      candidatePairs++;let best=hairpin(s,i,j),mode=-1;
@@ -320,6 +321,8 @@ function fold(raw){
      if(Number.isFinite(right2)&&left+right2<best2-1e-9){best2=left+right2;mode2=2;split=k;}
    }
    M2[a]=best2;C2[a]=mode2;SP[a]=split;
+  }
+  if(typeof onProgress==='function'&&(span%25===24||span===n-1))onProgress({phase:'global',completed:span+1,total:n});
  }
  // Exterior unrestricted unpaired positions, one or more independent helices.
  const F=new Float64Array(n+1),FC=new Array(n+1);F.fill(INF);F[0]=0;
