@@ -5,6 +5,7 @@
  function safe(t){return String(t).replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));}
  function show(r){
   last=r;
+  $('long-rna-results').hidden=true;
   $('dg').textContent=r.deltaG37.toFixed(2);
   $('nt').textContent=r.length;
   $('pair').textContent=r.pairCount;
@@ -28,16 +29,125 @@
   for(const id of ['export-dbn','export-json','export-svg'])$(id).disabled=false;
   status(`NEXUS restricted MFE v${r.version}: ${r.length} nt; hairpins ${r.loopCounts.hairpin}, bulges ${r.loopCounts.bulge}, interior loops ${r.loopCounts.internal}, multibranch loops ${r.loopCounts.multibranch}. Not ViennaRNA-equivalent.`);
  }
+ function updateInputCount(){
+  const raw=$('rna-input').value;
+  const lines=raw.split(/\r?\n/).filter(line=>!/^\s*>/.test(line));
+  const count=lines.join('').replace(/[\s\d]/g,'').length;
+  $('rna-count').textContent=count.toLocaleString()+' / 10,000 nt'+(count>10000?' — exceeds limit':'');
+  $('rna-count').className='small '+(count>10000?'bad':'');
+ }
+ function clearResults(){
+  last=null;lastSVG='';
+  $('dg').textContent='—';$('nt').textContent='—';$('pair').textContent='—';
+  $('hairpin').innerHTML='<p class="small">Run folding to display the predicted stem–loop structure.</p>';
+  $('hairpin-terms').textContent='Calculate a structure to view energy components.';
+  $('hairpin-info').textContent='The dot-bracket representation remains available as a separate download.';
+  $('long-rna-results').hidden=true;
+  $('long-window-select').replaceChildren();$('long-window-summary').textContent='';
+  for(const id of ['export-dbn','export-json','export-svg'])$(id).disabled=true;
+ }
+ function renderLongWindow(index){
+  if(!last||last.mode!=='independent-windows')return;
+  const w=last.windows[index];if(!w)return;
+  const r=w.fold;
+  const visual=NexusThermoLayout.render(r);
+  lastSVG=visual.svg;
+  $('hairpin').innerHTML=lastSVG;
+  $('hairpin-info').textContent=
+   'Local window '+w.index+' ('+w.start.toLocaleString()+'–'+w.end.toLocaleString()+
+   ' nt, '+w.length+' nt): '+r.pairCount+' pairs; ΔG₃₇ = '+r.deltaG37.toFixed(2)+
+   ' kcal/mol for this window only. No full-length structure or ΔG is calculated.';
+  const details=[
+    'LOCAL WINDOW '+w.start+'–'+w.end+' nt',
+    'Window-only restricted-model ΔG₃₇: '+r.deltaG37.toFixed(2)+' kcal/mol',
+    'Hairpins: '+r.loopCounts.hairpin+'; bulges: '+r.loopCounts.bulge+
+    '; interior loops: '+r.loopCounts.internal+'; multibranch loops: '+r.loopCounts.multibranch,
+    'All coordinates in the diagram are relative to this selected window; add '+(w.start-1)+' for transcript positions.',
+    'Independent 200-nt segmentation excludes interactions outside this window.',
+    ...r.parameterAudit.flags.map(x=>'['+x.level+'] '+x.part+': '+x.reason)
+  ];
+  $('hairpin-terms').textContent=details.join('\n');
+  $('parameter-status').textContent=r.parameterPack
+   ?'Researcher-supplied parameter pack loaded; individual window calculations use the selected restricted model. Parameter source requires independent verification.'
+   :'No complete, independently qualified parameter library loaded; restricted built-in 37°C model applied to each window.';
+ }
+ function showLong(r){
+  last=r;lastSVG='';
+  $('dg').textContent='N/A';
+  $('nt').textContent=r.length.toLocaleString();
+  $('pair').textContent=r.pairCount.toLocaleString();
+  $('long-rna-results').hidden=false;
+  const sel=$('long-window-select');
+  sel.replaceChildren();
+  for(const w of r.windows){
+    const opt=document.createElement('option');
+    opt.value=String(w.index-1);
+    opt.textContent='Window '+w.index+' · '+w.start.toLocaleString()+'–'+w.end.toLocaleString()+' nt · ΔG₃₇ '+w.fold.deltaG37.toFixed(2)+' kcal/mol';
+    sel.appendChild(opt);
+  }
+  $('long-window-summary').textContent=
+    'FULL RNA: '+r.length.toLocaleString()+' nt\n'+
+    'MODE: '+r.windowCount+' independent '+r.windowSize+'-nt maximum windows; no cross-window pairing\n'+
+    'GLOBAL MFE / ΔG: NOT CALCULATED\n\n'+
+    r.windows.map(w=>
+      String(w.index).padStart(2,'0')+'   '+String(w.start).padStart(5,' ')+
+      '–'+String(w.end).padEnd(5,' ')+' nt   local ΔG₃₇ '+w.fold.deltaG37.toFixed(2).padStart(8,' ')+
+      ' kcal/mol   '+w.fold.pairCount+' pairs').join('\n');
+  renderLongWindow(0);
+  for(const id of ['export-dbn','export-json','export-svg'])$(id).disabled=false;
+  status('Windowed folding completed for '+r.length.toLocaleString()+' nt across '+r.windowCount+
+   ' independent segments. Whole-transcript MFE and ΔG were NOT calculated.');
+ }
  function run(){
-  let sequence=$('rna-input').value;
-  try{NexusThermoFold.normalize(sequence)}catch(e){status(e.message,true);return;}
-  $('run').disabled=true;status('Calculating partial-model minimum energy…');
+  let sequence;
+  try{sequence=NexusThermoFold.normalizeLong($('rna-input').value);}
+  catch(e){status(e.message,true);return;}
+  const long=sequence.length>NexusThermoFold.MAX;
+  if(long&&typeof Worker==='undefined'){
+    status('10 kb windowed folding requires Web Worker support. Try a current desktop/mobile browser on the deployed website.',true);
+    return;
+  }
+  if(worker){worker.terminate();worker=null;}
+  clearResults();
+  $('run').disabled=true;$('cancel').disabled=false;
+  status(long
+    ?'Analyzing '+sequence.length.toLocaleString()+' nt in independent '+NexusThermoFold.LONG_WINDOW+
+      '-nt windows. No full-length ΔG will be calculated.'
+    :'Calculating restricted-model minimum energy…');
   if(typeof Worker!=='undefined'){
-    if(worker)worker.terminate();worker=new Worker('thermofold-worker.js');
-    worker.onmessage=e=>{$('run').disabled=false;const d=e.data;if(d.ok)show(d.result);else status(d.error,true);worker.terminate();worker=null;};
-    worker.onerror=e=>{$('run').disabled=false;status('Browser worker could not run. Try opening from a deployed site.',true);};
-    worker.postMessage({sequence,parameterPack});
-  } else {setTimeout(()=>{try{NexusThermoFold.setParameterPack(parameterPack);show(NexusThermoFold.fold(sequence));}catch(e){status(e.message,true);}finally{$('run').disabled=false;}},20);}
+    try{
+      const active=new Worker('thermofold-worker.js');
+      worker=active;
+      active.onmessage=event=>{
+        if(worker!==active)return;
+        const data=event.data||{};
+        if(data.progress){
+          status('Long RNA: window '+data.progress.completed+'/'+data.progress.total+
+            ' completed ('+data.progress.end.toLocaleString()+' / '+sequence.length.toLocaleString()+
+            ' nt). Local folding only.');
+          return;
+        }
+        active.terminate();worker=null;
+        $('run').disabled=false;$('cancel').disabled=true;
+        if(data.ok){
+          try{if(data.result?.mode==='independent-windows')showLong(data.result);else show(data.result);}
+          catch(err){clearResults();status('Result visualization failed: '+err.message,true);}
+        }else status(data.error||'Unknown folding worker error.',true);
+      };
+      active.onerror=()=>{
+        if(worker!==active)return;
+        active.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;
+        status('The folding worker failed. Try a shorter sequence or a modern browser.',true);
+      };
+      active.postMessage({sequence,mode:long?'windowed':'global',parameterPack});
+    }catch(error){if(worker)worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;status('Unable to start background folding: '+error.message,true);}
+  }else{
+    setTimeout(()=>{
+      try{NexusThermoFold.setParameterPack(parameterPack);show(NexusThermoFold.fold(sequence));}
+      catch(e){status(e.message,true);}
+      finally{$('run').disabled=false;$('cancel').disabled=true;}
+    },20);
+  }
  }
  $('parameter-file').addEventListener('change',async e=>{
    const f=e.target.files?.[0];if(!f)return;
@@ -48,10 +158,41 @@
    }catch(error){status('Invalid parameter pack: '+error.message,true);}
  });
  $('clear-parameters').addEventListener('click',()=>{parameterPack=null;NexusThermoFold.setParameterPack(null);$('parameter-file').value='';$('parameter-status').textContent='No external parameter pack loaded; restricted built-in model.';status('Cleared parameter pack.');});
- $('run').addEventListener('click',run);$('example').addEventListener('click',()=>{$('rna-input').value='>synthetic_hairpin\nGGGAAACCC';status('Synthetic example loaded; click Calculate.');});
- $('reset').addEventListener('click',()=>{if(worker)worker.terminate();worker=null;last=null;lastSVG='';$('rna-input').value='';$('dg').textContent='—';$('nt').textContent='—';$('pair').textContent='—';$('hairpin').innerHTML='<p class="small">Run folding to display the predicted stem–loop structure.</p>';$('hairpin-terms').textContent='Calculate a structure to view energy components.';$('hairpin-info').textContent='The dot-bracket representation remains available as a separate download.';for(const id of ['export-dbn','export-json','export-svg'])$(id).disabled=true;status('Cleared.');});
- $('rna-upload').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;if(file.size>250000){status('Choose a FASTA file under 250 KB.',true);return;}$('rna-input').value=await file.text();status('File loaded; click Calculate.');});
- $('export-dbn').addEventListener('click',()=>{if(last)download('nexus_thermofold_v05.dbn','>NEXUS_ThermoFold_v0.5_restricted_model|dG37='+last.deltaG37+'kcal_per_mol\n'+last.sequence+'\n'+last.dotBracket+'\n');});
- $('export-json').addEventListener('click',()=>{if(last)download('nexus_thermofold_v05.json',JSON.stringify(last,null,2),'application/json');});
- $('export-svg').addEventListener('click',()=>{if(lastSVG)download('nexus_thermofold_v05_secondary_structure.svg',lastSVG,'image/svg+xml');});
+ $('run').addEventListener('click',run);
+ $('cancel').addEventListener('click',()=>{if(worker)worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;clearResults();status('Analysis cancelled. No partial-window predictions were published.');});
+ $('long-window-select').addEventListener('change',e=>renderLongWindow(Number(e.target.value)));
+ $('rna-input').addEventListener('input',updateInputCount);
+ $('example').addEventListener('click',()=>{$('rna-input').value='>synthetic_hairpin\nGGGAAACCC';updateInputCount();status('Synthetic example loaded; click Analyze RNA structure.');});
+ $('reset').addEventListener('click',()=>{if(worker)worker.terminate();worker=null;$('run').disabled=false;$('cancel').disabled=true;$('rna-input').value='';clearResults();updateInputCount();status('Cleared.');});
+ $('rna-upload').addEventListener('change',async event=>{
+  const file=event.target.files?.[0];event.target.value='';
+  if(!file)return;
+  if(file.size>250000){status('Choose a FASTA file under 250 KB.',true);return;}
+  try{
+    const raw=await file.text(),seq=NexusThermoFold.normalizeLong(raw);
+    $('rna-input').value=raw;updateInputCount();
+    status('Loaded '+seq.length.toLocaleString()+' nt. '+(seq.length>NexusThermoFold.MAX?'Windowed folding will be used.':'Restricted-model MFE will be used.')+' Click Analyze RNA structure.');
+  }catch(error){status('Could not import: '+error.message,true);}
+ });
+ $('export-dbn').addEventListener('click',()=>{
+  if(!last)return;
+  const isLong=last.mode==='independent-windows';
+  const title=isLong
+   ?'>NEXUS_ThermoFold_10kb_windowed|global_deltaG=NOT_CALCULATED|nonoverlap_windows='+last.windowSize+'|nt='+last.length
+   :'>NEXUS_ThermoFold_restricted_MFE|dG37='+last.deltaG37+'kcal_per_mol';
+  download(isLong?'nexus_thermofold_10kb_windowed.dbn':'nexus_thermofold_restricted.dbn',
+   title+'\n'+last.sequence+'\n'+last.dotBracket+'\n');
+ });
+ $('export-json').addEventListener('click',()=>{
+  if(last)download(last.mode==='independent-windows'?'nexus_thermofold_10kb_windowed.json':'nexus_thermofold_restricted.json',
+    JSON.stringify(last,null,2),'application/json');
+ });
+ $('export-svg').addEventListener('click',()=>{
+  if(!lastSVG||!last)return;
+  const isLong=last.mode==='independent-windows';
+  const w=isLong?last.windows[Number($('long-window-select').value)||0]:null;
+  const name=w?'nexus_thermofold_window_'+w.start+'-'+w.end+'.svg':'nexus_thermofold_structure.svg';
+  download(name,lastSVG,'image/svg+xml');
+ });
+ updateInputCount();
 })();
