@@ -1,22 +1,12 @@
 {
   "schema": "nexus-science-digest-v1",
-  "updated_at": "2026-11-24T19:00:24+00:00",
+  "updated_at": "2026-11-24T19:01:59+00:00",
   "lookback_days": 120,
   "sources": [
     "PubMed (NCBI)",
     "ClinicalTrials.gov"
   ],
   "publications": [
-    {
-      "id": "pmid:43071497",
-      "type": "publication",
-      "topic": "Peptide Discovery",
-      "title": "A TROP-2-targeting peptide for tumor-homing and therapy in cholangiocarcinoma.",
-      "date": "2026-11-23",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43071497/",
-      "journal": "Biomaterials science"
-    },
     {
       "id": "pmid:43064227",
       "type": "publication",
@@ -38,14 +28,14 @@
       "journal": "Bioinformatics (Oxford, England)"
     },
     {
-      "id": "pmid:43067808",
+      "id": "pmid:42961029",
       "type": "publication",
       "topic": "Peptide Discovery",
-      "title": "Computational design and prioritization of putative peptide inhibitors targeting rabies virus glycoprotein using machine learning, molecular docking, and molecular dynamics.",
+      "title": "Mapping the Sequence Preference of the Generalist Class II Lanthipeptide Synthetase ProcM by mRNA Display.",
       "date": "2026-11-20",
       "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43067808/",
-      "journal": "In silico pharmacology"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42961029/",
+      "journal": "ACS chemical biology"
     },
     {
       "id": "pmid:43057227",
@@ -58,44 +48,14 @@
       "journal": "Cell"
     },
     {
-      "id": "pmid:43052572",
+      "id": "pmid:42601797",
       "type": "publication",
       "topic": "RNA Structure",
-      "title": "Screening of high-strength subgenomic promoters of alphavirus replicase and their co-expression potential in saRNA vaccines.",
-      "date": "2026-11-19",
+      "title": "Energy-filtered branching alternatives improve RNA secondary structure recall.",
+      "date": "2026-11-17",
       "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43052572/",
-      "journal": "Biotechnology letters"
-    },
-    {
-      "id": "pmid:43065820",
-      "type": "publication",
-      "topic": "Peptide Discovery",
-      "title": "Antibody-driven enrichment and immunological profiling of phage-displayed peptide populations from a SARS-CoV-2 convalescent IgG selection.",
-      "date": "2026-11-09",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43065820/",
-      "journal": "Biotechnology reports (Amsterdam, Netherlands)"
-    },
-    {
-      "id": "pmid:42965052",
-      "type": "publication",
-      "topic": "RNA Silencing",
-      "title": "3D culture-derived MSC EV facilitate repair by activating microglial autophagy in spinal cord injury.",
-      "date": "2026-10-23",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42965052/",
-      "journal": "Bioactive materials"
-    },
-    {
-      "id": "pmid:42959456",
-      "type": "publication",
-      "topic": "RNA Silencing",
-      "title": "A topologically engineered hydrogel platform targeting IL11 promotes renal repair after partial nephrectomy.",
-      "date": "2026-10-22",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42959456/",
-      "journal": "Bioactive materials"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42601797/",
+      "journal": "Biophysical journal"
     },
     {
       "id": "pmid:43034782",
@@ -128,24 +88,24 @@
       "journal": "Bioactive materials"
     },
     {
-      "id": "pmid:42853246",
-      "type": "publication",
-      "topic": "Peptide Discovery",
-      "title": "Structural basis of serine protease inhibition by antibodies from biased Fab phage-display libraries.",
-      "date": "2026-10-07",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42853246/",
-      "journal": "Biological chemistry"
-    },
-    {
-      "id": "pmid:42908836",
+      "id": "pmid:42959476",
       "type": "publication",
       "topic": "RNA-LNP Delivery",
-      "title": "pSIM: A next generation in vitro mRNA potency assay.",
-      "date": "2026-09-21",
+      "title": "LNP-mediated CRISPR gene editing of human vascular endothelial cells in 2D and 3D microfluidic cell culture systems.",
+      "date": "2026-10-01",
       "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42908836/",
-      "journal": "Molecular therapy. Advances"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42959476/",
+      "journal": "Molecular therapy. Nucleic acids"
+    },
+    {
+      "id": "pmid:42831101",
+      "type": "publication",
+      "topic": "RNA-LNP Delivery",
+      "title": "Human T cell engineering via serial delivery of mRNA encapsulated within lipid nanoparticles.",
+      "date": "2026-09-02",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42831101/",
+      "journal": "Molecular therapy. Nucleic acids"
     },
     {
       "id": "pmid:42667070",
@@ -156,16 +116,6 @@
       "source": "PubMed (NCBI)",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42667070/",
       "journal": "Bioactive materials"
-    },
-    {
-      "id": "pmid:42572581",
-      "type": "publication",
-      "topic": "RNA Design",
-      "title": "An orthogonal transcription system enables high-efficiency rescue of measles virus-based vaccine vectors against multiple pathogens.",
-      "date": "2026-08-03",
-      "source": "PubMed (NCBI)",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42572581/",
-      "journal": "Synthetic and systems biotechnology"
     }
   ],
   "trial_records": [
@@ -182,76 +132,28 @@
       "phase": "Phase1, Phase2"
     },
     {
-      "id": "trial:NCT03811002",
+      "id": "trial:NCT07884136",
       "type": "clinical_trial_registry",
       "topic": "RNA Clinical Trials",
-      "title": "Testing the Addition of a New Immunotherapy Drug, Atezolizumab (MPDL3280A), to the Usual Chemoradiation (CRT) Therapy Treatment for Limited Stage Small Cell Lung Cancer (LS-SCLC)",
+      "title": "RBD1119 in Coronary Artery Disease (CAD)",
       "date": "2026-11-24",
       "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT03811002",
-      "trial_id": "NCT03811002",
-      "trial_status": "Active Not Recruiting",
-      "phase": "Phase3"
-    },
-    {
-      "id": "trial:NCT00843882",
-      "type": "clinical_trial_registry",
-      "topic": "RNA Clinical Trials",
-      "title": "Lenalidomide With or Without Epoetin Alfa in Treating Patients With Myelodysplastic Syndrome and Anemia",
-      "date": "2026-11-24",
-      "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT00843882",
-      "trial_id": "NCT00843882",
-      "trial_status": "Active Not Recruiting",
-      "phase": "Phase3"
-    },
-    {
-      "id": "trial:NCT06932237",
-      "type": "clinical_trial_registry",
-      "topic": "RNA Clinical Trials",
-      "title": "Immune-mediated Pathogenic Mechanisms of Neuro-PASC in Veterans",
-      "date": "2026-11-24",
-      "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT06932237",
-      "trial_id": "NCT06932237",
+      "url": "https://clinicaltrials.gov/study/NCT07884136",
+      "trial_id": "NCT07884136",
       "trial_status": "Recruiting",
-      "phase": ""
+      "phase": "Phase2"
     },
     {
-      "id": "trial:NCT02400216",
+      "id": "trial:NCT07951970",
       "type": "clinical_trial_registry",
       "topic": "RNA Clinical Trials",
-      "title": "Deciphering the Mechanisms Involved in Microbial Translocation Across the Spectrum of HCV Associated Liver Fibrosis",
-      "date": "2026-11-24",
+      "title": "A Study to Investigate Immunogenicity and Safety of mRNA-1273.262 in Individuals ≥6 Months to <12 Years With Risk Factors for Severe COVID-19",
+      "date": "2026-11-23",
       "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT02400216",
-      "trial_id": "NCT02400216",
-      "trial_status": "Completed",
-      "phase": ""
-    },
-    {
-      "id": "trial:NCT03914625",
-      "type": "clinical_trial_registry",
-      "topic": "RNA Clinical Trials",
-      "title": "A Study to Investigate Blinatumomab in Combination With Chemotherapy in Patients With Newly Diagnosed B-Lymphoblastic Leukemia",
-      "date": "2026-11-24",
-      "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT03914625",
-      "trial_id": "NCT03914625",
-      "trial_status": "Active Not Recruiting",
-      "phase": "Phase3"
-    },
-    {
-      "id": "trial:NCT05950464",
-      "type": "clinical_trial_registry",
-      "topic": "RNA Clinical Trials",
-      "title": "Testing Different Amounts of the Combination of Drugs M1774 and ZEN-3694 for the Treatment of Recurrent Ovarian and Endometrial Cancer",
-      "date": "2026-11-24",
-      "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT05950464",
-      "trial_id": "NCT05950464",
-      "trial_status": "Active Not Recruiting",
-      "phase": "Phase1"
+      "url": "https://clinicaltrials.gov/study/NCT07951970",
+      "trial_id": "NCT07951970",
+      "trial_status": "Not Yet Recruiting",
+      "phase": "Phase4"
     },
     {
       "id": "trial:NCT05264974",
@@ -263,6 +165,54 @@
       "url": "https://clinicaltrials.gov/study/NCT05264974",
       "trial_id": "NCT05264974",
       "trial_status": "Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT06557785",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "A Clinical Trial to Evaluate the Safety and Immunogenicity of CH505M5 N197D mRNA-gp160 Followed by CH505 TF mRNA-gp160 in Adults in Overall Good Health Without HIV",
+      "date": "2026-11-23",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT06557785",
+      "trial_id": "NCT06557785",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT06694753",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Safety and Immunogenicity Study of Three mRNAs Encoding HIV Immunogens in Adult Participants Without HIV and in Overall Good Health in South Africa.",
+      "date": "2026-11-23",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT06694753",
+      "trial_id": "NCT06694753",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT05321407",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "COVID-19 Vaccine Responses in PIDD Subjects",
+      "date": "2026-11-20",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT05321407",
+      "trial_id": "NCT05321407",
+      "trial_status": "Completed",
+      "phase": ""
+    },
+    {
+      "id": "trial:NCT07703514",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Safety and Immunogenicity of Chimeric Hemagglutinin mRNA Vaccine Candidates",
+      "date": "2026-11-20",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT07703514",
+      "trial_id": "NCT07703514",
+      "trial_status": "Not Yet Recruiting",
       "phase": "Phase1"
     },
     {
@@ -290,28 +240,28 @@
       "phase": "Phase1"
     },
     {
-      "id": "trial:NCT07665515",
+      "id": "trial:NCT05660408",
       "type": "clinical_trial_registry",
       "topic": "RNA Clinical Trials",
-      "title": "Study of CryptiVax-1001 in Maintenance Setting for Advanced Serous Ovarian, Fallopian Tube, or Primary Peritoneal Cancer",
-      "date": "2026-11-10",
+      "title": "RNA Lipid Particles Targeting Pediatric Recurrent Intracranial Malignancies and Other systEmic Solid Tumors",
+      "date": "2026-11-02",
       "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT07665515",
-      "trial_id": "NCT07665515",
-      "trial_status": "Recruiting",
-      "phase": "Phase1"
+      "url": "https://clinicaltrials.gov/study/NCT05660408",
+      "trial_id": "NCT05660408",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase1, Phase2"
     },
     {
-      "id": "trial:NCT04534205",
+      "id": "trial:NCT07908251",
       "type": "clinical_trial_registry",
       "topic": "RNA Clinical Trials",
-      "title": "A Clinical Trial Investigating the Safety, Tolerability, and Therapeutic Effects of BNT113 in Combination With Pembrolizumab Versus Pembrolizumab Alone for Patients With a Form of Head and Neck Cancer Positive for Human Papilloma Virus 16 a",
-      "date": "2026-11-10",
+      "title": "a Novel siRNA Eyedrops for DED Treatment",
+      "date": "2026-11-02",
       "source": "ClinicalTrials.gov",
-      "url": "https://clinicaltrials.gov/study/NCT04534205",
-      "trial_id": "NCT04534205",
-      "trial_status": "Active Not Recruiting",
-      "phase": "Phase2, Phase3"
+      "url": "https://clinicaltrials.gov/study/NCT07908251",
+      "trial_id": "NCT07908251",
+      "trial_status": "Not Yet Recruiting",
+      "phase": "Early Phase1"
     }
   ],
   "method": "Search-based index of dated public records; not a systematic review or proof of clinical efficacy."
