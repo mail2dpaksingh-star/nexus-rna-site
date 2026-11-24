@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/monthly-science.yml'
+      - 'scripts/update_science_digest.py'
 
 permissions:
   contents: write
