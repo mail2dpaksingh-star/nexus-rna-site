@@ -3,7 +3,7 @@
   "updated_at": null,
   "lookback_days": 120,
   "sources": [
-    "PubMed / Europe PMC",
+    "PubMed (NCBI)",
     "ClinicalTrials.gov"
   ],
   "publications": [],
