@@ -39,6 +39,15 @@ window.NEXUS_TOOL_CATALOG = {
       ]
     },
     {
+      "label": "Scientific Literature & Trials",
+      "items": [
+        {
+          "label": "Monthly Scientific Updates",
+          "href": "/index.html#monthly-science-updates"
+        }
+      ]
+    },
+    {
       "label": "Peptide Discovery",
       "items": [
         {
