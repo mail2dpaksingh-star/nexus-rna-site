@@ -1,0 +1,43 @@
+/* NEXUS RNA BioSolutions — mRNA-display research workbench.
+   Scoped styles, designed to preserve the existing homepage. */
+.nmd-dialog{width:min(920px,calc(100vw - 28px));max-height:min(92dvh,940px);margin:auto;padding:0;border:1px solid #cbdafa;border-radius:22px;background:#fff;color:#112b59;box-shadow:0 28px 85px rgba(8,25,66,.33);overflow:auto;font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.nmd-dialog::backdrop{background:rgba(6,17,51,.72);backdrop-filter:blur(5px)}
+.nmd-dialog *, .nmd-dialog *::before,.nmd-dialog *::after{box-sizing:border-box}
+.nmd-dialog .nmd-head{background:linear-gradient(114deg,#0e2459,#153c91);padding:25px 30px 23px;color:#fff;position:relative}
+.nmd-dialog .nmd-eyebrow{color:#a9c9ff;letter-spacing:.16em;text-transform:uppercase;font-size:10px;font-weight:800;margin:0 0 8px}
+.nmd-dialog h2{font-size:clamp(24px,3vw,34px);font-weight:850;color:#fff;line-height:1.13;letter-spacing:-.035em;margin:0}
+.nmd-dialog .nmd-intro{max-width:715px;font-size:14px;line-height:1.5;color:#dbe9ff;margin:12px 0 0}
+.nmd-dialog .nmd-close{position:absolute;right:18px;top:16px;border:1px solid rgba(255,255,255,.4);color:#fff;background:transparent;width:36px;height:36px;border-radius:10px;font-size:23px;line-height:1;cursor:pointer}
+.nmd-dialog .nmd-body{padding:22px 30px 26px}
+.nmd-dialog .nmd-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid #e1eafa;padding-bottom:15px;margin-bottom:20px}
+.nmd-dialog .nmd-tab{border:1px solid #d4e1f5;border-radius:10px;background:#f4f7ff;color:#183b76;padding:9px 14px;font:inherit;font-weight:750;cursor:pointer}
+.nmd-dialog .nmd-tab[aria-selected="true"]{color:#fff;background:#2155ce;border-color:#2155ce}
+.nmd-dialog .nmd-section[hidden],.nmd-dialog [hidden]{display:none!important}
+.nmd-dialog .nmd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.nmd-dialog .nmd-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.nmd-dialog label{font-size:12px;font-weight:780;color:#17366d}
+.nmd-dialog input,.nmd-dialog select,.nmd-dialog textarea{width:100%;background:white;border:1px solid #bfcfe9;border-radius:9px;padding:11px;color:#112b59;font:inherit;font-size:14px}
+.nmd-dialog textarea{min-height:155px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.55}
+.nmd-dialog input:focus-visible,.nmd-dialog select:focus-visible,.nmd-dialog textarea:focus-visible,.nmd-dialog button:focus-visible{outline:3px solid #8bbaff;outline-offset:2px}
+.nmd-dialog .nmd-help{font-size:12px;color:#60708a;margin:8px 0 0}
+.nmd-dialog .nmd-controls{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.nmd-dialog button.nmd-primary,.nmd-dialog button.nmd-secondary{padding:10px 15px;border-radius:10px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.nmd-dialog button.nmd-primary{color:white;background:#225ce1;border:1px solid #225ce1}
+.nmd-dialog button.nmd-secondary{color:#1748a5;background:#eef4ff;border:1px solid #c9dcff}
+.nmd-dialog .nmd-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:12px 0 16px}
+.nmd-dialog .nmd-metric{background:#f1f6fe;border:1px solid #dce8fa;border-radius:12px;padding:13px}
+.nmd-dialog .nmd-metric strong{display:block;font-size:clamp(16px,2.2vw,24px);line-height:1.3;color:#12397d;overflow-wrap:anywhere}
+.nmd-dialog .nmd-metric span{display:block;margin-top:5px;color:#506788;font-size:11px;font-weight:700}
+.nmd-dialog .nmd-output{background:#f7faff;border:1px solid #dce7f8;border-radius:12px;padding:15px;margin-top:12px}
+.nmd-dialog h3{font-size:15px;color:#14346a;margin:0 0 8px}
+.nmd-dialog .nmd-output pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#193a75;max-height:240px;overflow:auto}
+.nmd-dialog .nmd-status{font-size:13px;min-height:20px;color:#24529b;margin:8px 0}
+.nmd-dialog .nmd-disclaimer{background:#f6f8fc;border-left:3px solid #4e83e7;padding:11px 13px;border-radius:3px;color:#485f7b;font-size:12px;margin:15px 0 0}
+.nmd-dialog .nmd-disclaimer a{color:#174dbc}
+.nmd-dialog .nmd-table-wrap{max-height:260px;overflow:auto;border:1px solid #dce7f8;border-radius:10px}
+.nmd-dialog table{border-collapse:collapse;width:100%;font-size:13px}
+.nmd-dialog td,.nmd-dialog th{text-align:left;padding:8px 11px;border-bottom:1px solid #e5edfa}
+.nmd-dialog th{font-size:12px;background:#eff5ff;color:#193e7e;position:sticky;top:0}
+.nmd-dialog .nmd-footer{border-top:1px solid #e1eafa;padding:13px 30px 18px;color:#66768e;font-size:11px}
+@media(max-width:650px){.nmd-dialog .nmd-head{padding:22px 17px}.nmd-dialog .nmd-body{padding:17px}.nmd-dialog .nmd-grid{grid-template-columns:1fr}.nmd-dialog .nmd-metrics{grid-template-columns:1fr 1fr}.nmd-dialog .nmd-footer{padding:13px 17px}}
+@media(prefers-reduced-motion:reduce){.nmd-dialog::backdrop{backdrop-filter:none}}
