@@ -134,7 +134,8 @@
   status(long
     ?'Analyzing '+sequence.length.toLocaleString()+' nt in independent '+NexusThermoFold.LONG_WINDOW+
       '-nt windows. No full-length ΔG will be calculated.'
-    :'Calculating restricted-model minimum energy…');
+    :'Calculating restricted-model full-sequence minimum free energy for '+sequence.length.toLocaleString()+
+      ' nt. Longer sequences may take additional processing time; you can cancel.');
   if(typeof Worker!=='undefined'){
     try{
       const active=new Worker('thermofold-worker.js');
@@ -143,9 +144,15 @@
         if(worker!==active)return;
         const data=event.data||{};
         if(data.progress){
-          status('Long RNA: window '+data.progress.completed+'/'+data.progress.total+
-            ' completed ('+data.progress.end.toLocaleString()+' / '+sequence.length.toLocaleString()+
-            ' nt). Local folding only.');
+          const p=data.progress;
+          if(p.phase==='global'){
+            status('Full-sequence MFE analysis: processed span '+p.completed.toLocaleString()+' of '+
+              p.total.toLocaleString()+' nt. The restricted thermodynamic model is running on your device; you can cancel.');
+          }else{
+            status('Long RNA: window '+p.completed+'/'+p.total+
+              ' completed ('+p.end.toLocaleString()+' / '+sequence.length.toLocaleString()+
+              ' nt). Local folding only.');
+          }
           return;
         }
         active.terminate();worker=null;
