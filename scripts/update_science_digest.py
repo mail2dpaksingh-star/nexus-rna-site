@@ -104,7 +104,7 @@ def trials(term,start,today):
         title=text(ident.get("briefTitle") or ident.get("officialTitle"))
         if not re.fullmatch(r"NCT\d{8}",nct) or not updated or not title:continue
         if not start<=date.fromisoformat(updated)<=today:continue
-interventions=(meta.get("armsInterventionsModule") or {}).get("interventions") or []
+        interventions=(meta.get("armsInterventionsModule") or {}).get("interventions") or []
         compound=title+" "+text((meta.get("descriptionModule") or {}).get("briefSummary"),1200)
         compound+=" "+" ".join(str(i.get("name") or "") for i in interventions if isinstance(i,dict))
         if not re.search(r"\b(mrna|messenger rna|rna[- ]lipid|rna[- ]lp|rna[- ]lnp|rna vaccine|sarna|sirna|antisense|rna editing|lipid nanoparticle)\b",compound,re.IGNORECASE):
