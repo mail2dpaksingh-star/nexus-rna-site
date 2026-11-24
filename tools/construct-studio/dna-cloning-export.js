@@ -152,7 +152,7 @@
     const css = doc.createElement('link');css.rel='stylesheet';css.href='dna-cloning-export.css';doc.head.appendChild(css);
     const panel = doc.createElement('section');panel.id='nexus-dna-export-panel';panel.className='panel nexus-dna-panel';
     panel.innerHTML = `<h2>5. DNA construct for plasmid cloning</h2>
-      <p>Export the <strong>selected 5′ UTR + CDS + 3′ UTR as DNA (T in place of U)</strong>. Add only the promoter, assembly flanks or DNA-encoded poly(A) tract required by your chosen vector workflow. This is a <strong>linear DNA insert, not an entire plasmid</strong>.</p>
+      <p>Export the <strong>selected 5′ UTR + CDS + 3′ UTR as DNA (T in place of U)</strong>. Add only the promoter, assembly flanks or DNA-encoded poly(A) tract required by your chosen vector workflow. This is a <strong>linear DNA insert, not an entire plasmid</strong>. Complete inserts of 10,000 bp are supported; sequence data are not shortened in the viewer or FASTA/GenBank/JSON exports.</p>
       <div class="nexus-dna-form">
        <div><label for="nexus-dna-left">Optional 5′ cloning flank (DNA)</label><input id="nexus-dna-left" placeholder="User-supplied assembly site / flank" spellcheck="false"><small>Do not assume restriction-site uniqueness or orientation.</small></div>
        <div><label for="nexus-dna-promoter">Optional upstream promoter (DNA)</label><textarea id="nexus-dna-promoter" rows="2" placeholder="Paste verified promoter sequence, if your vector does not already supply it" spellcheck="false"></textarea><small>No CMV/T7 promoter is silently added.</small></div>
