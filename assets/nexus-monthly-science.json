@@ -1,12 +1,318 @@
 {
   "schema": "nexus-science-digest-v1",
-  "updated_at": null,
+  "updated_at": "2026-11-24T19:00:24+00:00",
   "lookback_days": 120,
   "sources": [
     "PubMed (NCBI)",
     "ClinicalTrials.gov"
   ],
-  "publications": [],
-  "trial_records": [],
-  "method": "Awaiting first successful source-linked update. No findings are invented."
+  "publications": [
+    {
+      "id": "pmid:43071497",
+      "type": "publication",
+      "topic": "Peptide Discovery",
+      "title": "A TROP-2-targeting peptide for tumor-homing and therapy in cholangiocarcinoma.",
+      "date": "2026-11-23",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43071497/",
+      "journal": "Biomaterials science"
+    },
+    {
+      "id": "pmid:43064227",
+      "type": "publication",
+      "topic": "RNA Structure",
+      "title": "A comparative study of quantum-inspired Gaussian Boson Sampling, dynamic programming, and machine learning methods for RNA folding prediction.",
+      "date": "2026-11-20",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43064227/",
+      "journal": "Bio Systems"
+    },
+    {
+      "id": "pmid:43062134",
+      "type": "publication",
+      "topic": "RNA Structure",
+      "title": "RNAcomp2D: a web tool to execute multiple methods and visually compare predictions of RNA secondary structure.",
+      "date": "2026-11-20",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43062134/",
+      "journal": "Bioinformatics (Oxford, England)"
+    },
+    {
+      "id": "pmid:43067808",
+      "type": "publication",
+      "topic": "Peptide Discovery",
+      "title": "Computational design and prioritization of putative peptide inhibitors targeting rabies virus glycoprotein using machine learning, molecular docking, and molecular dynamics.",
+      "date": "2026-11-20",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43067808/",
+      "journal": "In silico pharmacology"
+    },
+    {
+      "id": "pmid:43057227",
+      "type": "publication",
+      "topic": "RNA Structure",
+      "title": "RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates.",
+      "date": "2026-11-19",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43057227/",
+      "journal": "Cell"
+    },
+    {
+      "id": "pmid:43052572",
+      "type": "publication",
+      "topic": "RNA Structure",
+      "title": "Screening of high-strength subgenomic promoters of alphavirus replicase and their co-expression potential in saRNA vaccines.",
+      "date": "2026-11-19",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43052572/",
+      "journal": "Biotechnology letters"
+    },
+    {
+      "id": "pmid:43065820",
+      "type": "publication",
+      "topic": "Peptide Discovery",
+      "title": "Antibody-driven enrichment and immunological profiling of phage-displayed peptide populations from a SARS-CoV-2 convalescent IgG selection.",
+      "date": "2026-11-09",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43065820/",
+      "journal": "Biotechnology reports (Amsterdam, Netherlands)"
+    },
+    {
+      "id": "pmid:42965052",
+      "type": "publication",
+      "topic": "RNA Silencing",
+      "title": "3D culture-derived MSC EV facilitate repair by activating microglial autophagy in spinal cord injury.",
+      "date": "2026-10-23",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42965052/",
+      "journal": "Bioactive materials"
+    },
+    {
+      "id": "pmid:42959456",
+      "type": "publication",
+      "topic": "RNA Silencing",
+      "title": "A topologically engineered hydrogel platform targeting IL11 promotes renal repair after partial nephrectomy.",
+      "date": "2026-10-22",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42959456/",
+      "journal": "Bioactive materials"
+    },
+    {
+      "id": "pmid:43034782",
+      "type": "publication",
+      "topic": "RNA-LNP Delivery",
+      "title": "Development of protein expression and enzymatic activity potency assays for mRNA therapeutic development: A case study using GSDIII mRNA-LNP.",
+      "date": "2026-10-20",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43034782/",
+      "journal": "Molecular therapy. Advances"
+    },
+    {
+      "id": "pmid:42898649",
+      "type": "publication",
+      "topic": "RNA Silencing",
+      "title": "Cationized gelatin nanosphere-mediated release-controlled RNA interference targeting mTORC1 protects against intervertebral disc degeneration.",
+      "date": "2026-10-11",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42898649/",
+      "journal": "Bioactive materials"
+    },
+    {
+      "id": "pmid:42894734",
+      "type": "publication",
+      "topic": "RNA Design",
+      "title": "Injectable mRNA-engineered short fibers deliver temporally coupled mechano-genetic signals to reprogram Schwann cell cytoskeleton for nerve repair.",
+      "date": "2026-10-09",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42894734/",
+      "journal": "Bioactive materials"
+    },
+    {
+      "id": "pmid:42853246",
+      "type": "publication",
+      "topic": "Peptide Discovery",
+      "title": "Structural basis of serine protease inhibition by antibodies from biased Fab phage-display libraries.",
+      "date": "2026-10-07",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42853246/",
+      "journal": "Biological chemistry"
+    },
+    {
+      "id": "pmid:42908836",
+      "type": "publication",
+      "topic": "RNA-LNP Delivery",
+      "title": "pSIM: A next generation in vitro mRNA potency assay.",
+      "date": "2026-09-21",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42908836/",
+      "journal": "Molecular therapy. Advances"
+    },
+    {
+      "id": "pmid:42667070",
+      "type": "publication",
+      "topic": "RNA-LNP Delivery",
+      "title": "A dual-targeting mRNA lipid nanoparticle restores ABCA1-dependent cholesterol homeostasis to promote repair of age-related bone defects.",
+      "date": "2026-08-20",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42667070/",
+      "journal": "Bioactive materials"
+    },
+    {
+      "id": "pmid:42572581",
+      "type": "publication",
+      "topic": "RNA Design",
+      "title": "An orthogonal transcription system enables high-efficiency rescue of measles virus-based vaccine vectors against multiple pathogens.",
+      "date": "2026-08-03",
+      "source": "PubMed (NCBI)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42572581/",
+      "journal": "Synthetic and systems biotechnology"
+    }
+  ],
+  "trial_records": [
+    {
+      "id": "trial:NCT07245901",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Safety and Tolerability of a mRNA Vaccine Encoding Tumor-Specific Circular RNA Antigens in Combination With Anti-PD-1 Monoclonal Antibody in Patients With Advanced Solid Tumors",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT07245901",
+      "trial_id": "NCT07245901",
+      "trial_status": "Not Yet Recruiting",
+      "phase": "Phase1, Phase2"
+    },
+    {
+      "id": "trial:NCT03811002",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Testing the Addition of a New Immunotherapy Drug, Atezolizumab (MPDL3280A), to the Usual Chemoradiation (CRT) Therapy Treatment for Limited Stage Small Cell Lung Cancer (LS-SCLC)",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT03811002",
+      "trial_id": "NCT03811002",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase3"
+    },
+    {
+      "id": "trial:NCT00843882",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Lenalidomide With or Without Epoetin Alfa in Treating Patients With Myelodysplastic Syndrome and Anemia",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT00843882",
+      "trial_id": "NCT00843882",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase3"
+    },
+    {
+      "id": "trial:NCT06932237",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Immune-mediated Pathogenic Mechanisms of Neuro-PASC in Veterans",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT06932237",
+      "trial_id": "NCT06932237",
+      "trial_status": "Recruiting",
+      "phase": ""
+    },
+    {
+      "id": "trial:NCT02400216",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Deciphering the Mechanisms Involved in Microbial Translocation Across the Spectrum of HCV Associated Liver Fibrosis",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT02400216",
+      "trial_id": "NCT02400216",
+      "trial_status": "Completed",
+      "phase": ""
+    },
+    {
+      "id": "trial:NCT03914625",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "A Study to Investigate Blinatumomab in Combination With Chemotherapy in Patients With Newly Diagnosed B-Lymphoblastic Leukemia",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT03914625",
+      "trial_id": "NCT03914625",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase3"
+    },
+    {
+      "id": "trial:NCT05950464",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Testing Different Amounts of the Combination of Drugs M1774 and ZEN-3694 for the Treatment of Recurrent Ovarian and Endometrial Cancer",
+      "date": "2026-11-24",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT05950464",
+      "trial_id": "NCT05950464",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT05264974",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Novel RNA-lipid Particle (RNA-LP) Vaccine for Anti-PD-1 Antibody Therapy Sensitization",
+      "date": "2026-11-23",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT05264974",
+      "trial_id": "NCT05264974",
+      "trial_status": "Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT07949071",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "RNA Lipid Particles Targeting Pediatric Recurrent Intracranial Malignancies and Other systEmic Solid Tumors - High Grade Glioma",
+      "date": "2026-11-19",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT07949071",
+      "trial_id": "NCT07949071",
+      "trial_status": "Recruiting",
+      "phase": "Phase1, Phase2"
+    },
+    {
+      "id": "trial:NCT07492316",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "RNA-lipid Particle (RNA-LP) Vaccines for Recurrent/Progressive Medulloblastoma (MB)",
+      "date": "2026-11-16",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT07492316",
+      "trial_id": "NCT07492316",
+      "trial_status": "Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT07665515",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "Study of CryptiVax-1001 in Maintenance Setting for Advanced Serous Ovarian, Fallopian Tube, or Primary Peritoneal Cancer",
+      "date": "2026-11-10",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT07665515",
+      "trial_id": "NCT07665515",
+      "trial_status": "Recruiting",
+      "phase": "Phase1"
+    },
+    {
+      "id": "trial:NCT04534205",
+      "type": "clinical_trial_registry",
+      "topic": "RNA Clinical Trials",
+      "title": "A Clinical Trial Investigating the Safety, Tolerability, and Therapeutic Effects of BNT113 in Combination With Pembrolizumab Versus Pembrolizumab Alone for Patients With a Form of Head and Neck Cancer Positive for Human Papilloma Virus 16 a",
+      "date": "2026-11-10",
+      "source": "ClinicalTrials.gov",
+      "url": "https://clinicaltrials.gov/study/NCT04534205",
+      "trial_id": "NCT04534205",
+      "trial_status": "Active Not Recruiting",
+      "phase": "Phase2, Phase3"
+    }
+  ],
+  "method": "Search-based index of dated public records; not a systematic review or proof of clinical efficacy."
 }
