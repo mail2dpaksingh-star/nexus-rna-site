@@ -39,5 +39,12 @@
 .nmd-dialog td,.nmd-dialog th{text-align:left;padding:8px 11px;border-bottom:1px solid #e5edfa}
 .nmd-dialog th{font-size:12px;background:#eff5ff;color:#193e7e;position:sticky;top:0}
 .nmd-dialog .nmd-footer{border-top:1px solid #e1eafa;padding:13px 30px 18px;color:#66768e;font-size:11px}
+.nmd-dialog .nmd-custom-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr);margin:14px 0}
+.nmd-dialog #nmd-custom-input{min-height:185px}
+.nmd-dialog #nmd-custom-file{background:#f8fbff;max-width:100%;min-height:44px}
+.nmd-dialog #nmd-custom-table td:nth-child(2),.nmd-dialog #nmd-custom-table td:nth-child(3){font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;font-size:12px}
+.nmd-dialog #nmd-custom-table td:nth-child(3){min-width:210px;max-width:320px}
+.nmd-dialog .nmd-table-wrap{scrollbar-width:thin}
+@media(max-width:650px){.nmd-dialog .nmd-custom-grid{grid-template-columns:1fr}.nmd-dialog .nmd-tab{flex:1 1 auto;padding:9px 11px}.nmd-dialog #nmd-custom-table td:nth-child(3){max-width:205px}}
 @media(max-width:650px){.nmd-dialog .nmd-head{padding:22px 17px}.nmd-dialog .nmd-body{padding:17px}.nmd-dialog .nmd-grid{grid-template-columns:1fr}.nmd-dialog .nmd-metrics{grid-template-columns:1fr 1fr}.nmd-dialog .nmd-footer{padding:13px 17px}}
 @media(prefers-reduced-motion:reduce){.nmd-dialog::backdrop{backdrop-filter:none}}
