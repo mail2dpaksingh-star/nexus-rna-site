@@ -41,6 +41,50 @@ function normalize(raw){
  if(seq.length>MAX)throw Error(`ThermoFold v0.5 supports up to ${MAX} nt for this global restricted-model calculation. Use the separately labeled segmented preview for longer sequences.`);
  return seq;
 }
+/* Long-RNA mode is explicitly windowed: it does NOT compute global MFE, a
+ * full-length ΔG, or base pairs connecting independent windows. */
+const LONG_MAX=10000, LONG_WINDOW=200;
+function normalizeLong(raw){
+ const text=String(raw||'').trim();
+ const headers=(text.match(/^\s*>/gm)||[]).length;
+ if(headers>1)throw Error('Provide one RNA/FASTA record at a time; multiple records cannot be folded as one RNA.');
+ const seq=text.split(/\r?\n/).filter(x=>!/^\s*>/.test(x)).join('').replace(/[\s\d]/g,'').toUpperCase().replace(/T/g,'U');
+ if(!seq)throw Error('Enter an RNA sequence or FASTA record.');
+ if(seq.length>LONG_MAX)throw Error('ThermoFold accepts up to 10,000 nt. This input has '+seq.length.toLocaleString()+' nt.');
+ if(/[^ACGU]/.test(seq))throw Error('Only unmodified RNA bases A, C, G and U are supported.');
+ return seq;
+}
+function foldWindowed(raw,{onProgress}={}){
+ const s=normalizeLong(raw),n=s.length;
+ if(n<=MAX)throw Error('Use the normal restricted-model global MFE mode for RNA sequences up to '+MAX+' nt.');
+ const total=Math.ceil(n/LONG_WINDOW),windows=[],dots=[];
+ let count=0;
+ for(let i=0;i<total;i++){
+   const start=i*LONG_WINDOW,chunk=s.slice(start,start+LONG_WINDOW);
+   // The existing folding algorithm remains unchanged and is only run at its
+   // tested small-window length; no 10 kb quadratic DP matrices are allocated.
+   const local=fold(chunk);
+   windows.push({index:i+1,start:start+1,end:start+chunk.length,length:chunk.length,fold:local});
+   dots.push(local.dotBracket);
+   count+=local.pairCount;
+   if(typeof onProgress==='function')onProgress({completed:i+1,total,start:start+1,end:start+chunk.length});
+ }
+ const dotBracket=dots.join('');
+ if(dotBracket.length!==n)throw Error('Internal window assembly length mismatch.');
+ return {
+   ...modelInfo(), mode:'independent-windows',globalMFE:false,
+   longSequence:true,sequence:s,length:n,dotBracket,pairCount:count,
+   deltaG37:null, globalDeltaG37:null,windowSize:LONG_WINDOW,
+   windowCount:total,windows,
+   method:'Independent nonoverlapping 200-nt ThermoFold restricted-model windows. No cross-window pairing, no whole-transcript MFE or ΔG, and no global thermodynamic optimization.',
+   warnings:[
+     'Whole-sequence MFE and ΔG were not calculated; displayed ΔG values apply only to individual windows.',
+     'Interactions spanning window boundaries are excluded; windowed structures cannot be interpreted as the global RNA fold.',
+     'Each window uses the incomplete NEXUS restricted 37°C energy model, not a verified full Turner/ViennaRNA calculation.',
+     'Dot-bracket and sequence exports preserve all '+n+' nucleotides, but the stitched structure is an independent-window approximation.'
+   ]
+ };
+}
 function stackEnergy(outer,inner){
  // Backward compatibility: accept top 5'-bases / bottom 3'-bases, e.g. GG/CC.
  const key=String(outer||''), b=String(inner||'');
@@ -375,5 +419,5 @@ function evaluateStructure(raw,dotBracket){
  const ext=exteriorDangleEnergy(seq,roots);rawValue+=ext.energy;
  return {deltaG37:Math.round(rawValue*100)/100,deltaG37Raw:rawValue,externalEndEnergy:ext.energy,exteriorDetails:ext.details,loopCounts:lc,hairpinDetails:hpDetails.sort((a,b)=>a.start-b.start),internalDetails:internalDetails.sort((a,b)=>a.outerStart-b.outerStart)};
 }
-return {fold,normalize,evaluateStructure,setParameterPack,validateParameterPack,packSummary,dangleOptions,exteriorDangleEnergy,modelInfo,parameterAudit,stackEnergy,hairpinTerms,internalLoopTerms,loopEnergy,terminalPenalty,VERSION,MAX,parameters:{stackRows:rows,innerOrder:innerByOrder,multi}};
+return {fold,foldWindowed,normalize,normalizeLong,LONG_MAX,LONG_WINDOW,evaluateStructure,setParameterPack,validateParameterPack,packSummary,dangleOptions,exteriorDangleEnergy,modelInfo,parameterAudit,stackEnergy,hairpinTerms,internalLoopTerms,loopEnergy,terminalPenalty,VERSION,MAX,parameters:{stackRows:rows,innerOrder:innerByOrder,multi}};
 });
