@@ -17,8 +17,19 @@ TOPICS=(
  ("Peptide Discovery",'("mRNA display" OR "peptide library") AND (screening OR selection OR affinity)'),
  ("Metabolic Diseases",'(mRNA OR siRNA) AND (diabetes OR metabolic)')
 )
-TRIAL_TERMS=("mRNA cancer vaccine","RNA therapeutics")
+TRIAL_TERMS=("mRNA vaccine","RNA lipid particle","siRNA therapeutic")
 DAYS=120
+# Title-level relevance checks reduce broad full-text search false positives.
+TITLE_RULES={
+    "RNA Design":r"\b(mrna|saRNA|circRNA|messenger RNA|circular RNA|UTR|poly\(A\))\b",
+    "RNA-LNP Delivery":r"\b(lnp|lipid nanoparticl\w*|rna[- ]lipid|mrna[- ]lnp)\b",
+    "RNA Structure":r"(fold\w*|secondary structure|rna structure|rna comp|rnacomp|hairpin|thermofold)",
+    "Cancer Immunotherapy":r"(mrna|rna[- ]lipid|rna vaccine|neoantigen|saRNA)",
+    "CRISPR & RNA Editing":r"(crispr|rna editing|adenosine deaminase)",
+    "RNA Silencing":r"(siRNA|miRNA|microRNA|rna interference|antisense|\brnai\b)",
+    "Peptide Discovery":r"(mrna display|ribosome display|puromycin[- ]link|rna[- ]peptide display)",
+    "Metabolic Diseases":r"(diabetes|metabolic|insulin|obesity|cholesterol)"
+}
 
 def get_json(url):
     last=None
@@ -70,6 +81,7 @@ def publications(topic,terms,start,today):
         title=text(row.get("title"))
         if not published or not title:continue
         if not start<=date.fromisoformat(published)<=today:continue
+        if not re.search(TITLE_RULES[topic],title,re.IGNORECASE):continue
         out.append({"id":"pmid:"+pmid,"type":"publication","topic":topic,
                     "title":title,"date":published,"source":"PubMed (NCBI)",
                     "url":"https://pubmed.ncbi.nlm.nih.gov/"+pmid+"/",
@@ -92,6 +104,11 @@ def trials(term,start,today):
         title=text(ident.get("briefTitle") or ident.get("officialTitle"))
         if not re.fullmatch(r"NCT\d{8}",nct) or not updated or not title:continue
         if not start<=date.fromisoformat(updated)<=today:continue
+interventions=(meta.get("armsInterventionsModule") or {}).get("interventions") or []
+        compound=title+" "+text((meta.get("descriptionModule") or {}).get("briefSummary"),1200)
+        compound+=" "+" ".join(str(i.get("name") or "") for i in interventions if isinstance(i,dict))
+        if not re.search(r"\b(mrna|messenger rna|rna[- ]lipid|rna[- ]lp|rna[- ]lnp|rna vaccine|sarna|sirna|antisense|rna editing|lipid nanoparticle)\b",compound,re.IGNORECASE):
+            continue
         phases=(meta.get("designModule") or {}).get("phases") or []
         out.append({"id":"trial:"+nct,"type":"clinical_trial_registry","topic":"RNA Clinical Trials",
                     "title":title,"date":updated,"source":"ClinicalTrials.gov",
