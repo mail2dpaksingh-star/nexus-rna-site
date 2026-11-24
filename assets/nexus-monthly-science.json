@@ -1,0 +1,12 @@
+{
+  "schema": "nexus-science-digest-v1",
+  "updated_at": null,
+  "lookback_days": 120,
+  "sources": [
+    "PubMed / Europe PMC",
+    "ClinicalTrials.gov"
+  ],
+  "publications": [],
+  "trial_records": [],
+  "method": "Awaiting first successful source-linked update. No findings are invented."
+}
