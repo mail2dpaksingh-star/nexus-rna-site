@@ -66,7 +66,10 @@
 .nexus-portfolio-page .portfolio-tools ul{list-style:none;padding:0 15px 12px;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px}
 .nexus-portfolio-page .portfolio-tools li a{display:block;font-size:12px;text-decoration:none;color:#0f53b4;padding:5px 0}
 .nexus-portfolio-page .portfolio-tools li a:hover{text-decoration:underline}
-.nexus-portfolio-page .category-actions{margin-top:22px}
+.nexus-portfolio-page .category-actions{margin-top:22px;display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.nexus-portfolio-page .category-actions .secondary{display:inline-flex;align-items:center;gap:7px;background:#f3f7ff;border:1px solid #bcd1f4;border-radius:8px;color:#1549a8;padding:10px 14px;font-size:12px;font-weight:800;text-decoration:none}
+.nexus-portfolio-page .category-actions .secondary:hover{background:#e6efff;border-color:#91b5f0}
+.nexus-portfolio-page .category-actions .secondary:focus-visible{outline:3px solid #90b8fc;outline-offset:2px}
 .nexus-portfolio-page .request{display:inline-flex;align-items:center;gap:8px;background:#1559df;border-radius:8px;color:#fff;padding:10px 15px;font-size:12px;font-weight:800;text-decoration:none}
 .nexus-portfolio-page .request:hover{background:#124bb5}
 .nexus-portfolio-page .next-steps{background:white;border:1px solid #dce6f5;border-radius:16px;padding:25px;margin-top:10px;margin-bottom:45px}
