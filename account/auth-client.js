@@ -1,4 +1,6 @@
 /* NEXUS user account adapter. Supabase Auth v2 browser SDK, database RLS required.
+   Client-only implicit magic links work with the default Supabase email template.
+   Deploy on HTTPS, authorize the workspace redirect URL in Supabase, and never log tokens.
    Public URL + publishable key are not secret; never use service_role in browser.
    Projects are NOT synchronized unless the user selects a cloud action. */
 (function(root,factory){ const api=factory(root); if(typeof module==='object'&&module.exports)module.exports=api; root.NexusAccounts=api; })(typeof globalThis!=='undefined'?globalThis:this,function(root){
@@ -12,7 +14,7 @@ function getClient(){
   if(client)return client;
   if(!root.supabase||typeof root.supabase.createClient!=='function')throw Error('Authentication library is unavailable. Check your network connection.');
   const c=configuration();
-  client=root.supabase.createClient(c.SUPABASE_URL,c.SUPABASE_PUBLISHABLE_KEY,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true,flowType:'pkce'}});
+  client=root.supabase.createClient(c.SUPABASE_URL,c.SUPABASE_PUBLISHABLE_KEY,{auth:{autoRefreshToken:true,persistSession:true,detectSessionInUrl:true,flowType:'implicit'}});
   return client;
 }
 function rejectError(result){if(result.error)throw Error(result.error.message||'The account operation could not be completed.');return result.data;}
