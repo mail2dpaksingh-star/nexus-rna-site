@@ -1,4 +1,4 @@
-/* Generated from the current tools/index.html; no network calls required. */
+/* NEXUS RNA BioSolutions research tool catalog. */
 window.NEXUS_TOOL_CATALOG = {
   "groups": [
     {
@@ -11,10 +11,6 @@ window.NEXUS_TOOL_CATALOG = {
         {
           "label": "DBTL Research Tracking",
           "href": "/tools/construct-studio/dbtl.html"
-        },
-        {
-          "label": "Synthetic Construct Demo Lab",
-          "href": "/tools/construct-studio/demo/index.html"
         },
         {
           "label": "Experimental Evidence Studio",
@@ -39,6 +35,15 @@ window.NEXUS_TOOL_CATALOG = {
         {
           "label": "Coding & UTR Design",
           "href": "/tools/construct-studio/utr.html"
+        }
+      ]
+    },
+    {
+      "label": "Peptide Discovery",
+      "items": [
+        {
+          "label": "mRNA Display · Peptide Library Designer",
+          "href": "/index.html#mrna-display-library"
         }
       ]
     },
@@ -103,27 +108,6 @@ window.NEXUS_TOOL_CATALOG = {
         {
           "label": "Research Project Hub",
           "href": "/tools/project-hub/index.html"
-        }
-      ]
-    },
-    {
-      "label": "Website, Account & Diagnostics",
-      "items": [
-        {
-          "label": "Scientific Services",
-          "href": "/services.html"
-        },
-        {
-          "label": "Sign in / Register",
-          "href": "/account/sign-in.html"
-        },
-        {
-          "label": "Privacy",
-          "href": "/privacy.html"
-        },
-        {
-          "label": "Deployment Diagnostic",
-          "href": "/site-check.html"
         }
       ]
     }
