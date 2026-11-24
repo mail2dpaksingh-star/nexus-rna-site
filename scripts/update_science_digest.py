@@ -48,23 +48,34 @@ def iso(value):
     return None
 
 def publications(topic,terms,start,today):
-    q=f"({terms}) AND SRC:MED AND FIRST_PDATE:[{start} TO {today}] sort_date:y"
-    url="https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+urlencode({"query":q,"format":"json","pageSize":18,"resultType":"core"})
-    records=get_json(url).get("resultList",{}).get("result",[])
-    if not isinstance(records,list):raise ValueError("Invalid Europe PMC response")
+    """Search PubMed directly through NCBI E-utilities; no private credentials."""
+    expression=f"({terms}) AND ({start.strftime('%Y/%m/%d')}[PDAT] : {today.strftime('%Y/%m/%d')}[PDAT])"
+    base="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+    search_url=base+"esearch.fcgi?"+urlencode({
+        "db":"pubmed","term":expression,"retmode":"json",
+        "retmax":18,"sort":"pub_date","tool":"NEXUS_RNA_BioSolutions"})
+    search=get_json(search_url).get("esearchresult") or {}
+    ids=[str(x) for x in (search.get("idlist") or []) if re.fullmatch(r"\d{6,10}",str(x))]
+    if not ids:return []
+    time.sleep(0.5)  # Keep NCBI usage below its unauthenticated 3 requests/sec rate limit.
+    summary_url=base+"esummary.fcgi?"+urlencode({
+        "db":"pubmed","id":",".join(ids),"retmode":"json","tool":"NEXUS_RNA_BioSolutions"})
+    records=get_json(summary_url).get("result") or {}
+    if not isinstance(records,dict):raise ValueError("Invalid PubMed summary response")
     out=[]
-    for row in records:
-        if not isinstance(row,dict):continue
-        pmid=str(row.get("pmid") or "").strip()
-        published=iso(row.get("firstPublicationDate") or row.get("firstIndexDate"))
+    for pmid in ids:
+        row=records.get(pmid) or {}
+        raw=str(row.get("sortpubdate") or "").split(" ")[0].replace("/","-")
+        published=iso(raw)
         title=text(row.get("title"))
-        if not re.fullmatch(r"\d{6,10}",pmid) or not published or not title:continue
+        if not published or not title:continue
         if not start<=date.fromisoformat(published)<=today:continue
-        out.append({"id":"pmid:"+pmid,"type":"publication","topic":topic,"title":title,
-                    "date":published,"source":"PubMed / Europe PMC",
+        out.append({"id":"pmid:"+pmid,"type":"publication","topic":topic,
+                    "title":title,"date":published,"source":"PubMed (NCBI)",
                     "url":"https://pubmed.ncbi.nlm.nih.gov/"+pmid+"/",
-                    "journal":text(row.get("journalTitle"),95)})
+                    "journal":text(row.get("fulljournalname") or row.get("source"),95)})
         if len(out)>=4:break
+    time.sleep(0.5)
     return out
 
 def trials(term,start,today):
@@ -107,7 +118,7 @@ def collect(today):
     return {"schema":"nexus-science-digest-v1",
             "updated_at":datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "lookback_days":DAYS,
-            "sources":["PubMed / Europe PMC","ClinicalTrials.gov"],
+            "sources":["PubMed (NCBI)","ClinicalTrials.gov"],
             "publications":pubs[:32],"trial_records":cts[:12],
             "method":"Search-based index of dated public records; not a systematic review or proof of clinical efficacy."}
 
