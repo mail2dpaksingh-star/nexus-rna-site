@@ -11,7 +11,7 @@ window.NEXUS_STARTER_PLASMIDS = [{"id":"ref-puc19","name":"pUC19 (GenBank M77789
  for(const [i,m] of [[400,'GAATTC'],[1100,'GGATCC'],[2700,'AAGCTT']])
    for(let j=0;j<m.length;j++)dna[i+j]=m[j];
  window.NEXUS_DEMO_PLASMID={
-  id:'nexus-annotated-teaching-demo',name:'Plasmid (SYNTHETIC DEMO)',
+  id:'nexus-annotated-teaching-demo',name:'Plasmid',
   accession:'',source:'ILLUSTRATIVE SYNTHETIC DNA — NOT a verified expression vector',
   sequence:dna.join(''),circular:true,builtin:true,
   features:[
