@@ -3,6 +3,7 @@
 (function(){
   "use strict";
   const TARGET="#mrna-display-library";
+  const CUSTOM=window.NexusPeptideLibraryCore;
   const GENETIC_CODE={
     TTT:"F",TTC:"F",TTA:"L",TTG:"L",TCT:"S",TCC:"S",TCA:"S",TCG:"S",
     TAT:"Y",TAC:"Y",TAA:"*",TAG:"*",TGT:"C",TGC:"C",TGA:"*",TGG:"W",
@@ -40,9 +41,35 @@
   '<p class="nmd-intro">Design exploratory peptide libraries and compare selection-round sequence counts using published mRNA-display principles. No experimental screening or binder-affinity claims.</p>',
   '<button class="nmd-close" id="nmd-close" aria-label="Close peptide library workbench" type="button">×</button></header>',
   '<div class="nmd-body"><div class="nmd-tabs" role="tablist" aria-label="Library workflows">',
-  '<button class="nmd-tab" type="button" data-nmd-tab="design" role="tab" aria-selected="true">Library design</button>',
+  '<button class="nmd-tab" type="button" data-nmd-tab="custom" role="tab" aria-selected="true">Add my sequences</button><button class="nmd-tab" type="button" data-nmd-tab="design" role="tab" aria-selected="false">Randomized library</button>',
   '<button class="nmd-tab" type="button" data-nmd-tab="analysis" role="tab" aria-selected="false">Selection enrichment</button></div>',
-  '<section class="nmd-section" data-nmd-pane="design" role="tabpanel">',
+  '<section class="nmd-section" data-nmd-pane="custom" role="tabpanel">',
+  '<h3>Build a peptide library from your own sequences</h3>',
+  '<p class="nmd-help">Paste sequences directly or import a FASTA, CSV or text file. Choose peptide or coding DNA/RNA input; no account is required. Each input sequence becomes a library entry.</p>',
+  '<div class="nmd-grid nmd-custom-grid">',
+  '<div class="nmd-field"><label for="nmd-custom-type">Sequence type</label><select id="nmd-custom-type"><option value="peptide">Peptide amino-acid sequence</option><option value="dna">Coding DNA / RNA (5′→3′)</option></select></div>',
+  '<div class="nmd-field"><label for="nmd-custom-file">Import your sequence file</label><input type="file" id="nmd-custom-file" accept=".fa,.fasta,.faa,.fna,.txt,.csv,.tsv" aria-label="Import peptide or coding DNA sequences"></div></div>',
+  '<div class="nmd-field"><label for="nmd-custom-input">Paste your sequences here</label>',
+  '<textarea id="nmd-custom-input" spellcheck="false" rows="7" placeholder=">Peptide_1&#10;GWRYVL&#10;>Peptide_2&#10;LNWKFV"></textarea></div>',
+  '<p class="nmd-help" id="nmd-custom-hint">Use one peptide per line, multi-record FASTA, or name,sequence CSV. Supports 2–60 standard amino acids per peptide and up to 1,000 input sequences. Uploaded sequences remain in your browser.</p>',
+  '<div class="nmd-field"><label for="nmd-custom-positions">Optional positions to mutate (1-based)</label>',
+  '<input id="nmd-custom-positions" type="text" placeholder="e.g. 3,5,8" spellcheck="false"></div>',
+  '<p class="nmd-help">To create additional peptide variants, enter positions and select Generate single substitutions. Each selected position is replaced with each of the 19 alternative amino acids, one change at a time; up to 2,000 total entries.</p>',
+  '<div class="nmd-controls"><button type="button" class="nmd-primary" id="nmd-custom-build">Build library from my sequences</button>',
+  '<button type="button" class="nmd-secondary" id="nmd-custom-mutate">Generate single substitutions</button>',
+  '<button type="button" class="nmd-secondary" id="nmd-custom-example">Load example</button></div>',
+  '<p class="nmd-status" id="nmd-custom-status" role="status" aria-live="polite"></p>',
+  '<div class="nmd-metrics"><div class="nmd-metric"><strong id="nmd-custom-seeds">—</strong><span>Original sequences</span></div>',
+  '<div class="nmd-metric"><strong id="nmd-custom-variants">—</strong><span>Generated variants</span></div>',
+  '<div class="nmd-metric"><strong id="nmd-custom-total">—</strong><span>Library entries</span></div></div>',
+  '<div class="nmd-table-wrap"><table><thead><tr><th>Source</th><th>Peptide (AA)</th><th>Coding DNA (5′→3′)</th><th>Mutation</th></tr></thead>',
+  '<tbody id="nmd-custom-table"><tr><td colspan="4">Add or import sequences to build your library.</td></tr></tbody></table></div>',
+  '<div class="nmd-controls"><button type="button" class="nmd-secondary" id="nmd-custom-csv" disabled>Export library CSV</button>',
+  '<button type="button" class="nmd-secondary" id="nmd-custom-aa-fasta" disabled>Export peptide FASTA</button>',
+  '<button type="button" class="nmd-secondary" id="nmd-custom-dna-fasta" disabled>Export coding DNA FASTA</button></div>',
+  '<p class="nmd-disclaimer">Peptide input is reverse-translated to one illustrative DNA coding sequence per peptide; no codon optimization or biological expression prediction is implied. DNA/RNA input is translated in the supplied reading frame, allowing an optional terminal stop codon. This is a computational sequence library, not a synthesis-ready mRNA-display template: promoters, translation initiation, genotype–phenotype fusion, puromycin linkers, cyclization, selection and target binding are not established.</p>',
+  '</section>',
+  '<section class="nmd-section" data-nmd-pane="design" role="tabpanel" hidden>',
   '<div class="nmd-grid">',
   '<div class="nmd-field"><label for="nmd-pattern">Codon randomization</label><select id="nmd-pattern"><option value="NNK">NNK · 32 codons</option><option value="NNS">NNS · 32 codons</option><option value="NDT">NDT · 12 amino acids</option></select></div>',
   '<div class="nmd-field"><label for="nmd-positions">Random peptide positions</label><input id="nmd-positions" type="number" min="4" max="18" step="1" value="10"></div>',
@@ -68,7 +95,7 @@
   ].join("");
   document.body.appendChild(dialog);
   const el=id=>dialog.querySelector("#"+id);
-  let examples=[],ranked=[];
+  let examples=[],ranked=[],customLibrary=null;
   function openDialog(){
     if(!dialog.open){
       if(typeof dialog.showModal==="function")dialog.showModal();
@@ -85,6 +112,56 @@
       const chosen=b.dataset.nmdTab===name;b.setAttribute("aria-selected",String(chosen));
     });
     dialog.querySelectorAll("[data-nmd-pane]").forEach(p=>{p.hidden=p.dataset.nmdPane!==name;});
+  }
+  function resetCustomResults(message=""){
+    customLibrary=null;
+    for(const id of ["nmd-custom-csv","nmd-custom-aa-fasta","nmd-custom-dna-fasta"])el(id).disabled=true;
+    for(const id of ["nmd-custom-seeds","nmd-custom-variants","nmd-custom-total"])el(id).textContent="—";
+    const table=el("nmd-custom-table");
+    table.replaceChildren();
+    const tr=table.insertRow();tr.insertCell().colSpan=4;tr.cells[0].textContent="Build a library to view its sequences.";
+    el("nmd-custom-status").textContent=message;
+  }
+  function renderCustomLibrary(library){
+    const t=el("nmd-custom-table");t.replaceChildren();
+    for(const record of library.entries.slice(0,40)){
+      const tr=t.insertRow();
+      for(const value of [record.name,record.peptide,record.dna,record.mutation||"Original"]){
+        const td=tr.insertCell();td.textContent=value;
+      }
+    }
+    el("nmd-custom-seeds").textContent=library.seeds.toLocaleString();
+    el("nmd-custom-variants").textContent=library.variants.toLocaleString();
+    el("nmd-custom-total").textContent=library.total.toLocaleString();
+    for(const id of ["nmd-custom-csv","nmd-custom-aa-fasta","nmd-custom-dna-fasta"])el(id).disabled=false;
+    el("nmd-custom-status").textContent="Library ready: "+library.seeds+" input sequence(s), "+
+      library.variants+" generated variant(s), "+library.total+" unique entry/entries. "+
+      "Showing the first "+Math.min(40,library.total)+"; export for the complete library.";
+  }
+  function buildCustom(variants){
+    try{
+      if(!CUSTOM)throw Error("The sequence library engine is unavailable. Reload the site.");
+      const library=CUSTOM.build({raw:el("nmd-custom-input").value,
+        type:el("nmd-custom-type").value,positions:el("nmd-custom-positions").value,variants});
+      customLibrary=library;
+      renderCustomLibrary(library);
+    }catch(error){resetCustomResults(error.message||String(error));}
+  }
+  async function importCustomFile(file){
+    if(!file)return;
+    try{
+      if(file.size>250000)throw Error("Select a sequence file below 250 KB.");
+      const raw=await file.text();
+      if(!raw.trim())throw Error("The selected sequence file is empty.");
+      el("nmd-custom-input").value=raw;
+      resetCustomResults("Loaded "+file.name+". Choose the sequence type and click Build library from my sequences.");
+    }catch(error){el("nmd-custom-status").textContent=error.message||String(error);}
+  }
+  function saveText(name,content,type="text/plain;charset=utf-8"){
+    const blob=new Blob([content],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   function settings(){
     const s=el("nmd-pattern").value;
@@ -162,6 +239,41 @@
       }
     }
   }
+  el("nmd-custom-build").addEventListener("click",()=>buildCustom(false));
+  el("nmd-custom-mutate").addEventListener("click",()=>buildCustom(true));
+  el("nmd-custom-example").addEventListener("click",()=>{
+    el("nmd-custom-type").value="peptide";
+    el("nmd-custom-input").value=">Example_Peptide_1\nGWRYVL\n>Example_Peptide_2\nLNWKFV";
+    el("nmd-custom-positions").value="3";
+    resetCustomResults("Illustrative example loaded. Click Build library or Generate single substitutions.");
+  });
+  el("nmd-custom-file").addEventListener("change",event=>{
+    const file=event.target.files?.[0];event.target.value="";
+    if(file)void importCustomFile(file);
+  });
+  for(const id of ["nmd-custom-input","nmd-custom-positions","nmd-custom-type"]){
+    el(id).addEventListener(id==="nmd-custom-type"?"change":"input",()=>{
+      resetCustomResults("Input changed. Rebuild the library to update results and exports.");
+      if(id==="nmd-custom-type"){
+        const dna=el(id).value==="dna";
+        el("nmd-custom-hint").textContent=dna
+          ?"Enter coding DNA/RNA (A/C/G/T/U), 5′→3′, in the reading frame: one sequence per line, FASTA, or name,sequence CSV. Codons are translated; a terminal stop is allowed. RNA U is converted to DNA T."
+          :"Use one peptide per line, multi-record FASTA, or name,sequence CSV. Supports 2–60 standard amino acids per peptide and up to 1,000 sequences.";
+      }
+    });
+  }
+  el("nmd-custom-csv").addEventListener("click",()=>{
+    if(!customLibrary)return;
+    saveCsv("nexus-display-my-peptide-library.csv",
+      [["source_name","peptide_aa","coding_DNA_5to3","entry_type","single_mutation","DNA_origin"],
+       ...customLibrary.entries.map(r=>[r.name,r.peptide,r.dna,r.kind,r.mutation,r.dnaOrigin])]);
+  });
+  el("nmd-custom-aa-fasta").addEventListener("click",()=>{
+    if(customLibrary&&CUSTOM)saveText("nexus-display-peptides.fasta",CUSTOM.fasta(customLibrary.entries,"peptide"));
+  });
+  el("nmd-custom-dna-fasta").addEventListener("click",()=>{
+    if(customLibrary&&CUSTOM)saveText("nexus-display-coding-DNA.fasta",CUSTOM.fasta(customLibrary.entries,"dna"));
+  });
   el("nmd-close").addEventListener("click",closeDialog);
   dialog.querySelectorAll("[data-nmd-tab]").forEach(b=>b.addEventListener("click",()=>selectTab(b.dataset.nmdTab)));
   ["nmd-pattern","nmd-positions","nmd-scaffold"].forEach(id=>el(id).addEventListener("change",renderDesign));
