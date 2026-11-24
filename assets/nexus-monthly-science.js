@@ -17,7 +17,7 @@
   '<p class="nms-meta" id="nms-meta" role="status" aria-live="polite">Loading research updates…</p>',
   '<div class="nms-list" id="nms-list"></div>',
   '<p class="nms-note">This is a source-linked index, not a systematic review. Publication does not establish therapeutic efficacy. Trial status or registry updates do not demonstrate safety, benefit or trial success.</p></div>',
-  '<footer class="nms-footer">Primary sources: <a href="https://europepmc.org/" target="_blank" rel="noopener noreferrer">Europe PMC / PubMed</a> · ',
+  '<footer class="nms-footer">Primary sources: <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubMed (NCBI)</a> · ',
   '<a href="https://clinicaltrials.gov/" target="_blank" rel="noopener noreferrer">ClinicalTrials.gov</a>. Refreshes monthly via the NEXUS publication workflow.</footer>'
   ].join('');
   document.body.appendChild(dlg);
