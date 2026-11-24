@@ -1,9 +1,7 @@
-/* NEXUS v1.8.5 - PUBLIC configuration only.
-   Replace placeholders after creating a Supabase project and applying the SQL migration.
-   Never put service_role / sb_secret / database passwords / access tokens in this file.
-   Cloud authentication stays DISABLED until both public values are populated.
-*/
+/* Public browser configuration for NEXUS passwordless research accounts.
+ * The publishable key is safe for use in web clients, provided that Supabase
+ * Row Level Security is enforced. Never add sb_secret or service_role keys. */
 window.NEXUS_PUBLIC_CONFIG = Object.freeze({
-  SUPABASE_URL: '',
-  SUPABASE_PUBLISHABLE_KEY: ''
+  SUPABASE_URL: 'https://veirjzgdllnipvwbffmf.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_xC4x4CiMYjGCCt-0eXlvBw_nwn3SdRf'
 });
