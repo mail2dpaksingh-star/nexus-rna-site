@@ -4,7 +4,7 @@
 (function(root){'use strict';
  const $=id=>document.getElementById(id); const supported=!!(root.NexusConstructFileImport&&$('qa-import')&&$('qa-import-role')&&$('qa-modality')&&$('qa-run'));
  if(!supported)return;
- const clean=s=>{let x=String(s||'').replace(/^>[^\n]*\n/g,'').replace(/[\s\d]/g,'').toUpperCase();if(!x||!/^[ACGTU]+$/.test(x)||x.includes('T')&&x.includes('U'))throw Error('Provide one DNA/RNA sequence (A/C/G/T or A/C/G/U); no labels or ambiguous bases.');return x.replace(/U/g,'T');};
+ const clean=s=>{let x=String(s||'').replace(/^>[^\n]*\n/g,'').replace(/[\s\d]/g,'').toUpperCase();if(!x||!/^[ACGT]+$/.test(x))throw Error('Complete DNA construct requires A/C/G/T only (no RNA U), supplied 5′→3′ in coding/sense orientation. Check strand orientation; do not paste an RNA transcript.');return x;};
  const reverseComplement=s=>s.replace(/[ACGT]/g,ch=>({A:'T',C:'G',G:'C',T:'A'})[ch]).split('').reverse().join('');
  const promoter='TAATACGACTCACTATA';
  function genbankFeatures(text){
@@ -48,12 +48,13 @@
  const role=$('qa-import-role');if(!role.querySelector('[value="full-guided"]')){const opt=document.createElement('option');opt.value='full-guided';opt.textContent='Complete DNA construct — guided feature mapping (T7, UTR, CDS, poly(A))';role.insertBefore(opt,role.options[role.options.length-1]||null);}
  const panel=document.createElement('section');panel.id='nexus-full-guide';panel.className='qa-guide';panel.hidden=true;
  panel.innerHTML=`<h3>Complete DNA Construct — Guided Annotation</h3>
- <p class="qa-guide-sub">Import the entire DNA template once or paste its sequence. Suggested features are <strong>not verified</strong>; confirm their coordinates before the original RNA quality review.</p>
+ <p class="qa-guide-sub">Import or paste the full <strong>DNA sequence (A, C, G, T)</strong> in 5′→3′ coding/sense-strand orientation. If your file is the opposite (template) strand, first obtain its reverse complement. Suggested features are <strong>not verified</strong>; confirm their coordinates before a separate RNA quality review.</p>
  <div class="qa-field"><label for="nexus-full-paste">Paste complete DNA construct (optional)</label><textarea id="nexus-full-paste" rows="3" spellcheck="false" placeholder="Paste one continuous DNA sequence, including upstream promoter and downstream DNA if present"></textarea></div>
  <div class="qa-actions"><button type="button" id="nexus-full-analyze" class="alt">Analyze complete sequence</button></div>
  <p id="nexus-full-status" role="status" class="qa-status"></p>
  <div id="nexus-full-results" hidden>
  <div class="qa-guide-evidence" id="nexus-full-evidence"></div>
+ <div class="qa-field"><label for="nexus-full-dna-sequence">Complete DNA construct — 5′→3′ coding strand (A / T / G / C)</label><textarea id="nexus-full-dna-sequence" rows="6" readonly spellcheck="false" aria-describedby="nexus-full-dna-help"></textarea><small id="nexus-full-dna-help" class="qa-muted">Read-only original DNA sequence, including promoter and any downstream DNA; not the resulting RNA. Full sequence and coordinate annotations are retained in the DNA JSON export.</small></div>
  <div class="qa-field"><label for="nexus-full-orf">Proposed CDS (select candidate)</label><select id="nexus-full-orf"></select><small class="qa-muted">ORFs from start/stop codons are hypotheses, not antigen identification.</small></div>
  <div class="qa-guide-map" id="nexus-full-map"></div>
  <p class="qa-guide-sub">Coordinates refer to the <strong>uploaded DNA template</strong> (1-based inclusive), not the resulting RNA transcript.</p>
@@ -65,7 +66,8 @@
  <label>DNA poly(A) start (optional)<input type="number" id="nexus-full-poly-start" min="0" step="1"></label>
  <label>DNA poly(A) end (optional)<input type="number" id="nexus-full-poly-end" min="0" step="1"></label>
  </div>
- <p class="qa-guide-sub">A T7 promoter is <strong>DNA</strong> and must be excluded from the RNA transcript. Kozak bases span the 5′ UTR–CDS junction; an encoded secretion signal is part of the CDS. An exact secretion-signal boundary or antigen identity cannot be established by motif scanning alone.</p>
+ <p class="qa-guide-sub">A T7 promoter is <strong>DNA</strong> and is excluded from the RNA transcript. The coordinate map above and full sequence view are in DNA bases (T, never U). Kozak bases span the 5′ UTR–CDS junction; a signal peptide is encoded within the CDS. Motif scanning does not verify promoter function, transcription start, encoded protein identity or sequence correctness.</p>
+ <div id="nexus-full-rna-preview" hidden class="qa-field"><label for="nexus-full-rna-sequence">Provisional transcribed region — RNA projection (5′→3′, U instead of T)</label><textarea id="nexus-full-rna-sequence" rows="4" readonly spellcheck="false"></textarea><small class="qa-muted">Shown separately after you confirm DNA boundaries. Excludes promoter and downstream vector DNA; transcript start, processing, cap and final poly(A) still require verification.</small></div>
  <div class="qa-actions"><button type="button" id="nexus-full-confirm">Apply confirmed boundaries &amp; run review</button><button type="button" id="nexus-full-export" class="alt">Export proposed annotation JSON</button></div>
  <p class="qa-guide-sub">The original quality review still requires a verified reading frame, transcript architecture, cap-processing information and biological validation. Proposed annotations are not experimental evidence.</p>
  </div>`;
@@ -73,16 +75,18 @@
  const status=(t,bad=false)=>{const e=$('nexus-full-status');e.textContent=t;e.classList.toggle('bad',bad);};
  let current=null;
  function updateMap(){if(!current)return;const c=['tss','cds-start','cds-end','utr3-end','poly-start','poly-end'].map(k=>Number($('nexus-full-'+k).value)||0);
-   const [tss,cs,ce,u3,ps,pe]=c;const rows=[['5′ UTR',tss,cs-1],['Coding sequence (includes signal + antigen)',cs,ce],['3′ UTR',ce+1,u3]];
+   const [tss,cs,ce,u3,ps,pe]=c;const rows=[...(current.t7?[['T7 promoter candidate — DNA only',current.t7.start,current.t7.end]]:[]),['5′ UTR — DNA',tss,cs-1],['CDS — DNA (includes any encoded signal)',cs,ce],['3′ UTR — DNA',ce+1,u3]];
    if(ps&&pe)rows.push(['DNA-encoded poly(A) candidate',ps,pe]);
-   $('nexus-full-map').replaceChildren();for(const [title,a,b] of rows){const e=document.createElement('div');e.textContent=`${title}: ${a||'?'}–${b||'?'} (${a&&b&&b>=a?b-a+1:0} bp)`;$('nexus-full-map').append(e);}
+   $('nexus-full-rna-preview').hidden=true;$('nexus-full-rna-sequence').value='';
+   $('nexus-full-map').replaceChildren();for(const [title,a,b] of rows){const e=document.createElement('div'),valid=a>=1&&b>=a&&b<=current.dna.length,seq=valid?current.dna.slice(a-1,b):'';const preview=seq.length<=36?seq:seq.slice(0,18)+'…'+seq.slice(-12);e.textContent=`${title}: ${a||'?'}–${b||'?'} (${valid?b-a+1:0} bp)${valid?' · 5′–'+preview+'–3′':''}`;$('nexus-full-map').append(e);}
  }
  for(const id of ['tss','cds-start','cds-end','utr3-end','poly-start','poly-end'])$('nexus-full-'+id).addEventListener('input',updateMap);
  function show(record,source){current={...record,source};panel.hidden=false;$('nexus-full-results').hidden=false;
+   $('nexus-full-dna-sequence').value=record.dna.match(/.{1,80}/g).join('\n');
    const c=record.coordinates;for(const [key,val]of Object.entries({'tss':c.tss,'cds-start':c.cdsStart,'cds-end':c.cdsEnd,'utr3-end':c.utr3End,'poly-start':c.polyStart,'poly-end':c.polyEnd}))$('nexus-full-'+key).value=val||'';
    const opts=$('nexus-full-orf');opts.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Choose a CDS candidate / edit coordinates';opts.append(placeholder);
    for(const [i,o] of record.orfs.entries()){const e=document.createElement('option');e.value=String(i);e.textContent=`${o.start}–${o.end} (${o.length} nt), Kozak context score ${o.kozak}/3`;opts.append(e);}
-   const notes=[`Uploaded sequence: ${record.dna.length} bp`,record.t7?`Canonical T7 promoter motif: ${record.t7.start}–${record.t7.end} (transcription start remains provisional)`:`T7 promoter: ${record.t7Matches?'Multiple exact matches; ambiguous':'not uniquely identified'}`,
+   const notes=[`Uploaded DNA: ${record.dna.length} bp · 5′→3′ coding/sense orientation assumed (not independently checked)`,record.t7?`Canonical T7 promoter motif: ${record.t7.start}–${record.t7.end} (transcription start remains provisional)`:`T7 promoter: ${record.t7Matches?'Multiple exact matches; ambiguous':'not uniquely identified'}`,
      record.cds?`Coding-region candidate: ${record.cds.start}–${record.cds.end} (${record.sourceEvidence})`:'No complete ORF confidently proposed; enter CDS boundaries',
      record.poly?`A tract: ${record.poly.start}–${record.poly.end} (${record.poly.length} A bases; encoded poly(A) candidate, not proven transcript terminus)`:'No long DNA poly(A) run detected',
      'Secretion signal / antigen identity: not inferred; supply verified feature annotation if available'];
@@ -120,7 +124,10 @@
    for(const [id,key] of [['qa-utr5','utr5'],['qa-cds','cds'],['qa-utr3','utr3']]){$(id).value=slice(m.roles[key]);$(id).dispatchEvent(new Event('input',{bubbles:true}));}
    $('qa-poly').value=m.roles.polyA?m.roles.polyA.end-m.roles.polyA.start+1:0;
    $('qa-cap').value=$('qa-modality').value==='linear-ivt'?'unspecified':'cellular';
-   $('qa-run').click();status('The confirmed DNA regions were converted to RNA and sent to the existing review. T7 promoter and any downstream vector DNA were excluded. Cap chemistry and antigen identity remain unverified.');
+   const rna=m.dna.slice(m.roles.utr5.start-1,m.roles.utr3.end).replace(/T/g,'U');
+   $('nexus-full-rna-sequence').value=rna.match(/.{1,80}/g).join('\n');
+   $('nexus-full-rna-preview').hidden=false;
+   $('qa-run').click();status('DNA annotated in A/T/G/C. Transcribed region was projected separately in RNA (A/U/G/C) and sent to RNA review. Promoter and downstream vector DNA are excluded; strand orientation, true transcript boundaries and cap/poly(A) processing still require confirmation.');
  }catch(error){status(error.message,true);}});
  root.NexusFullConstructGuide=Object.freeze({suggest,ORFs,runs,genbankFeatures});
 })(window);
