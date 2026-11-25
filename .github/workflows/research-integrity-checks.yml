@@ -1,0 +1,32 @@
+name: Research Integrity and Security Checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/construct-studio/**'
+      - 'construct-studio/**'
+      - 'tests/research-integrity.test.cjs'
+      - 'tests/security-baseline.test.cjs'
+      - '_headers'
+      - 'account/config.js'
+      - 'account/auth-client.js'
+      - '.github/workflows/research-integrity-checks.yml'
+  pull_request:
+    paths:
+      - 'tools/construct-studio/**'
+      - 'construct-studio/**'
+      - 'tests/research-integrity.test.cjs'
+      - 'tests/security-baseline.test.cjs'
+      - '_headers'
+      - 'account/config.js'
+      - 'account/auth-client.js'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Validate strategy, citation logic and security baseline
+        run: node --test tests/research-integrity.test.cjs tests/security-baseline.test.cjs
