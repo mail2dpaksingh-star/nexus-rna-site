@@ -115,7 +115,7 @@
    if(!cds.startsWith('ATG')||!['TAA','TGA','TAG'].includes(cds.slice(-3)))throw Error('Selected CDS must begin with ATG and end with an in-frame stop codon.');
    if(Boolean(ps)!==Boolean(pe))throw Error('Provide both poly(A) coordinates or leave both blank.');
    if(ps||pe){if(ps!==end+1||pe<ps||pe>N||!/^[A]+$/.test(current.dna.slice(ps-1,pe)))throw Error('DNA poly(A) region must immediately follow the 3′ UTR and consist entirely of A bases.');}
-   return {source:current.source,dna:current.dna,roles:{utr5:{start:tss,end:cs-1},cds:{start:cs,end:ce},utr3:{start:ce+1,end}, ...(ps?{polyA:{start:ps,end:pe}}:{})},promoter:current.t7,notes:'User-confirmed DNA-template coordinates; not independently sequence-validated.'};
+   return {source:current.source,sequenceType:'DNA',alphabet:'ACGT',strandAssumption:'5prime-to-3prime coding/sense strand; not independently confirmed',dna:current.dna,roles:{utr5:{start:tss,end:cs-1},cds:{start:cs,end:ce},utr3:{start:ce+1,end}, ...(ps?{polyA:{start:ps,end:pe}}:{})},promoter:current.t7,notes:'User-confirmed DNA-template coordinates; not independently sequence-validated.'};
  }
  function download(filename,data){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  $('nexus-full-export').addEventListener('click',()=>{try{const m=mapped();download('NEXUS_Full_DNA_Construct_Annotations.json',{schema:'nexus-full-dna-template-annotation-v1',...m});status('Exported reviewed coordinate annotation JSON.');}catch(error){status(error.message,true);}});
