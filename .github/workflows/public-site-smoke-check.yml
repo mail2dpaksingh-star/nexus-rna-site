@@ -27,8 +27,9 @@ jobs:
             [account]="/account/sign-in.html"
             [stylesheet]="/assets/nexus-site-theme.css"
             [research]="/api/research-landscape?q=CAR%20NK%20mRNA"
+            [dna_guide]="/tools/construct-studio/full-construct-guide.js"
           )
-          for name in home tools studio seqfold account stylesheet research; do
+          for name in home tools studio seqfold account stylesheet research dna_guide; do
             path="${routes[$name]}"
             echo "::group::$name $path"
             status=$(curl --location --silent --show-error --connect-timeout 7 --max-time 25 --output "/tmp/response-$name" --write-out "%{http_code}" "$BASE$path" || true)
@@ -41,6 +42,9 @@ jobs:
                 grep -Fq 'RNA BioSolutions' "/tmp/response-$name" && echo 'Homepage branding: present' || echo 'Homepage branding: not found'
               elif [[ "$name" == "stylesheet" ]]; then
                 grep -Fq -- '--nexus-blue:' "/tmp/response-$name" && echo 'Shared blue-white palette: present' || echo 'Shared palette: not found'
+              elif [[ "$name" == "dna_guide" ]]; then
+                grep -Fq "nexus-full-dna-sequence" "/tmp/response-$name" && echo "Full DNA sequence view: present" || echo "Full DNA sequence view: not yet published"
+                grep -Fq "nexus-full-rna-sequence" "/tmp/response-$name" && echo "Separate projected RNA view: present" || echo "Separate projected RNA view: not yet published"
               elif [[ "$name" == "research" ]]; then
                 grep -Fq '"nexus-live-landscape-v1"' "/tmp/response-$name" && echo 'Live research API schema: present' || echo 'Live research API schema: not confirmed'
               else
