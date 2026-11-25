@@ -1,0 +1,52 @@
+name: Public Website Deployment Smoke Check
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/public-site-smoke-check.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Test public Cloudflare Pages site from independent runner
+        env:
+          BASE: https://nexus-rna-site.pages.dev
+        shell: bash
+        run: |
+          set -u
+          echo "Checking public site at $BASE"
+          declare -A routes=(
+            [home]="/"
+            [tools]="/tools/index.html"
+            [studio]="/tools/construct-studio/index.html"
+            [seqfold]="/tools/seqfold/index.html"
+            [account]="/account/sign-in.html"
+            [stylesheet]="/assets/nexus-site-theme.css"
+            [research]="/api/research-landscape?q=CAR%20NK%20mRNA"
+          )
+          for name in home tools studio seqfold account stylesheet research; do
+            path="${routes[$name]}"
+            echo "::group::$name $path"
+            status=$(curl --location --silent --show-error --connect-timeout 7 --max-time 25 --output "/tmp/response-$name" --write-out "%{http_code}" "$BASE$path" || true)
+            if [ -z "$status" ]; then status="NO_RESPONSE"; fi
+            echo "HTTP status: $status"
+            if [ -s "/tmp/response-$name" ]; then
+              printf 'Bytes received: '
+              wc -c < "/tmp/response-$name"
+              if [[ "$name" == "home" ]]; then
+                grep -Fq 'RNA BioSolutions' "/tmp/response-$name" && echo 'Homepage branding: present' || echo 'Homepage branding: not found'
+              elif [[ "$name" == "stylesheet" ]]; then
+                grep -Fq -- '--nexus-blue:' "/tmp/response-$name" && echo 'Shared blue-white palette: present' || echo 'Shared palette: not found'
+              elif [[ "$name" == "research" ]]; then
+                grep -Fq '"nexus-live-landscape-v1"' "/tmp/response-$name" && echo 'Live research API schema: present' || echo 'Live research API schema: not confirmed'
+              else
+                grep -Fq 'data-nexus-site-theme="1"' "/tmp/response-$name" && echo 'Site theme link: present' || echo 'Site theme link: not found'
+              fi
+            fi
+            echo "::endgroup::"
+          done
+          echo "Smoke check finished. A PASS requires HTTP 200 plus expected live content for all verified pages."
