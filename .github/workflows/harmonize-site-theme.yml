@@ -1,0 +1,46 @@
+name: Harmonize RNA BioSolutions Page Colors
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/apply_site_theme.py'
+      - 'assets/nexus-site-theme.css'
+      - '.github/workflows/harmonize-site-theme.yml'
+      - '**/*.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nexus-site-color-theme
+  cancel-in-progress: false
+
+jobs:
+  harmonize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout NEXUS site
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Validate theming script
+        run: python3 -m py_compile scripts/apply_site_theme.py
+      - name: Apply shared theme to all public pages
+        run: python3 scripts/apply_site_theme.py
+      - name: Verify stylesheet path and body opt-in for every page
+        run: python3 scripts/apply_site_theme.py --check
+      - name: Commit only modified HTML files
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u -- '*.html'
+          if git diff --cached --quiet; then
+            echo "All public pages already use the shared homepage palette."
+          else
+            git commit -m "Harmonize all website subpages with RNA BioSolutions homepage colors"
+            git push origin HEAD:main
+          fi
