@@ -11,3 +11,17 @@
 .qa-guide-grid label{font-size:12px;font-weight:700;color:#152f68}
 .qa-guide-grid input{display:block;box-sizing:border-box;margin-top:5px;width:100%;padding:10px;border:1px solid #b5c3dc;border-radius:8px}
 @media(max-width:640px){.qa-guide-grid{grid-template-columns:1fr}}
+
+/* Explicitly separate the full DNA construct from the projected RNA on mobile. */
+.qa-guide #nexus-full-dna-sequence,
+.qa-guide #nexus-full-rna-sequence{
+  display:block;width:100%;min-height:145px;max-height:290px;overflow:auto;
+  resize:vertical;white-space:pre;overflow-wrap:normal;word-break:normal;
+  font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.02em;background:#fff;color:#0c2d61;
+  border:1px solid #b7ceee;border-radius:11px;padding:13px;
+}
+.qa-guide #nexus-full-rna-sequence{background:#f6faff;border-color:#c5ddfa}
+.qa-guide #nexus-full-dna-help{display:block;margin:7px 0 12px;line-height:1.55}
+.qa-guide #nexus-full-map div{overflow-wrap:anywhere;line-height:1.55}
+.qa-guide #nexus-full-rna-preview{margin:16px 0 6px}
