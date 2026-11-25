@@ -6,6 +6,7 @@ on:
       - 'tools/construct-studio/**'
       - 'construct-studio/**'
       - 'tests/research-integrity.test.cjs'
+      - 'tests/full-construct-dna-display.test.cjs'
       - 'tests/security-baseline.test.cjs'
       - '_headers'
       - 'functions/api/research-landscape.js'
@@ -21,6 +22,7 @@ on:
       - 'tools/construct-studio/**'
       - 'construct-studio/**'
       - 'tests/research-integrity.test.cjs'
+      - 'tests/full-construct-dna-display.test.cjs'
       - 'tests/security-baseline.test.cjs'
       - '_headers'
       - 'account/config.js'
@@ -34,4 +36,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Validate strategy, citation logic and security baseline
-        run: node --test tests/research-integrity.test.cjs tests/security-baseline.test.cjs tests/research-landscape.test.cjs
+        run: |
+          node --check tools/construct-studio/full-construct-guide.js
+          node --test tests/research-integrity.test.cjs tests/security-baseline.test.cjs tests/research-landscape.test.cjs tests/full-construct-dna-display.test.cjs
