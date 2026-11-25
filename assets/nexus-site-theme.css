@@ -211,3 +211,10 @@ body.nexus-site-theme > footer:not(.footer) {
   body.nexus-site-theme {background:#fff;color:#111}
   body.nexus-site-theme :is(.hero,.portfolio-intro) {background:#fff;border:0}
 }
+
+/* Hide only the decorative feature-pill rows in program hero areas.
+ * Functional form chips, selection pills, action buttons and tool tabs remain visible. */
+body.nexus-site-theme .hero .pills,
+body.nexus-site-theme .portfolio-intro .pills {
+  display: none !important;
+}
