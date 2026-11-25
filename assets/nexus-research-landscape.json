@@ -1,9 +1,406 @@
 {
   "schema": "nexus-research-landscape-snapshot-v1",
-  "updatedAt": null,
-  "topics": [],
-  "records": [],
-  "sourcesAvailable": [],
-  "sourceErrors": ["Awaiting a successful scheduled public source refresh"],
-  "scope": "No records are claimed until source retrieval succeeds."
+  "updatedAt": "2026-11-25T17:24:31+00:00",
+  "topics": [
+    "CAR NK mRNA",
+    "NK cells mRNA lipid nanoparticles",
+    "EphA2 CAR NK mRNA",
+    "CLL-1 CAR NK mRNA"
+  ],
+  "records": [
+    {
+      "id": "PMID:42526199",
+      "type": "publication",
+      "title": "In vivo engineering of CAR immune cells by nonviral nanoparticles.",
+      "authors": [
+        "Huang K",
+        "Wang H",
+        "Zhu T",
+        "Zheng Q",
+        "Tong Z"
+      ],
+      "organization": "",
+      "date": "2027 Jan",
+      "journal": "Biomaterials",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42526199/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:43065616",
+      "type": "publication",
+      "title": "A high-throughput functional 3D droplet microfluidic platform for function-to-transcriptome profiling identifies candidate lncRNAs associated with engineered NK cell function.",
+      "authors": [
+        "Thomas J",
+        "Raman K",
+        "Rampelli A",
+        "Akligoh H",
+        "Chalise S"
+      ],
+      "organization": "",
+      "date": "2026",
+      "journal": "Frontiers in immunology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43065616/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:43017074",
+      "type": "publication",
+      "title": "Allogeneic CAR-T, CAR-NK, and in vivo CAR-T for immune-mediated inflammatory diseases: comparative evidence, platform trade-offs, and translational challenges.",
+      "authors": [
+        "Liang Z",
+        "Mao M",
+        "Xie H",
+        "Xing Y",
+        "Wu D"
+      ],
+      "organization": "",
+      "date": "2026",
+      "journal": "Frontiers in immunology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43017074/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:42940171",
+      "type": "publication",
+      "title": "Lipid Nanoparticle Delivery of CAR276 mRNA Enables Antigen-Specific Cytotoxicity in T Cells Against Glioblastoma Cells.",
+      "authors": [
+        "Zahedipour F",
+        "Sadeghianfard S",
+        "Wisser S",
+        "Dinarvand M",
+        "Steiner D"
+      ],
+      "organization": "",
+      "date": "2026 Oct 16",
+      "journal": "Biomedicines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42940171/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA",
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42888436",
+      "type": "publication",
+      "title": "The advances and challenges of mRNA-LNP application in fields of hematology and oncology therapeutics.",
+      "authors": [
+        "Wang Y",
+        "Ge Y",
+        "Chen Y",
+        "Yang Y",
+        "Li J"
+      ],
+      "organization": "",
+      "date": "2026 Oct 16",
+      "journal": "Journal of hematology & oncology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42888436/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA",
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42526373",
+      "type": "publication",
+      "title": "CircRNA-based CD19-targeted CAR-NK therapy for B-cell acute lymphoblastic Leukemia using a Coccidioides immitis-derived group II intron platform.",
+      "authors": [
+        "Dong Q",
+        "Liu Y",
+        "Chen N",
+        "Han Y",
+        "Wang Y"
+      ],
+      "organization": "",
+      "date": "2026 Oct 15",
+      "journal": "International immunopharmacology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42526373/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:42870042",
+      "type": "publication",
+      "title": "In vivo engineering of CAR natural killer cells for immunotherapy using ligand-directed lipid nanoparticles.",
+      "authors": [
+        "Chen Y",
+        "Monkovic J",
+        "Mughal H",
+        "Chen B",
+        "Thadhani E"
+      ],
+      "organization": "",
+      "date": "2026 Oct 13",
+      "journal": "Nature biotechnology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42870042/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA",
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42508766",
+      "type": "publication",
+      "title": "Engineering the blood: Lipid nanoparticle platforms for ex vivo immune and hematopoietic cell therapies.",
+      "authors": [
+        "Byeon Y",
+        "Peng N",
+        "Oh EB",
+        "Kim E",
+        "Gu D"
+      ],
+      "organization": "",
+      "date": "2026 Oct 10",
+      "journal": "Journal of controlled release : official journal of the Controlled Release Society",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42508766/",
+      "source": "PubMed",
+      "topics": [
+        "CAR NK mRNA",
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "NCT05143151",
+      "type": "trial",
+      "title": "CD276-targeted Chimeric Antigen Receptor T Cells in Treatment With Advanced Pancreatic Cancer",
+      "organization": "Shenzhen University General Hospital",
+      "status": "UNKNOWN",
+      "date": "2021-12-03",
+      "conditions": [
+        "Advanced Pancreatic Carcinoma"
+      ],
+      "interventions": [
+        "CD276 CAR-T cells"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05143151",
+      "source": "ClinicalTrials.gov",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "NCT07307053",
+      "type": "trial",
+      "title": "Rare Tumor Focused Platform Study of Innovative Therapies and Technologies (PLATFORM2)",
+      "organization": "Cancer Institute and Hospital, Chinese Academy of Medical Sciences",
+      "status": "NOT_YET_RECRUITING",
+      "date": "2025-12-29",
+      "conditions": [
+        "Rare Malignant Neoplasm",
+        "Advanced Solid Tumors",
+        "Metastatic Solid Tumors"
+      ],
+      "interventions": [
+        "BL-B01D1",
+        "VSV injection",
+        "CVL006",
+        "IDOV-SAFE",
+        "KXV01 TCR Lentinvivo Injection",
+        "MT027"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07307053",
+      "source": "ClinicalTrials.gov",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "NCT07349836",
+      "type": "trial",
+      "title": "Application of mRNA Immunotherapy Technology in EB Virus Related Diseases",
+      "organization": "Xinqiao Hospital of Chongqing",
+      "status": "NOT_YET_RECRUITING",
+      "date": "2026-01-20",
+      "conditions": [
+        "EBV-associated Tumors"
+      ],
+      "interventions": [
+        "WGc-043 injection",
+        "Immune Checkpoint Inhibitors",
+        "Standard therapy"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07349836",
+      "source": "ClinicalTrials.gov",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "NCT07333118",
+      "type": "trial",
+      "title": "A Clinical Study to Evaluate the Safety and Efficacy of GT801 Injection in the Treatment of Moderate-to-Severe Refractory Autoimmune Diseases",
+      "organization": "Grit Biotechnology",
+      "status": "RECRUITING",
+      "date": "2026-01-12",
+      "conditions": [
+        "Moderate to Severe Refractory Autoimmune Disease"
+      ],
+      "interventions": [
+        "GT801 Injection"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07333118",
+      "source": "ClinicalTrials.gov",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "NCT03415100",
+      "type": "trial",
+      "title": "Pilot Study of NKG2D-Ligand Targeted CAR-NK Cells in Patients With Metastatic Solid Tumours",
+      "organization": "The Third Affiliated Hospital of Guangzhou Medical University",
+      "status": "UNKNOWN",
+      "date": "2018-01-30",
+      "conditions": [
+        "Solid Tumours"
+      ],
+      "interventions": [
+        "CAR-NK cells targeting NKG2D ligands"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT03415100",
+      "source": "ClinicalTrials.gov",
+      "topics": [
+        "CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:42826903",
+      "type": "publication",
+      "title": "Dual-glycolipid engineered vaccine platform empowers delivery route customization to intercept tumor lung metastasis.",
+      "authors": [
+        "Wei L",
+        "Xu W",
+        "Zhang T",
+        "Zhao X",
+        "Zhao Y"
+      ],
+      "organization": "",
+      "date": "2026 Nov 10",
+      "journal": "Journal of controlled release : official journal of the Controlled Release Society",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42826903/",
+      "source": "PubMed",
+      "topics": [
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42906692",
+      "type": "publication",
+      "title": "Reprogramming tumor-associated macrophages via ID3 mRNA delivery for enhanced immunotherapy in pancreatic cancer.",
+      "authors": [
+        "Zhou W",
+        "Wang H",
+        "Li Y",
+        "Zhao J",
+        "Huang Q"
+      ],
+      "organization": "",
+      "date": "2026 Oct 21",
+      "journal": "Journal of controlled release : official journal of the Controlled Release Society",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42906692/",
+      "source": "PubMed",
+      "topics": [
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42891071",
+      "type": "publication",
+      "title": "Lipid-based mRNA chimeric antigen receptor T cells for enhanced in vitro antitumor activity.",
+      "authors": [
+        "Gao H",
+        "Fang Y",
+        "Tian Z",
+        "Guo C",
+        "Wang P"
+      ],
+      "organization": "",
+      "date": "2026 Oct 16",
+      "journal": "iScience",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42891071/",
+      "source": "PubMed",
+      "topics": [
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:42898436",
+      "type": "publication",
+      "title": "Alpha-galactosylceramide as mRNA vaccine adjuvant modulates cellular immunity against tuberculosis and contributes to antigen-specific lung-associated T cells with a TRM-associated phenotype following prime-pull strategy.",
+      "authors": [
+        "Aernout I",
+        "Ehouarne T",
+        "Mwangi K",
+        "Ferrell KC",
+        "De Velder M"
+      ],
+      "organization": "",
+      "date": "2026",
+      "journal": "Frontiers in immunology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42898436/",
+      "source": "PubMed",
+      "topics": [
+        "NK cells mRNA lipid nanoparticles"
+      ]
+    },
+    {
+      "id": "PMID:39763064",
+      "type": "publication",
+      "title": "Enhancement of anti-sarcoma immunity by NK cells engineered with mRNA for expression of a EphA2-targeted CAR.",
+      "authors": [
+        "Lam PY",
+        "Omer N",
+        "Wong JKM",
+        "Tu C",
+        "Alim L"
+      ],
+      "organization": "",
+      "date": "2025 Jan",
+      "journal": "Clinical and translational medicine",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39763064/",
+      "source": "PubMed",
+      "topics": [
+        "EphA2 CAR NK mRNA"
+      ]
+    },
+    {
+      "id": "PMID:41845478",
+      "type": "publication",
+      "title": "Engineering CLL-1 CAR-NK cells via mRNA-LNP for potent antitumor activity and reversal of HLA-E-mediated resistance in acute myeloid leukemia.",
+      "authors": [
+        "Shen J",
+        "Jin P",
+        "Liang Y",
+        "Zhu J",
+        "Xiang R"
+      ],
+      "organization": "",
+      "date": "2026 Mar 17",
+      "journal": "Journal of experimental & clinical cancer research : CR",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41845478/",
+      "source": "PubMed",
+      "topics": [
+        "CLL-1 CAR NK mRNA"
+      ]
+    }
+  ],
+  "sourcesAvailable": [
+    "ClinicalTrials.gov",
+    "PubMed"
+  ],
+  "sourceErrors": [],
+  "scope": "Seeded NK/mRNA keywords; public NCBI and ClinicalTrials.gov records. No private research input, exhaustive novelty review, exact-study duplication or FTO conclusions."
 }
