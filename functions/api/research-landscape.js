@@ -4,7 +4,7 @@ const CT='https://clinicaltrials.gov/api/v2/studies';
 const LIMIT=8;
 function txt(v,n=200){return String(v??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim().slice(0,n);}
 function queryValid(q){return q.length>=3&&q.length<=120&&/^[\p{L}\p{N}\s\-/()+,.]+$/u.test(q)&&!/@|https?:|(?:[ACGTU]{45,})/i.test(q);}
-function json(body,status=200){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Access-Control-Allow-Origin':'null'}});}
+function json(body,status=200){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});}
 async function getJSON(url){
  const response=await fetch(url.toString(),{headers:{Accept:'application/json'},signal:AbortSignal.timeout(8500)});
  if(!response.ok)throw Error('Upstream HTTP '+response.status);
