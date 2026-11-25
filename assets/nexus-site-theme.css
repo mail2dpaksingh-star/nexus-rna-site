@@ -1,0 +1,213 @@
+/*
+ * NEXUS / RNA BioSolutions — coordinated homepage palette (2026-11-25)
+ * Presentation only: no positioning, scientific visualizations, hidden states,
+ * user data, calculation outputs or program logic are modified.
+ * Loaded last on subpages to align existing independent design systems.
+ */
+body.nexus-site-theme {
+  --nexus-brand:#0b235f;
+  --nexus-blue:#1559e9;
+  --nexus-blue-hover:#1049c3;
+  --nexus-ink:#142d5b;
+  --nexus-muted:#4e6280;
+  --nexus-line:#dbe6f4;
+  --nexus-tint:#f7faff;
+  --nexus-sky:#eaf3ff;
+  --nexus-teal:#0d8088;
+  background:var(--nexus-tint);
+  color:var(--nexus-ink);
+}
+html:has(body.nexus-site-theme){color-scheme:light}
+body.nexus-site-theme :is(a,button,input,select,textarea,summary):focus-visible {
+  outline:3px solid #1559e9;
+  outline-offset:3px;
+}
+body.nexus-site-theme :is(input,select,textarea,#find,.sequence,.area,.select,.number) {
+  color:#102b59;
+  background-color:#fff;
+  border-color:#becfeb;
+  accent-color:var(--nexus-blue);
+}
+body.nexus-site-theme :is(input,select,textarea,#find):focus {
+  border-color:var(--nexus-blue);
+}
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header),
+body.nexus-site-theme > header:not(.site-header) {
+  background:#fff;
+  color:var(--nexus-brand);
+  border-color:var(--nexus-line);
+  box-shadow:0 2px 14px rgba(8,30,78,.055);
+}
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) :is(.brand,.logo,.name),
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) :is(.brand strong,.brand small,.logo small,.tiny) {
+  color:var(--nexus-brand);
+}
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) :is(.links a,.navlinks a,.topnav a,.toplinks a,.top-actions a,.header a,.portfolio-header nav a),
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) nav a {
+  color:#15396d;
+}
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) a:hover,
+body.nexus-site-theme :is(.top,.topbar,.header,.portfolio-header) a[aria-current="page"] {
+  color:var(--nexus-blue);
+}
+body.nexus-site-theme .brand mark {
+  background:var(--nexus-sky);
+  color:var(--nexus-brand);
+}
+body.nexus-site-theme :is(.hero,.portfolio-intro) {
+  color:var(--nexus-brand);
+  background:linear-gradient(112deg,#fff 0%,#f6f9ff 48%,#e5f0ff 100%);
+  border-bottom:1px solid var(--nexus-line);
+}
+body.nexus-site-theme .hero :is(h1,h2),
+body.nexus-site-theme .portfolio-intro :is(h1,h2) {
+  color:#081b4e;
+}
+body.nexus-site-theme .hero :is(h1 em,h2 em),
+body.nexus-site-theme .hero .eyebrow,
+body.nexus-site-theme .portfolio-intro .eyebrow {
+  color:#1559e9;
+}
+body.nexus-site-theme .hero > :is(p,small),
+body.nexus-site-theme .hero p,
+body.nexus-site-theme .portfolio-intro p {
+  color:#344a6c;
+}
+body.nexus-site-theme :is(.hero,.portfolio-intro) :is(.pill,.tag,.tags span),
+body.nexus-site-theme .hero .pills .pill {
+  color:#17469a;
+  background:#ecf4ff;
+  border-color:#cce0fa;
+}
+body.nexus-site-theme .hero .hero-aside {
+  /* Retain its dark contrast panel where used, including white labels. */
+  background:#12306b;
+  border-color:#28549d;
+  color:#fff;
+}
+body.nexus-site-theme .hero .hero-aside :is(p,h2,li,.eyebrow) {
+  color:#f1f6ff;
+}
+body.nexus-site-theme .hero-right {
+  background:#0e2454;
+  border-color:#2d58a3;
+  color:#fff;
+}
+body.nexus-site-theme .hero-right :is(pre,.tbar,.lime,.aqua) {
+  color:#e8f2ff;
+}
+body.nexus-site-theme :is(.strip,.stateline) {
+  background:#eef5ff;
+  color:#244476;
+  border-color:var(--nexus-line);
+}
+body.nexus-site-theme :is(.strip,.stateline) :is(strong,span) {
+  color:#174082;
+}
+body.nexus-site-theme :is(.panel,.pane,.card,.project,.minipanel,.refcard,.step,.tier,.quote-form,.tool) {
+  border-color:var(--nexus-line);
+}
+body.nexus-site-theme :is(.panel,.pane,.project,.refcard,.step,.quote-form,.tool) {
+  background:#fff;
+  color:var(--nexus-ink);
+  box-shadow:0 9px 28px rgba(22,55,119,.065);
+}
+body.nexus-site-theme :is(.panel,.pane,.card,.tool) :is(h2,h3,h4) {
+  color:var(--nexus-brand);
+}
+body.nexus-site-theme :is(.panel,.pane) :is(.tag,.chip,.qc-tabs span) {
+  color:#1c4b9c;
+  border-color:#c9dbf4;
+  background:#edf4ff;
+}
+body.nexus-site-theme :is(.button,.btn.primary,.btn.active,.tab.active,.action:not(.alt),.nav .launch) {
+  background:var(--nexus-blue);
+  border-color:var(--nexus-blue);
+  color:#fff;
+}
+body.nexus-site-theme :is(.button,.btn.primary,.btn.active,.tab.active,.action:not(.alt),.nav .launch):hover {
+  background:var(--nexus-blue-hover);
+  border-color:var(--nexus-blue-hover);
+  color:#fff;
+}
+body.nexus-site-theme .button.secondary,
+body.nexus-site-theme :is(.btn.alt,.btn.secondary,.btn:not(.primary):not(.active):not(.danger),.action.alt) {
+  background:#fff;
+  color:#174b9c;
+  border-color:#b8cee9;
+}
+body.nexus-site-theme .button.secondary:hover,
+body.nexus-site-theme :is(.btn.alt,.btn.secondary,.btn:not(.primary):not(.active):not(.danger),.action.alt):hover {
+  background:#edf4ff;
+}
+body.nexus-site-theme :is(.tab.selected,.pro-tabs button[aria-selected="true"]) {
+  background:#e7f0ff;
+  color:#1556c7;
+  border-color:#a7c6f4;
+}
+body.nexus-site-theme :is(.panel,.pane,.work,.shell) a:not(.btn):not(.button):not(.action) {
+  text-decoration-color:rgba(21,89,233,.3);
+}
+body.nexus-site-theme :is(.mini-links a,.ref a,.wf a,.card a) {
+  color:#1556c7;
+}
+body.nexus-site-theme :is(.metric,.stat,.minipanel,.refcard,.note:not(.warning),.notice:not(.warning):not(.strong)) {
+  border-color:#d9e7f7;
+}
+body.nexus-site-theme :is(.metric,.stat,.minipanel,.note:not(.warning),.notice:not(.warning):not(.strong)) {
+  background:#f4f8ff;
+}
+body.nexus-site-theme :is(.tbl th,.table th) {
+  background:#edf4ff;
+  color:#20477d;
+}
+body.nexus-site-theme :is(.segment,.segment:nth-child(3n),.segment:nth-child(3n+2)) {
+  background:#164fb3;
+  border-color:#164aab;
+  color:#fff;
+}
+body.nexus-site-theme :is(.segment:nth-child(3n),.segment:nth-child(3n+2)) {
+  background:#0d397e;
+}
+body.nexus-site-theme :is(.footer,.foot,.bottom) {
+  background:#0b235f;
+  color:#e1e9f8;
+}
+body.nexus-site-theme :is(.footer,.foot,.bottom) a {
+  color:#c9e0ff;
+}
+/* The tools directory previously forced a dark color scheme throughout. */
+body.nexus-site-theme .tool {
+  color:var(--nexus-brand);
+  transition:background .16s,border-color .16s,box-shadow .16s;
+}
+body.nexus-site-theme .tool:hover {
+  background:#eef5ff;
+  border-color:#a8c8f5;
+  box-shadow:0 12px 30px rgba(22,55,119,.11);
+}
+body.nexus-site-theme #find {
+  background:#fff;
+  color:var(--nexus-brand);
+}
+body.nexus-site-theme > header h1,
+body.nexus-site-theme > main h1,
+body.nexus-site-theme > main h2,
+body.nexus-site-theme > main h2 span {
+  color:var(--nexus-brand);
+}
+body.nexus-site-theme > main > p,
+body.nexus-site-theme > header > p {
+  color:var(--nexus-muted);
+}
+body.nexus-site-theme > footer:not(.footer) {
+  color:#4e6280;
+  border-color:var(--nexus-line);
+}
+@media (prefers-reduced-motion:reduce) {
+  body.nexus-site-theme .tool {transition:none}
+}
+@media print {
+  body.nexus-site-theme {background:#fff;color:#111}
+  body.nexus-site-theme :is(.hero,.portfolio-intro) {background:#fff;border:0}
+}
