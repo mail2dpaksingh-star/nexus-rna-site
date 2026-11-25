@@ -1,0 +1,9 @@
+{
+  "schema": "nexus-research-landscape-snapshot-v1",
+  "updatedAt": null,
+  "topics": [],
+  "records": [],
+  "sourcesAvailable": [],
+  "sourceErrors": ["Awaiting a successful scheduled public source refresh"],
+  "scope": "No records are claimed until source retrieval succeeds."
+}
