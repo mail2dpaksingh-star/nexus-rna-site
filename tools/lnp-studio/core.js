@@ -3,13 +3,39 @@
 'use strict';
 const round=(x,n=3)=>Number(x.toFixed(n));
 function finite(x,label,lo=0,hi=Infinity){if(x===''||x===null||x===undefined||!Number.isFinite(Number(x)))throw Error(label+' requires a finite number');let v=Number(x);if(v<lo||v>hi)throw Error(label+' must be between '+lo+' and '+hi);return v;}
-function calculate(x){const names=['ionizable','phospholipid','cholesterol','peg'];const ratios=Object.fromEntries(names.map(k=>[k,finite(x[k],k,0,100)]));const sum=names.reduce((a,k)=>a+ratios[k],0);if(Math.abs(sum-100)>.001)throw Error('Lipid molar fractions must total exactly 100%; current sum '+round(sum,3)+'%.');
-const mws=Object.fromEntries(names.map(k=>[k,finite(x['mw_'+k],'Molecular weight for '+k,1,100000)]));const total=finite(x.totalLipidNmol,'Total lipid nmol',0.000001,1e12);const groups=finite(x.groupsPerLipid,'Ionizable groups per ionizable lipid',0,10);const rnaUg=finite(x.rnaUg,'RNA mass (µg)',0.000001,1e12);const ntMw=finite(x.ntMW,'RNA mean nucleotide mass g/mol',200,500);
+const choose=(v,values,label,defaultValue)=>{const candidate=String(v??defaultValue);if(!values.includes(candidate))throw Error(label+' has an unsupported value');return candidate;};
+function calculate(x){
+const sortClass=choose(x.sortClass,['none','cationic','anionic','ionizable','other'],'SORT lipid class','none');
+const sortPercent=finite(x.sort??0,'SORT mol%',0,100);
+if(sortClass==='none'&&sortPercent>0)throw Error('Choose a SORT lipid class when SORT mol% is greater than zero.');
+if(sortClass!=='none'&&sortPercent<=0)throw Error('SORT lipid class selected; enter a positive SORT mol% and adjust the other lipid fractions to sum to 100%.');
+const coreNames=['ionizable','phospholipid','cholesterol','peg'];
+const names=sortClass==='none'?coreNames:[...coreNames,'sort'];
+const ratios=Object.fromEntries(coreNames.map(k=>[k,finite(x[k],k,0,100)]));
+if(sortClass!=='none')ratios.sort=sortPercent;
+const sum=names.reduce((a,k)=>a+ratios[k],0);
+if(Math.abs(sum-100)>.001)throw Error('Total lipid molar fractions (including SORT, if selected) must equal 100%; current sum '+round(sum,3)+'%.');
+const mws=Object.fromEntries(names.map(k=>[k,finite(x['mw_'+k],'Molecular weight for '+k,1,100000)]));
+const designLevers={
+ ionizableHeadgroup:choose(x.ionizableHeadgroup,['unspecified','tertiary-amine','imidazole','polyamine','other'],'Ionizable headgroup','unspecified'),
+ ionizableDegradability:choose(x.ionizableDegradability,['unspecified','ester-cleavable','disulfide-cleavable','noncleavable','other'],'Ionizable degradability','unspecified'),
+ pegAnchor:choose(x.pegAnchor,['unspecified','c14','c16','c18','other'],'PEG anchor','unspecified'),
+ sterolClass:choose(x.sterolClass,['cholesterol','beta-sitosterol','other-phytosterol','synthetic-sterol','other'],'Sterol identity','cholesterol'),
+ sortClass,sortMolPercent:sortPercent
+};const total=finite(x.totalLipidNmol,'Total lipid nmol',0.000001,1e12);const groups=finite(x.groupsPerLipid,'Ionizable groups per ionizable lipid',0,10);const rnaUg=finite(x.rnaUg,'RNA mass (µg)',0.000001,1e12);const ntMw=finite(x.ntMW,'RNA mean nucleotide mass g/mol',200,500);
 const fr=finite(x.frr,'Aqueous:organic flow-rate ratio',.0001,100000);const tfr=finite(x.tfr,'Combined flow rate',.0001,1e9);
 const ligandPercent=finite(x.ligandPercent,'Targeting ligand-lipid mol%',0,100);if(ligandPercent>ratios.peg+1e-8)throw Error('Ligand–lipid mol% cannot exceed the PEG-lipid pool in this simplified model.');
 const mass={};let massTotal=0;for(const n of names){const nmol=total*ratios[n]/100;const mg=nmol*mws[n]*1e-6;mass[n]={nmol:round(nmol,5),mg:round(mg,5)};massTotal+=mg;}
 const phosphateNmol=rnaUg*1000/ntMw;const nominalNP=(total*ratios.ionizable/100*groups)/phosphateNmol;
-const out={ratios,lipidNmol:total,mass,massTotalMg:round(massTotal,6),nominalNP:round(nominalNP,4),phosphateNmol:round(phosphateNmol,5),aqueousFlow:round(tfr*fr/(1+fr),3),organicFlow:round(tfr/(1+fr),3),initialOrganicVolumePercent:round(100/(1+fr),2),ligandLipidNmol:round(total*ligandPercent/100,5),target:String(x.target||'Unspecified research target').slice(0,120),receptor:String(x.receptor||'Not documented').slice(0,120),ligandClass:String(x.ligandClass||'none'),payloadClass:String(x.payloadClass||'mrna'),offTarget:String(x.offTarget||'unknown'),internalization:String(x.internalization||'unknown'),flags:[],version:'1.0'};
+const out={ratios,lipidNmol:total,mass,massTotalMg:round(massTotal,6),nominalNP:round(nominalNP,4),phosphateNmol:round(phosphateNmol,5),aqueousFlow:round(tfr*fr/(1+fr),3),organicFlow:round(tfr/(1+fr),3),initialOrganicVolumePercent:round(100/(1+fr),2),ligandLipidNmol:round(total*ligandPercent/100,5),target:String(x.target||'Unspecified research target').slice(0,120),receptor:String(x.receptor||'Not documented').slice(0,120),ligandClass:String(x.ligandClass||'none'),payloadClass:String(x.payloadClass||'mrna'),offTarget:String(x.offTarget||'unknown'),internalization:String(x.internalization||'unknown'),designLevers,flags:[],version:'1.1'};
+if(designLevers.ionizableHeadgroup!=='unspecified')out.flags.push('Ionizable headgroup identity is recorded as a hypothesis; apparent pKa, endosomal escape and distribution require chemical characterization and experimental measurement.');
+if(designLevers.ionizableDegradability!=='unspecified')out.flags.push('Linker degradability is a structural designation only; measure breakdown products, kinetics, exposure and tolerability in the selected biological system.');
+if(designLevers.pegAnchor!=='unspecified')out.flags.push('PEG anchor class may affect de-PEGylation and circulation; no desorption kinetics or tissue delivery is calculated.');
+if(designLevers.sterolClass!=='cholesterol')out.flags.push('Non-cholesterol sterol selected: verify its actual molecular weight, purity, compatibility and formulation-specific effects; the existing sterol molecular-weight field is not automatically updated.');
+if(sortClass!=='none'){
+ out.flags.push('SORT is modeled only as an additional lipid component for molar/mass bookkeeping, not as a quantitative predictor of organ or cell tropism; validate biodistribution and safety experimentally.');
+ if(sortClass==='cationic'||sortClass==='ionizable')out.flags.push('Nominal N:P excludes any charge contributions from the fifth SORT lipid; interpret the reported ratio as a partial composition estimate, not the effective formulation charge.');
+}
 if(ligandPercent>0)out.flags.push('Ligand mol% is a formulation bookkeeping value; active surface ligand density and tissue specificity cannot be inferred.');
 if(ligandPercent>0&&(out.receptor==='Not documented'||!out.receptor.trim()))out.flags.push('Specify an evidence-supported receptor or targeting biology for the proposed ligand.');
 if(ligandPercent>0&&out.ligandClass==='none')out.flags.push('Nonzero ligand-lipid entered but no targeting-ligand class chosen.');
