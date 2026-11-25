@@ -1,0 +1,14 @@
+# Cloudflare Pages static-response security headers (not applied to Pages Functions).
+# Staged CSP controls intentionally avoid script-src/style-src restrictions until
+# inline scripts and third-party assets are audited and tested.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: base-uri 'self'; object-src 'none'; frame-ancestors 'self'
+  Strict-Transport-Security: max-age=31536000
+
+# Research account pages should not be cached by browsers/intermediaries.
+/account/*
+  Cache-Control: no-store
