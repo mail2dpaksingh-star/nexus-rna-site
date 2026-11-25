@@ -218,3 +218,48 @@ body.nexus-site-theme .hero .pills,
 body.nexus-site-theme .portfolio-intro .pills {
   display: none !important;
 }
+
+
+/* Readability pass: preserve contrasting headings on light and dark surfaces.
+ * Corrects old dark-page heading colors after the unified light palette.
+ * Keeps technical diagrams, data visualizations, status flags and interactive
+ * scientific controls unchanged.
+ */
+body.nexus-site-theme :is(.hero,.portfolio-intro) :is(h1,h2,h3,h4) {
+  color:#081b4e;
+}
+body.nexus-site-theme :is(.panel,.pane,.work,.shell,.minipanel,.refcard,.step,.tool) :is(h1,h2,h3,h4),
+body.nexus-site-theme :is(.panel,.pane,.work,.shell) :is(legend,.panel-head h2,.head h2) {
+  color:#10285a;
+}
+/* Deep-blue surfaces need light type, regardless of generic card rules. */
+body.nexus-site-theme :is(.hero-aside,.hero-right,.qc-result,.segment,.nexus-project-bar) :is(h1,h2,h3,h4,strong,b) {
+  color:#f5f8ff;
+}
+body.nexus-site-theme .hero .hero-aside :is(h1,h2,h3,h4),
+body.nexus-site-theme .hero .hero-right :is(h1,h2,h3,h4),
+body.nexus-site-theme :is(.qc-result,.segment) :is(h1,h2,h3,h4) {
+  color:#f5f8ff !important;
+}
+body.nexus-site-theme :is(.qc-result,.segment) {
+  color:#f5f8ff;
+}
+body.nexus-site-theme :is(.qc-result,.segment) :is(small,span,p,li) {
+  color:#e4edff;
+}
+/* Sequence-studio navigation was originally white-on-dark.
+ * The page header is now white, so its old pale navigation tags faded out. */
+body.nexus-site-theme :is(.topbar,.top,.header,.portfolio-header) .tag {
+  color:#15396d;
+  background:#edf4ff;
+  border-color:#bfd4f3;
+}
+body.nexus-site-theme :is(.topbar,.top,.header,.portfolio-header) :is(.tiny,.logo small,.brand small) {
+  color:#36517e;
+}
+/* Ensure page headings and card titles are legible on small screens too. */
+@media (max-width:640px) {
+  body.nexus-site-theme :is(.hero,.portfolio-intro) :is(h1,h2) {
+    color:#081b4e;
+  }
+}
