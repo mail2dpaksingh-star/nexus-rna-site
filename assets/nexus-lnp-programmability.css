@@ -1,0 +1,10 @@
+/* Scoped LNP research-programmability controls; complements existing calculations. */
+.lnp-design-levers{margin:7px 0 10px;min-width:0}
+.lnp-design-levers details{border:1px solid #cbdaf2;background:linear-gradient(150deg,#f8fbff,#f1f7ff);border-radius:13px;padding:13px 15px}
+.lnp-design-levers summary{font-size:14px;font-weight:800;cursor:pointer;color:#153c85;list-style:revert;padding:2px 2px 8px}
+.lnp-design-levers .field-grid{margin-top:12px}
+.lnp-design-levers .hint{font-size:12px;line-height:1.55;color:#425a82}
+.lnp-design-levers input,.lnp-design-levers select{background:#fff}
+.lnp-design-levers a{color:#1a5bb2;text-decoration:underline}
+.lnp-design-levers a:focus-visible{outline:3px solid #2566db;outline-offset:2px}
+@media(max-width:650px){.lnp-design-levers .field-grid{grid-template-columns:1fr}.lnp-design-levers details{padding:12px}}
