@@ -1,0 +1,13 @@
+/* Source-linked landscape cards, readable on mobile and desktop. */
+.rl-live-controls{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.rl-live-controls label{display:block;font-weight:650;font-size:0.89rem;margin-bottom:4px}
+.rl-live-controls input{width:100%;max-width:100%;box-sizing:border-box}
+.rl-live-summary{margin:10px 0 12px;color:#31506a}
+.rl-live-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.rl-record{min-width:0;border:1px solid #d4e2ee;border-radius:12px;padding:12px;background:#f8fbff}
+.rl-record h4{margin:8px 0;font-size:0.98rem;line-height:1.4;overflow-wrap:anywhere}
+.rl-meta{color:#49677b;overflow-wrap:anywhere}
+.rl-match{font-size:0.89rem;color:#244e6b;font-weight:600}
+.rl-note{font-size:0.83rem;color:#5b6977}
+.rl-empty{padding:12px}
+#landscape-live-search[disabled]{opacity:.6;cursor:progress}
