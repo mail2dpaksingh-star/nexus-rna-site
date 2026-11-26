@@ -56,16 +56,12 @@ header.site-header .site-search-input{color:#0d2d58}
 @media(max-width:740px){header.site-header nav.top{flex-wrap:wrap}header.site-header .top-links{background:#fff!important;color:#132b61!important;border:1px solid #e0e9f6}header.site-header .top-links>a{color:#0c265c!important}#home.rna-hero::before{background:linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.88)),url("rna-biosolutions/hero-rna-delivery.webp") right center/cover no-repeat}#home .rna-hero-inner{padding:42px 23px 45px}#home .rna-hero-copy{max-width:100%}#home.rna-hero h1{font-size:clamp(33px,7.5vw,45px)}.rna-service-highlights .rna-services-grid{grid-template-columns:1fr;gap:16px}.rna-service-highlights .rna-service-card{min-height:0}.rna-service-highlights .rna-service-card img{height:215px}}
 @media(prefers-reduced-motion:reduce){#home .rna-action,.rna-service-highlights .rna-service-card{transition:none}}
 
-/* Approved nine-step RNA–LNP animation: nine frames, 900 milliseconds per frame. */
-#home.rna-hero{min-height:385px;background:linear-gradient(112deg,#fff 0%,#f7faff 54%,#edf4ff 100%)}
-#home.rna-hero::before{background:radial-gradient(circle at 85% 52%,rgba(118,172,255,.18),transparent 50%);opacity:1}
-#home .rna-hero-inner{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(340px,.94fr);align-items:center;gap:clamp(26px,4vw,60px);padding-block:38px}
-#home .rna-hero-copy{min-width:0;max-width:680px}
-#home .rna-hero-animation{position:relative;width:min(100%,520px);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:11px;min-width:0}
-#home .rna-hero-animation-link{display:block;width:100%;text-decoration:none;border-radius:21px}
-#home .rna-hero-animation-link:focus-visible{outline:3px solid #245fe2;outline-offset:5px}
-#home .rna-hero-animation picture{display:block;width:100%;overflow:hidden;border-radius:21px;border:1px solid #d2def5;box-shadow:0 20px 50px rgba(11,37,95,.17);background:#112f69}
-#home .rna-hero-animation img{width:100%;height:auto;aspect-ratio:493/326;display:block;object-fit:contain}
-#home .rna-hero-animation figcaption{color:#506b95;font-weight:640;font-size:11px;letter-spacing:.01em;text-align:center;line-height:1.45}
-@media(max-width:1100px){#home .rna-hero-inner{grid-template-columns:minmax(0,1fr) minmax(285px,.95fr);gap:24px}#home .rna-hero-animation{width:min(100%,490px)}}
-@media(max-width:800px){#home.rna-hero{min-height:0}#home.rna-hero::before{background:linear-gradient(115deg,#fff 0%,#f4f9ff 100%)}#home .rna-hero-inner{grid-template-columns:1fr;padding:34px 22px 32px;gap:27px}#home .rna-hero-animation{width:min(100%,520px)}}
+/* Clean, text-led homepage hero after removal of the decorative animation. */
+#home.rna-hero{min-height:0;background:linear-gradient(112deg,#fff 0%,#f7faff 54%,#edf4ff 100%)}
+#home.rna-hero::before{background:radial-gradient(circle at 85% 52%,rgba(118,172,255,.12),transparent 52%);opacity:1}
+#home .rna-hero-inner{display:block;max-width:1180px;padding:clamp(44px,6vw,76px) clamp(24px,4.2vw,70px)}
+#home .rna-hero-copy{max-width:850px}
+@media(max-width:800px){
+  #home .rna-hero-inner{padding:38px 22px 42px}
+  #home.rna-hero::before{background:linear-gradient(115deg,#fff 0%,#f4f9ff 100%)}
+}
