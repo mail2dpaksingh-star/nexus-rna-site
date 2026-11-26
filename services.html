@@ -9,8 +9,55 @@
 <div class="note"><strong>Service boundaries:</strong> NEXUS currently offers research-oriented software prototypes and proposed scoped consulting. Laboratory execution, GMP activities, clinical outcomes and third-party CRO work are not included unless expressly contracted with appropriate qualified providers.</div></div></section>
 <section class="section dark" id="pricing"><div class="shell"><div class="eyebrow">RESEARCH TOOLS</div><h2>Explore NEXUS research tools.</h2><p class="lead">Run browser-based research workflows for RNA construct design, peptide-library planning, sequence analysis, formulation studies and analytical review. No paid subscription is required for the current tools.</p><div class="herolinks"><a class="action" href="tools/index.html">Explore Research Tools ↗</a><a class="action alt" href="tools/project-hub/index.html">Open Project Hub ↗</a></div></div></section>
 <section class="section"><div class="shell"><div class="eyebrow">HOW ENGAGEMENTS WORK</div><h2>Clear scope. Measurable deliverables.</h2><div class="steps"><article class="step"><b>01 · DISCOVER</b>Share a nonconfidential objective and discuss technical fit, constraints and decision criteria.</article><article class="step"><b>02 · AGREE</b>Define milestones, scope of work, timelines, acceptance criteria, confidentiality and ownership terms.</article><article class="step"><b>03 · DELIVER</b>Review analysis outputs, limitations, recommended experiments and agreed written deliverables.</article></div></div></section>
-<section class="section" id="quote" style="background:#eef2fa"><div class="shell quote"><div><div class="eyebrow">START A CONVERSATION</div><h2>Request a scoped RNA research proposal.</h2><p class="lead">Describe the research question and expected deliverables. Do not include patient information, proprietary nucleotide sequences, unpublished data or other confidential information in the initial inquiry.</p><p class="muted">This form prepares an email in your own email client. It does not send a message automatically or collect it on the NEXUS server.</p></div>
-<form class="quote-form" id="quote-form"><label for="qname">Name *</label><input id="qname" required maxlength="120" autocomplete="name"><label for="qemail">Email *</label><input id="qemail" required type="email" maxlength="180" autocomplete="email"><label for="qorg">Organization</label><input id="qorg" maxlength="140"><label for="qservice">Service / plan *</label><select id="qservice" required><option value="">Choose a topic</option><option>RNA Construct & Analytical Review</option><option>RNA–LNP Feasibility & DOE</option><option>Integrated RNA Development Pilot</option><option>General research consultation</option></select><label for="qquestion">Nonconfidential research objective *</label><textarea id="qquestion" required maxlength="1500" placeholder="What research decision are you trying to make?"></textarea><div style="margin-top:17px"><button class="action" type="submit">Prepare email inquiry ↗</button></div><p class="muted" id="quote-status" role="status">An email application is required to send the inquiry.</p></form></div></section></main>
+<section class="section" id="quote" style="background:#eef2fa"><div class="shell quote"><div><div class="eyebrow">START A CONVERSATION</div><h2>Request a scoped RNA research proposal.</h2><p class="lead">Describe the research question and expected deliverables. Do not include patient information, proprietary nucleotide sequences, unpublished data or other confidential information in the initial inquiry.</p><p class="muted">Send a nonconfidential research inquiry securely through this website. Your information is used only to respond to your request.</p></div>
+<form class="quote-form" id="quote-form"><label for="qname">Name *</label><input id="qname" required maxlength="120" autocomplete="name"><label for="qemail">Email *</label><input id="qemail" required type="email" maxlength="180" autocomplete="email"><label for="qorg">Organization</label><input id="qorg" maxlength="140"><label for="qservice">Service / plan *</label><select id="qservice" required><option value="">Choose a topic</option><option>RNA Construct & Analytical Review</option><option>RNA–LNP Feasibility & DOE</option><option>Integrated RNA Development Pilot</option><option>General research consultation</option></select><label for="qquestion">Nonconfidential research objective *</label><textarea id="qquestion" required maxlength="1500" placeholder="What research decision are you trying to make?"></textarea><div class="inquiry-honeypot" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="qwebsite">Leave blank</label><input id="qwebsite" name="website" tabindex="-1" autocomplete="off"></div><div style="margin-top:17px"><button class="action" type="submit" id="quote-submit">Submit inquiry</button></div><p class="muted" id="quote-status" role="status" aria-live="polite">Your inquiry is sent only after you receive a confirmation here.</p><p class="muted">If the form is unavailable, <a href="mailto:singhbddeepak@gmail.com?subject=RNA%20BioSolutions%20research%20inquiry" style="color:#174b9c;text-decoration:underline;font-weight:700">email RNA BioSolutions directly</a>.</p></form></div></section></main>
 <script>
-(()=>{'use strict';const f=document.getElementById('quote-form');f.addEventListener('submit',e=>{e.preventDefault();if(!f.reportValidity())return;const v=id=>document.getElementById(id).value.trim();const body=['Name: '+v('qname'),'Email: '+v('qemail'),'Organization: '+(v('qorg')||'Not specified'),'Topic: '+v('qservice'),'','Nonconfidential research objective:',v('qquestion')].join('\n');document.getElementById('quote-status').textContent='Review and send the prepared message in your email application. NEXUS has not received or stored it yet.';location.href='mailto:singhbddeepak@gmail.com?subject='+encodeURIComponent('NEXUS research inquiry — '+v('qservice'))+'&body='+encodeURIComponent(body);});})();
+(() => {
+  'use strict';
+  const form = document.getElementById('quote-form');
+  const button = document.getElementById('quote-submit');
+  const status = document.getElementById('quote-status');
+  let sending = false;
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (sending || !form.reportValidity()) return;
+    const value = (id) => document.getElementById(id).value.trim();
+    const inquiry = {
+      name: value('qname'),
+      email: value('qemail'),
+      organization: value('qorg'),
+      topic: value('qservice'),
+      question: value('qquestion'),
+      website: value('qwebsite')
+    };
+    sending = true;
+    button.disabled = true;
+    button.textContent = 'Submitting…';
+    status.textContent = 'Submitting your inquiry securely…';
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(inquiry),
+        signal: AbortSignal.timeout(15000)
+      });
+      let result = null;
+      try { result = await response.json(); } catch { /* Non-JSON server failure. */ }
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.message || 'The inquiry could not be sent. Please email us directly using the link below.');
+      }
+      status.textContent = result.message;
+      form.reset();
+    } catch (error) {
+      status.textContent = error.name === 'TimeoutError'
+        ? 'The request timed out. Delivery is unconfirmed. Please try again or email us directly.'
+        : error.message || 'Delivery is unconfirmed. Please try again or email us directly.';
+    } finally {
+      sending = false;
+      button.disabled = false;
+      button.textContent = 'Submit inquiry';
+    }
+  });
+})();
 </script><style id="nexus-legal-style">.nexus-legal-footer{padding:18px 20px;text-align:center;background:#0d1c3f;color:#ccd4e5;font:12px/1.7 system-ui,sans-serif;margin-top:24px}.nexus-legal-footer a{color:#b5caef;text-decoration:underline;margin:0 7px}.nexus-legal-footer strong{font-weight:650}</style><footer class="nexus-legal-footer"><strong>© 2026 RNA BioSolutions.</strong> Website branding and original content reserved; open-source modules and third-party resources retain their applicable licenses. <a href="privacy.html">Privacy Statement</a> <a href="index.html">Home</a><div>Research-stage software · Not validated for clinical decisions or GMP release · Avoid uploading patient or confidential data.</div></footer><script defer src="assets/nexus-clean-ui.js" data-nexus-clean-ui="1"></script></body></html>
